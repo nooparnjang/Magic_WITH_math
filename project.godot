@@ -15,9 +15,19 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="เวท WTIH คณิต"
+run/main_scene="uid://djk8i6e50k57r"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
 
 [dotnet]
 
 project/assembly_name="เวท WTIH คณิต"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://djk8i6e50k57r"]
+
+[ext_resource type="Texture2D" uid="uid://bcjj3y3fumovy" path="res://assets/bg/back.png" id="1_tqgty"]
+[ext_resource type="Texture2D" uid="uid://c6yg6yutu3sl" path="res://assets/bg/middle.png" id="2_2wntu"]
+[ext_resource type="Texture2D" uid="uid://bssj3qc14vv2x" path="res://assets/bg/foreground.png" id="3_tqgty"]
+
+[node name="NormalWave" type="Node2D" unique_id=1124215555]
+
+[node name="Bg" type="Node2D" parent="." unique_id=1491588833]
+
+[node name="Back" type="Parallax2D" parent="Bg" unique_id=1193349020]
+
+[node name="TextureRect" type="TextureRect" parent="Bg/Back" unique_id=1695938878]
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 1977.0
+offset_bottom = 274.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_tqgty")
+stretch_mode = 1
+
+[node name="middle" type="Parallax2D" parent="Bg" unique_id=27788449]
+
+[node name="TextureRect" type="TextureRect" parent="Bg/middle" unique_id=864185821]
+offset_right = 631.0
+offset_bottom = 272.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_2wntu")
+stretch_mode = 1
+
+[node name="foremost" type="Parallax2D" parent="Bg" unique_id=730886896]
+
+[node name="TextureRect" type="TextureRect" parent="Bg/foremost" unique_id=1682447897]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_tqgty")
+stretch_mode = 1
