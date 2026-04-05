@@ -1,38 +1,27 @@
 [gd_scene format=3 uid="uid://djk8i6e50k57r"]
 
-[ext_resource type="Texture2D" uid="uid://bcjj3y3fumovy" path="res://assets/bg/back.png" id="1_tqgty"]
-[ext_resource type="Texture2D" uid="uid://c6yg6yutu3sl" path="res://assets/bg/middle.png" id="2_2wntu"]
-[ext_resource type="Texture2D" uid="uid://bssj3qc14vv2x" path="res://assets/bg/foreground.png" id="3_tqgty"]
+[ext_resource type="PackedScene" uid="uid://dxekltvf7m50c" path="res://scenes/gameplay/bg.tscn" id="1_tqgty"]
+[ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="4_2wntu"]
+[ext_resource type="Script" uid="uid://ddmei86q2g01w" path="res://player/maincharacter.gd" id="5_7ue2n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
+size = Vector2(3151.5, 36)
 
 [node name="NormalWave" type="Node2D" unique_id=1124215555]
 
-[node name="Bg" type="Node2D" parent="." unique_id=1491588833]
+[node name="Bg" parent="." unique_id=1426212521 instance=ExtResource("1_tqgty")]
 
-[node name="Back" type="Parallax2D" parent="Bg" unique_id=1193349020]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=545990008]
 
-[node name="TextureRect" type="TextureRect" parent="Bg/Back" unique_id=1695938878]
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 1977.0
-offset_bottom = 274.0
-scale = Vector2(2, 2)
-texture = ExtResource("1_tqgty")
-stretch_mode = 1
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2002901592]
+position = Vector2(1562.25, 538)
+shape = SubResource("RectangleShape2D_tqgty")
 
-[node name="middle" type="Parallax2D" parent="Bg" unique_id=27788449]
+[node name="maincharacter" parent="." unique_id=1926872742 instance=ExtResource("4_2wntu")]
+position = Vector2(459, 350)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("5_7ue2n")
 
-[node name="TextureRect" type="TextureRect" parent="Bg/middle" unique_id=864185821]
-offset_right = 631.0
-offset_bottom = 272.0
-scale = Vector2(2, 2)
-texture = ExtResource("2_2wntu")
-stretch_mode = 1
-
-[node name="foremost" type="Parallax2D" parent="Bg" unique_id=730886896]
-
-[node name="TextureRect" type="TextureRect" parent="Bg/foremost" unique_id=1682447897]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(2, 2)
-texture = ExtResource("3_tqgty")
-stretch_mode = 1
+[node name="Camera2D" type="Camera2D" parent="maincharacter" unique_id=1869021917]
+offset = Vector2(0, -20)
+zoom = Vector2(1.4, 1.4)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckirnxfhevhxc"
-path="res://.godot/imported/foreground-empty.png-185b7bce2e0afcbc3859abbe313f9051.ctex"
+uid="uid://bji1c5b64r17x"
+path="res://.godot/imported/Idle.png-1b51cf30155e726005fa1added7d3405.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg/foreground-empty.png"
-dest_files=["res://.godot/imported/foreground-empty.png-185b7bce2e0afcbc3859abbe313f9051.ctex"]
+source_file="res://assets/player/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-1b51cf30155e726005fa1added7d3405.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dxekltvf7m50c"]
+
+[node name="Bg" type="Node2D" unique_id=1426212521]
+
+[node name="Back" type="Parallax2D" parent="." unique_id=346496640]
+scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(2000, 0)
+
+[node name="middle" type="Parallax2D" parent="." unique_id=2001819965]
+scroll_scale = Vector2(0.8, 1)
+
+[node name="foremost" type="Parallax2D" parent="." unique_id=565964584]
