@@ -1,12 +1,32 @@
 [gd_scene format=3 uid="uid://dxekltvf7m50c"]
 
+[ext_resource type="Texture2D" uid="uid://bssj3qc14vv2x" path="res://assets/bg/GameplayEndless/foreground.png" id="1_5cpc0"]
+[ext_resource type="Texture2D" uid="uid://be5egswwkwv3y" path="res://assets/bg/GameplayEndless/backfull.png" id="1_284ic"]
+[ext_resource type="Texture2D" uid="uid://buvhpsj7gsqja" path="res://assets/bg/GameplayEndless/middleFull.png" id="2_3awnf"]
+
 [node name="Bg" type="Node2D" unique_id=1426212521]
 
 [node name="Back" type="Parallax2D" parent="." unique_id=346496640]
 scroll_scale = Vector2(0.6, 1)
-repeat_size = Vector2(2000, 0)
+repeat_size = Vector2(900, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Back" unique_id=2088666435]
+position = Vector2(491.5, 227.49997)
+scale = Vector2(1.0197917, 1.1907407)
+texture = ExtResource("1_284ic")
 
 [node name="middle" type="Parallax2D" parent="." unique_id=2001819965]
 scroll_scale = Vector2(0.8, 1)
+repeat_size = Vector2(900, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="middle" unique_id=1474336293]
+position = Vector2(486, 275)
+texture = ExtResource("2_3awnf")
 
 [node name="foremost" type="Parallax2D" parent="." unique_id=565964584]
+repeat_size = Vector2(1250, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="foremost" unique_id=637506009]
+position = Vector2(634, 273)
+scale = Vector2(1.8357558, 1.9963236)
+texture = ExtResource("1_5cpc0")

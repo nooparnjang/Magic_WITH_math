@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcjj3y3fumovy"
-path="res://.godot/imported/back.png-2b0ee6bcaa4a6ac5996380b88a6c0f14.ctex"
+uid="uid://bfjachquipwne"
+path="res://.godot/imported/Jump.png-b20957c8103c245f74e887bc1573dd43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg/back.png"
-dest_files=["res://.godot/imported/back.png-2b0ee6bcaa4a6ac5996380b88a6c0f14.ctex"]
+source_file="res://assets/player/craftpix-net-529677-free-wizard-sprite-sheets-pixel-art/Lightning Mage/Jump.png"
+dest_files=["res://.godot/imported/Jump.png-b20957c8103c245f74e887bc1573dd43.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

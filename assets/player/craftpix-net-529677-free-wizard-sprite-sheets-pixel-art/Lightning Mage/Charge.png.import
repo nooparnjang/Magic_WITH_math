@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6yg6yutu3sl"
-path="res://.godot/imported/middle.png-ebfcf95c6d910a6dd7aee9da4c3557a2.ctex"
+uid="uid://cxaf35bqbwsqe"
+path="res://.godot/imported/Charge.png-e89abe630c4fffbf971a4b41cb51b040.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg/middle.png"
-dest_files=["res://.godot/imported/middle.png-ebfcf95c6d910a6dd7aee9da4c3557a2.ctex"]
+source_file="res://assets/player/craftpix-net-529677-free-wizard-sprite-sheets-pixel-art/Lightning Mage/Charge.png"
+dest_files=["res://.godot/imported/Charge.png-e89abe630c4fffbf971a4b41cb51b040.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

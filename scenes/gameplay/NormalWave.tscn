@@ -2,26 +2,44 @@
 
 [ext_resource type="PackedScene" uid="uid://dxekltvf7m50c" path="res://scenes/gameplay/bg.tscn" id="1_tqgty"]
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="4_2wntu"]
+[ext_resource type="Script" uid="uid://nu0mm7n41ijr" path="res://scenes/gameplay/camera_2d.gd" id="4_7ue2n"]
 [ext_resource type="Script" uid="uid://ddmei86q2g01w" path="res://player/maincharacter.gd" id="5_7ue2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
 size = Vector2(3151.5, 36)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wntu"]
+size = Vector2(45, 543)
+
 [node name="NormalWave" type="Node2D" unique_id=1124215555]
 
 [node name="Bg" parent="." unique_id=1426212521 instance=ExtResource("1_tqgty")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=545990008]
+[node name="player" type="Node2D" parent="." unique_id=583229078]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2002901592]
-position = Vector2(1562.25, 538)
-shape = SubResource("RectangleShape2D_tqgty")
-
-[node name="maincharacter" parent="." unique_id=1926872742 instance=ExtResource("4_2wntu")]
-position = Vector2(459, 350)
+[node name="maincharacter" parent="player" unique_id=1926872742 instance=ExtResource("4_2wntu")]
+position = Vector2(257, 433)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("5_7ue2n")
 
-[node name="Camera2D" type="Camera2D" parent="maincharacter" unique_id=1869021917]
-offset = Vector2(0, -20)
-zoom = Vector2(1.4, 1.4)
+[node name="camera" type="Node2D" parent="." unique_id=81348172 node_paths=PackedStringArray("target")]
+script = ExtResource("4_7ue2n")
+target = NodePath("../player/maincharacter")
+
+[node name="Camera2D" type="Camera2D" parent="camera" unique_id=669100268]
+limit_bottom = 540
+limit_smoothed = true
+
+[node name="invisibleWall" type="Node2D" parent="." unique_id=665008514]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="invisibleWall" unique_id=545990008]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D" unique_id=2002901592]
+position = Vector2(1562.25, 538)
+shape = SubResource("RectangleShape2D_tqgty")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="invisibleWall" unique_id=732894203]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D2" unique_id=1132326704]
+position = Vector2(12.5, 261.5)
+shape = SubResource("RectangleShape2D_2wntu")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckirnxfhevhxc"
-path="res://.godot/imported/foreground-empty.png-185b7bce2e0afcbc3859abbe313f9051.ctex"
+uid="uid://dai6ht83plpv0"
+path="res://.godot/imported/Attack_2.png-c89736991c3a67b21f1b36b79f813532.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg/foreground-empty.png"
-dest_files=["res://.godot/imported/foreground-empty.png-185b7bce2e0afcbc3859abbe313f9051.ctex"]
+source_file="res://assets/player/craftpix-net-529677-free-wizard-sprite-sheets-pixel-art/Lightning Mage/Attack_2.png"
+dest_files=["res://.godot/imported/Attack_2.png-c89736991c3a67b21f1b36b79f813532.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

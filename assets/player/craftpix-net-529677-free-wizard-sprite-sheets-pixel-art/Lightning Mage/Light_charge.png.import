@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bssj3qc14vv2x"
-path="res://.godot/imported/foreground.png-c85a882982caf3d21a9c76f3b9b2e7df.ctex"
+uid="uid://5yxvnxxbmxbi"
+path="res://.godot/imported/Light_charge.png-ee6dbba332d7f9cbb2422b0fa031c81a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg/foreground.png"
-dest_files=["res://.godot/imported/foreground.png-c85a882982caf3d21a9c76f3b9b2e7df.ctex"]
+source_file="res://assets/player/craftpix-net-529677-free-wizard-sprite-sheets-pixel-art/Lightning Mage/Light_charge.png"
+dest_files=["res://.godot/imported/Light_charge.png-ee6dbba332d7f9cbb2422b0fa031c81a.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
