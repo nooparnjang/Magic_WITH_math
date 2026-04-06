@@ -6,10 +6,23 @@
 [ext_resource type="Script" uid="uid://ddmei86q2g01w" path="res://player/maincharacter.gd" id="5_7ue2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
-size = Vector2(3151.5, 36)
+size = Vector2(8572.5, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wntu"]
 size = Vector2(45, 543)
+
+[sub_resource type="Environment" id="Environment_2wntu"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.37
+glow_bloom = 0.72
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 19.92
+adjustment_enabled = true
+adjustment_brightness = 0.45
+adjustment_contrast = 1.2
+adjustment_saturation = 1.04
 
 [node name="NormalWave" type="Node2D" unique_id=1124215555]
 
@@ -35,7 +48,7 @@ limit_smoothed = true
 [node name="StaticBody2D" type="StaticBody2D" parent="invisibleWall" unique_id=545990008]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D" unique_id=2002901592]
-position = Vector2(1562.25, 538)
+position = Vector2(4272.75, 538)
 shape = SubResource("RectangleShape2D_tqgty")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="invisibleWall" unique_id=732894203]
@@ -43,3 +56,10 @@ shape = SubResource("RectangleShape2D_tqgty")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D2" unique_id=1132326704]
 position = Vector2(12.5, 261.5)
 shape = SubResource("RectangleShape2D_2wntu")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=854738820]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node2D" unique_id=370906182]
+environment = SubResource("Environment_2wntu")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Node2D" unique_id=1388837601]
