@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_sybox"]
 [ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="6_sybox"]
 [ext_resource type="Script" uid="uid://fcgh0vsqrcgd" path="res://scenes/gameplay/script/secound.gd" id="7_71cuo"]
+[ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="8_b5en2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
 size = Vector2(8572.5, 36)
@@ -58,6 +59,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.353256, 1.353256, 1.353256, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pnkfu"]
 resource_name = "secondTextTut"
@@ -73,6 +86,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.353256, 1.353256, 1.353256, 0), Color(1.353256, 1.353256, 1.353256, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pnkfu"]
@@ -188,6 +213,12 @@ visible_ratio = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/secound" unique_id=1533853853]
 libraries/ = SubResource("AnimationLibrary_pnkfu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tut/secound" unique_id=1232536769]
+modulate = Color(1.353256, 1.353256, 1.353256, 0)
+position = Vector2(1431.0001, 92)
+scale = Vector2(0.19375, 0.19444445)
+texture = ExtResource("8_b5en2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1510987479]
 stream = ExtResource("6_sybox")
