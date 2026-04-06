@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://crcbg7k8p2jdw"
-path="res://.godot/imported/EDSamernar.ttf-39bc33cb1d13ab7c420a566479ee4a8f.fontdata"
+path="res://.godot/imported/EDSamernar.ttf-003f87f59cc97319773d2cd0a0ce16b9.fontdata"
 
 [deps]
 
-source_file="res://scenes/mainmenu/EDSamernar.ttf"
-dest_files=["res://.godot/imported/EDSamernar.ttf-39bc33cb1d13ab7c420a566479ee4a8f.fontdata"]
+source_file="res://assets/font/EDSamernar.ttf"
+dest_files=["res://.godot/imported/EDSamernar.ttf-003f87f59cc97319773d2cd0a0ce16b9.fontdata"]
 
 [params]
 
