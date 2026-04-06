@@ -1,5 +1,16 @@
 [gd_scene format=3 uid="uid://ds8i0pdswdh0r"]
 
+[ext_resource type="Texture2D" uid="uid://bssj3qc14vv2x" path="res://assets/bg/foreground.png" id="1_72cw5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xmi0c"]
+texture = ExtResource("1_72cw5")
+
 [node name="Node2D" type="Control" unique_id=1375618234]
 layout_mode = 3
 anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="." unique_id=1070017705]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 539.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_xmi0c")
