@@ -54,9 +54,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_xmi0c")
 [node name="backbutton" type="Panel" parent="." unique_id=642814556]
 layout_mode = 0
 offset_left = 42.0
-offset_top = 5.0
+offset_top = -23.0
 offset_right = 348.0
-offset_bottom = 531.0
+offset_bottom = 561.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_o8ig8")
 
 [node name="selectchapter" type="Button" parent="." unique_id=168416288]
