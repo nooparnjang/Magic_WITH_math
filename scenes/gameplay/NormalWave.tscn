@@ -2,26 +2,346 @@
 
 [ext_resource type="PackedScene" uid="uid://dxekltvf7m50c" path="res://scenes/gameplay/bg.tscn" id="1_tqgty"]
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="4_2wntu"]
+[ext_resource type="Script" uid="uid://nu0mm7n41ijr" path="res://scenes/gameplay/script/camera_2d.gd" id="4_7ue2n"]
 [ext_resource type="Script" uid="uid://ddmei86q2g01w" path="res://player/maincharacter.gd" id="5_7ue2n"]
+[ext_resource type="Script" uid="uid://d3jfav3o4l423" path="res://scenes/gameplay/script/firstText.gd" id="5_p8pd4"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_sybox"]
+[ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="6_sybox"]
+[ext_resource type="Script" uid="uid://fcgh0vsqrcgd" path="res://scenes/gameplay/script/secound.gd" id="7_71cuo"]
+[ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="8_b5en2"]
+[ext_resource type="Script" uid="uid://j1q0saamqwwh" path="res://scenes/gameplay/script/third.gd" id="9_ies0t"]
+[ext_resource type="Texture2D" uid="uid://ca1yrgtdxpbgv" path="res://assets/UI/Spacebar 1.png" id="10_e7oia"]
+[ext_resource type="PackedScene" uid="uid://pbk26hqvqvku" path="res://object/cone.tscn" id="11_e7oia"]
+[ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="12_5rxrm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
-size = Vector2(3151.5, 36)
+size = Vector2(8572.5, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wntu"]
+size = Vector2(45, 543)
+
+[sub_resource type="Environment" id="Environment_2wntu"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.37
+glow_bloom = 0.72
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 19.92
+adjustment_enabled = true
+adjustment_brightness = 0.45
+adjustment_contrast = 1.2
+adjustment_saturation = 1.04
+
+[sub_resource type="Animation" id="Animation_71cuo"]
+resource_name = "FirstTextTut"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_b5en2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.353256, 1.353256, 1.353256, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pnkfu"]
+resource_name = "secondTextTut"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333336, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.353256, 1.353256, 1.353256, 0), Color(1.353256, 1.353256, 1.353256, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnkfu"]
+_data = {
+&"FirstTextTut": SubResource("Animation_71cuo"),
+&"RESET": SubResource("Animation_b5en2"),
+&"secondTextTut": SubResource("Animation_pnkfu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8pd4"]
+size = Vector2(28, 302.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rxrm"]
+size = Vector2(20, 322)
+
+[sub_resource type="Animation" id="Animation_cscyk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u54mw"]
+resource_name = "Third"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_an7bs"]
+_data = {
+&"RESET": SubResource("Animation_cscyk"),
+&"Third": SubResource("Animation_u54mw")
+}
 
 [node name="NormalWave" type="Node2D" unique_id=1124215555]
 
 [node name="Bg" parent="." unique_id=1426212521 instance=ExtResource("1_tqgty")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=545990008]
+[node name="player" type="Node2D" parent="." unique_id=583229078]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2002901592]
-position = Vector2(1562.25, 538)
-shape = SubResource("RectangleShape2D_tqgty")
-
-[node name="maincharacter" parent="." unique_id=1926872742 instance=ExtResource("4_2wntu")]
-position = Vector2(459, 350)
+[node name="maincharacter" parent="player" unique_id=1926872742 instance=ExtResource("4_2wntu")]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+position = Vector2(546, 429.00003)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("5_7ue2n")
 
-[node name="Camera2D" type="Camera2D" parent="maincharacter" unique_id=1869021917]
-offset = Vector2(0, -20)
-zoom = Vector2(1.4, 1.4)
+[node name="camera" type="Node2D" parent="." unique_id=81348172 node_paths=PackedStringArray("target")]
+script = ExtResource("4_7ue2n")
+target = NodePath("../player/maincharacter")
+
+[node name="Camera2D" type="Camera2D" parent="camera" unique_id=669100268]
+limit_bottom = 540
+limit_smoothed = true
+
+[node name="invisibleWall" type="Node2D" parent="." unique_id=665008514]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="invisibleWall" unique_id=545990008]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D" unique_id=2002901592]
+position = Vector2(4272.75, 538)
+shape = SubResource("RectangleShape2D_tqgty")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="invisibleWall" unique_id=732894203]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D2" unique_id=1132326704]
+position = Vector2(12.5, 261.5)
+shape = SubResource("RectangleShape2D_2wntu")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=854738820]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node2D" unique_id=370906182]
+environment = SubResource("Environment_2wntu")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Node2D" unique_id=1388837601]
+position = Vector2(-1, 0)
+
+[node name="Tut" type="Node2D" parent="." unique_id=2131051931]
+
+[node name="first" type="Control" parent="Tut" unique_id=563149662]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 608.0
+offset_top = 189.0
+offset_right = 933.0
+offset_bottom = 296.0
+script = ExtResource("5_p8pd4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tut/first" unique_id=516457181]
+layout_mode = 0
+offset_left = -207.0
+offset_top = -23.0
+offset_right = 345.0
+offset_bottom = 106.0
+theme_override_colors/default_color = Color(1.353256, 1.353256, 1.353256, 1)
+theme_override_fonts/normal_font = ExtResource("5_sybox")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[wave]WELCOME PLAYER!
+Don't be in such a hurry 
+let's me teach you something real nice (;"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/first" unique_id=474410392]
+libraries/ = SubResource("AnimationLibrary_pnkfu")
+
+[node name="secound" type="Control" parent="Tut" unique_id=1512203222]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_71cuo")
+
+[node name="Area" type="Area2D" parent="Tut/secound" unique_id=440112268]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tut/secound/Area" unique_id=1520255862]
+position = Vector2(1105, 365.25)
+shape = SubResource("RectangleShape2D_p8pd4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tut/secound" unique_id=279456885]
+layout_mode = 0
+offset_left = 1158.0
+offset_top = 145.0
+offset_right = 1710.0
+offset_bottom = 295.0
+theme_override_colors/default_color = Color(1.353256, 1.353256, 1.353256, 1)
+theme_override_fonts/normal_font = ExtResource("5_sybox")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[wave]Move with passion!
+Using arrow"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/secound" unique_id=1533853853]
+libraries/ = SubResource("AnimationLibrary_pnkfu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tut/secound" unique_id=1232536769]
+modulate = Color(1.353256, 1.353256, 1.353256, 0)
+position = Vector2(1431.0001, 92)
+scale = Vector2(0.19375, 0.19444445)
+texture = ExtResource("8_b5en2")
+
+[node name="third" type="Control" parent="Tut" unique_id=1357005385]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_ies0t")
+
+[node name="Area2D" type="Area2D" parent="Tut/third" unique_id=239337400]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tut/third/Area2D" unique_id=1582007692]
+position = Vector2(1763, 353)
+shape = SubResource("RectangleShape2D_5rxrm")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tut/third" unique_id=1235762387]
+layout_mode = 0
+offset_left = 1857.0
+offset_top = 74.0
+offset_right = 2409.0
+offset_bottom = 224.0
+theme_override_colors/default_color = Color(1.353256, 1.353256, 1.353256, 1)
+theme_override_fonts/normal_font = ExtResource("5_sybox")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[wave]QUICK! Jump! 
+this will be useful"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Tut/third" unique_id=1892406421]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(2122.0002, 268)
+scale = Vector2(0.29, 0.2944622)
+texture = ExtResource("10_e7oia")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/third" unique_id=69258935]
+libraries/ = SubResource("AnimationLibrary_an7bs")
+
+[node name="obstacle" type="Node2D" parent="Tut" unique_id=765069025]
+
+[node name="cone" parent="Tut/obstacle" unique_id=65342437 instance=ExtResource("11_e7oia")]
+position = Vector2(3153, 483.00003)
+scale = Vector2(0.3, 0.3)
+
+[node name="Barrier" parent="Tut/obstacle" unique_id=433003444 instance=ExtResource("12_5rxrm")]
+position = Vector2(3292, 469)
+scale = Vector2(0.4, 0.4)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1510987479]
+stream = ExtResource("6_sybox")
+volume_db = -20.069
+autoplay = true
+
+[connection signal="ready" from="Tut/first" to="Tut/first" method="_on_ready"]
+[connection signal="body_entered" from="Tut/secound/Area" to="Tut/secound" method="_on_area_body_entered"]
+[connection signal="body_entered" from="Tut/third/Area2D" to="Tut/third" method="_on_area_2d_body_entered"]
