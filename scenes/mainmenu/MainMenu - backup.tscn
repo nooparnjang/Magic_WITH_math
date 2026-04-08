@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://ds8i0pdswdh0r"]
 
 <<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://bcjj3y3fumovy" path="res://assets/bg/back.png" id="1_32njf"]
-[ext_resource type="Texture2D" uid="uid://ckirnxfhevhxc" path="res://assets/bg/foreground-empty.png" id="1_72cw5"]
-[ext_resource type="Texture2D" uid="uid://c6yg6yutu3sl" path="res://assets/bg/middle.png" id="2_gdign"]
 [ext_resource type="Texture2D" uid="uid://cjusbb24cphia" path="res://scenes/mainmenu/Rectangle 6.png" id="4_wvips"]
 [ext_resource type="Texture2D" uid="uid://cpakynryg5l8v" path="res://scenes/mainmenu/LEADERBOARD.png" id="6_ryigd"]
 =======
