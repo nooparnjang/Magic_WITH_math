@@ -1,6 +1,36 @@
 [gd_scene format=3 uid="uid://ds8i0pdswdh0r"]
 
+[ext_resource type="Texture2D" uid="uid://be5egswwkwv3y" path="res://assets/bg/GameplayEndless/backfull.png" id="1_32njf"]
+[ext_resource type="Texture2D" uid="uid://buvhpsj7gsqja" path="res://assets/bg/GameplayEndless/middleFull.png" id="2_gdign"]
+[ext_resource type="Texture2D" uid="uid://bssj3qc14vv2x" path="res://assets/bg/GameplayEndless/foreground.png" id="3_o8ig8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_balsr"]
+texture = ExtResource("1_32njf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wvips"]
+texture = ExtResource("2_gdign")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryigd"]
+texture = ExtResource("3_o8ig8")
 
 [node name="Node2D" type="Control" unique_id=1375618234]
 layout_mode = 3
 anchors_preset = 0
+
+[node name="back" type="Panel" parent="." unique_id=2113343261]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_balsr")
+
+[node name="middle" type="Panel" parent="." unique_id=1799872541]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wvips")
+
+[node name="front" type="Panel" parent="." unique_id=503739451]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ryigd")
