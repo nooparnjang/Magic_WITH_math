@@ -52,8 +52,8 @@ offset_bottom = 541.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_7j4e4")
 
 [node name="Leaderboard" type="Sprite2D" parent="." unique_id=1814546491]
-position = Vector2(794, 56.000008)
-scale = Vector2(0.5081301, 0.5081301)
+position = Vector2(754.2358, 64.37501)
+scale = Vector2(0.64430887, 0.64430887)
 texture = ExtResource("5_ryigd")
 
 [node name="เวทwithคณิตLogo1" type="Sprite2D" parent="." unique_id=113070982]
@@ -96,4 +96,16 @@ theme_override_colors/font_color = Color(0.07331369, 0.22635275, 0.6427864, 1)
 theme_override_fonts/font = ExtResource("6_7j4e4")
 theme_override_font_sizes/font_size = 50
 text = "QUIT GAME"
+flat = true
+
+[node name="leaderboard" type="Button" parent="." unique_id=1345814985]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 19.0
+offset_right = 896.0
+offset_bottom = 92.0
+theme_override_colors/font_color = Color(0.07331369, 0.22635275, 0.6427864, 1)
+theme_override_fonts/font = ExtResource("6_7j4e4")
+theme_override_font_sizes/font_size = 50
+text = "LEADERBOARD"
 flat = true
