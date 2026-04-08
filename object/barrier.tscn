@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b16nakbi8je3x"]
+
+[ext_resource type="Texture2D" uid="uid://choa8f0ihlbu0" path="res://assets/object/Sign.png" id="1_sexjf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbkhf"]
+size = Vector2(358, 251)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tlrs0"]
+radius = 830.21747
+
+[node name="Barrier" type="CharacterBody2D" unique_id=433003444]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=479087098]
+texture = ExtResource("1_sexjf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=75371150]
+position = Vector2(-3, -8.5)
+shape = SubResource("RectangleShape2D_tbkhf")
+
+[node name="BarrierArea" type="Area2D" parent="." unique_id=1249709935]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrierArea" unique_id=779906047]
+shape = SubResource("CircleShape2D_tlrs0")
+debug_color = Color(0.3699551, 0.47824776, 1, 0.41960785)
