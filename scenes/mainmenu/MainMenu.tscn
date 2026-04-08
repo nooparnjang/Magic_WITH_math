@@ -19,6 +19,7 @@ texture = ExtResource("3_o8ig8")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7j4e4"]
 texture = ExtResource("4_wvips")
+modulate_color = Color(1, 1, 1, 0.5882353)
 
 [node name="Node2D" type="Control" unique_id=1375618234]
 layout_mode = 3
@@ -44,9 +45,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ryigd")
 
 [node name="backbutton" type="Panel" parent="." unique_id=2094999074]
 layout_mode = 0
-offset_left = 49.0
+offset_left = 43.0
 offset_top = 1.0
-offset_right = 419.0
+offset_right = 413.0
 offset_bottom = 541.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_7j4e4")
 
@@ -54,6 +55,11 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7j4e4")
 position = Vector2(794, 56.000008)
 scale = Vector2(0.5081301, 0.5081301)
 texture = ExtResource("5_ryigd")
+
+[node name="เวทwithคณิตLogo1" type="Sprite2D" parent="." unique_id=113070982]
+position = Vector2(227.00002, 101)
+scale = Vector2(0.4135, 0.4135)
+texture = ExtResource("7_chemg")
 
 [node name="selectchapter" type="Button" parent="." unique_id=668538490]
 layout_mode = 0
@@ -91,8 +97,3 @@ theme_override_fonts/font = ExtResource("6_7j4e4")
 theme_override_font_sizes/font_size = 50
 text = "QUIT GAME"
 flat = true
-
-[node name="เวทwithคณิตLogo1" type="Sprite2D" parent="." unique_id=113070982]
-position = Vector2(227.00002, 101)
-scale = Vector2(0.4135, 0.4135)
-texture = ExtResource("7_chemg")
