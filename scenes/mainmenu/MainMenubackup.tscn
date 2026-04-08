@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://ds8i0pdswdh0r"]
-
-
-[node name="Node2D" type="Control" unique_id=1375618234]
-layout_mode = 3
-anchors_preset = 0
