@@ -1,5 +1,21 @@
 [gd_scene format=3 uid="uid://ds8i0pdswdh0r"]
 
+<<<<<<< HEAD
+[ext_resource type="Texture2D" uid="uid://bcjj3y3fumovy" path="res://assets/bg/back.png" id="1_32njf"]
+[ext_resource type="Texture2D" uid="uid://ckirnxfhevhxc" path="res://assets/bg/foreground-empty.png" id="1_72cw5"]
+[ext_resource type="Texture2D" uid="uid://c6yg6yutu3sl" path="res://assets/bg/middle.png" id="2_gdign"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://scenes/mainmenu/EDSamernar.ttf" id="4_gdign"]
+[ext_resource type="Texture2D" uid="uid://cjusbb24cphia" path="res://scenes/mainmenu/Rectangle 6.png" id="4_wvips"]
+[ext_resource type="Texture2D" uid="uid://dnbvcr2kqm81u" path="res://scenes/mainmenu/เวทWITHคณิต LOGO 1.png" id="5_o8ig8"]
+[ext_resource type="Texture2D" uid="uid://cpakynryg5l8v" path="res://scenes/mainmenu/LEADERBOARD.png" id="6_ryigd"]
+=======
+[ext_resource type="Texture2D" uid="uid://bcjj3y3fumovy" path="res://assets/bg/GameplayEndless/back.png" id="1_32njf"]
+[ext_resource type="Texture2D" uid="uid://ckirnxfhevhxc" path="res://assets/bg/GameplayEndless/foreground-empty.png" id="1_72cw5"]
+[ext_resource type="Texture2D" uid="uid://c6yg6yutu3sl" path="res://assets/bg/GameplayEndless/middle.png" id="2_gdign"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="4_o8ig8"]
+[ext_resource type="Texture2D" uid="uid://dnbvcr2kqm81u" path="res://assets/UI/เวทWITHคณิต LOGO 1.png" id="5_balsr"]
+>>>>>>> 69732925c00c577123bd1a919e8376f073ee2271
+
 
 [node name="Node2D" type="Control" unique_id=1375618234]
 layout_mode = 3
