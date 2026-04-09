@@ -73,9 +73,9 @@ text = "OPTION"
 [node name="sfx" type="Label" parent="." unique_id=2108217947]
 layout_mode = 0
 offset_left = 160.0
-offset_top = 132.0
+offset_top = 130.0
 offset_right = 280.0
-offset_bottom = 236.0
+offset_bottom = 234.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_gixq5")
 theme_override_font_sizes/font_size = 80
@@ -83,11 +83,33 @@ text = "SFX"
 
 [node name="music" type="Label" parent="." unique_id=806624806]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 262.0
-offset_right = 361.0
-offset_bottom = 366.0
+offset_left = 160.0
+offset_top = 260.0
+offset_right = 358.0
+offset_bottom = 364.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_gixq5")
 theme_override_font_sizes/font_size = 80
 text = "MUSIC"
+
+[node name="sfxset" type="Label" parent="." unique_id=1730129412]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 130.0
+offset_right = 790.0
+offset_bottom = 234.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_gixq5")
+theme_override_font_sizes/font_size = 80
+text = "OFF"
+
+[node name="musicset" type="Label" parent="." unique_id=731514415]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 260.0
+offset_right = 790.0
+offset_bottom = 364.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_gixq5")
+theme_override_font_sizes/font_size = 80
+text = "OFF"
