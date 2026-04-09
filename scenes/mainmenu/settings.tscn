@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://buvhpsj7gsqja" path="res://assets/bg/GameplayEndless/middleFull.png" id="2_tnsq5"]
 [ext_resource type="Texture2D" uid="uid://bssj3qc14vv2x" path="res://assets/bg/GameplayEndless/foreground.png" id="3_gixq5"]
 [ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="4_tnsq5"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_gixq5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16s6x"]
 texture = ExtResource("1_gkl27")
@@ -43,6 +44,14 @@ offset_right = 960.0
 offset_bottom = 540.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ewn18")
 
+[node name="backset" type="Panel" parent="." unique_id=25216882]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 103.0
+offset_right = 906.0
+offset_bottom = 443.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gixq5")
+
 [node name="goback" type="Sprite2D" parent="." unique_id=1695986979]
 position = Vector2(54.000004, 48)
 scale = Vector2(0.11851851, 0.11851852)
@@ -50,10 +59,35 @@ texture = ExtResource("4_tnsq5")
 region_enabled = true
 region_rect = Rect2(0, 0, 480, 540)
 
-[node name="Panel" type="Panel" parent="." unique_id=25216882]
+[node name="option" type="Label" parent="." unique_id=834736624]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 103.0
-offset_right = 906.0
-offset_bottom = 443.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gixq5")
+offset_left = 364.0
+offset_top = -7.0
+offset_right = 586.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.07450981, 0.22745098, 0.6431373, 1)
+theme_override_fonts/font = ExtResource("5_gixq5")
+theme_override_font_sizes/font_size = 80
+text = "OPTION"
+
+[node name="sfx" type="Label" parent="." unique_id=2108217947]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 132.0
+offset_right = 280.0
+offset_bottom = 236.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_gixq5")
+theme_override_font_sizes/font_size = 80
+text = "SFX"
+
+[node name="music" type="Label" parent="." unique_id=806624806]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 262.0
+offset_right = 361.0
+offset_bottom = 366.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_gixq5")
+theme_override_font_sizes/font_size = 80
+text = "MUSIC"
