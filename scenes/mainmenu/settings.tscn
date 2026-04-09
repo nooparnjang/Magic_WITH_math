@@ -113,3 +113,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_gixq5")
 theme_override_font_sizes/font_size = 80
 text = "OFF"
+
+[node name="recommend" type="Label" parent="." unique_id=83888040]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 464.0
+offset_right = 876.0
+offset_bottom = 510.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_gixq5")
+theme_override_font_sizes/font_size = 35
+text = "RECOMMEND : WEAR HEADPHONE FOR BETTER EXPERIENCE"
