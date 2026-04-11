@@ -1,5 +1,146 @@
 [gd_scene format=3 uid="uid://oktc7reqjkjc"]
 
+[ext_resource type="Texture2D" uid="uid://be5egswwkwv3y" path="res://assets/bg/GameplayEndless/backfull.png" id="1_p0qcm"]
+[ext_resource type="Texture2D" uid="uid://buvhpsj7gsqja" path="res://assets/bg/GameplayEndless/middleFull.png" id="2_dh7hh"]
+[ext_resource type="Texture2D" uid="uid://bssj3qc14vv2x" path="res://assets/bg/GameplayEndless/foreground.png" id="3_7eecl"]
+[ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="4_dh7hh"]
+[ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="4_n1ptk"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_b31yw"]
+[ext_resource type="Script" uid="uid://c657twrkw4s6r" path="res://scenes/gameplay/script/leaderboard.gd" id="7_7eecl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uytfj"]
+texture = ExtResource("1_p0qcm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p8f54"]
+texture = ExtResource("2_dh7hh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tafbs"]
+texture = ExtResource("3_7eecl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7eecl"]
+shader = ExtResource("4_dh7hh")
+shader_parameter/blur_amount = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1ptk"]
+bg_color = Color(0.12156863, 0.105882354, 0.49411765, 0.19607843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0qcm"]
+bg_color = Color(1, 1, 1, 0.11764706)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="Node2D" type="Control" unique_id=1269873416]
 layout_mode = 3
 anchors_preset = 0
+
+[node name="back" type="Panel" parent="." unique_id=758511659]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uytfj")
+
+[node name="middle" type="Panel" parent="." unique_id=1963010146]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_p8f54")
+
+[node name="front" type="Panel" parent="." unique_id=371563221]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_tafbs")
+
+[node name="blur" type="Panel" parent="front" unique_id=1798228285]
+material = SubResource("ShaderMaterial_7eecl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n1ptk")
+
+[node name="goback" type="Sprite2D" parent="." unique_id=107057150]
+position = Vector2(54.000004, 48)
+scale = Vector2(0.11851851, 0.11851852)
+texture = ExtResource("4_n1ptk")
+region_enabled = true
+region_rect = Rect2(0, 0, 480, 540)
+
+[node name="leaderboard" type="Label" parent="." unique_id=1203098050]
+layout_mode = 0
+offset_left = 261.0
+offset_top = -7.0
+offset_right = 703.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_b31yw")
+theme_override_font_sizes/font_size = 80
+text = "LEADERBOARD"
+
+[node name="LeaderboardBox" type="Control" parent="." unique_id=1066392005]
+custom_minimum_size = Vector2(850, 400)
+layout_mode = 1
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 141.0
+offset_right = 900.0
+offset_bottom = 541.0
+script = ExtResource("7_7eecl")
+
+[node name="MarginContainer" type="MarginContainer" parent="LeaderboardBox" unique_id=1912135771]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeaderboardBox/MarginContainer" unique_id=1039208682]
+layout_mode = 2
+
+[node name="HeaderRow" type="HBoxContainer" parent="LeaderboardBox/MarginContainer/VBoxContainer" unique_id=675997331]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="KillLabel" type="Label" parent="LeaderboardBox/MarginContainer/VBoxContainer/HeaderRow" unique_id=372268251]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("5_b31yw")
+theme_override_font_sizes/font_size = 40
+text = "Kill Count"
+
+[node name="ScoreLabel" type="Label" parent="LeaderboardBox/MarginContainer/VBoxContainer/HeaderRow" unique_id=1961710929]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("5_b31yw")
+theme_override_font_sizes/font_size = 40
+text = "Blessing Collect"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeaderboardBox/MarginContainer/VBoxContainer" unique_id=1195843798]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="LeaderboardBox/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1874950706]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Panel" type="Panel" parent="LeaderboardBox" unique_id=1107087536]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0qcm")
