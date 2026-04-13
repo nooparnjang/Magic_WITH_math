@@ -17,11 +17,11 @@ texture = ExtResource("1_3awnf")
 
 [node name="middle" type="Parallax2D" parent="." unique_id=2001819965]
 scroll_scale = Vector2(0.8, 1)
-repeat_size = Vector2(1700, 0)
+repeat_size = Vector2(1960, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="middle" unique_id=1474336293]
-position = Vector2(850, 272.5)
-scale = Vector2(0.88645834, 0.9981481)
+position = Vector2(983.0001, 261.00003)
+scale = Vector2(1.0250001, 1.1111112)
 texture = ExtResource("2_3awnf")
 
 [node name="foremost" type="Parallax2D" parent="." unique_id=565964584]
