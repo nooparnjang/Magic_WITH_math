@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="8_b5en2"]
 [ext_resource type="Script" uid="uid://j1q0saamqwwh" path="res://scenes/gameplay/script/third.gd" id="9_ies0t"]
 [ext_resource type="Texture2D" uid="uid://ca1yrgtdxpbgv" path="res://assets/UI/Spacebar 1.png" id="10_e7oia"]
+[ext_resource type="Script" uid="uid://cr36ohrsgh2fk" path="res://scenes/gameplay/script/forth.gd" id="11_cscyk"]
 [ext_resource type="PackedScene" uid="uid://pbk26hqvqvku" path="res://object/cone.tscn" id="11_e7oia"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="12_5rxrm"]
 
@@ -178,6 +179,13 @@ _data = {
 &"Third": SubResource("Animation_u54mw")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cscyk"]
+size = Vector2(24, 511)
+
+[sub_resource type="Theme" id="Theme_cscyk"]
+default_font = ExtResource("5_sybox")
+default_font_size = 30
+
 [node name="NormalWave" type="Node2D" unique_id=1124215555]
 
 [node name="Bg" parent="." unique_id=1426212521 instance=ExtResource("1_tqgty")]
@@ -191,9 +199,9 @@ position = Vector2(404.00006, 308)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("5_7ue2n")
 
-[node name="camera" type="Node2D" parent="." unique_id=81348172 node_paths=PackedStringArray("target")]
+[node name="camera" type="Node2D" parent="." unique_id=81348172 node_paths=PackedStringArray("default_target")]
 script = ExtResource("4_7ue2n")
-target = NodePath("../player/maincharacter")
+default_target = NodePath("../player/maincharacter")
 
 [node name="Camera2D" type="Camera2D" parent="camera" unique_id=669100268]
 limit_bottom = 540
@@ -234,11 +242,13 @@ script = ExtResource("5_p8pd4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tut/first" unique_id=516457181]
 layout_mode = 0
-offset_left = -207.0
-offset_top = -23.0
-offset_right = 345.0
-offset_bottom = 106.0
+offset_left = -201.0
+offset_top = -130.0
+offset_right = 351.0
+offset_bottom = -1.0
 theme_override_colors/default_color = Color(0.9598109, 0.9598109, 0.9598109, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 11
 theme_override_fonts/normal_font = ExtResource("5_sybox")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
@@ -266,11 +276,13 @@ shape = SubResource("RectangleShape2D_p8pd4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tut/secound" unique_id=279456885]
 layout_mode = 0
-offset_left = 1158.0
-offset_top = 145.0
-offset_right = 1710.0
-offset_bottom = 295.0
+offset_left = 1066.0
+offset_top = 84.0
+offset_right = 1618.0
+offset_bottom = 234.0
 theme_override_colors/default_color = Color(0.85275894, 0.84928876, 0.84928876, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.88857853, 1)
+theme_override_constants/outline_size = 11
 theme_override_fonts/normal_font = ExtResource("5_sybox")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
@@ -285,7 +297,7 @@ libraries/ = SubResource("AnimationLibrary_pnkfu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Tut/secound" unique_id=1232536769]
 modulate = Color(1.353256, 1.353256, 1.353256, 0)
-position = Vector2(1431.0001, 92)
+position = Vector2(1338, 44)
 scale = Vector2(0.19375, 0.19444445)
 texture = ExtResource("8_b5en2")
 
@@ -309,6 +321,8 @@ offset_top = 5.0
 offset_right = 2454.0
 offset_bottom = 155.0
 theme_override_colors/default_color = Color(0.8848981, 0.8848981, 0.8848981, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.9333369, 1)
+theme_override_constants/outline_size = 11
 theme_override_fonts/normal_font = ExtResource("5_sybox")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
@@ -327,21 +341,56 @@ texture = ExtResource("10_e7oia")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/third" unique_id=69258935]
 libraries/ = SubResource("AnimationLibrary_an7bs")
 
-[node name="obstacle" type="Node2D" parent="Tut" unique_id=765069025]
+[node name="forth" type="Node2D" parent="Tut" unique_id=45996511 node_paths=PackedStringArray("camera_rig", "focus_target")]
+script = ExtResource("11_cscyk")
+camera_rig = NodePath("../../camera")
+focus_target = NodePath("../../obstacle/cone")
 
-[node name="cone" parent="Tut/obstacle" unique_id=65342437 instance=ExtResource("11_e7oia")]
-position = Vector2(3171.0002, 362.00003)
-scale = Vector2(0.3, 0.3)
+[node name="Area2D" type="Area2D" parent="Tut/forth" unique_id=23380089]
 
-[node name="Barrier" parent="Tut/obstacle" unique_id=433003444 instance=ExtResource("12_5rxrm")]
-position = Vector2(3313, 353)
-scale = Vector2(0.4, 0.4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tut/forth/Area2D" unique_id=699360329]
+position = Vector2(2895, 148)
+shape = SubResource("RectangleShape2D_cscyk")
+
+[node name="Control" type="Control" parent="Tut/forth" unique_id=1528701679]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tut/forth/Control" unique_id=1940335520]
+layout_mode = 0
+offset_left = 3117.0
+offset_top = 57.0
+offset_right = 3463.0
+offset_bottom = 216.0
+theme = SubResource("Theme_cscyk")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.9452769, 1)
+theme_override_constants/outline_size = 11
+bbcode_enabled = true
+text = "[wave]Try destroying the
+obstacles!
+
+following the tutorial"
+horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1510987479]
 stream = ExtResource("6_sybox")
 volume_db = -20.069
 autoplay = true
 
+[node name="obstacle" type="Node2D" parent="." unique_id=765069025]
+
+[node name="cone" parent="obstacle" unique_id=65342437 instance=ExtResource("11_e7oia")]
+position = Vector2(3177.0002, 365)
+scale = Vector2(0.3, 0.3)
+
+[node name="Barrier" parent="obstacle" unique_id=433003444 instance=ExtResource("12_5rxrm")]
+position = Vector2(3292, 355)
+scale = Vector2(0.4, 0.4)
+
 [connection signal="ready" from="Tut/first" to="Tut/first" method="_on_ready"]
 [connection signal="body_entered" from="Tut/secound/Area" to="Tut/secound" method="_on_area_body_entered"]
 [connection signal="body_entered" from="Tut/third/Area2D" to="Tut/third" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Tut/forth/Area2D" to="Tut/forth" method="_on_area_2d_body_entered"]
