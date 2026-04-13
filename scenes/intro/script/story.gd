@@ -4,7 +4,7 @@ extends Control
 # 🎯 UI REFERENCES
 # =========================
 @onready var story_text = $allContent/MarginContainer/VBoxContainer/story
-@onready var click_text = $allContent/blinkingText
+@onready var click_text = $blinkingText
 
 # =========================
 # 🎯 BACKGROUND
@@ -36,7 +36,7 @@ var part2_lines = [
 	"เด็กปัญญาเลิศจากแสงสวรรค์จะถือกำเนิด",
 	"พร้อมเวทแห่งคณิต เพื่อเริ่มต้นโลกที่ไร้ระบบอัตโนมัติ",
 	" ",
-	"เด็กคนนั้นคือเจ้าหญิงแห่งอาณาจักรแมธเทรีย",
+	"เด็กคนนั้นคือเจ้าหญิงแห่งอาณาจักรแมธเทรีย", 
 	"ครั้นวัยเยาว์ เธอฝึกการควบคุมสมการเป็นอาวุธ",
 	"เจาะระบบปีศาจด้วยเวทคำนวณในสายเลือด",
 	" ",
@@ -58,25 +58,16 @@ var typing_id = 0
 # 🚀 READY
 # =========================
 func _ready():
+	# =========================
+	# 🎨 BLUR & VISUALS
+	# =========================
 	blur_mat = blur.material
-	blur_mat.set_shader_parameter("blur_amount", 1.2)
+	if blur_mat:
+		blur_mat.set_shader_parameter("blur_amount", 1.2)
 
 	gameplay_bg.modulate.a = 0.0
-
-	# =========================
-	# 🎯 CLICK TEXT SETUP
-	# =========================
+	
 	click_text.text = "Click anywhere to continue"
-	click_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-
-	click_text.z_index = 999
-	click_text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	click_text.size_flags_vertical = Control.SIZE_SHRINK_END
-	click_text.custom_minimum_size = Vector2(0, 40)
-
-	click_text.add_theme_font_size_override("font_size", 40)
-	click_text.add_theme_color_override("font_color", Color.WHITE)
-
 	click_text.visible = false
 
 	show_line()
@@ -141,24 +132,21 @@ func show_all_remaining():
 	typing_id += 1
 
 	var lines = get_lines()
-
 	current_line += 1
 
 	while current_line < lines.size():
 		story_text.text += "\n" + lines[current_line]
 		current_line += 1
 
-	story_text.visible_characters = story_text.text.length()
+	story_text.visible_characters = -1 
 
 	enable_continue_state()
 
 # =========================
-# 🎯 CONTINUE STATE (FIX CORE)
+# 🎯 CONTINUE STATE
 # =========================
 func enable_continue_state():
 	part_finished = true
-
-	await get_tree().create_timer(0.2).timeout
 
 	click_text.visible = true
 	start_blinking()

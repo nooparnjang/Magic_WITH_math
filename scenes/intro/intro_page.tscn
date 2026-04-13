@@ -101,11 +101,12 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/margin_top = 70
 
-[node name="VBoxContainer" type="VBoxContainer" parent="allContent/MarginContainer" unique_id=1553299145]
-z_index = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="allContent/MarginContainer" unique_id=1444510124]
+custom_minimum_size = Vector2(900, 480)
 layout_mode = 2
 
 [node name="story" type="RichTextLabel" parent="allContent/MarginContainer/VBoxContainer" unique_id=1365674293]
+custom_minimum_size = Vector2(900, 480)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -116,9 +117,12 @@ scroll_active = false
 horizontal_alignment = 1
 visible_characters = 0
 
-[node name="blinkingText" type="Label" parent="allContent" unique_id=848229007]
+[node name="blinkingText" type="Label" parent="." unique_id=848229007]
 z_index = 999
-layout_mode = 2
+layout_mode = 0
+offset_top = 488.0
+offset_right = 960.0
+offset_bottom = 540.0
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_30g6g")
