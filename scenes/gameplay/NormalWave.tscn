@@ -187,6 +187,43 @@ size = Vector2(24, 511)
 default_font = ExtResource("5_sybox")
 default_font_size = 30
 
+[sub_resource type="Animation" id="Animation_an7bs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_5omta"]
+resource_name = "forth"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xnbkg"]
+_data = {
+&"RESET": SubResource("Animation_an7bs"),
+&"forth": SubResource("Animation_5omta")
+}
+
 [node name="NormalWave" type="Node2D" unique_id=1124215555]
 
 [node name="Bg" parent="." unique_id=1426212521 instance=ExtResource("1_tqgty")]
@@ -354,14 +391,7 @@ focus_target = NodePath("../../obstacle/cone")
 position = Vector2(2895, 148)
 shape = SubResource("RectangleShape2D_cscyk")
 
-[node name="Control" type="Control" parent="Tut/forth" unique_id=1528701679]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Tut/forth/Control" unique_id=1940335520]
-layout_mode = 0
+[node name="RichTextLabel" type="RichTextLabel" parent="Tut/forth" unique_id=1940335520]
 offset_left = 3117.0
 offset_top = 57.0
 offset_right = 3463.0
@@ -376,6 +406,9 @@ obstacles!
 
 following the tutorial"
 horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/forth" unique_id=1666259342]
+libraries/ = SubResource("AnimationLibrary_xnbkg")
 
 [node name="obstacle" type="Node2D" parent="." unique_id=765069025 groups=["targetable"]]
 

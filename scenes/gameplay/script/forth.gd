@@ -2,8 +2,9 @@ extends Node2D
 
 @export var camera_rig: Node2D
 @export var focus_target: StaticBody2D
-@export var focus_duration := 1.2
+@export var focus_duration := 1.6
 
+@onready var anim: AnimationPlayer = $AnimationPlayer
 
 var played_once := false
 
@@ -17,4 +18,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	played_once = true
 	
+	# 🎬 เล่น animation ทันที
+	anim.play("forth")
+	
+	# 🎥 กล้องโฟกัสไปด้วย
 	await camera_rig.focus_on(focus_target, focus_duration)
