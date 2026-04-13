@@ -1,32 +1,33 @@
 [gd_scene format=3 uid="uid://dxekltvf7m50c"]
 
-[ext_resource type="Texture2D" uid="uid://bssj3qc14vv2x" path="res://assets/bg/GameplayEndless/foreground.png" id="1_5cpc0"]
-[ext_resource type="Texture2D" uid="uid://be5egswwkwv3y" path="res://assets/bg/GameplayEndless/backfull.png" id="1_284ic"]
-[ext_resource type="Texture2D" uid="uid://buvhpsj7gsqja" path="res://assets/bg/GameplayEndless/middleFull.png" id="2_3awnf"]
+[ext_resource type="Texture2D" uid="uid://vhk1csvr7ihp" path="res://assets/bg/EndlessNew/Game play(3).png" id="1_3awnf"]
+[ext_resource type="Texture2D" uid="uid://cjbdo2dpm1rn3" path="res://assets/bg/EndlessNew/middlemerge.png" id="2_3awnf"]
+[ext_resource type="Texture2D" uid="uid://hg5eiyc6xh3h" path="res://assets/bg/EndlessNew/Game play(1).png" id="3_r0hoh"]
 
 [node name="Bg" type="Node2D" unique_id=1426212521]
 
 [node name="Back" type="Parallax2D" parent="." unique_id=346496640]
 scroll_scale = Vector2(0.6, 1)
-repeat_size = Vector2(900, 0)
+repeat_size = Vector2(800, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Back" unique_id=2088666435]
-position = Vector2(491.5, 227.49997)
-scale = Vector2(1.0197917, 1.1907407)
-texture = ExtResource("1_284ic")
+position = Vector2(474, 114.00001)
+scale = Vector2(0.24687497, 0.39907408)
+texture = ExtResource("1_3awnf")
 
 [node name="middle" type="Parallax2D" parent="." unique_id=2001819965]
 scroll_scale = Vector2(0.8, 1)
-repeat_size = Vector2(900, 0)
+repeat_size = Vector2(1700, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="middle" unique_id=1474336293]
-position = Vector2(486, 275)
+position = Vector2(850, 272.5)
+scale = Vector2(0.88645834, 0.9981481)
 texture = ExtResource("2_3awnf")
 
 [node name="foremost" type="Parallax2D" parent="." unique_id=565964584]
-repeat_size = Vector2(1250, 0)
+repeat_size = Vector2(900, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="foremost" unique_id=637506009]
-position = Vector2(634, 273)
-scale = Vector2(1.8357558, 1.9963236)
-texture = ExtResource("1_5cpc0")
+position = Vector2(480.83713, 273.49997)
+scale = Vector2(0.49912798, 0.50277776)
+texture = ExtResource("3_r0hoh")

@@ -2,10 +2,13 @@ extends Control
 
 var played_once := false
 
-func _on_area_body_entered(_body: Node2D) -> void:
+func _on_area_body_entered(body: Node2D) -> void:
 	if played_once:
-		return  # เคยเล่นแล้ว → ไม่ต้องทำอะไร
-
-	print("detect")
+		return
+	
+	if not body.is_in_group("player"):
+		return  
+	
+	print("detect player")
 	$AnimationPlayer.play("secondTextTut")
 	played_once = true

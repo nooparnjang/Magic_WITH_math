@@ -30,6 +30,10 @@ window/size/viewport_height=540
 
 project/assembly_name="เวท WTIH คณิต"
 
+[global_group]
+
+player=""
+
 [input]
 
 ui_left={
