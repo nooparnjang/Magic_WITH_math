@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="4_dh7hh"]
 [ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="4_n1ptk"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_b31yw"]
-[ext_resource type="Script" uid="uid://c657twrkw4s6r" path="res://scenes/gameplay/script/leaderboard.gd" id="7_7eecl"]
+[ext_resource type="Script" uid="uid://c657twrkw4s6r" path="res://scenes/leaderboard/script/leaderboard.gd" id="7_7eecl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tafbs"]
 texture = ExtResource("1_p0qcm")

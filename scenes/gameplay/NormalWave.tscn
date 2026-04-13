@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dxekltvf7m50c" path="res://scenes/gameplay/bg.tscn" id="1_tqgty"]
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="4_2wntu"]
 [ext_resource type="Script" uid="uid://nu0mm7n41ijr" path="res://scenes/gameplay/script/camera_2d.gd" id="4_7ue2n"]
-[ext_resource type="Script" uid="uid://ddmei86q2g01w" path="res://player/maincharacter.gd" id="5_7ue2n"]
+[ext_resource type="Script" uid="uid://ddmei86q2g01w" path="res://player/script/maincharacter.gd" id="5_7ue2n"]
 [ext_resource type="Script" uid="uid://d3jfav3o4l423" path="res://scenes/gameplay/script/firstText.gd" id="5_p8pd4"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_sybox"]
 [ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="6_sybox"]
