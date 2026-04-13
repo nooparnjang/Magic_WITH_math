@@ -231,12 +231,13 @@ _data = {
 [node name="player" type="Node2D" parent="." unique_id=583229078]
 z_index = 1
 
-[node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui") instance=ExtResource("4_2wntu")]
+[node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui", "camera_rig") instance=ExtResource("4_2wntu")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(500, 308)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("5_7ue2n")
 math_ui = NodePath("../../CanvasLayer/UImath")
+camera_rig = NodePath("../../camera")
 
 [node name="camera" type="Node2D" parent="." unique_id=81348172 node_paths=PackedStringArray("default_target")]
 script = ExtResource("4_7ue2n")

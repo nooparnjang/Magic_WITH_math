@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 		return
 
 	if current_target == null or not is_instance_valid(current_target):
-		hide()
+		close_ui()
 		return
 
 	var screen_pos: Vector2 = current_target.get_global_transform_with_canvas().origin + world_offset
@@ -50,6 +50,8 @@ func generate_question() -> Dictionary:
 func _on_answer_submitted(text: String) -> void:
 	if current_target == null or not is_instance_valid(current_target):
 		close_ui()
+		if player_ref != null and is_instance_valid(player_ref):
+			player_ref.finish_answering()
 		return
 
 	var cleaned := text.strip_edges()
@@ -63,10 +65,10 @@ func _on_answer_submitted(text: String) -> void:
 
 	close_ui()
 
+	if player_ref != null and is_instance_valid(player_ref):
+		player_ref.finish_answering()
+
 func close_ui() -> void:
 	hide()
 	answer_input.text = ""
 	current_target = null
-
-	if player_ref != null and is_instance_valid(player_ref):
-		player_ref.finish_answering()
