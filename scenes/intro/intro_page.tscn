@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://bjk1fwe357ve8"]
+
+[ext_resource type="Texture2D" uid="uid://c8uydiur3sse0" path="res://assets/bg/Intro/Intro_1.png" id="1_hevsl"]
+[ext_resource type="Script" uid="uid://dq0rdhkemgigi" path="res://scenes/intro/script/story.gd" id="1_miox7"]
+[ext_resource type="Texture2D" uid="uid://d2b6ylpa2g56e" path="res://assets/bg/GameplayEndless/back.png" id="2_u2njf"]
+[ext_resource type="Texture2D" uid="uid://4emjheu86vbp" path="res://assets/bg/GameplayEndless/middle.png" id="3_6fbr3"]
+[ext_resource type="Texture2D" uid="uid://b3yitaqxp4c4q" path="res://assets/bg/GameplayEndless/front.png" id="4_xaqo1"]
+[ext_resource type="Shader" uid="uid://b3yc7qgr4rs6l" path="res://assets/shader/intro_blur.gdshader" id="5_fwkmu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_miox7"]
+shader = ExtResource("5_fwkmu")
+shader_parameter/blur_amount = 1.0000000475
+
+[node name="IntroPage" type="Control" unique_id=186185180]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_miox7")
+
+[node name="bgContainer" type="Control" parent="." unique_id=1073928845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg_1" type="TextureRect" parent="bgContainer" unique_id=451235946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hevsl")
+expand_mode = 2
+
+[node name="bg_2" type="Control" parent="bgContainer" unique_id=1655386318]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="TextureRect" parent="bgContainer/bg_2" unique_id=977232924]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_u2njf")
+expand_mode = 2
+
+[node name="middle" type="TextureRect" parent="bgContainer/bg_2" unique_id=1531336707]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6fbr3")
+expand_mode = 2
+
+[node name="front" type="TextureRect" parent="bgContainer/bg_2" unique_id=1717497618]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_xaqo1")
+expand_mode = 2
+
+[node name="blur" type="ColorRect" parent="." unique_id=931837825]
+z_index = 2
+material = SubResource("ShaderMaterial_miox7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="allContent" type="MarginContainer" parent="." unique_id=928804343]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="allContent" unique_id=1553299145]
+layout_mode = 2
+
+[node name="story" type="RichTextLabel" parent="allContent/VBoxContainer" unique_id=1365674293]
+layout_mode = 2
+fit_content = true
+scroll_active = false
+visible_characters = 0
+
+[node name="blinkingText" type="Label" parent="allContent/VBoxContainer" unique_id=848229007]
+visible = false
+layout_mode = 2
+text = "click anywhere to continue"
+horizontal_alignment = 1

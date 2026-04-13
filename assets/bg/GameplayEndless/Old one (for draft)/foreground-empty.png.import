@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buvhpsj7gsqja"
-path="res://.godot/imported/middleFull.png-20295ab49a1ac4eac2225118e773d432.ctex"
+uid="uid://ckirnxfhevhxc"
+path="res://.godot/imported/foreground-empty.png-409ba4ccc20043daf74b94891a391d53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg/GameplayEndless/middleFull.png"
-dest_files=["res://.godot/imported/middleFull.png-20295ab49a1ac4eac2225118e773d432.ctex"]
+source_file="res://assets/bg/GameplayEndless/Old one (for draft)/foreground-empty.png"
+dest_files=["res://.godot/imported/foreground-empty.png-409ba4ccc20043daf74b94891a391d53.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

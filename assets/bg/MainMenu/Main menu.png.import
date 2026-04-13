@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2b6ylpa2g56e"
-path="res://.godot/imported/back.png-7e19289f87ca741d96ab3689a5f80c6a.ctex"
+uid="uid://msilb3kx2n0"
+path="res://.godot/imported/Main menu.png-d17c2ad51c6ff13f4010c79ddd9c4657.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg/GameplayEndless/back.png"
-dest_files=["res://.godot/imported/back.png-7e19289f87ca741d96ab3689a5f80c6a.ctex"]
+source_file="res://assets/bg/MainMenu/Main menu.png"
+dest_files=["res://.godot/imported/Main menu.png-d17c2ad51c6ff13f4010c79ddd9c4657.ctex"]
 
 [params]
 
