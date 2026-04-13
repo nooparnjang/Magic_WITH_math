@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://cjusbb24cphia" path="res://assets/UI/Rectangle 6.png" id="4_wvips"]
 [ext_resource type="Texture2D" uid="uid://cpakynryg5l8v" path="res://assets/UI/LEADERBOARD.png" id="5_ryigd"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_7j4e4"]
+[ext_resource type="Texture2D" uid="uid://dnbpae683c3ho" path="res://assets/UI/LEADERBOARD_hover.png" id="6_wvips"]
 [ext_resource type="Texture2D" uid="uid://dnbvcr2kqm81u" path="res://assets/UI/เวทWITHคณิต LOGO 1.png" id="7_chemg"]
+[ext_resource type="Script" uid="uid://0m6anat8fxeg" path="res://scenes/gameplay/script/leaderboard_button.gd" id="7_ryigd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryigd"]
 texture = ExtResource("1_o8ig8")
@@ -40,6 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="backbutton" type="Panel" parent="." unique_id=2094999074]
 custom_minimum_size = Vector2(350, 0)
@@ -50,64 +53,76 @@ offset_right = 413.0
 offset_bottom = 541.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_7j4e4")
 
-[node name="Leaderboard" type="Sprite2D" parent="." unique_id=1814546491]
-position = Vector2(754.2358, 64.37501)
-scale = Vector2(0.64430887, 0.64430887)
-texture = ExtResource("5_ryigd")
-
-[node name="เวทwithคณิตLogo1" type="Sprite2D" parent="." unique_id=113070982]
-position = Vector2(227.00002, 101)
-scale = Vector2(0.4135, 0.4135)
-texture = ExtResource("7_chemg")
-
-[node name="selectchapter" type="Button" parent="." unique_id=668538490]
+[node name="selectchapter" type="Button" parent="backbutton" unique_id=668538490]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 0
-offset_left = 52.0
-offset_top = 180.0
-offset_right = 402.0
-offset_bottom = 318.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+offset_left = 9.0
+offset_top = 179.0
+offset_right = 359.0
+offset_bottom = 317.0
+theme_override_colors/font_color = Color(0.047058824, 0.039215688, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("6_7j4e4")
 theme_override_font_sizes/font_size = 50
 text = "SELECT
 CHAPTER"
 flat = true
 
-[node name="option" type="Button" parent="." unique_id=1102908938]
+[node name="option" type="Button" parent="backbutton" unique_id=1102908938]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 0
-offset_left = 53.0
-offset_top = 329.0
-offset_right = 403.0
-offset_bottom = 402.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+offset_left = 10.0
+offset_top = 328.0
+offset_right = 360.0
+offset_bottom = 401.0
+theme_override_colors/font_color = Color(0.047058824, 0.039215688, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("6_7j4e4")
 theme_override_font_sizes/font_size = 50
 text = "OPTION"
 flat = true
 
-[node name="quit" type="Button" parent="." unique_id=1303901794]
+[node name="quit" type="Button" parent="backbutton" unique_id=1303901794]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 0
-offset_left = 53.0
-offset_top = 418.0
-offset_right = 403.0
-offset_bottom = 491.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+offset_left = 10.0
+offset_top = 417.0
+offset_right = 360.0
+offset_bottom = 490.0
+theme_override_colors/font_color = Color(0.047058824, 0.039215688, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("6_7j4e4")
 theme_override_font_sizes/font_size = 50
 text = "QUIT GAME"
 flat = true
 
-[node name="leaderboard" type="Button" parent="." unique_id=1345814985]
+[node name="leaderboard" type="TextureButton" parent="." unique_id=544905916]
 layout_mode = 0
-offset_left = 612.0
-offset_top = 19.0
-offset_right = 896.0
-offset_bottom = 92.0
-theme_override_colors/font_color = Color(0.07331369, 0.22635275, 0.6427864, 1)
+offset_left = 580.0
+offset_top = 24.0
+offset_right = 936.09753
+offset_bottom = 99.0
+texture_normal = ExtResource("5_ryigd")
+texture_hover = ExtResource("6_wvips")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_ryigd")
+
+[node name="Label" type="Label" parent="leaderboard" unique_id=421791723]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.04877
+offset_top = -33.5
+offset_right = 123.95123
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_7j4e4")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "LEADERBOARD"
-flat = true
+
+[node name="เวทwithคณิตLogo1" type="Sprite2D" parent="." unique_id=113070982]
+position = Vector2(227.00002, 101)
+scale = Vector2(0.4135, 0.4135)
+texture = ExtResource("7_chemg")
