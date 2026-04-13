@@ -1,14 +1,13 @@
 [gd_scene format=3 uid="uid://pbk26hqvqvku"]
 
 [ext_resource type="Texture2D" uid="uid://b6a3ue1exsr6p" path="res://assets/object/Cone.png" id="1_7ancn"]
+[ext_resource type="Script" uid="uid://dwbnin22yyune" path="res://object/script/cone.gd" id="1_d7w5j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7w5j"]
 size = Vector2(222, 225)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7y0xj"]
-radius = 830.21747
-
-[node name="cone" type="CharacterBody2D" unique_id=65342437]
+[node name="cone" type="StaticBody2D" unique_id=1943078407]
+script = ExtResource("1_d7w5j")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=963754667]
 texture = ExtResource("1_7ancn")
@@ -16,9 +15,3 @@ texture = ExtResource("1_7ancn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=229311858]
 position = Vector2(-2, 0.5)
 shape = SubResource("RectangleShape2D_d7w5j")
-
-[node name="ConeArea" type="Area2D" parent="." unique_id=1367354733]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConeArea" unique_id=792407870]
-shape = SubResource("CircleShape2D_7y0xj")
-debug_color = Color(0.3699551, 0.47824776, 1, 0.41960785)

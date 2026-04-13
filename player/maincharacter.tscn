@@ -189,7 +189,10 @@ animations = [{
 radius = 9.0
 height = 70.0
 
-[node name="maincharacter" type="CharacterBody2D" unique_id=1926872742]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4oker"]
+radius = 135.93013
+
+[node name="maincharacter" type="CharacterBody2D" unique_id=1926872742 groups=["player"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=187358986]
 position = Vector2(11, -30)
@@ -203,3 +206,8 @@ shape = SubResource("CapsuleShape2D_m7d80")
 [node name="TimerSpawner" type="Node2D" parent="." unique_id=697549610]
 script = ExtResource("4_cyioi")
 ghost_scene = ExtResource("5_4oker")
+
+[node name="TargetRadius" type="Area2D" parent="." unique_id=55784557]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetRadius" unique_id=363532348]
+shape = SubResource("CircleShape2D_4oker")

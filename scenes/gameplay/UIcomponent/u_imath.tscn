@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bs2vnxg4keh2i"]
+
+[ext_resource type="Script" uid="uid://kxmsv470qrxq" path="res://scenes/gameplay/UIcomponent/script/u_imath.gd" id="1_fsfod"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="1_i1hw1"]
+
+[sub_resource type="Theme" id="Theme_fsfod"]
+default_font = ExtResource("1_i1hw1")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_vy7jp"]
+default_font = ExtResource("1_i1hw1")
+default_font_size = 25
+
+[node name="UImath" type="Control" unique_id=1769127361]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 85.0
+offset_bottom = 87.0
+script = ExtResource("1_fsfod")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1743508998]
+layout_mode = 0
+offset_right = 75.0
+offset_bottom = 56.0
+alignment = 1
+
+[node name="Problem" type="Label" parent="VBoxContainer" unique_id=1910743743]
+layout_mode = 2
+theme = SubResource("Theme_fsfod")
+text = "8+8"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer" unique_id=2129675762]
+layout_mode = 2
+theme = SubResource("Theme_vy7jp")
+placeholder_text = "Enter..."
+alignment = 1
+flat = true

@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var camera_rig: Node2D
-@export var focus_target: CharacterBody2D
+@export var focus_target: StaticBody2D
 @export var focus_duration := 1.2
 
 
