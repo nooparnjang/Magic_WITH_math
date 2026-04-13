@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_7j4e4"]
 [ext_resource type="Texture2D" uid="uid://dnbpae683c3ho" path="res://assets/UI/LEADERBOARD_hover.png" id="6_wvips"]
 [ext_resource type="Texture2D" uid="uid://dnbvcr2kqm81u" path="res://assets/UI/เวทWITHคณิต LOGO 1.png" id="7_chemg"]
-[ext_resource type="Script" uid="uid://0m6anat8fxeg" path="res://scenes/gameplay/script/leaderboard_button.gd" id="7_ryigd"]
+[ext_resource type="Script" uid="uid://0m6anat8fxeg" path="res://scenes/leaderboard/script/leaderboard_button.gd" id="7_ryigd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryigd"]
 texture = ExtResource("1_o8ig8")
