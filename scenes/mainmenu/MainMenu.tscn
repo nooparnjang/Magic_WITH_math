@@ -42,6 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="backbutton" type="Panel" parent="." unique_id=2094999074]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 0
 offset_left = 43.0
 offset_top = 1.0
@@ -60,10 +61,11 @@ scale = Vector2(0.4135, 0.4135)
 texture = ExtResource("7_chemg")
 
 [node name="selectchapter" type="Button" parent="." unique_id=668538490]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 0
-offset_left = 140.0
+offset_left = 52.0
 offset_top = 180.0
-offset_right = 322.0
+offset_right = 402.0
 offset_bottom = 318.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_7j4e4")
@@ -73,10 +75,11 @@ CHAPTER"
 flat = true
 
 [node name="option" type="Button" parent="." unique_id=1102908938]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 0
-offset_left = 157.0
+offset_left = 53.0
 offset_top = 329.0
-offset_right = 304.0
+offset_right = 403.0
 offset_bottom = 402.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_7j4e4")
@@ -85,11 +88,12 @@ text = "OPTION"
 flat = true
 
 [node name="quit" type="Button" parent="." unique_id=1303901794]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 0
-offset_left = 122.0
-offset_top = 417.0
-offset_right = 345.0
-offset_bottom = 490.0
+offset_left = 53.0
+offset_top = 418.0
+offset_right = 403.0
+offset_bottom = 491.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_7j4e4")
 theme_override_font_sizes/font_size = 50
