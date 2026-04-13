@@ -18,7 +18,7 @@
 size = Vector2(8572.5, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wntu"]
-size = Vector2(45, 543)
+size = Vector2(45, 764.5)
 
 [sub_resource type="Environment" id="Environment_2wntu"]
 background_mode = 3
@@ -29,7 +29,7 @@ glow_bloom = 0.72
 glow_blend_mode = 0
 glow_hdr_luminance_cap = 19.92
 adjustment_enabled = true
-adjustment_brightness = 0.45
+adjustment_brightness = 0.86
 adjustment_contrast = 1.2
 adjustment_saturation = 1.04
 
@@ -101,7 +101,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1.353256, 1.353256, 1.353256, 0), Color(1.353256, 1.353256, 1.353256, 1)]
+"values": [Color(1.353256, 1.353256, 1.353256, 0), Color(1.0416296, 1.0416296, 1.0416296, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pnkfu"]
@@ -112,10 +112,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8pd4"]
-size = Vector2(28, 302.5)
+size = Vector2(40, 618.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rxrm"]
-size = Vector2(20, 322)
+size = Vector2(37, 514)
 
 [sub_resource type="Animation" id="Animation_cscyk"]
 length = 0.001
@@ -183,10 +183,11 @@ _data = {
 [node name="Bg" parent="." unique_id=1426212521 instance=ExtResource("1_tqgty")]
 
 [node name="player" type="Node2D" parent="." unique_id=583229078]
+z_index = 1
 
-[node name="maincharacter" parent="player" unique_id=1926872742 instance=ExtResource("4_2wntu")]
+[node name="maincharacter" parent="player" unique_id=1926872742 groups=["player"] instance=ExtResource("4_2wntu")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(546, 429.00003)
+position = Vector2(404.00006, 308)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("5_7ue2n")
 
@@ -203,13 +204,13 @@ limit_smoothed = true
 [node name="StaticBody2D" type="StaticBody2D" parent="invisibleWall" unique_id=545990008]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D" unique_id=2002901592]
-position = Vector2(4272.75, 538)
+position = Vector2(4285, 415)
 shape = SubResource("RectangleShape2D_tqgty")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="invisibleWall" unique_id=732894203]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D2" unique_id=1132326704]
-position = Vector2(12.5, 261.5)
+position = Vector2(3, 155.25)
 shape = SubResource("RectangleShape2D_2wntu")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=854738820]
@@ -237,7 +238,7 @@ offset_left = -207.0
 offset_top = -23.0
 offset_right = 345.0
 offset_bottom = 106.0
-theme_override_colors/default_color = Color(1.353256, 1.353256, 1.353256, 1)
+theme_override_colors/default_color = Color(0.9598109, 0.9598109, 0.9598109, 1)
 theme_override_fonts/normal_font = ExtResource("5_sybox")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
@@ -260,7 +261,7 @@ script = ExtResource("7_71cuo")
 [node name="Area" type="Area2D" parent="Tut/secound" unique_id=440112268]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tut/secound/Area" unique_id=1520255862]
-position = Vector2(1105, 365.25)
+position = Vector2(1111, 87.125)
 shape = SubResource("RectangleShape2D_p8pd4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tut/secound" unique_id=279456885]
@@ -269,7 +270,7 @@ offset_left = 1158.0
 offset_top = 145.0
 offset_right = 1710.0
 offset_bottom = 295.0
-theme_override_colors/default_color = Color(1.353256, 1.353256, 1.353256, 1)
+theme_override_colors/default_color = Color(0.85275894, 0.84928876, 0.84928876, 1)
 theme_override_fonts/normal_font = ExtResource("5_sybox")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
@@ -298,16 +299,16 @@ script = ExtResource("9_ies0t")
 [node name="Area2D" type="Area2D" parent="Tut/third" unique_id=239337400]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tut/third/Area2D" unique_id=1582007692]
-position = Vector2(1763, 353)
+position = Vector2(2134, 145)
 shape = SubResource("RectangleShape2D_5rxrm")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tut/third" unique_id=1235762387]
 layout_mode = 0
-offset_left = 1857.0
-offset_top = 74.0
-offset_right = 2409.0
-offset_bottom = 224.0
-theme_override_colors/default_color = Color(1.353256, 1.353256, 1.353256, 1)
+offset_left = 1902.0
+offset_top = 5.0
+offset_right = 2454.0
+offset_bottom = 155.0
+theme_override_colors/default_color = Color(0.8848981, 0.8848981, 0.8848981, 1)
 theme_override_fonts/normal_font = ExtResource("5_sybox")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
@@ -318,9 +319,8 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Tut/third" unique_id=1892406421]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(2122.0002, 268)
+position = Vector2(2171, 197)
 scale = Vector2(0.29, 0.2944622)
 texture = ExtResource("10_e7oia")
 
@@ -330,11 +330,11 @@ libraries/ = SubResource("AnimationLibrary_an7bs")
 [node name="obstacle" type="Node2D" parent="Tut" unique_id=765069025]
 
 [node name="cone" parent="Tut/obstacle" unique_id=65342437 instance=ExtResource("11_e7oia")]
-position = Vector2(3153, 483.00003)
+position = Vector2(3171.0002, 362.00003)
 scale = Vector2(0.3, 0.3)
 
 [node name="Barrier" parent="Tut/obstacle" unique_id=433003444 instance=ExtResource("12_5rxrm")]
-position = Vector2(3292, 469)
+position = Vector2(3313, 353)
 scale = Vector2(0.4, 0.4)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1510987479]
