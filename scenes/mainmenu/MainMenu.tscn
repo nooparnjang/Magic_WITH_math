@@ -14,7 +14,7 @@ axis_stretch_vertical = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wvips"]
 shader = ExtResource("2_balsr")
-shader_parameter/max_blur = 4.0
+shader_parameter/max_blur = 1.5
 shader_parameter/start = 0.0
 shader_parameter/end = 0.6
 

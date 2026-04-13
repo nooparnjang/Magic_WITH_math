@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-uniform float max_blur = 2.0;
+uniform float max_blur = 1.5;
 
 // control where blur fades
 uniform float start = 0.0;  // left side
