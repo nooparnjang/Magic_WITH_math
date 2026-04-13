@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4emjheu86vbp" path="res://assets/bg/GameplayEndless/middle.png" id="3_6fbr3"]
 [ext_resource type="Texture2D" uid="uid://b3yitaqxp4c4q" path="res://assets/bg/GameplayEndless/front.png" id="4_xaqo1"]
 [ext_resource type="Shader" uid="uid://b3yc7qgr4rs6l" path="res://assets/shader/intro_blur.gdshader" id="5_fwkmu"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="7_30g6g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_miox7"]
 shader = ExtResource("5_fwkmu")
@@ -88,21 +89,39 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="allContent" type="MarginContainer" parent="." unique_id=928804343]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+z_index = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="allContent" unique_id=1553299145]
+[node name="MarginContainer" type="MarginContainer" parent="allContent" unique_id=849928197]
+layout_mode = 2
+theme_override_constants/margin_top = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="allContent/MarginContainer" unique_id=1553299145]
+z_index = 3
 layout_mode = 2
 
-[node name="story" type="RichTextLabel" parent="allContent/VBoxContainer" unique_id=1365674293]
+[node name="story" type="RichTextLabel" parent="allContent/MarginContainer/VBoxContainer" unique_id=1365674293]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_30g6g")
+theme_override_font_sizes/normal_font_size = 30
 fit_content = true
 scroll_active = false
+horizontal_alignment = 1
 visible_characters = 0
 
-[node name="blinkingText" type="Label" parent="allContent/VBoxContainer" unique_id=848229007]
-visible = false
+[node name="blinkingText" type="Label" parent="allContent" unique_id=848229007]
+z_index = 999
 layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_30g6g")
+theme_override_font_sizes/font_size = 40
 text = "click anywhere to continue"
 horizontal_alignment = 1
