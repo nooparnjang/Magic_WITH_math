@@ -1,16 +1,24 @@
 extends CharacterBody2D
 
-@export var move_speed := 80.0
+@export var move_speed := 120.0
+@export var gravity := 1200.0
 @export var max_hp := 1
 @export var contact_damage := 10
 @export var attack_cooldown := 1.0
 @export var attack_range := 20.0
+@export var chase_range := 220.0
+
+@export_enum("3 digits with 1 digit", "2 digits with 1 digit", "1 digit with 1 digit")
+var question_pattern := 2
+
+@export var allowed_operators: Array[String] = ["+", "-", "*", "/"]
 
 var hp := 0
 var player_ref: Node2D = null
 var can_attack := true
 var is_dead := false
 var is_attacking := false
+var is_activated := false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
@@ -24,31 +32,61 @@ func _ready() -> void:
 	if not hitbox.body_entered.is_connected(_on_hitbox_body_entered):
 		hitbox.body_entered.connect(_on_hitbox_body_entered)
 
-func _physics_process(_delta: float) -> void:
+	player_ref = get_tree().get_first_node_in_group("player") as Node2D
+
+func _physics_process(delta: float) -> void:
 	if is_dead:
-		velocity = Vector2.ZERO
+		velocity.x = 0.0
+
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		else:
+			velocity.y = 0.0
+
 		move_and_slide()
 		return
 
 	if player_ref == null or not is_instance_valid(player_ref):
-		velocity = Vector2.ZERO
+		velocity.x = 0.0
+
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		else:
+			velocity.y = 0.0
+
 		update_animation(Vector2.ZERO)
 		move_and_slide()
 		return
 
-	var direction := player_ref.global_position - global_position
-	var distance := direction.length()
+	var to_player := player_ref.global_position - global_position
+	var horizontal_distance = abs(to_player.x)
+	var vertical_distance = abs(to_player.y)
+
+	# เปิดโหมดไล่เมื่อ player เข้าใกล้พอ
+	if not is_activated:
+		if horizontal_distance <= chase_range and vertical_distance <= 80.0:
+			is_activated = true
 
 	if is_attacking:
-		velocity = Vector2.ZERO
-	else:
-		if distance > attack_range:
-			velocity = direction.normalized() * move_speed
+		velocity.x = 0.0
+	elif is_activated:
+		if horizontal_distance > attack_range:
+			var dir_x = sign(to_player.x)
+			velocity.x = dir_x * move_speed
 		else:
-			velocity = Vector2.ZERO
+			velocity.x = 0.0
+			try_attack_player()
+	else:
+		velocity.x = 0.0
+
+	# ใช้ gravity อย่างเดียวกับแกน Y
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		velocity.y = 0.0
 
 	move_and_slide()
-	update_animation(direction)
+	update_animation(to_player)
 
 func update_animation(direction: Vector2) -> void:
 	if sprite == null or is_dead:
@@ -62,7 +100,7 @@ func update_animation(direction: Vector2) -> void:
 			sprite.play("fight")
 		return
 
-	if velocity.length() < 5:
+	if abs(velocity.x) < 5.0:
 		if sprite.animation != "idle":
 			sprite.play("idle")
 	else:
@@ -72,6 +110,9 @@ func update_animation(direction: Vector2) -> void:
 func take_damage(amount: int) -> void:
 	if is_dead:
 		return
+
+	# ถ้าโดนตี ให้ตื่นทันที
+	is_activated = true
 
 	hp -= amount
 	print(name, "โดนดาเมจ", amount, "เหลือ", hp)
@@ -111,12 +152,22 @@ func try_attack_player() -> void:
 	if player_ref == null or not is_instance_valid(player_ref):
 		return
 
+	var horizontal_distance = abs(player_ref.global_position.x - global_position.x)
+	var vertical_distance = abs(player_ref.global_position.y - global_position.y)
+
+	if horizontal_distance > attack_range + 8.0:
+		return
+
+	# กันตีข้ามชั้น/คนละระดับมากเกินไป
+	if vertical_distance > 80.0:
+		return
+
 	is_attacking = true
 	can_attack = false
-	velocity = Vector2.ZERO
+	velocity.x = 0.0
 
-	if sprite and sprite.sprite_frames and sprite.sprite_frames.has_animation("attack"):
-		sprite.play("attack")
+	if sprite and sprite.sprite_frames and sprite.sprite_frames.has_animation("fight"):
+		sprite.play("fight")
 		await sprite.animation_finished
 	else:
 		await get_tree().create_timer(0.2).timeout
@@ -125,7 +176,10 @@ func try_attack_player() -> void:
 		return
 
 	if player_ref != null and is_instance_valid(player_ref):
-		if global_position.distance_to(player_ref.global_position) <= attack_range + 8.0:
+		horizontal_distance = abs(player_ref.global_position.x - global_position.x)
+		vertical_distance = abs(player_ref.global_position.y - global_position.y)
+
+		if horizontal_distance <= attack_range + 8.0 and vertical_distance <= 80.0:
 			if player_ref.has_method("take_damage"):
 				player_ref.take_damage(contact_damage)
 
@@ -142,4 +196,6 @@ func _on_hitbox_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		if player_ref == null:
 			player_ref = body as Node2D
+
+		is_activated = true
 		try_attack_player()

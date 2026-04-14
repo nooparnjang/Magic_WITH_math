@@ -5,6 +5,11 @@ extends StaticBody2D
 @export var hit_effect_scene: PackedScene
 @export var floating_text_scene: PackedScene
 
+@export_enum("3 digits with 1 digit", "2 digits with 1 digit", "1 digit with 1 digit")
+var question_pattern := 2
+
+@export var allowed_operators: Array[String] = ["+"]
+
 var hp := 0
 var is_dead := false
 

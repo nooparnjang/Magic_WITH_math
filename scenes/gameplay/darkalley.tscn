@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="6_spkd1"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="7_g7vwq"]
 [ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="8_akuhx"]
+[ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="9_rubjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtbdr"]
 size = Vector2(8572.5, 36)
@@ -142,6 +143,12 @@ color = Color(0, 0, 0.12941177, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/transition" unique_id=1051211474]
 libraries/ = SubResource("AnimationLibrary_lkn7p")
+
+[node name="enemies" type="Node2D" parent="." unique_id=1665440617]
+
+[node name="Robot1" parent="enemies" unique_id=1544183853 instance=ExtResource("9_rubjw")]
+position = Vector2(1271, 305)
+scale = Vector2(2.5, 2.5)
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
