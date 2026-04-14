@@ -169,16 +169,28 @@ BY 9%"
 horizontal_alignment = 1
 
 [node name="bless_stamina" type="Sprite2D" parent="." unique_id=543141076]
-position = Vector2(176.00002, 390)
-scale = Vector2(0.0875, 0.087500006)
+position = Vector2(175, 395)
+scale = Vector2(0.10578704, 0.105787046)
 texture = ExtResource("9_tp26b")
 
 [node name="bless_monster" type="Sprite2D" parent="." unique_id=1798200395]
-position = Vector2(474, 390)
-scale = Vector2(0.0875, 0.087500006)
+position = Vector2(474, 395)
+scale = Vector2(0.106, 0.106)
 texture = ExtResource("9_tp26b")
 
 [node name="bless_hp" type="Sprite2D" parent="." unique_id=1470408973]
-position = Vector2(776.99994, 390)
-scale = Vector2(0.0875, 0.087500006)
+position = Vector2(777, 395)
+scale = Vector2(0.106, 0.106)
 texture = ExtResource("9_tp26b")
+
+[node name="b_stamina" type="Label" parent="." unique_id=1663254311]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 376.0
+offset_right = 259.0
+offset_bottom = 415.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "30 BLESSINGS"
+horizontal_alignment = 1
