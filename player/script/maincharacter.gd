@@ -6,8 +6,18 @@ extends CharacterBody2D
 @export var math_ui: Control
 @export var camera_rig: Node2D
 
+@export var max_hp := 100.0
+@export var hp := 100.0
+
+@export var max_stamina := 100.0
+@export var stamina := 100.0
+@export var stamina_drain_per_second := 18.0
+@export var stamina_recover_per_second := 24.0
+@export var min_stamina_to_focus := 5.0
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var target_radius: Area2D = $TargetRadius
+@onready var status_bars: Node2D = $Statusbar
 
 var targets_in_range: Array[Node2D] = []
 var current_target: Node2D = null
@@ -24,7 +34,12 @@ func _ready() -> void:
 	if not target_radius.body_exited.is_connected(_on_target_radius_body_exited):
 		target_radius.body_exited.connect(_on_target_radius_body_exited)
 
+	if status_bars != null and status_bars.has_method("setup"):
+		status_bars.setup(max_hp, hp, max_stamina, stamina)
+
 func _physics_process(delta: float) -> void:
+	update_stamina(delta)
+
 	if is_answering or is_switching_target:
 		velocity.x = 0.0
 
@@ -64,6 +79,22 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("target_select") and not is_switching_target:
 		cycle_target()
+
+func update_stamina(delta: float) -> void:
+	var is_focusing_target := is_answering and current_target != null and is_instance_valid(current_target)
+
+	if is_focusing_target:
+		stamina -= stamina_drain_per_second * delta
+		stamina = max(stamina, 0.0)
+
+		if stamina <= 0.0:
+			cancel_math_mode()
+	else:
+		stamina += stamina_recover_per_second * delta
+		stamina = min(stamina, max_stamina)
+
+	if status_bars != null and status_bars.has_method("set_stamina"):
+		status_bars.set_stamina(stamina, max_stamina)
 
 func _on_target_radius_body_entered(body: Node2D) -> void:
 	if body.is_in_group("targetable"):
@@ -113,6 +144,10 @@ func cycle_target() -> void:
 
 func _cycle_target_async() -> void:
 	if is_switching_target:
+		return
+
+	if stamina < min_stamina_to_focus:
+		print("stamina ไม่พอสำหรับ focus")
 		return
 
 	is_switching_target = true
@@ -182,3 +217,40 @@ func finish_answering() -> void:
 
 	if camera_rig != null and camera_rig.has_method("unlock_focus"):
 		camera_rig.unlock_focus()
+
+func take_damage(amount: float) -> void:
+	hp -= amount
+	hp = max(hp, 0.0)
+
+	if status_bars != null and status_bars.has_method("set_health"):
+		status_bars.set_health(hp, max_hp)
+
+	if hp <= 0.0:
+		die()
+
+func heal(amount: float) -> void:
+	hp += amount
+	hp = min(hp, max_hp)
+
+	if status_bars != null and status_bars.has_method("set_health"):
+		status_bars.set_health(hp, max_hp)
+
+func restore_stamina(amount: float) -> void:
+	stamina += amount
+	stamina = min(stamina, max_stamina)
+
+	if status_bars != null and status_bars.has_method("set_stamina"):
+		status_bars.set_stamina(stamina, max_stamina)
+
+func consume_stamina(amount: float) -> void:
+	stamina -= amount
+	stamina = max(stamina, 0.0)
+
+	if status_bars != null and status_bars.has_method("set_stamina"):
+		status_bars.set_stamina(stamina, max_stamina)
+
+	if stamina <= 0.0:
+		cancel_math_mode()
+
+func die() -> void:
+	print("player dead")

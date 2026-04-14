@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://lntbwytpgcpv" path="res://assets/player/craftpix-net-529677-free-wizard-sprite-sheets-pixel-art/Lightning Mage/Run.png" id="3_4oker"]
 [ext_resource type="Script" uid="uid://cxnv208bcsgo7" path="res://player/script/timer_spawner.gd" id="4_cyioi"]
 [ext_resource type="PackedScene" uid="uid://bgk2mkq4jr6n0" path="res://player/ghost_trail.tscn" id="5_4oker"]
+[ext_resource type="PackedScene" uid="uid://b6eroap044uta" path="res://UIcomponent/statusbar.tscn" id="6_x4ckx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4ckx"]
 atlas = ExtResource("1_iey72")
@@ -211,3 +212,13 @@ ghost_scene = ExtResource("5_4oker")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetRadius" unique_id=363532348]
 shape = SubResource("CircleShape2D_4oker")
+
+[node name="Statusbar" parent="." unique_id=50678111 instance=ExtResource("6_x4ckx")]
+position = Vector2(-12, -63)
+scale = Vector2(0.25, 0.25)
+
+[node name="VBoxContainer" parent="Statusbar" index="0" unique_id=270226275]
+offset_right = 1920.0
+offset_bottom = 2164.0
+
+[editable path="Statusbar"]

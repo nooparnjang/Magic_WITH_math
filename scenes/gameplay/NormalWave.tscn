@@ -440,4 +440,5 @@ autoplay = true
 [connection signal="body_entered" from="Tut/forth/Area2D" to="Tut/forth" method="_on_area_2d_body_entered"]
 
 [editable path="player/maincharacter"]
+[editable path="player/maincharacter/Statusbar"]
 [editable path="CanvasLayer/UImath"]
