@@ -138,12 +138,17 @@ func try_attack_player() -> void:
 	can_attack = false
 	velocity.x = 0.0
 
+	var did_play_fight := false
+
 	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("fight"):
+		# สำคัญ: ปิด loop ไม่งั้น animation_finished จะไม่มา
+		sprite.sprite_frames.set_animation_loop("fight", false)
 		sprite.play("fight")
+		did_play_fight = true
 	else:
 		print("ไม่มีอนิเมชัน fight")
 
-	# รอจังหวะตี ไม่ต้องรอจนอนิเมชันจบก่อน
+	# จังหวะปล่อยดาเมจ อยู่กลาง ๆ อนิเมชัน
 	await get_tree().create_timer(0.18).timeout
 
 	if is_dead:
@@ -158,8 +163,12 @@ func try_attack_player() -> void:
 				print("enemy dealt damage:", contact_damage)
 				player_ref.take_damage(contact_damage)
 
-	# รอให้อาการฟันพอผ่านไปก่อนค่อยออกจาก state ตี
-	await get_tree().create_timer(0.12).timeout
+	# รอให้อนิเมชันตีจบจริง
+	if did_play_fight and sprite.animation == "fight":
+		await sprite.animation_finished
+	else:
+		# fallback เผื่อไม่มีอนิเมชัน
+		await get_tree().create_timer(0.15).timeout
 
 	if is_dead:
 		return

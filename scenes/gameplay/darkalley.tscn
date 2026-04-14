@@ -13,7 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="10_lkn7p"]
 [ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="11_spkd1"]
 [ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="13_g7vwq"]
+[ext_resource type="PackedScene" uid="uid://3o4ccldb56av" path="res://enemies/Robot_2.tscn" id="13_l5mwx"]
+[ext_resource type="PackedScene" uid="uid://bnqmojmxftlgn" path="res://enemies/robot_3.tscn" id="14_pe584"]
 [ext_resource type="Script" uid="uid://dwbnin22yyune" path="res://object/script/cone.gd" id="14_qtbdr"]
+[ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="17_k4vop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtbdr"]
 size = Vector2(8572.5, 36)
@@ -208,6 +211,22 @@ scale = Vector2(2.5, 2.5)
 hit_effect_scene = ExtResource("10_lkn7p")
 floating_text_scene = ExtResource("11_spkd1")
 
+[node name="Robot3" parent="enemies" unique_id=759279220 groups=["targetable"] instance=ExtResource("13_l5mwx")]
+position = Vector2(2284.9998, 294.99997)
+scale = Vector2(2.5, 2.5)
+move_speed = 80.0
+allowed_operators = Array[String](["+", "-"])
+
+[node name="Robot4" parent="enemies" unique_id=1061481831 groups=["targetable"] instance=ExtResource("13_l5mwx")]
+position = Vector2(2561, 293)
+scale = Vector2(2.5, 2.5)
+move_speed = 80.0
+allowed_operators = Array[String](["+", "-"])
+
+[node name="Robot_3" parent="enemies" unique_id=1125943764 instance=ExtResource("14_pe584")]
+position = Vector2(3365, 321)
+scale = Vector2(2, 2)
+
 [node name="object" type="Node2D" parent="." unique_id=1981554591]
 
 [node name="car" parent="object" unique_id=1134860753 groups=["targetable"] instance=ExtResource("13_g7vwq")]
@@ -216,6 +235,10 @@ scale = Vector2(3, 3)
 script = ExtResource("14_qtbdr")
 hit_effect_scene = ExtResource("10_lkn7p")
 floating_text_scene = ExtResource("11_spkd1")
+
+[node name="Barrier" parent="object" unique_id=2142189157 instance=ExtResource("17_k4vop")]
+position = Vector2(3037, 341)
+scale = Vector2(0.5, 0.5)
 
 [node name="tut" type="Node2D" parent="." unique_id=2019360766]
 
@@ -255,6 +278,27 @@ theme = SubResource("Theme_qtbdr")
 theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
 theme_override_constants/outline_size = 8
 text = "Sometime obstacle can be useful..."
+horizontal_alignment = 1
+
+[node name="first3" type="Control" parent="tut" unique_id=560898248]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2606.0
+offset_top = 23.0
+offset_right = 2646.0
+offset_bottom = 63.0
+
+[node name="Label" type="Label" parent="tut/first3" unique_id=1111552913]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 42.0
+offset_right = 653.0
+offset_bottom = 123.0
+theme = SubResource("Theme_qtbdr")
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "different types of robots
+different difficulty of problem"
 horizontal_alignment = 1
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]

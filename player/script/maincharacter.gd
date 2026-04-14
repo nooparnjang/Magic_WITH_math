@@ -11,11 +11,15 @@ extends CharacterBody2D
 
 @export var max_stamina := 100.0
 @export var stamina := 100.0
-@export var stamina_drain_per_second := 18.0
+@export var stamina_drain_per_second := 14.0
 @export var stamina_recover_per_second := 24.0
 @export var min_stamina_to_focus := 5.0
 
 @export var damage_invincibility_time := 0.5
+
+# ฟื้นเลือดอัตโนมัติแบบช้ามาก
+@export var health_regen_per_second := 10.0
+@export var health_regen_delay := 4.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var target_radius: Area2D = $TargetRadius
@@ -29,6 +33,9 @@ var is_switching_target := false
 var is_cast_releasing := false
 var is_dead := false
 var can_take_damage := true
+
+# นับเวลาตั้งแต่โดนดาเมจล่าสุด
+var time_since_last_damage := 0.0
 
 func _ready() -> void:
 	add_to_group("player")
@@ -55,7 +62,10 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
+	time_since_last_damage += delta
+
 	update_stamina(delta)
+	update_health_regen(delta)
 
 	if is_cast_releasing:
 		velocity.x = 0.0
@@ -138,6 +148,27 @@ func update_stamina(delta: float) -> void:
 
 	if status_bars != null and status_bars.has_method("set_stamina"):
 		status_bars.set_stamina(stamina, max_stamina)
+
+func update_health_regen(delta: float) -> void:
+	if is_dead:
+		return
+
+	if hp >= max_hp:
+		return
+
+	# ยังไม่ถึงเวลาที่จะเริ่มฟื้นเลือด
+	if time_since_last_damage < health_regen_delay:
+		return
+
+	# ถ้าอยากให้เข้มขึ้น จะเปิดบรรทัดนี้ก็ได้
+	# if is_answering or is_cast_releasing:
+	# 	return
+
+	hp += health_regen_per_second * delta
+	hp = min(hp, max_hp)
+
+	if status_bars != null and status_bars.has_method("set_health"):
+		status_bars.set_health(hp, max_hp)
 
 func _on_target_radius_body_entered(body: Node2D) -> void:
 	if body.is_in_group("targetable"):
@@ -284,6 +315,9 @@ func take_damage(amount: float) -> void:
 
 	hp -= amount
 	hp = max(hp, 0.0)
+
+	# รีเซ็ตตัวจับเวลา regen ทุกครั้งที่โดนตี
+	time_since_last_damage = 0.0
 
 	print("player took damage:", amount, "hp left:", hp)
 
