@@ -185,12 +185,64 @@ texture = ExtResource("9_tp26b")
 
 [node name="b_stamina" type="Label" parent="." unique_id=1663254311]
 layout_mode = 0
-offset_left = 92.0
+offset_left = 91.0
 offset_top = 376.0
-offset_right = 259.0
+offset_right = 258.0
 offset_bottom = 415.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "30 BLESSINGS"
+horizontal_alignment = 1
+
+[node name="b_monster" type="Label" parent="." unique_id=1919827227]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 376.0
+offset_right = 557.0
+offset_bottom = 415.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "70 BLESSINGS"
+horizontal_alignment = 1
+
+[node name="b_hp" type="Label" parent="." unique_id=1250027110]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 376.0
+offset_right = 860.0
+offset_bottom = 415.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "70 BLESSINGS"
+horizontal_alignment = 1
+
+[node name="yourblessings" type="Label" parent="." unique_id=330585805]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 473.0
+offset_right = 442.0
+offset_bottom = 512.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "YOUR BLESSINGS :"
+horizontal_alignment = 1
+
+[node name="mybless" type="Sprite2D" parent="." unique_id=1523491378]
+position = Vector2(561, 491.00003)
+scale = Vector2(0.106, 0.106)
+texture = ExtResource("9_tp26b")
+
+[node name="my_bless" type="Label" parent="." unique_id=1772520543]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 471.0
+offset_right = 644.0
+offset_bottom = 510.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "60 BLESSINGS"
 horizontal_alignment = 1
