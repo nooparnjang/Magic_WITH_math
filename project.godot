@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="เวท WTIH คณิต"
-run/main_scene="uid://djk8i6e50k57r"
+run/main_scene="uid://ds8i0pdswdh0r"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
