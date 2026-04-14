@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b34jmowcsphrc"]
 
-[ext_resource type="Texture2D" uid="uid://msilb3kx2n0" path="res://assets/bg/Main menu.png" id="1_tnsq5"]
+[ext_resource type="Script" uid="uid://cnmbetkjmdux3" path="res://scenes/mainmenu/script/settings.gd" id="1_16s6x"]
+[ext_resource type="Texture2D" uid="uid://msilb3kx2n0" path="res://assets/bg/MainMenu/Main menu.png" id="1_tnsq5"]
+[ext_resource type="Script" uid="uid://q7qq0fpr7uem" path="res://scenes/mainmenu/script/goback.gd" id="3_gixq5"]
 [ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="4_16s6x"]
 [ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="4_tnsq5"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_gixq5"]
@@ -19,9 +21,32 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_16s6x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cw32j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ewn18"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a5er2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3133"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kdmbg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i33ol"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5hm3f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8oui"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mcc6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8pvfr"]
+
 [node name="Node2D" type="Control" unique_id=1565765914]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_16s6x")
 
 [node name="bg" type="Panel" parent="." unique_id=1903018556]
 layout_mode = 0
@@ -38,16 +63,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="backset" type="Panel" parent="." unique_id=25216882]
+[node name="back" type="Button" parent="." unique_id=832883336]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 103.0
-offset_right = 906.0
-offset_bottom = 443.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gixq5")
+offset_left = 28.0
+offset_top = 25.0
+offset_right = 80.0
+offset_bottom = 77.0
+script = ExtResource("3_gixq5")
 
-[node name="goback" type="Sprite2D" parent="." unique_id=1695986979]
-position = Vector2(54.000004, 48)
+[node name="goback" type="Sprite2D" parent="back" unique_id=1695986979]
+position = Vector2(26.000004, 23)
 scale = Vector2(0.11851851, 0.11851852)
 texture = ExtResource("4_tnsq5")
 region_enabled = true
@@ -64,49 +89,116 @@ theme_override_fonts/font = ExtResource("5_gixq5")
 theme_override_font_sizes/font_size = 80
 text = "OPTION"
 
-[node name="sfx" type="Label" parent="." unique_id=2108217947]
+[node name="backset" type="Panel" parent="." unique_id=25216882]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 150.0
-offset_right = 280.0
-offset_bottom = 254.0
+offset_left = 46.0
+offset_top = 103.0
+offset_right = 906.0
+offset_bottom = 443.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gixq5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="backset" unique_id=759864490]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 120
+
+[node name="SFX_row" type="Button" parent="backset/VBoxContainer" unique_id=701284535]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_16s6x")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cw32j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ewn18")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_a5er2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_b3133")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_kdmbg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_i33ol")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5hm3f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8oui")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7mcc6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8pvfr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="backset/VBoxContainer/SFX_row" unique_id=1553755920]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = -52.0
+offset_right = 344.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 370
+
+[node name="sfx" type="Label" parent="backset/VBoxContainer/SFX_row/HBoxContainer" unique_id=2108217947]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_gixq5")
 theme_override_font_sizes/font_size = 80
-text = "SFX"
+text = "SFX    "
 
-[node name="music" type="Label" parent="." unique_id=806624806]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 280.0
-offset_right = 358.0
-offset_bottom = 384.0
+[node name="sfx_status" type="Label" parent="backset/VBoxContainer/SFX_row/HBoxContainer" unique_id=664447085]
+custom_minimum_size = Vector2(118, 104)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_gixq5")
+theme_override_font_sizes/font_size = 80
+text = "OFF"
+horizontal_alignment = 1
+
+[node name="Music_row" type="Button" parent="backset/VBoxContainer" unique_id=910915275]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_16s6x")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cw32j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ewn18")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_a5er2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_b3133")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_kdmbg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_i33ol")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5hm3f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8oui")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7mcc6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8pvfr")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="backset/VBoxContainer/Music_row" unique_id=699499203]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -52.0
+offset_right = 343.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 370
+
+[node name="music" type="Label" parent="backset/VBoxContainer/Music_row/HBoxContainer2" unique_id=806624806]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_gixq5")
 theme_override_font_sizes/font_size = 80
 text = "MUSIC"
 
-[node name="sfxset" type="Label" parent="." unique_id=1730129412]
-layout_mode = 0
-offset_left = 670.0
-offset_top = 150.0
-offset_right = 790.0
-offset_bottom = 254.0
+[node name="music_status" type="Label" parent="backset/VBoxContainer/Music_row/HBoxContainer2" unique_id=626434922]
+custom_minimum_size = Vector2(118, 104)
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_gixq5")
 theme_override_font_sizes/font_size = 80
 text = "OFF"
-
-[node name="musicset" type="Label" parent="." unique_id=731514415]
-layout_mode = 0
-offset_left = 670.0
-offset_top = 280.0
-offset_right = 790.0
-offset_bottom = 384.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_gixq5")
-theme_override_font_sizes/font_size = 80
-text = "OFF"
+horizontal_alignment = 1
 
 [node name="recommend" type="Label" parent="." unique_id=83888040]
 layout_mode = 0

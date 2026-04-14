@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://df37vpi2o7qv8"]
 
-[ext_resource type="Texture2D" uid="uid://msilb3kx2n0" path="res://assets/bg/Main menu.png" id="1_wyes4"]
+[ext_resource type="Texture2D" uid="uid://msilb3kx2n0" path="res://assets/bg/MainMenu/Main menu.png" id="1_wyes4"]
+[ext_resource type="Script" uid="uid://q7qq0fpr7uem" path="res://scenes/mainmenu/script/goback.gd" id="3_1m0dv"]
 [ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="4_omhsx"]
 [ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="4_ti6t7"]
 [ext_resource type="Texture2D" uid="uid://ctbnx0s0xy75y" path="res://assets/UI/Easy.png" id="5_ti6t7"]
 [ext_resource type="Texture2D" uid="uid://csaskljl7vhqc" path="res://assets/UI/Easy_Hover.png" id="6_1m0dv"]
 [ext_resource type="Texture2D" uid="uid://d3ybcohv6hpp2" path="res://assets/UI/HARD.png" id="6_mplhv"]
+[ext_resource type="Script" uid="uid://1psj3ec6hu2p" path="res://scenes/mainmenu/script/go_to_intro.gd" id="7_omhsx"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="7_qjid5"]
 [ext_resource type="Texture2D" uid="uid://cxo0mqvry6n6f" path="res://assets/UI/HARD_Hover.png" id="8_omhsx"]
 
@@ -62,14 +64,22 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_omhsx")
 
-[node name="goback" type="Sprite2D" parent="." unique_id=2081137799]
-position = Vector2(54.000004, 48)
+[node name="back" type="Button" parent="." unique_id=1304984234]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 25.0
+offset_right = 80.0
+offset_bottom = 77.0
+script = ExtResource("3_1m0dv")
+
+[node name="goback" type="Sprite2D" parent="back" unique_id=678799376]
+position = Vector2(26.000004, 23)
 scale = Vector2(0.11851851, 0.11851852)
 texture = ExtResource("4_omhsx")
 region_enabled = true
 region_rect = Rect2(0, 0, 480, 540)
 
-[node name="Button" type="Button" parent="." unique_id=776448348]
+[node name="easy" type="Button" parent="." unique_id=776448348]
 layout_mode = 0
 offset_left = 179.0
 offset_top = 110.97955
@@ -78,8 +88,9 @@ offset_bottom = 463.7755
 theme_override_styles/normal = SubResource("StyleBoxTexture_ti6t7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_mplhv")
 theme_override_styles/hover = SubResource("StyleBoxTexture_qjid5")
+script = ExtResource("7_omhsx")
 
-[node name="Button2" type="Button" parent="." unique_id=243377237]
+[node name="hard" type="Button" parent="." unique_id=243377237]
 layout_mode = 0
 offset_left = 535.0
 offset_top = 110.97955
@@ -88,6 +99,7 @@ offset_bottom = 463.7755
 theme_override_styles/normal = SubResource("StyleBoxTexture_rm1fu")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_d48re")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0x1q8")
+script = ExtResource("7_omhsx")
 
 [node name="chapter" type="Label" parent="." unique_id=1186955732]
 layout_mode = 0

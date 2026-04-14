@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://ds8i0pdswdh0r"]
 
-[ext_resource type="Texture2D" uid="uid://msilb3kx2n0" path="res://assets/bg/Main menu.png" id="1_o8ig8"]
+[ext_resource type="Texture2D" uid="uid://msilb3kx2n0" path="res://assets/bg/MainMenu/Main menu.png" id="1_o8ig8"]
 [ext_resource type="Shader" uid="uid://r2eimy4lqgpi" path="res://assets/shader/gradient_blur.gdshader" id="2_balsr"]
 [ext_resource type="Texture2D" uid="uid://cjusbb24cphia" path="res://assets/UI/Rectangle 6.png" id="4_wvips"]
+[ext_resource type="Script" uid="uid://conllyvkfd5bl" path="res://scenes/mainmenu/script/selectchapter.gd" id="5_7j4e4"]
 [ext_resource type="Texture2D" uid="uid://cpakynryg5l8v" path="res://assets/UI/LEADERBOARD.png" id="5_ryigd"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_7j4e4"]
+[ext_resource type="Script" uid="uid://cyonbe8kq8xih" path="res://scenes/mainmenu/script/option.gd" id="6_chemg"]
 [ext_resource type="Texture2D" uid="uid://dnbpae683c3ho" path="res://assets/UI/LEADERBOARD_hover.png" id="6_wvips"]
 [ext_resource type="Texture2D" uid="uid://dnbvcr2kqm81u" path="res://assets/UI/เวทWITHคณิต LOGO 1.png" id="7_chemg"]
+[ext_resource type="Script" uid="uid://bjpxp4fxh7ain" path="res://scenes/mainmenu/script/quit.gd" id="7_gemsy"]
 [ext_resource type="Script" uid="uid://0m6anat8fxeg" path="res://scenes/leaderboard/script/leaderboard_button.gd" id="7_ryigd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryigd"]
@@ -66,6 +69,7 @@ theme_override_font_sizes/font_size = 50
 text = "SELECT
 CHAPTER"
 flat = true
+script = ExtResource("5_7j4e4")
 
 [node name="option" type="Button" parent="backbutton" unique_id=1102908938]
 custom_minimum_size = Vector2(350, 0)
@@ -79,6 +83,7 @@ theme_override_fonts/font = ExtResource("6_7j4e4")
 theme_override_font_sizes/font_size = 50
 text = "OPTION"
 flat = true
+script = ExtResource("6_chemg")
 
 [node name="quit" type="Button" parent="backbutton" unique_id=1303901794]
 custom_minimum_size = Vector2(350, 0)
@@ -92,6 +97,7 @@ theme_override_fonts/font = ExtResource("6_7j4e4")
 theme_override_font_sizes/font_size = 50
 text = "QUIT GAME"
 flat = true
+script = ExtResource("7_gemsy")
 
 [node name="leaderboard" type="TextureButton" parent="." unique_id=544905916]
 layout_mode = 0
