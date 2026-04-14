@@ -126,7 +126,7 @@ scale = Vector2(0.05266203, 0.05266203)
 texture = ExtResource("7_tp26b")
 
 [node name="HpMax" type="Sprite2D" parent="." unique_id=1943724388]
-position = Vector2(775, 204.00002)
+position = Vector2(776, 205.00002)
 scale = Vector2(0.07870369, 0.07870368)
 texture = ExtResource("8_vk20h")
 
@@ -153,4 +153,16 @@ theme_override_font_sizes/font_size = 30
 text = "-7% MONSTER
 ATTACK SPEED
 + FOCUS TIME"
+horizontal_alignment = 1
+
+[node name="hp" type="Label" parent="." unique_id=1597445837]
+layout_mode = 0
+offset_left = 673.0
+offset_top = 257.0
+offset_right = 882.0
+offset_bottom = 338.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "INCREASE MAX HP
+BY 9%"
 horizontal_alignment = 1
