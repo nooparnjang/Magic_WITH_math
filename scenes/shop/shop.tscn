@@ -3,15 +3,31 @@
 [ext_resource type="Texture2D" uid="uid://d2b6ylpa2g56e" path="res://assets/bg/GameplayEndless/back.png" id="1_7lxhl"]
 [ext_resource type="Texture2D" uid="uid://4emjheu86vbp" path="res://assets/bg/GameplayEndless/middle.png" id="2_jp048"]
 [ext_resource type="Texture2D" uid="uid://b3yitaqxp4c4q" path="res://assets/bg/GameplayEndless/front.png" id="3_ctpgp"]
+[ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="4_ctpgp"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_ptf86"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptf86"]
 texture = ExtResource("1_7lxhl")
+modulate_color = Color(0.78521717, 0.7852172, 0.78521717, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ge4d2"]
 texture = ExtResource("2_jp048")
+modulate_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xcdpw"]
 texture = ExtResource("3_ctpgp")
+modulate_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ge4d2"]
+shader = ExtResource("4_ctpgp")
+shader_parameter/blur_amount = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcdpw"]
+bg_color = Color(0.32941177, 0.16078432, 0.32941177, 0.87058824)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="Control" type="Control" unique_id=70788292]
 layout_mode = 3
@@ -38,3 +54,56 @@ layout_mode = 0
 offset_right = 960.0
 offset_bottom = 540.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_xcdpw")
+
+[node name="blur" type="Panel" parent="front" unique_id=901857225]
+material = SubResource("ShaderMaterial_ge4d2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shop" type="Label" parent="." unique_id=1698158722]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 1.0
+offset_right = 553.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 80
+text = "SHOP"
+
+[node name="explain" type="Label" parent="." unique_id=1447984192]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 89.0
+offset_right = 738.0
+offset_bottom = 141.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 40
+text = "FOR UPGRADING YOUR CHARACTER"
+
+[node name="box" type="Panel" parent="." unique_id=540497048]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 160.0
+offset_right = 310.0
+offset_bottom = 425.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+
+[node name="box2" type="Panel" parent="." unique_id=729960447]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 160.0
+offset_right = 610.0
+offset_bottom = 425.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+
+[node name="box3" type="Panel" parent="." unique_id=233470356]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 160.0
+offset_right = 910.0
+offset_bottom = 425.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
