@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cplfm5a5cua31"]
+
+[ext_resource type="Script" uid="uid://be164ipu3kh8r" path="res://UIcomponent/script/blessing_ui.gd" id="1_r8ah5"]
+[ext_resource type="Texture2D" uid="uid://bapemr4vitn8r" path="res://assets/UI/Bg blessings .png" id="2_4b73d"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="3_l1dvh"]
+
+[sub_resource type="Theme" id="Theme_16fw6"]
+default_font = ExtResource("3_l1dvh")
+default_font_size = 20
+
+[sub_resource type="Theme" id="Theme_rmpxg"]
+default_font = ExtResource("3_l1dvh")
+default_font_size = 40
+
+[node name="blessingUI" type="Control" unique_id=1912679126]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -185.0
+offset_right = -185.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+script = ExtResource("1_r8ah5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1138250266]
+layout_mode = 0
+offset_right = 173.0
+offset_bottom = 96.0
+texture = ExtResource("2_4b73d")
+
+[node name="unit" type="Label" parent="." unique_id=1933542044]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 36.0
+offset_right = 156.0
+offset_bottom = 62.0
+theme = SubResource("Theme_16fw6")
+text = "Blessings"
+
+[node name="value" type="Label" parent="." unique_id=1031449836]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 20.0
+offset_right = 79.0
+offset_bottom = 85.0
+theme = SubResource("Theme_rmpxg")
+text = "0"
+horizontal_alignment = 1
