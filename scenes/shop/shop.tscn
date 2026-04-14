@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c7obrueihtqfn" path="res://assets/UI/uiforshop/Stamina max.png" id="6_xcdpw"]
 [ext_resource type="Texture2D" uid="uid://d0lby7eix2vck" path="res://assets/UI/uiforshop/สไลม์ (ฟ้า+selected).png" id="7_tp26b"]
 [ext_resource type="Texture2D" uid="uid://dm0f62shr1av4" path="res://assets/UI/uiforshop/Hp max.png" id="8_vk20h"]
+[ext_resource type="Texture2D" uid="uid://cgf6hkyrv7pr2" path="res://assets/UI/uiforshop/Bg blessings .png" id="9_tp26b"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptf86"]
 texture = ExtResource("1_7lxhl")
@@ -96,7 +97,7 @@ layout_mode = 0
 offset_left = 45.0
 offset_top = 160.0
 offset_right = 310.0
-offset_bottom = 425.0
+offset_bottom = 445.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
 [node name="box_monster" type="Panel" parent="." unique_id=729960447]
@@ -104,7 +105,7 @@ layout_mode = 0
 offset_left = 345.0
 offset_top = 160.0
 offset_right = 610.0
-offset_bottom = 425.0
+offset_bottom = 445.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
 [node name="box_hp" type="Panel" parent="." unique_id=233470356]
@@ -112,7 +113,7 @@ layout_mode = 0
 offset_left = 645.0
 offset_top = 160.0
 offset_right = 910.0
-offset_bottom = 425.0
+offset_bottom = 445.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
 [node name="StaminaMax" type="Sprite2D" parent="." unique_id=1013047376]
@@ -133,9 +134,9 @@ texture = ExtResource("8_vk20h")
 [node name="stamina" type="Label" parent="." unique_id=1242572193]
 layout_mode = 0
 offset_left = 60.0
-offset_top = 257.0
+offset_top = 255.0
 offset_right = 288.0
-offset_bottom = 338.0
+offset_bottom = 336.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "INCREASE STAMINA
@@ -145,9 +146,9 @@ horizontal_alignment = 1
 [node name="monster" type="Label" parent="." unique_id=418250560]
 layout_mode = 0
 offset_left = 386.0
-offset_top = 235.0
+offset_top = 232.0
 offset_right = 557.0
-offset_bottom = 358.0
+offset_bottom = 355.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "-7% MONSTER
@@ -158,11 +159,26 @@ horizontal_alignment = 1
 [node name="hp" type="Label" parent="." unique_id=1597445837]
 layout_mode = 0
 offset_left = 673.0
-offset_top = 257.0
+offset_top = 255.0
 offset_right = 882.0
-offset_bottom = 338.0
+offset_bottom = 336.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "INCREASE MAX HP
 BY 9%"
 horizontal_alignment = 1
+
+[node name="bless_stamina" type="Sprite2D" parent="." unique_id=543141076]
+position = Vector2(176.00002, 390)
+scale = Vector2(0.0875, 0.087500006)
+texture = ExtResource("9_tp26b")
+
+[node name="bless_monster" type="Sprite2D" parent="." unique_id=1798200395]
+position = Vector2(474, 390)
+scale = Vector2(0.0875, 0.087500006)
+texture = ExtResource("9_tp26b")
+
+[node name="bless_hp" type="Sprite2D" parent="." unique_id=1470408973]
+position = Vector2(776.99994, 390)
+scale = Vector2(0.0875, 0.087500006)
+texture = ExtResource("9_tp26b")
