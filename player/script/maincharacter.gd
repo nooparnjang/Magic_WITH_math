@@ -24,6 +24,7 @@ var current_target: Node2D = null
 var current_target_index := -1
 var is_answering := false
 var is_switching_target := false
+var is_cast_releasing := false
 
 func _ready() -> void:
 	add_to_group("player")
@@ -37,9 +38,23 @@ func _ready() -> void:
 	if status_bars != null and status_bars.has_method("setup"):
 		status_bars.setup(max_hp, hp, max_stamina, stamina)
 
+	if not sprite.animation_finished.is_connected(_on_animated_sprite_2d_animation_finished):
+		sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+
 func _physics_process(delta: float) -> void:
 	update_stamina(delta)
 
+	# กำลังปล่อยเวทหลังตอบถูก
+	if is_cast_releasing:
+		velocity.x = 0.0
+
+		if not is_on_floor():
+			velocity.y += gravity * delta
+
+		move_and_slide()
+		return
+
+	# กำลังตอบโจทย์ / กำลังสลับเป้า
 	if is_answering or is_switching_target:
 		velocity.x = 0.0
 
@@ -57,7 +72,7 @@ func _physics_process(delta: float) -> void:
 
 		return
 
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction: float = Input.get_axis("ui_left", "ui_right")
 
 	velocity.x = direction * speed
 
@@ -80,8 +95,25 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("target_select") and not is_switching_target:
 		cycle_target()
 
+func start_cast_release() -> void:
+	if not sprite.sprite_frames.has_animation("casting"):
+		finish_answering()
+		return
+
+	is_answering = false
+	is_cast_releasing = true
+	sprite.play("casting")
+	
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if is_cast_releasing and sprite.animation == "casting":
+		is_cast_releasing = false
+		finish_answering()
+
+
+
+
 func update_stamina(delta: float) -> void:
-	var is_focusing_target := is_answering and current_target != null and is_instance_valid(current_target)
+	var is_focusing_target: bool = is_answering and current_target != null and is_instance_valid(current_target)
 
 	if is_focusing_target:
 		stamina -= stamina_drain_per_second * delta
@@ -104,7 +136,7 @@ func _on_target_radius_body_entered(body: Node2D) -> void:
 
 func _on_target_radius_body_exited(body: Node2D) -> void:
 	if targets_in_range.has(body):
-		var removed_index := targets_in_range.find(body)
+		var removed_index: int = targets_in_range.find(body)
 		targets_in_range.erase(body)
 
 		if removed_index <= current_target_index:
@@ -118,6 +150,7 @@ func _on_target_radius_body_exited(body: Node2D) -> void:
 		current_target_index = -1
 		is_answering = false
 		is_switching_target = false
+		is_cast_releasing = false
 
 		if math_ui != null and math_ui.has_method("close_ui_silent"):
 			math_ui.close_ui_silent()
@@ -196,6 +229,10 @@ func cancel_math_mode() -> void:
 	current_target_index = -1
 	is_answering = false
 	is_switching_target = false
+	is_cast_releasing = false
+
+	if sprite.animation == "casting":
+		sprite.play("idle")
 
 	if math_ui != null and math_ui.has_method("close_ui_silent"):
 		math_ui.close_ui_silent()
@@ -214,6 +251,7 @@ func finish_answering() -> void:
 	current_target_index = -1
 	is_answering = false
 	is_switching_target = false
+	is_cast_releasing = false
 
 	if camera_rig != null and camera_rig.has_method("unlock_focus"):
 		camera_rig.unlock_focus()

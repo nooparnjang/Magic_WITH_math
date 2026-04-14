@@ -432,6 +432,7 @@ autoplay = true
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("15_u54mw")]
 
+[connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
 [connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
 [connection signal="ready" from="Tut/first" to="Tut/first" method="_on_ready"]

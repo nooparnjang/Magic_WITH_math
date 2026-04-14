@@ -18,10 +18,11 @@ func _process(_delta: float) -> void:
 		return
 
 	if current_target == null or not is_instance_valid(current_target):
+		var player := player_ref
 		close_ui_silent()
 
-		if player_ref != null and is_instance_valid(player_ref):
-			player_ref.finish_answering()
+		if player != null and is_instance_valid(player):
+			player.finish_answering()
 
 		return
 
@@ -53,34 +54,42 @@ func generate_question() -> Dictionary:
 
 func _on_answer_submitted(text: String) -> void:
 	if current_target == null or not is_instance_valid(current_target):
+		var missing_player := player_ref
 		close_ui_silent()
 
-		if player_ref != null and is_instance_valid(player_ref):
-			player_ref.finish_answering()
+		if missing_player != null and is_instance_valid(missing_player):
+			missing_player.finish_answering()
 
 		return
 
 	var cleaned := text.strip_edges()
+	var player := player_ref
+	var is_correct := cleaned.is_valid_int() and int(cleaned) == correct_answer
 
-	if cleaned.is_valid_int() and int(cleaned) == correct_answer:
+	if is_correct:
 		if current_target.has_method("take_damage"):
 			current_target.take_damage(1)
 			print("Correct")
+
+		close_ui_silent()
+
+		if player != null and is_instance_valid(player):
+			if player.has_method("start_cast_release"):
+				player.start_cast_release()
+			else:
+				player.finish_answering()
 	else:
 		print("Wrong")
+		close_ui_silent()
 
-	close_ui()
+		if player != null and is_instance_valid(player):
+			player.finish_answering()
 
 func close_ui() -> void:
 	hide()
 	answer_input.text = ""
 	current_target = null
-
-	var player := player_ref
 	player_ref = null
-
-	if player != null and is_instance_valid(player):
-		player.finish_answering()
 
 func close_ui_silent() -> void:
 	hide()
