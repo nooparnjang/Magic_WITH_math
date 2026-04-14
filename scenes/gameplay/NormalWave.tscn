@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://pbk26hqvqvku" path="res://object/cone.tscn" id="11_e7oia"]
 [ext_resource type="Script" uid="uid://c0pado6npqp4c" path="res://scenes/gameplay/script/five.gd" id="12_0amc4"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="12_5rxrm"]
+[ext_resource type="PackedScene" uid="uid://csrgo54joi1q4" path="res://scenes/gameplay/darkalley.tscn" id="13_0amc4"]
 [ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="13_an7bs"]
 [ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="14_xnbkg"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="15_u54mw"]
@@ -458,6 +459,7 @@ libraries/ = SubResource("AnimationLibrary_xnbkg")
 [node name="five" type="Node2D" parent="Tut" unique_id=751116460 node_paths=PackedStringArray("bgm")]
 script = ExtResource("12_0amc4")
 bgm = NodePath("../../AudioStreamPlayer")
+next_scene_path = ExtResource("13_0amc4")
 
 [node name="Area2D" type="Area2D" parent="Tut/five" unique_id=2123735751]
 

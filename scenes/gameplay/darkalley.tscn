@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://csrgo54joi1q4"]
+
+[ext_resource type="PackedScene" uid="uid://dxekltvf7m50c" path="res://scenes/gameplay/bg.tscn" id="1_dlg8t"]
+[ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_akuhx"]
+[ext_resource type="Script" uid="uid://ddmei86q2g01w" path="res://player/script/maincharacter.gd" id="3_rubjw"]
+[ext_resource type="Script" uid="uid://nu0mm7n41ijr" path="res://scenes/gameplay/script/camera_2d.gd" id="4_kilis"]
+[ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="5_lkn7p"]
+[ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="6_spkd1"]
+[ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="7_g7vwq"]
+[ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="8_akuhx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtbdr"]
+size = Vector2(8572.5, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5mwx"]
+size = Vector2(45, 764.5)
+
+[sub_resource type="Environment" id="Environment_hncwb"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.37
+glow_bloom = 0.72
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 19.92
+adjustment_enabled = true
+adjustment_brightness = 0.86
+adjustment_contrast = 1.2
+adjustment_saturation = 1.04
+
+[sub_resource type="Animation" id="Animation_rubjw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kilis"]
+resource_name = "transition"
+length = 1.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1), Color(0, 0, 0.12835406, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lkn7p"]
+_data = {
+&"RESET": SubResource("Animation_rubjw"),
+&"transition": SubResource("Animation_kilis")
+}
+
+[node name="Darkalley" type="Node2D" unique_id=1584864804]
+
+[node name="Bg" parent="." unique_id=1426212521 instance=ExtResource("1_dlg8t")]
+
+[node name="player" type="Node2D" parent="." unique_id=820450556]
+z_index = 1
+
+[node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui", "camera_rig") instance=ExtResource("2_akuhx")]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+position = Vector2(500, 308)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("3_rubjw")
+math_ui = NodePath("../../CanvasLayer/UImath")
+camera_rig = NodePath("../../camera")
+
+[node name="camera" type="Node2D" parent="." unique_id=701237699 node_paths=PackedStringArray("default_target")]
+script = ExtResource("4_kilis")
+default_target = NodePath("../player/maincharacter")
+
+[node name="Camera2D" type="Camera2D" parent="camera" unique_id=291323652]
+limit_bottom = 540
+limit_smoothed = true
+
+[node name="invisibleWall" type="Node2D" parent="." unique_id=783451231]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="invisibleWall" unique_id=471892189]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D" unique_id=24225147]
+position = Vector2(4285, 415)
+shape = SubResource("RectangleShape2D_qtbdr")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="invisibleWall" unique_id=45600127]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D2" unique_id=1700278719]
+position = Vector2(3, 155.25)
+shape = SubResource("RectangleShape2D_l5mwx")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1333814416]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node2D" unique_id=350290048]
+environment = SubResource("Environment_hncwb")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Node2D" unique_id=227758885]
+position = Vector2(-1, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=596015741]
+stream = ExtResource("5_lkn7p")
+volume_db = -20.069
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=91348458]
+
+[node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("6_spkd1")]
+
+[node name="blessingUI" parent="CanvasLayer" unique_id=1912679126 instance=ExtResource("7_g7vwq")]
+
+[node name="transition" type="Control" parent="CanvasLayer" unique_id=1524151000 node_paths=PackedStringArray("bgm")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_akuhx")
+bgm = NodePath("../../AudioStreamPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/transition" unique_id=491322313]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.12941177, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/transition" unique_id=1051211474]
+libraries/ = SubResource("AnimationLibrary_lkn7p")
+
+[connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
+[connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
+
+[editable path="player/maincharacter"]
+[editable path="player/maincharacter/Statusbar"]
+[editable path="CanvasLayer/UImath"]
