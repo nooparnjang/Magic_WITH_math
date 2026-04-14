@@ -8,7 +8,6 @@ extends Node2D
 
 var played_once := false
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if played_once:
 		return
@@ -18,8 +17,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	played_once = true
 	
-	# 🎬 เล่น animation ทันที
 	anim.play("forth")
 	
-	# 🎥 กล้องโฟกัสไปด้วย
-	await camera_rig.focus_on(focus_target, focus_duration)
+	if camera_rig != null and camera_rig.has_method("focus_on") and focus_target != null:
+		await camera_rig.focus_on(focus_target, focus_duration)

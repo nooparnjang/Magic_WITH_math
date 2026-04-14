@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="14_xnbkg"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="15_u54mw"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="17_5omta"]
+[ext_resource type="Texture2D" uid="uid://0kcbwkpormqn" path="res://assets/UI/Instruction_small.png" id="21_s3kdt"]
+[ext_resource type="Script" uid="uid://douwhn1m13s20" path="res://scenes/gameplay/script/instrucionUP.gd" id="22_na311"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
 size = Vector2(8572.5, 36)
@@ -193,7 +195,6 @@ default_font = ExtResource("5_sybox")
 default_font_size = 30
 
 [sub_resource type="Animation" id="Animation_an7bs"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -206,6 +207,33 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../CanvasLayer/instructionforth/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(229, -200)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../CanvasLayer/instructionforth/Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s3kdt"]
+resource_name = "back"
 
 [sub_resource type="Animation" id="Animation_5omta"]
 resource_name = "forth"
@@ -222,10 +250,35 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../CanvasLayer/instructionforth/Sprite2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(229, -200), Vector2(229, 200)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../CanvasLayer/instructionforth/Sprite2D:self_modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xnbkg"]
 _data = {
 &"RESET": SubResource("Animation_an7bs"),
+&"back": SubResource("Animation_s3kdt"),
 &"forth": SubResource("Animation_5omta")
 }
 
@@ -426,10 +479,11 @@ texture = ExtResource("10_e7oia")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/third" unique_id=69258935]
 libraries/ = SubResource("AnimationLibrary_an7bs")
 
-[node name="forth" type="Node2D" parent="Tut" unique_id=45996511 node_paths=PackedStringArray("camera_rig", "focus_target")]
+[node name="forth" type="Node2D" parent="Tut" unique_id=45996511 node_paths=PackedStringArray("camera_rig", "focus_target", "floating_sprite")]
 script = ExtResource("11_cscyk")
 camera_rig = NodePath("../../camera")
 focus_target = NodePath("../../obstacle/cone")
+floating_sprite = NodePath("../../CanvasLayer/instructionforth/Sprite2D")
 
 [node name="Area2D" type="Area2D" parent="Tut/forth" unique_id=23380089]
 
@@ -503,6 +557,20 @@ autoplay = true
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("15_u54mw")]
 
 [node name="blessingUI" parent="CanvasLayer" unique_id=1912679126 instance=ExtResource("17_5omta")]
+
+[node name="instructionforth" type="Control" parent="CanvasLayer" unique_id=1078328865]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/instructionforth" unique_id=2140930361]
+position = Vector2(229, -200)
+scale = Vector2(0.75749993, 0.7791666)
+texture = ExtResource("21_s3kdt")
+script = ExtResource("22_na311")
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
