@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://b2fbafc67q3u2"]
+
+[ext_resource type="Script" uid="uid://dobjdart1hxog" path="res://effect/poof_effect.gd" id="1_qb1kb"]
+[ext_resource type="Texture2D" uid="uid://dn88esoffjk5b" path="res://assets/effect/Effect explosion blue-1.png" id="2_lk5cu"]
+[ext_resource type="Texture2D" uid="uid://docfvrlag81r6" path="res://assets/effect/Effect explosion blue-2.png" id="3_ttt5f"]
+[ext_resource type="Texture2D" uid="uid://dr7mnoslb0jx7" path="res://assets/effect/Effect explosion blue-3.png" id="4_eohbp"]
+[ext_resource type="Texture2D" uid="uid://7fomk7h7usyq" path="res://assets/effect/Effect explosion blue-4.png" id="5_2ku73"]
+[ext_resource type="Texture2D" uid="uid://dqw7xdguy1cbu" path="res://assets/effect/Effect explosion blue-5.png" id="6_wweid"]
+[ext_resource type="Texture2D" uid="uid://cq7v6wkuqm2ik" path="res://assets/effect/Effect explosion blue-6.png" id="7_udyf1"]
+[ext_resource type="Texture2D" uid="uid://hrbxil3jrd4o" path="res://assets/effect/Effect explosion blue-7.png" id="8_ixkhg"]
+[ext_resource type="Texture2D" uid="uid://du6rghpk8n6jn" path="res://assets/effect/Effect explosion blue-8.png" id="9_mlb5j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxmme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lk5cu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ttt5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eohbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2ku73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wweid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_udyf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ixkhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mlb5j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PoofEffect" type="Node2D" unique_id=2062209724]
+script = ExtResource("1_qb1kb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1475254874]
+scale = Vector2(0.13645834, 0.14359258)
+sprite_frames = SubResource("SpriteFrames_hxmme")
+frame = 1
+frame_progress = 0.16475624
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

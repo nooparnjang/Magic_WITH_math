@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bs2vnxg4keh2i"]
 
-[ext_resource type="Script" uid="uid://kxmsv470qrxq" path="res://scenes/gameplay/UIcomponent/script/u_imath.gd" id="1_fsfod"]
+[ext_resource type="Script" uid="uid://kxmsv470qrxq" path="res://UIcomponent/script/u_imath.gd" id="1_fsfod"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="1_i1hw1"]
 
 [sub_resource type="Theme" id="Theme_fsfod"]
