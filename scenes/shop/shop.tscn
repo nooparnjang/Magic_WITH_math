@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://b3yitaqxp4c4q" path="res://assets/bg/GameplayEndless/front.png" id="3_ctpgp"]
 [ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="4_ctpgp"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_ptf86"]
+[ext_resource type="Texture2D" uid="uid://c7obrueihtqfn" path="res://assets/UI/uiforshop/Stamina max.png" id="6_xcdpw"]
+[ext_resource type="Texture2D" uid="uid://d0lby7eix2vck" path="res://assets/UI/uiforshop/สไลม์ (ฟ้า+selected).png" id="7_tp26b"]
+[ext_resource type="Texture2D" uid="uid://dm0f62shr1av4" path="res://assets/UI/uiforshop/Hp max.png" id="8_vk20h"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptf86"]
 texture = ExtResource("1_7lxhl")
@@ -61,6 +64,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = 8.0
+offset_right = -6.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -74,7 +81,7 @@ theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 80
 text = "SHOP"
 
-[node name="explain" type="Label" parent="." unique_id=1447984192]
+[node name="explainshop" type="Label" parent="." unique_id=1447984192]
 layout_mode = 0
 offset_left = 214.0
 offset_top = 89.0
@@ -84,7 +91,7 @@ theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 40
 text = "FOR UPGRADING YOUR CHARACTER"
 
-[node name="box" type="Panel" parent="." unique_id=540497048]
+[node name="box_stamina" type="Panel" parent="." unique_id=540497048]
 layout_mode = 0
 offset_left = 45.0
 offset_top = 160.0
@@ -92,7 +99,7 @@ offset_right = 310.0
 offset_bottom = 425.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="box2" type="Panel" parent="." unique_id=729960447]
+[node name="box_monster" type="Panel" parent="." unique_id=729960447]
 layout_mode = 0
 offset_left = 345.0
 offset_top = 160.0
@@ -100,10 +107,50 @@ offset_right = 610.0
 offset_bottom = 425.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="box3" type="Panel" parent="." unique_id=233470356]
+[node name="box_hp" type="Panel" parent="." unique_id=233470356]
 layout_mode = 0
 offset_left = 645.0
 offset_top = 160.0
 offset_right = 910.0
 offset_bottom = 425.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+
+[node name="StaminaMax" type="Sprite2D" parent="." unique_id=1013047376]
+position = Vector2(176.00002, 205)
+scale = Vector2(0.0712963, 0.07129628)
+texture = ExtResource("6_xcdpw")
+
+[node name="สไลม์(ฟ้า+selected)" type="Sprite2D" parent="." unique_id=1416709309]
+position = Vector2(474.00003, 204)
+scale = Vector2(0.05266203, 0.05266203)
+texture = ExtResource("7_tp26b")
+
+[node name="HpMax" type="Sprite2D" parent="." unique_id=1943724388]
+position = Vector2(775, 204.00002)
+scale = Vector2(0.07870369, 0.07870368)
+texture = ExtResource("8_vk20h")
+
+[node name="stamina" type="Label" parent="." unique_id=1242572193]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 257.0
+offset_right = 288.0
+offset_bottom = 338.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "INCREASE STAMINA
+RECOVERY SPEED"
+horizontal_alignment = 1
+
+[node name="monster" type="Label" parent="." unique_id=418250560]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 235.0
+offset_right = 557.0
+offset_bottom = 358.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "-7% MONSTER
+ATTACK SPEED
++ FOCUS TIME"
+horizontal_alignment = 1
