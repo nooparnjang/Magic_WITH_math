@@ -3,8 +3,10 @@ extends StaticBody2D
 @export var max_hp := 1
 @export var blessing_reward: int = 10
 @export var hit_effect_scene: PackedScene
+@export var floating_text_scene: PackedScene
 
 var hp := 0
+var is_dead := false
 
 @onready var sprite = $Sprite2D
 
@@ -13,19 +15,33 @@ func _ready() -> void:
 	add_to_group("targetable")
 
 func take_damage(amount: int) -> void:
+	if is_dead:
+		return
+
 	hp -= amount
 	print(name, "โดนดาเมจ", amount, "เหลือ", hp)
 
 	flash_hit()
 
 	if hp <= 0:
+		is_dead = true
 		give_blessing()
+		show_blessing_popup()
 		spawn_effect()
 		queue_free()
 
 func give_blessing() -> void:
 	BlessingManager.add_blessings(blessing_reward)
-	print("ได้รับ blessings:", blessing_reward, "รวม:", BlessingManager.get_blessings())
+
+func show_blessing_popup() -> void:
+	if floating_text_scene == null:
+		return
+
+	var popup = floating_text_scene.instantiate()
+	get_tree().current_scene.add_child(popup)
+
+	if popup.has_method("show_at"):
+		popup.show_at(global_position + Vector2(-40, -98), blessing_reward)
 
 func set_selected(value: bool) -> void:
 	if value:

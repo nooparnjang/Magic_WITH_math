@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b8ls1t3fdt8d6"]
+
+[ext_resource type="Script" uid="uid://3gerh2867mwp" path="res://UIcomponent/script/floating_blessing_text.gd" id="1_o7g7a"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="2_bkebx"]
+
+[sub_resource type="Theme" id="Theme_fot6a"]
+default_font = ExtResource("2_bkebx")
+default_font_size = 20
+
+[node name="FloatingBlessingText" type="Node2D" unique_id=1132326492]
+script = ExtResource("1_o7g7a")
+
+[node name="Label" type="Label" parent="." unique_id=1910352984]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = SubResource("Theme_fot6a")
+text = "+0 BLESSINGS"
