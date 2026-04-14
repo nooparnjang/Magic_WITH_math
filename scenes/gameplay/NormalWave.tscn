@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ca1yrgtdxpbgv" path="res://assets/UI/Spacebar 1.png" id="10_e7oia"]
 [ext_resource type="Script" uid="uid://cr36ohrsgh2fk" path="res://scenes/gameplay/script/forth.gd" id="11_cscyk"]
 [ext_resource type="PackedScene" uid="uid://pbk26hqvqvku" path="res://object/cone.tscn" id="11_e7oia"]
+[ext_resource type="Script" uid="uid://c0pado6npqp4c" path="res://scenes/gameplay/script/five.gd" id="12_0amc4"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="12_5rxrm"]
 [ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="13_an7bs"]
 [ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="14_xnbkg"]
@@ -227,6 +228,46 @@ _data = {
 &"forth": SubResource("Animation_5omta")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnbkg"]
+size = Vector2(546, 34)
+
+[sub_resource type="Animation" id="Animation_t2vsw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0.12835406, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0amc4"]
+resource_name = "transition"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0.12835406, 0), Color(0, 0, 0.12835406, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s3kdt"]
+_data = {
+&"RESET": SubResource("Animation_t2vsw"),
+&"transition": SubResource("Animation_0amc4")
+}
+
 [node name="NormalWave" type="Node2D" unique_id=1124215555]
 
 [node name="Bg" parent="." unique_id=1426212521 instance=ExtResource("1_tqgty")]
@@ -413,6 +454,28 @@ horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/forth" unique_id=1666259342]
 libraries/ = SubResource("AnimationLibrary_xnbkg")
+
+[node name="five" type="Node2D" parent="Tut" unique_id=751116460 node_paths=PackedStringArray("bgm")]
+script = ExtResource("12_0amc4")
+bgm = NodePath("../../AudioStreamPlayer")
+
+[node name="Area2D" type="Area2D" parent="Tut/five" unique_id=2123735751]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tut/five/Area2D" unique_id=639224955]
+position = Vector2(3915, 119)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_xnbkg")
+
+[node name="TransitionLayer" type="CanvasLayer" parent="Tut/five" unique_id=213594906]
+
+[node name="ColorRect" type="ColorRect" parent="Tut/five/TransitionLayer" unique_id=1101033011]
+z_index = 1000
+offset_right = 964.0
+offset_bottom = 554.0
+color = Color(0, 0, 0.12835406, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/five/TransitionLayer" unique_id=49248718]
+libraries/ = SubResource("AnimationLibrary_s3kdt")
 
 [node name="obstacle" type="Node2D" parent="." unique_id=765069025 groups=["targetable"]]
 
