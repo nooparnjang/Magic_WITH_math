@@ -20,28 +20,28 @@ var blink_tween
 # 📖 STORY DATA
 # =========================
 var part1_lines = [
-	"ในปี 3030 แมธเทรีย (Mathtria)",
-	"เมืองไซเบอร์ซึ่งเต็มไปด้วยอดีตแห่งความรุ่งเรือง",
-	"ด้วยระบบคำนวณอัจฉริยะ",
-	"บัดนี้กลับถูกปกคลุมด้วยหมอกทมิฬ",
-	"จากราชาปีศาจ VOXTRON",
-	"และกองทัพหุ่นยนต์อัตโนมัติที่เกลียดชังตัวเลข",
+	"In the year 3030, Mathtria",
+	"a cyber city filled with a past of great glory",
+	"powered by intelligent calculation systems",
+	"is now shrouded in a dark ominous fog",
+	"by the demon king VOXTRON",
+	"and an army of autonomous machines that despise numbers",
 	" ",
-	"คืนหนึ่ง ดาวเทียมโบราณระเบิดแสงตกลงจากชั้นบรรยากาศ",
-	"เศษชิ้นส่วนกระจัดกระจายทั่วเส้นขอบฟ้า"
+	"one night, an ancient satellite burst into light from the sky",
+	"its fragments scattering across the distant horizon"
 ]
 
 var part2_lines = [
-	"ตรงกับคำพยากรณอันเก่าแก่ในปี 2026 ที่ระบุว่า",
-	"เด็กปัญญาเลิศจากแสงสวรรค์จะถือกำเนิด",
-	"พร้อมเวทแห่งคณิต เพื่อเริ่มต้นโลกที่ไร้ระบบอัตโนมัติ",
+	"matching an ancient prophecy from the year 2026 that foretold",
+	"a genius child born from the light of the heavens",
+	"with the magic of mathematics to begin a world without automation",
 	" ",
-	"เด็กคนนั้นคือเจ้าหญิงแห่งอาณาจักรแมธเทรีย", 
-	"ครั้นวัยเยาว์ เธอฝึกการควบคุมสมการเป็นอาวุธ",
-	"เจาะระบบปีศาจด้วยเวทคำนวณในสายเลือด",
+	"that child is the princess of the kingdom of Mathtria",
+	"in her youth, she trained to wield equations as weapons",
+	"piercing demonic systems with computational magic in her blood",
 	" ",
-	"และผู้ช่วยปัญญาประดิษฐ์ประจำตัวของเธอ",
-	"คือ “คุณ” ผู้ควบคุมโชคชะตาแห่งไซเบอร์"
+	"and her personal artificial intelligence companion",
+	"is \"you\", the one who controls the fate of this cyber realm"
 ]
 
 # =========================
