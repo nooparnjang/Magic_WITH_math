@@ -14,7 +14,8 @@
 [ext_resource type="Script" uid="uid://cr36ohrsgh2fk" path="res://scenes/gameplay/script/forth.gd" id="11_cscyk"]
 [ext_resource type="PackedScene" uid="uid://pbk26hqvqvku" path="res://object/cone.tscn" id="11_e7oia"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="12_5rxrm"]
-[ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://scenes/gameplay/UIcomponent/u_imath.tscn" id="15_u54mw"]
+[ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="13_an7bs"]
+[ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="15_u54mw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
 size = Vector2(8572.5, 36)
@@ -351,7 +352,7 @@ script = ExtResource("9_ies0t")
 [node name="Area2D" type="Area2D" parent="Tut/third" unique_id=239337400]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tut/third/Area2D" unique_id=1582007692]
-position = Vector2(2134, 145)
+position = Vector2(1778, 147)
 shape = SubResource("RectangleShape2D_5rxrm")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tut/third" unique_id=1235762387]
@@ -389,7 +390,7 @@ focus_target = NodePath("../../obstacle/cone")
 [node name="Area2D" type="Area2D" parent="Tut/forth" unique_id=23380089]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tut/forth/Area2D" unique_id=699360329]
-position = Vector2(2895, 148)
+position = Vector2(2604, 144)
 shape = SubResource("RectangleShape2D_cscyk")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tut/forth" unique_id=1940335520]
@@ -416,6 +417,7 @@ libraries/ = SubResource("AnimationLibrary_xnbkg")
 [node name="cone" parent="obstacle" unique_id=65342437 groups=["targetable"] instance=ExtResource("11_e7oia")]
 position = Vector2(3177.0002, 365)
 scale = Vector2(0.3, 0.3)
+hit_effect_scene = ExtResource("13_an7bs")
 
 [node name="Barrier" parent="obstacle" unique_id=433003444 groups=["targetable"] instance=ExtResource("12_5rxrm")]
 position = Vector2(3292, 355)

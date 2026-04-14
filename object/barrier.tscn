@@ -2,12 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://choa8f0ihlbu0" path="res://assets/object/Sign.png" id="1_sexjf"]
 [ext_resource type="Script" uid="uid://dwbnin22yyune" path="res://object/script/cone.gd" id="1_tbkhf"]
+[ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="2_tlrs0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbkhf"]
 size = Vector2(358, 251)
 
 [node name="Barrier" type="StaticBody2D" unique_id=2142189157]
 script = ExtResource("1_tbkhf")
+hit_effect_scene = ExtResource("2_tlrs0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=479087098]
 texture = ExtResource("1_sexjf")

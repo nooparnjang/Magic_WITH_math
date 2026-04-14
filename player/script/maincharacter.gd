@@ -33,9 +33,13 @@ func _physics_process(delta: float) -> void:
 
 		move_and_slide()
 
-		# อนุญาตให้เปลี่ยน target ได้ตอนกำลังตอบโจทย์
+		if Input.is_action_just_pressed("ui_closemath"):
+			cancel_math_mode()
+			return
+
 		if Input.is_action_just_pressed("target_select") and not is_switching_target:
 			cycle_target()
+
 		return
 
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -81,12 +85,13 @@ func _on_target_radius_body_exited(body: Node2D) -> void:
 
 		current_target = null
 		current_target_index = -1
-
-		if math_ui != null and math_ui.has_method("close_ui"):
-			math_ui.close_ui()
-
 		is_answering = false
 		is_switching_target = false
+
+		if math_ui != null and math_ui.has_method("close_ui_silent"):
+			math_ui.close_ui_silent()
+		elif math_ui != null and math_ui.has_method("close_ui"):
+			math_ui.close_ui()
 
 		if camera_rig != null and camera_rig.has_method("unlock_focus"):
 			camera_rig.unlock_focus()
@@ -118,7 +123,6 @@ func _cycle_target_async() -> void:
 		is_switching_target = false
 		return
 
-	# ปิด selection เดิมก่อน
 	if current_target != null and is_instance_valid(current_target):
 		if current_target.has_method("set_selected"):
 			current_target.set_selected(false)
@@ -141,13 +145,30 @@ func _cycle_target_async() -> void:
 		is_switching_target = false
 		return
 
-	# ล็อกกล้องค้างไปที่ target
 	if camera_rig != null and camera_rig.has_method("lock_focus"):
 		camera_rig.lock_focus(current_target)
 
 	is_answering = true
 	math_ui.open_question(current_target, self)
 	is_switching_target = false
+
+func cancel_math_mode() -> void:
+	if current_target != null and is_instance_valid(current_target):
+		if current_target.has_method("set_selected"):
+			current_target.set_selected(false)
+
+	current_target = null
+	current_target_index = -1
+	is_answering = false
+	is_switching_target = false
+
+	if math_ui != null and math_ui.has_method("close_ui_silent"):
+		math_ui.close_ui_silent()
+	elif math_ui != null and math_ui.has_method("close_ui"):
+		math_ui.close_ui()
+
+	if camera_rig != null and camera_rig.has_method("unlock_focus"):
+		camera_rig.unlock_focus()
 
 func finish_answering() -> void:
 	if current_target != null and is_instance_valid(current_target):
@@ -158,9 +179,6 @@ func finish_answering() -> void:
 	current_target_index = -1
 	is_answering = false
 	is_switching_target = false
-
-	if math_ui != null and math_ui.has_method("close_ui"):
-		math_ui.close_ui()
 
 	if camera_rig != null and camera_rig.has_method("unlock_focus"):
 		camera_rig.unlock_focus()
