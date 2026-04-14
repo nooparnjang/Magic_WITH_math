@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://oktc7reqjkjc"]
 
-[ext_resource type="Texture2D" uid="uid://msilb3kx2n0" path="res://assets/bg/Main menu.png" id="1_p0qcm"]
+[ext_resource type="Texture2D" uid="uid://msilb3kx2n0" path="res://assets/bg/MainMenu/Main menu.png" id="1_p0qcm"]
+[ext_resource type="Script" uid="uid://q7qq0fpr7uem" path="res://scenes/mainmenu/script/goback.gd" id="3_dh7hh"]
 [ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="4_dh7hh"]
 [ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="4_n1ptk"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_b31yw"]
@@ -44,8 +45,16 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_n1ptk")
 
-[node name="goback" type="Sprite2D" parent="." unique_id=107057150]
-position = Vector2(54.000004, 48)
+[node name="back" type="Button" parent="." unique_id=1747052486]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 25.0
+offset_right = 80.0
+offset_bottom = 77.0
+script = ExtResource("3_dh7hh")
+
+[node name="goback" type="Sprite2D" parent="back" unique_id=670160073]
+position = Vector2(26.000004, 23)
 scale = Vector2(0.11851851, 0.11851852)
 texture = ExtResource("4_n1ptk")
 region_enabled = true
