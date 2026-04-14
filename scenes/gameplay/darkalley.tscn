@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="7_g7vwq"]
 [ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="8_akuhx"]
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="9_rubjw"]
+[ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="10_lkn7p"]
+[ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="11_spkd1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtbdr"]
 size = Vector2(8572.5, 36)
@@ -146,9 +148,11 @@ libraries/ = SubResource("AnimationLibrary_lkn7p")
 
 [node name="enemies" type="Node2D" parent="." unique_id=1665440617]
 
-[node name="Robot1" parent="enemies" unique_id=1544183853 instance=ExtResource("9_rubjw")]
+[node name="Robot1" parent="enemies" unique_id=1544183853 groups=["targetable"] instance=ExtResource("9_rubjw")]
 position = Vector2(1271, 305)
 scale = Vector2(2.5, 2.5)
+hit_effect_scene = ExtResource("10_lkn7p")
+floating_text_scene = ExtResource("11_spkd1")
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]

@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
-@export var move_speed := 120.0
+@export var move_speed := 180.0
 @export var gravity := 1200.0
 @export var max_hp := 1
 @export var contact_damage := 10
 @export var attack_cooldown := 1.0
-@export var attack_range := 20.0
-@export var chase_range := 220.0
+@export var attack_range := 60.0
+@export var max_vertical_attack_gap := 80.0
+
+@export var blessing_reward: int = 10
+@export var hit_effect_scene: PackedScene
+@export var floating_text_scene: PackedScene
 
 @export_enum("3 digits with 1 digit", "2 digits with 1 digit", "1 digit with 1 digit")
 var question_pattern := 2
@@ -34,66 +38,60 @@ func _ready() -> void:
 
 	player_ref = get_tree().get_first_node_in_group("player") as Node2D
 
+func activate(player: Node2D) -> void:
+	if is_dead:
+		return
+
+	player_ref = player
+	is_activated = true
+
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		velocity.x = 0.0
-
-		if not is_on_floor():
-			velocity.y += gravity * delta
-		else:
-			velocity.y = 0.0
-
+		_apply_gravity(delta)
 		move_and_slide()
 		return
 
 	if player_ref == null or not is_instance_valid(player_ref):
 		velocity.x = 0.0
-
-		if not is_on_floor():
-			velocity.y += gravity * delta
-		else:
-			velocity.y = 0.0
-
+		_apply_gravity(delta)
 		update_animation(Vector2.ZERO)
 		move_and_slide()
 		return
 
-	var to_player := player_ref.global_position - global_position
-	var horizontal_distance = abs(to_player.x)
-	var vertical_distance = abs(to_player.y)
-
-	# เปิดโหมดไล่เมื่อ player เข้าใกล้พอ
-	if not is_activated:
-		if horizontal_distance <= chase_range and vertical_distance <= 80.0:
-			is_activated = true
+	var to_player: Vector2 = player_ref.global_position - global_position
+	var horizontal_distance: float = abs(to_player.x)
+	var vertical_distance: float = abs(to_player.y)
 
 	if is_attacking:
 		velocity.x = 0.0
 	elif is_activated:
-		if horizontal_distance > attack_range:
-			var dir_x = sign(to_player.x)
-			velocity.x = dir_x * move_speed
+		if vertical_distance > max_vertical_attack_gap:
+			velocity.x = 0.0
+		elif horizontal_distance > attack_range:
+			velocity.x = sign(to_player.x) * move_speed
 		else:
 			velocity.x = 0.0
 			try_attack_player()
 	else:
 		velocity.x = 0.0
 
-	# ใช้ gravity อย่างเดียวกับแกน Y
+	_apply_gravity(delta)
+	move_and_slide()
+	update_animation(to_player)
+
+func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 0.0
 
-	move_and_slide()
-	update_animation(to_player)
-
 func update_animation(direction: Vector2) -> void:
 	if sprite == null or is_dead:
 		return
 
-	if direction.x != 0:
-		sprite.flip_h = direction.x < 0
+	if direction.x != 0.0:
+		sprite.flip_h = direction.x < 0.0
 
 	if is_attacking:
 		if sprite.animation != "fight":
@@ -111,14 +109,66 @@ func take_damage(amount: int) -> void:
 	if is_dead:
 		return
 
-	# ถ้าโดนตี ให้ตื่นทันที
 	is_activated = true
-
 	hp -= amount
 	print(name, "โดนดาเมจ", amount, "เหลือ", hp)
 
+	flash_hit()
+
 	if hp <= 0:
 		die()
+
+func try_attack_player() -> void:
+	if is_dead or is_attacking or not can_attack:
+		return
+
+	if player_ref == null or not is_instance_valid(player_ref):
+		return
+
+	var horizontal_distance: float = abs(player_ref.global_position.x - global_position.x)
+	var vertical_distance: float = abs(player_ref.global_position.y - global_position.y)
+
+	if horizontal_distance > attack_range:
+		return
+
+	if vertical_distance > max_vertical_attack_gap:
+		return
+
+	is_attacking = true
+	can_attack = false
+	velocity.x = 0.0
+
+	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("fight"):
+		sprite.play("fight")
+	else:
+		print("ไม่มีอนิเมชัน fight")
+
+	# รอจังหวะตี ไม่ต้องรอจนอนิเมชันจบก่อน
+	await get_tree().create_timer(0.18).timeout
+
+	if is_dead:
+		return
+
+	if player_ref != null and is_instance_valid(player_ref):
+		horizontal_distance = abs(player_ref.global_position.x - global_position.x)
+		vertical_distance = abs(player_ref.global_position.y - global_position.y)
+
+		if horizontal_distance <= attack_range and vertical_distance <= max_vertical_attack_gap:
+			if player_ref.has_method("take_damage"):
+				print("enemy dealt damage:", contact_damage)
+				player_ref.take_damage(contact_damage)
+
+	# รอให้อาการฟันพอผ่านไปก่อนค่อยออกจาก state ตี
+	await get_tree().create_timer(0.12).timeout
+
+	if is_dead:
+		return
+
+	is_attacking = false
+
+	await get_tree().create_timer(attack_cooldown).timeout
+	if not is_dead:
+		can_attack = true
 
 func die() -> void:
 	if is_dead:
@@ -131,63 +181,70 @@ func die() -> void:
 
 	remove_from_group("targetable")
 
-	if body_collision:
+	if body_collision != null:
 		body_collision.disabled = true
-	if hitbox_collision:
+	if hitbox_collision != null:
 		hitbox_collision.disabled = true
 
-	if sprite and sprite.sprite_frames and sprite.sprite_frames.has_animation("dead"):
+	give_blessing()
+	show_blessing_popup()
+	spawn_effect()
+
+	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("dead"):
 		sprite.play("dead")
 		await sprite.animation_finished
 
 	queue_free()
 
+func give_blessing() -> void:
+	BlessingManager.add_blessings(blessing_reward)
+
+func show_blessing_popup() -> void:
+	if floating_text_scene == null:
+		return
+
+	var popup = floating_text_scene.instantiate()
+	get_tree().current_scene.add_child(popup)
+
+	if popup.has_method("show_at"):
+		popup.show_at(global_position + Vector2(-40, -98), blessing_reward)
+
+func spawn_effect() -> void:
+	if hit_effect_scene == null:
+		return
+
+	var effect = hit_effect_scene.instantiate()
+	get_tree().current_scene.add_child(effect)
+
+	effect.global_position = global_position
+	effect.z_index = 100
+
+	var effect_sprite = effect.get_node_or_null("AnimatedSprite2D")
+	if effect_sprite == null:
+		push_error("Effect ไม่มี AnimatedSprite2D")
+		return
+
+	var anim_name := "default"
+
+	if not effect_sprite.sprite_frames.has_animation(anim_name):
+		push_error("ไม่มี animation: " + anim_name)
+		return
+
+	effect_sprite.sprite_frames.set_animation_loop(anim_name, false)
+	effect_sprite.play(anim_name)
+
+func flash_hit() -> void:
+	if sprite == null:
+		return
+
+	sprite.modulate = Color(1.8, 0.7, 0.7)
+	await get_tree().create_timer(0.08).timeout
+
+	if not is_dead:
+		sprite.modulate = Color(1, 1, 1)
+
 func set_player(player: Node2D) -> void:
 	player_ref = player
-
-func try_attack_player() -> void:
-	if is_dead or is_attacking or not can_attack:
-		return
-
-	if player_ref == null or not is_instance_valid(player_ref):
-		return
-
-	var horizontal_distance = abs(player_ref.global_position.x - global_position.x)
-	var vertical_distance = abs(player_ref.global_position.y - global_position.y)
-
-	if horizontal_distance > attack_range + 8.0:
-		return
-
-	# กันตีข้ามชั้น/คนละระดับมากเกินไป
-	if vertical_distance > 80.0:
-		return
-
-	is_attacking = true
-	can_attack = false
-	velocity.x = 0.0
-
-	if sprite and sprite.sprite_frames and sprite.sprite_frames.has_animation("fight"):
-		sprite.play("fight")
-		await sprite.animation_finished
-	else:
-		await get_tree().create_timer(0.2).timeout
-
-	if is_dead:
-		return
-
-	if player_ref != null and is_instance_valid(player_ref):
-		horizontal_distance = abs(player_ref.global_position.x - global_position.x)
-		vertical_distance = abs(player_ref.global_position.y - global_position.y)
-
-		if horizontal_distance <= attack_range + 8.0 and vertical_distance <= 80.0:
-			if player_ref.has_method("take_damage"):
-				player_ref.take_damage(contact_damage)
-
-	is_attacking = false
-
-	await get_tree().create_timer(attack_cooldown).timeout
-	if not is_dead:
-		can_attack = true
 
 func _on_hitbox_body_entered(body: Node) -> void:
 	if is_dead:

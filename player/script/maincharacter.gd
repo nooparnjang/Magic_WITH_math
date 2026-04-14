@@ -15,6 +15,8 @@ extends CharacterBody2D
 @export var stamina_recover_per_second := 24.0
 @export var min_stamina_to_focus := 5.0
 
+@export var damage_invincibility_time := 0.5
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var target_radius: Area2D = $TargetRadius
 @onready var status_bars: Node2D = $Statusbar
@@ -25,6 +27,8 @@ var current_target_index := -1
 var is_answering := false
 var is_switching_target := false
 var is_cast_releasing := false
+var is_dead := false
+var can_take_damage := true
 
 func _ready() -> void:
 	add_to_group("player")
@@ -42,9 +46,17 @@ func _ready() -> void:
 		sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		velocity.x = 0.0
+
+		if not is_on_floor():
+			velocity.y += gravity * delta
+
+		move_and_slide()
+		return
+
 	update_stamina(delta)
 
-	# กำลังปล่อยเวทหลังตอบถูก
 	if is_cast_releasing:
 		velocity.x = 0.0
 
@@ -54,7 +66,6 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	# กำลังตอบโจทย์ / กำลังสลับเป้า
 	if is_answering or is_switching_target:
 		velocity.x = 0.0
 
@@ -103,16 +114,16 @@ func start_cast_release() -> void:
 	is_answering = false
 	is_cast_releasing = true
 	sprite.play("casting")
-	
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if is_cast_releasing and sprite.animation == "casting":
 		is_cast_releasing = false
 		finish_answering()
 
-
-
-
 func update_stamina(delta: float) -> void:
+	if is_dead:
+		return
+
 	var is_focusing_target: bool = is_answering and current_target != null and is_instance_valid(current_target)
 
 	if is_focusing_target:
@@ -133,6 +144,9 @@ func _on_target_radius_body_entered(body: Node2D) -> void:
 		if not targets_in_range.has(body):
 			targets_in_range.append(body)
 			print("targetable entered:", body.name)
+
+		if body.has_method("activate"):
+			body.activate(self)
 
 func _on_target_radius_body_exited(body: Node2D) -> void:
 	if targets_in_range.has(body):
@@ -176,6 +190,9 @@ func cycle_target() -> void:
 	_cycle_target_async()
 
 func _cycle_target_async() -> void:
+	if is_dead:
+		return
+
 	if is_switching_target:
 		return
 
@@ -257,16 +274,34 @@ func finish_answering() -> void:
 		camera_rig.unlock_focus()
 
 func take_damage(amount: float) -> void:
+	if is_dead:
+		return
+
+	if not can_take_damage:
+		return
+
+	can_take_damage = false
+
 	hp -= amount
 	hp = max(hp, 0.0)
+
+	print("player took damage:", amount, "hp left:", hp)
 
 	if status_bars != null and status_bars.has_method("set_health"):
 		status_bars.set_health(hp, max_hp)
 
 	if hp <= 0.0:
 		die()
+		return
+
+	await get_tree().create_timer(damage_invincibility_time).timeout
+	if not is_dead:
+		can_take_damage = true
 
 func heal(amount: float) -> void:
+	if is_dead:
+		return
+
 	hp += amount
 	hp = min(hp, max_hp)
 
@@ -274,6 +309,9 @@ func heal(amount: float) -> void:
 		status_bars.set_health(hp, max_hp)
 
 func restore_stamina(amount: float) -> void:
+	if is_dead:
+		return
+
 	stamina += amount
 	stamina = min(stamina, max_stamina)
 
@@ -281,6 +319,9 @@ func restore_stamina(amount: float) -> void:
 		status_bars.set_stamina(stamina, max_stamina)
 
 func consume_stamina(amount: float) -> void:
+	if is_dead:
+		return
+
 	stamina -= amount
 	stamina = max(stamina, 0.0)
 
@@ -291,4 +332,10 @@ func consume_stamina(amount: float) -> void:
 		cancel_math_mode()
 
 func die() -> void:
+	if is_dead:
+		return
+
+	is_dead = true
+	can_take_damage = false
+	cancel_math_mode()
 	print("player dead")
