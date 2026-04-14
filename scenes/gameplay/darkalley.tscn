@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="7_g7vwq"]
 [ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="8_akuhx"]
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="9_rubjw"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="9_spkd1"]
 [ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="10_lkn7p"]
 [ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="11_spkd1"]
+[ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="13_g7vwq"]
+[ext_resource type="Script" uid="uid://dwbnin22yyune" path="res://object/script/cone.gd" id="14_qtbdr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtbdr"]
 size = Vector2(8572.5, 36)
@@ -68,6 +71,14 @@ _data = {
 &"transition": SubResource("Animation_kilis")
 }
 
+[sub_resource type="Theme" id="Theme_spkd1"]
+default_font = ExtResource("9_spkd1")
+default_font_size = 20
+
+[sub_resource type="Theme" id="Theme_qtbdr"]
+default_font = ExtResource("9_spkd1")
+default_font_size = 30
+
 [node name="Darkalley" type="Node2D" unique_id=1584864804]
 
 [node name="Bg" parent="." unique_id=1426212521 instance=ExtResource("1_dlg8t")]
@@ -105,12 +116,12 @@ shape = SubResource("RectangleShape2D_qtbdr")
 position = Vector2(3, 155.25)
 shape = SubResource("RectangleShape2D_l5mwx")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1333814416]
+[node name="envi" type="Node2D" parent="." unique_id=1333814416]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Node2D" unique_id=350290048]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="envi" unique_id=350290048]
 environment = SubResource("Environment_hncwb")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="Node2D" unique_id=227758885]
+[node name="CanvasModulate" type="CanvasModulate" parent="envi" unique_id=227758885]
 position = Vector2(-1, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=596015741]
@@ -146,6 +157,43 @@ color = Color(0, 0, 0.12941177, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/transition" unique_id=1051211474]
 libraries/ = SubResource("AnimationLibrary_lkn7p")
 
+[node name="title" type="Control" parent="CanvasLayer" unique_id=1968687870]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/title" unique_id=42665125]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/title/VBoxContainer" unique_id=1917636113]
+layout_mode = 2
+theme = SubResource("Theme_spkd1")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+bbcode_enabled = true
+text = "[wave]Level 1"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/title/VBoxContainer" unique_id=1484702231]
+layout_mode = 2
+theme = SubResource("Theme_spkd1")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+bbcode_enabled = true
+text = "[wave]Deep in the alley"
+fit_content = true
+horizontal_alignment = 1
+
 [node name="enemies" type="Node2D" parent="." unique_id=1665440617]
 
 [node name="Robot1" parent="enemies" unique_id=1544183853 groups=["targetable"] instance=ExtResource("9_rubjw")]
@@ -153,6 +201,61 @@ position = Vector2(1271, 305)
 scale = Vector2(2.5, 2.5)
 hit_effect_scene = ExtResource("10_lkn7p")
 floating_text_scene = ExtResource("11_spkd1")
+
+[node name="Robot2" parent="enemies" unique_id=1021456618 groups=["targetable"] instance=ExtResource("9_rubjw")]
+position = Vector2(1504, 310)
+scale = Vector2(2.5, 2.5)
+hit_effect_scene = ExtResource("10_lkn7p")
+floating_text_scene = ExtResource("11_spkd1")
+
+[node name="object" type="Node2D" parent="." unique_id=1981554591]
+
+[node name="car" parent="object" unique_id=1134860753 groups=["targetable"] instance=ExtResource("13_g7vwq")]
+position = Vector2(1824, 106)
+scale = Vector2(3, 3)
+script = ExtResource("14_qtbdr")
+hit_effect_scene = ExtResource("10_lkn7p")
+floating_text_scene = ExtResource("11_spkd1")
+
+[node name="tut" type="Node2D" parent="." unique_id=2019360766]
+
+[node name="first" type="Control" parent="tut" unique_id=2068369956]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="tut/first" unique_id=1083456716]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 110.0
+offset_right = 670.0
+offset_bottom = 149.0
+theme = SubResource("Theme_qtbdr")
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "Time to fight with real enemies"
+horizontal_alignment = 1
+
+[node name="first2" type="Control" parent="tut" unique_id=419082867]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1285.0
+offset_top = -44.0
+offset_right = 1325.0
+offset_bottom = -4.0
+
+[node name="Label" type="Label" parent="tut/first2" unique_id=741225447]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 110.0
+offset_right = 703.0
+offset_bottom = 149.0
+theme = SubResource("Theme_qtbdr")
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "Sometime obstacle can be useful..."
+horizontal_alignment = 1
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]

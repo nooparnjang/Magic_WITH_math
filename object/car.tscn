@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bqgwh4pht0pda"]
+
+[ext_resource type="Texture2D" uid="uid://cjupnk1sa168d" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Passenger car/Passenger car_Spritelist.png" id="1_vg0jq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y22dj"]
+size = Vector2(69, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsnkw"]
+size = Vector2(52, 31)
+
+[node name="car" type="StaticBody2D" unique_id=1134860753]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=969165213]
+texture = ExtResource("1_vg0jq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1694863316]
+position = Vector2(-25.5, 65)
+shape = SubResource("RectangleShape2D_y22dj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1590799112]
+position = Vector2(36, 80.5)
+shape = SubResource("RectangleShape2D_hsnkw")
