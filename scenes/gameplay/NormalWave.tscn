@@ -20,8 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="14_xnbkg"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="15_u54mw"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="17_5omta"]
-[ext_resource type="Texture2D" uid="uid://bxi8yctds1f8k" path="res://assets/UI/Instruction_small.png" id="21_s3kdt"]
-[ext_resource type="Script" path="res://scenes/gameplay/script/instrucionUP.gd" id="22_na311"]
+[ext_resource type="Texture2D" uid="uid://0kcbwkpormqn" path="res://assets/UI/Instruction_small.png" id="21_s3kdt"]
+[ext_resource type="Script" uid="uid://douwhn1m13s20" path="res://scenes/gameplay/script/instrucionUP.gd" id="22_na311"]
+[ext_resource type="PackedScene" uid="uid://bucjdlqnlx10y" path="res://UIcomponent/item_rows.tscn" id="23_lg2a2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
 size = Vector2(8572.5, 36)
@@ -555,8 +556,6 @@ autoplay = true
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("15_u54mw")]
 
-[node name="blessingUI" parent="CanvasLayer" unique_id=1912679126 instance=ExtResource("17_5omta")]
-
 [node name="instructionforth" type="Control" parent="CanvasLayer" unique_id=1078328865]
 layout_mode = 3
 anchors_preset = 15
@@ -571,6 +570,42 @@ scale = Vector2(0.75749993, 0.7791666)
 texture = ExtResource("21_s3kdt")
 script = ExtResource("22_na311")
 
+[node name="topright" type="Control" parent="CanvasLayer" unique_id=1266247152]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemRows" parent="CanvasLayer/topright" unique_id=1520677445 instance=ExtResource("23_lg2a2")]
+layout_direction = 3
+layout_mode = 0
+offset_left = 240.0
+offset_top = 28.0
+offset_right = 394.0
+offset_bottom = 73.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="blessingUI" parent="CanvasLayer/topright" unique_id=1912679126 instance=ExtResource("17_5omta")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 723.0
+offset_right = 772.0
+offset_bottom = 85.0
+grow_horizontal = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="NinePatchRect" parent="CanvasLayer/topright/blessingUI" index="0" unique_id=1138250266]
+anchor_right = 4.472
+anchor_bottom = 0.0
+offset_right = -0.01600647
+offset_bottom = 94.0
+
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
 [connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
@@ -582,3 +617,4 @@ script = ExtResource("22_na311")
 [editable path="player/maincharacter"]
 [editable path="player/maincharacter/Statusbar"]
 [editable path="CanvasLayer/UImath"]
+[editable path="CanvasLayer/topright/blessingUI"]

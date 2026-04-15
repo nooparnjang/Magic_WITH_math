@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://coy1wfl3ffj6j"]
+
+[sub_resource type="GDScript" id="GDScript_m2rt7"]
+script/source = "extends Control
+
+@onready var icon: TextureRect = $TextureRect
+
+func _ready() -> void:
+	size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	size_flags_vertical = Control.SIZE_SHRINK_CENTER
+
+func set_icon(texture: Texture2D) -> void:
+	if icon != null:
+		icon.texture = texture
+"
+
+[node name="ItemIcon" type="Control" unique_id=1321500700]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_m2rt7")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=122875107]
+custom_minimum_size = Vector2(41, 41)
+layout_mode = 0
+offset_right = 926.0
+offset_bottom = 1035.0
+scale = Vector2(0.044, 0.044)

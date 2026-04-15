@@ -17,9 +17,6 @@ var question_pattern := 2
 
 @export var allowed_operators: Array[String] = ["+", "-", "*", "/"]
 
-# ---------------------------
-# ระบบดรอป
-# ---------------------------
 @export_enum("none", "blessings", "item", "both")
 var drop_type := 1
 
@@ -28,6 +25,11 @@ var drop_type := 1
 @export var randomize_drop := false
 @export_range(0.0, 1.0, 0.01) var blessing_drop_chance := 1.0
 @export_range(0.0, 1.0, 0.01) var item_drop_chance := 1.0
+
+# ข้อมูลไอเทมที่ดรอป
+@export var item_drop_id: String = "coin"
+@export var item_drop_amount: int = 1
+@export var item_drop_texture: Texture2D
 
 var hp := 0
 var player_ref: Node2D = null
@@ -215,16 +217,12 @@ func die() -> void:
 func handle_drops() -> void:
 	match drop_type:
 		0:
-			# none
 			pass
 		1:
-			# blessings
 			try_drop_blessing()
 		2:
-			# item
 			try_drop_item()
 		3:
-			# both
 			try_drop_blessing()
 			try_drop_item()
 
@@ -242,13 +240,29 @@ func try_drop_item() -> void:
 	if item_drop_scene == null:
 		return
 
+	if item_drop_id.is_empty():
+		return
+
 	if randomize_drop and randf() > item_drop_chance:
 		return
 
-	for i in item_drop_count:
+	for i in range(item_drop_count):
 		var item = item_drop_scene.instantiate()
 		get_tree().current_scene.add_child(item)
-		item.global_position = global_position + Vector2(randf_range(-12.0, 12.0), randf_range(-8.0, 8.0))
+
+		item.global_position = global_position + Vector2(
+			randf_range(-12.0, 12.0),
+			randf_range(-8.0, 8.0)
+		)
+
+		if item is Node2D:
+			item.z_index = 999
+
+		if item.has_method("setup_item"):
+			item.setup_item(item_drop_id, item_drop_amount, item_drop_texture)
+
+		if item.has_method("initialize_spawn"):
+			item.initialize_spawn()
 
 func give_blessing() -> void:
 	BlessingManager.add_blessings(blessing_reward)
@@ -286,7 +300,7 @@ func spawn_effect() -> void:
 
 	effect_sprite.sprite_frames.set_animation_loop(anim_name, false)
 	effect_sprite.play(anim_name)
-
+	
 func flash_hit() -> void:
 	if sprite == null:
 		return

@@ -6,7 +6,7 @@
 
 [sub_resource type="Theme" id="Theme_16fw6"]
 default_font = ExtResource("3_l1dvh")
-default_font_size = 20
+default_font_size = 30
 
 [sub_resource type="Theme" id="Theme_rmpxg"]
 default_font = ExtResource("3_l1dvh")
@@ -14,27 +14,30 @@ default_font_size = 40
 
 [node name="blessingUI" type="Control" unique_id=1912679126]
 layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -185.0
-offset_right = -185.0
+anchor_right = 0.186
+anchor_bottom = 0.156
+offset_right = 0.44000244
+offset_bottom = -0.2400055
 grow_horizontal = 0
 size_flags_horizontal = 8
 script = ExtResource("1_r8ah5")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1138250266]
-layout_mode = 0
-offset_right = 173.0
-offset_bottom = 96.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.291
+anchor_bottom = 1.143
+offset_right = -0.08900452
+offset_bottom = -0.012001038
 texture = ExtResource("2_4b73d")
+region_rect = Rect2(0, 154.80002, 1920, 767.095)
 
 [node name="unit" type="Label" parent="." unique_id=1933542044]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 36.0
-offset_right = 156.0
-offset_bottom = 62.0
+offset_left = 84.0
+offset_top = 27.0
+offset_right = 199.0
+offset_bottom = 66.0
 theme = SubResource("Theme_16fw6")
 text = "Blessings"
 
