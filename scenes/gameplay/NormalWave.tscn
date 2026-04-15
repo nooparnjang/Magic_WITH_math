@@ -20,8 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="14_xnbkg"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="15_u54mw"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="17_5omta"]
-[ext_resource type="Texture2D" uid="uid://0kcbwkpormqn" path="res://assets/UI/Instruction_small.png" id="21_s3kdt"]
-[ext_resource type="Script" uid="uid://douwhn1m13s20" path="res://scenes/gameplay/script/instrucionUP.gd" id="22_na311"]
+[ext_resource type="Texture2D" uid="uid://bxi8yctds1f8k" path="res://assets/UI/Instruction_small.png" id="21_s3kdt"]
+[ext_resource type="Script" path="res://scenes/gameplay/script/instrucionUP.gd" id="22_na311"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
 size = Vector2(8572.5, 36)
@@ -479,11 +479,10 @@ texture = ExtResource("10_e7oia")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/third" unique_id=69258935]
 libraries/ = SubResource("AnimationLibrary_an7bs")
 
-[node name="forth" type="Node2D" parent="Tut" unique_id=45996511 node_paths=PackedStringArray("camera_rig", "focus_target", "floating_sprite")]
+[node name="forth" type="Node2D" parent="Tut" unique_id=45996511 node_paths=PackedStringArray("camera_rig", "focus_target")]
 script = ExtResource("11_cscyk")
 camera_rig = NodePath("../../camera")
 focus_target = NodePath("../../obstacle/cone")
-floating_sprite = NodePath("../../CanvasLayer/instructionforth/Sprite2D")
 
 [node name="Area2D" type="Area2D" parent="Tut/forth" unique_id=23380089]
 
