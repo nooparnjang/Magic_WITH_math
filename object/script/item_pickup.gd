@@ -22,13 +22,11 @@ func _ready() -> void:
 	if sprite != null and sprite_texture != null:
 		sprite.texture = sprite_texture
 
-	base_position = global_position
-
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
 
-	if drop_pop_enabled:
-		play_drop_pop()
+	# ยังไม่รีบตั้ง base_position ตรงนี้
+	# เพราะตอน _ready() ตำแหน่งจริงอาจยังไม่ถูก set จาก enemy
 
 func _process(delta: float) -> void:
 	if collected:
@@ -45,6 +43,13 @@ func setup_item(new_item_id: String, new_amount: int, new_texture: Texture2D = n
 
 	if sprite != null and sprite_texture != null:
 		sprite.texture = sprite_texture
+
+func initialize_spawn() -> void:
+	base_position = global_position
+	float_time = 0.0
+
+	if drop_pop_enabled:
+		play_drop_pop()
 
 func _on_body_entered(body: Node) -> void:
 	if collected:

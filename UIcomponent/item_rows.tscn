@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://bucjdlqnlx10y"]
 
 [ext_resource type="Script" uid="uid://dfiwktke3mhh4" path="res://UIcomponent/script/item_rows.gd" id="1_ipqsn"]
+[ext_resource type="Texture2D" uid="uid://hfixyib85kwh" path="res://assets/object/boomn4.png" id="3_vvnhi"]
 
 [node name="ItemRows" type="HBoxContainer" unique_id=1520677445]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_direction = 3
+offset_left = 250.47498
+offset_top = 26.0
+offset_right = 344.47498
+offset_bottom = 71.0
+pivot_offset = Vector2(1203, 303)
 script = ExtResource("1_ipqsn")
+bomb_texture = ExtResource("3_vvnhi")
+icon_size = Vector2(42, 42)

@@ -7,7 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="5_lkn7p"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="6_spkd1"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="7_g7vwq"]
+[ext_resource type="Texture2D" uid="uid://hfixyib85kwh" path="res://assets/object/boomn4.png" id="8_3762f"]
 [ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="8_akuhx"]
+[ext_resource type="PackedScene" uid="uid://bucjdlqnlx10y" path="res://UIcomponent/item_rows.tscn" id="8_skfqn"]
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="9_rubjw"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="9_spkd1"]
 [ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="10_lkn7p"]
@@ -17,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bnqmojmxftlgn" path="res://enemies/robot_3.tscn" id="14_pe584"]
 [ext_resource type="Script" uid="uid://dwbnin22yyune" path="res://object/script/cone.gd" id="14_qtbdr"]
 [ext_resource type="PackedScene" uid="uid://dgimx5hv2dph5" path="res://object/ItemPickup.tscn" id="15_k4vop"]
+[ext_resource type="Texture2D" uid="uid://mlr5mwcbw5xt" path="res://assets/object/Boom!!!.png" id="16_6pjwb"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="17_k4vop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtbdr"]
@@ -137,9 +140,47 @@ autoplay = true
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("6_spkd1")]
 
-[node name="blessingUI" parent="CanvasLayer" unique_id=1912679126 instance=ExtResource("7_g7vwq")]
+[node name="topright" type="Control" parent="CanvasLayer" unique_id=906279757]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemRows" parent="CanvasLayer/topright" unique_id=1520677445 instance=ExtResource("8_skfqn")]
+layout_mode = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/topright/ItemRows" unique_id=592038299]
+layout_mode = 2
+texture = ExtResource("8_3762f")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/topright/ItemRows" unique_id=606813825]
+layout_mode = 2
+texture = ExtResource("8_3762f")
+
+[node name="blessingUI" parent="CanvasLayer/topright" unique_id=1912679126 instance=ExtResource("7_g7vwq")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 723.0
+offset_right = 772.0
+offset_bottom = 85.0
+grow_horizontal = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="NinePatchRect" parent="CanvasLayer/topright/blessingUI" index="0" unique_id=1138250266]
+anchor_right = 4.472
+anchor_bottom = 0.0
+offset_right = -0.01600647
+offset_bottom = 94.0
 
 [node name="transition" type="Control" parent="CanvasLayer" unique_id=1524151000 node_paths=PackedStringArray("bgm")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,6 +203,7 @@ color = Color(0, 0, 0.12941177, 1)
 libraries/ = SubResource("AnimationLibrary_lkn7p")
 
 [node name="title" type="Control" parent="CanvasLayer" unique_id=1968687870]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -230,6 +272,8 @@ scale = Vector2(2, 2)
 blessing_reward = 5
 drop_type = 3
 item_drop_scene = ExtResource("15_k4vop")
+item_drop_id = "bomb"
+item_drop_texture = ExtResource("16_6pjwb")
 
 [node name="object" type="Node2D" parent="." unique_id=1981554591]
 
@@ -335,3 +379,4 @@ horizontal_alignment = 1
 [editable path="player/maincharacter"]
 [editable path="player/maincharacter/Statusbar"]
 [editable path="CanvasLayer/UImath"]
+[editable path="CanvasLayer/topright/blessingUI"]

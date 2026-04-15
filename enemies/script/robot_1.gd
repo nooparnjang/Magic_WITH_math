@@ -249,13 +249,20 @@ func try_drop_item() -> void:
 	for i in range(item_drop_count):
 		var item = item_drop_scene.instantiate()
 		get_tree().current_scene.add_child(item)
+
 		item.global_position = global_position + Vector2(
 			randf_range(-12.0, 12.0),
 			randf_range(-8.0, 8.0)
 		)
 
+		if item is Node2D:
+			item.z_index = 999
+
 		if item.has_method("setup_item"):
 			item.setup_item(item_drop_id, item_drop_amount, item_drop_texture)
+
+		if item.has_method("initialize_spawn"):
+			item.initialize_spawn()
 
 func give_blessing() -> void:
 	BlessingManager.add_blessings(blessing_reward)

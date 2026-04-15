@@ -8,6 +8,8 @@ radius = 17.117243
 
 [node name="ItemPickup" type="Area2D" unique_id=368922269]
 script = ExtResource("1_0mra1")
+item_id = "bomb"
+sprite_texture = ExtResource("1_lxmjo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=201927180]
 position = Vector2(-1, -9)
@@ -16,3 +18,5 @@ texture = ExtResource("1_lxmjo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=799432632]
 shape = SubResource("CircleShape2D_digmo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
