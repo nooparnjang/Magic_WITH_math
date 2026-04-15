@@ -338,16 +338,28 @@ offset_bottom = 63.0
 
 [node name="Label" type="Label" parent="tut/first3" unique_id=1111552913]
 layout_mode = 0
-offset_left = 242.0
-offset_top = 42.0
-offset_right = 653.0
-offset_bottom = 123.0
+offset_left = -328.0
+offset_top = 63.0
+offset_right = 83.0
+offset_bottom = 144.0
 theme = SubResource("Theme_qtbdr")
 theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
 theme_override_constants/outline_size = 8
 text = "different types of robots
 different difficulty of problem"
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="tut/first3/Label" unique_id=660890302]
+layout_mode = 0
+offset_left = 643.0
+offset_top = -34.0
+offset_right = 1054.0
+offset_bottom = 47.0
+theme = SubResource("Theme_qtbdr")
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "Not only can blessings can be dropped
+Including items!"
 
 [node name="first4" type="Control" parent="tut" unique_id=1136522391]
 layout_mode = 3
@@ -370,6 +382,26 @@ text = "The demo end here
 sorry kaaaa
 
 ติดตามตัวเต็มได้ที่ https://github.com/nooparnjang/Magic_WITH_math"
+horizontal_alignment = 1
+
+[node name="first5" type="Control" parent="tut" unique_id=797086084]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 651.0
+offset_top = 3.0
+offset_right = 691.0
+offset_bottom = 43.0
+
+[node name="Label" type="Label" parent="tut/first5" unique_id=1352234258]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 95.0
+offset_right = 669.0
+offset_bottom = 134.0
+theme = SubResource("Theme_qtbdr")
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "WATCH OUT!!"
 horizontal_alignment = 1
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]

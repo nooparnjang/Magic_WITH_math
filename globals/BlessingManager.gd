@@ -38,6 +38,12 @@ func set_item_count(item_id: String, value: int) -> void:
 		return
 
 	items[item_id] = max(value, 0)
+
+	if items[item_id] <= 0:
+		items.erase(item_id)
+		emit_signal("item_changed", item_id, 0)
+		return
+
 	emit_signal("item_changed", item_id, items[item_id])
 
 func add_item(item_id: String, amount: int = 1) -> void:
@@ -52,6 +58,12 @@ func add_item(item_id: String, amount: int = 1) -> void:
 
 	items[item_id] += amount
 	items[item_id] = max(items[item_id], 0)
+
+	if items[item_id] <= 0:
+		items.erase(item_id)
+		emit_signal("item_changed", item_id, 0)
+		return
+
 	emit_signal("item_changed", item_id, items[item_id])
 
 func spend_item(item_id: String, amount: int = 1) -> bool:
@@ -64,13 +76,31 @@ func spend_item(item_id: String, amount: int = 1) -> bool:
 	if not items.has(item_id):
 		return false
 
-	if items[item_id] < amount:
+	if int(items[item_id]) < amount:
 		return false
 
 	items[item_id] -= amount
 	items[item_id] = max(items[item_id], 0)
-	emit_signal("item_changed", item_id, items[item_id])
+
+	if items[item_id] <= 0:
+		items.erase(item_id)
+		emit_signal("item_changed", item_id, 0)
+	else:
+		emit_signal("item_changed", item_id, items[item_id])
+
 	return true
+
+func has_item(item_id: String, amount: int = 1) -> bool:
+	if item_id.is_empty():
+		return false
+
+	if amount <= 0:
+		return true
+
+	if not items.has(item_id):
+		return false
+
+	return int(items[item_id]) >= amount
 
 func get_item_count(item_id: String) -> int:
 	if item_id.is_empty():
@@ -79,7 +109,7 @@ func get_item_count(item_id: String) -> int:
 	if not items.has(item_id):
 		return 0
 
-	return items[item_id]
+	return int(items[item_id])
 
 func get_total_items() -> int:
 	var total := 0
