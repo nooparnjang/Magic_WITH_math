@@ -17,7 +17,6 @@ extends CharacterBody2D
 
 @export var damage_invincibility_time := 0.5
 
-# ฟื้นเลือดอัตโนมัติแบบช้ามาก
 @export var health_regen_per_second := 10.0
 @export var health_regen_delay := 4.0
 
@@ -34,8 +33,12 @@ var is_cast_releasing := false
 var is_dead := false
 var can_take_damage := true
 
-# นับเวลาตั้งแต่โดนดาเมจล่าสุด
 var time_since_last_damage := 0.0
+
+# target ที่จะโดนตีหลัง release จบ
+var pending_damage_target: Node2D = null
+var pending_damage_amount: int = 0
+
 
 func _ready() -> void:
 	add_to_group("player")
@@ -51,6 +54,7 @@ func _ready() -> void:
 
 	if not sprite.animation_finished.is_connected(_on_animated_sprite_2d_animation_finished):
 		sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -74,6 +78,11 @@ func _physics_process(delta: float) -> void:
 			velocity.y += gravity * delta
 
 		move_and_slide()
+
+		if sprite.sprite_frames.has_animation("release"):
+			if sprite.animation != "release":
+				sprite.play("release")
+
 		return
 
 	if is_answering or is_switching_target:
@@ -83,6 +92,11 @@ func _physics_process(delta: float) -> void:
 			velocity.y += gravity * delta
 
 		move_and_slide()
+
+		if is_answering:
+			if sprite.sprite_frames.has_animation("charge"):
+				if sprite.animation != "charge":
+					sprite.play("charge")
 
 		if Input.is_action_just_pressed("ui_closemath"):
 			cancel_math_mode()
@@ -106,29 +120,56 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	if not is_on_floor():
-		sprite.play("jump")
+		if sprite.animation != "jump":
+			sprite.play("jump")
 	elif direction == 0:
-		sprite.play("idle")
+		if sprite.animation != "idle":
+			sprite.play("idle")
 	else:
-		sprite.play("walk")
+		if sprite.animation != "walk":
+			sprite.play("walk")
 		sprite.flip_h = direction < 0
 
 	if Input.is_action_just_pressed("target_select") and not is_switching_target:
 		cycle_target()
 
-func start_cast_release() -> void:
-	if not sprite.sprite_frames.has_animation("casting"):
+
+func start_cast_release(target: Node2D = null, damage_amount: int = 1) -> void:
+	print("start_cast_release called")
+
+	pending_damage_target = target
+	pending_damage_amount = damage_amount
+
+	if not sprite.sprite_frames.has_animation("release"):
+		print("NO RELEASE ANIMATION")
+
+		if pending_damage_target != null and is_instance_valid(pending_damage_target):
+			if pending_damage_target.has_method("take_damage"):
+				pending_damage_target.take_damage(pending_damage_amount)
+
+		pending_damage_target = null
+		pending_damage_amount = 0
 		finish_answering()
 		return
 
 	is_answering = false
 	is_cast_releasing = true
-	sprite.play("casting")
+	sprite.play("release")
+	print("playing release")
+
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if is_cast_releasing and sprite.animation == "casting":
+	if is_cast_releasing and sprite.animation == "release":
+		if pending_damage_target != null and is_instance_valid(pending_damage_target):
+			if pending_damage_target.has_method("take_damage"):
+				pending_damage_target.take_damage(pending_damage_amount)
+
+		pending_damage_target = null
+		pending_damage_amount = 0
+
 		is_cast_releasing = false
 		finish_answering()
+
 
 func update_stamina(delta: float) -> void:
 	if is_dead:
@@ -149,6 +190,7 @@ func update_stamina(delta: float) -> void:
 	if status_bars != null and status_bars.has_method("set_stamina"):
 		status_bars.set_stamina(stamina, max_stamina)
 
+
 func update_health_regen(delta: float) -> void:
 	if is_dead:
 		return
@@ -156,19 +198,15 @@ func update_health_regen(delta: float) -> void:
 	if hp >= max_hp:
 		return
 
-	# ยังไม่ถึงเวลาที่จะเริ่มฟื้นเลือด
 	if time_since_last_damage < health_regen_delay:
 		return
-
-	# ถ้าอยากให้เข้มขึ้น จะเปิดบรรทัดนี้ก็ได้
-	# if is_answering or is_cast_releasing:
-	# 	return
 
 	hp += health_regen_per_second * delta
 	hp = min(hp, max_hp)
 
 	if status_bars != null and status_bars.has_method("set_health"):
 		status_bars.set_health(hp, max_hp)
+
 
 func _on_target_radius_body_entered(body: Node2D) -> void:
 	if body.is_in_group("targetable"):
@@ -179,6 +217,7 @@ func _on_target_radius_body_entered(body: Node2D) -> void:
 		if body.has_method("activate"):
 			body.activate(self)
 
+
 func _on_target_radius_body_exited(body: Node2D) -> void:
 	if targets_in_range.has(body):
 		var removed_index: int = targets_in_range.find(body)
@@ -186,6 +225,10 @@ func _on_target_radius_body_exited(body: Node2D) -> void:
 
 		if removed_index <= current_target_index:
 			current_target_index -= 1
+
+	# ถ้ากำลังปล่อย release อยู่ ห้ามรีเซ็ต state ทันที
+	if is_cast_releasing and body == current_target:
+		return
 
 	if current_target == body:
 		if current_target.has_method("set_selected"):
@@ -205,6 +248,10 @@ func _on_target_radius_body_exited(body: Node2D) -> void:
 		if camera_rig != null and camera_rig.has_method("unlock_focus"):
 			camera_rig.unlock_focus()
 
+		if not is_dead and is_on_floor():
+			sprite.play("idle")
+
+
 func cleanup_targets() -> void:
 	var valid_targets: Array[Node2D] = []
 
@@ -217,8 +264,10 @@ func cleanup_targets() -> void:
 	if current_target_index >= targets_in_range.size():
 		current_target_index = -1
 
+
 func cycle_target() -> void:
 	_cycle_target_async()
+
 
 func _cycle_target_async() -> void:
 	if is_dead:
@@ -265,8 +314,14 @@ func _cycle_target_async() -> void:
 		camera_rig.lock_focus(current_target)
 
 	is_answering = true
+	is_cast_releasing = false
+
+	if sprite.sprite_frames.has_animation("charge"):
+		sprite.play("charge")
+
 	math_ui.open_question(current_target, self)
 	is_switching_target = false
+
 
 func cancel_math_mode() -> void:
 	if current_target != null and is_instance_valid(current_target):
@@ -278,9 +333,12 @@ func cancel_math_mode() -> void:
 	is_answering = false
 	is_switching_target = false
 	is_cast_releasing = false
+	pending_damage_target = null
+	pending_damage_amount = 0
 
-	if sprite.animation == "casting":
-		sprite.play("idle")
+	if sprite.animation == "charge" or sprite.animation == "release":
+		if is_on_floor():
+			sprite.play("idle")
 
 	if math_ui != null and math_ui.has_method("close_ui_silent"):
 		math_ui.close_ui_silent()
@@ -289,6 +347,7 @@ func cancel_math_mode() -> void:
 
 	if camera_rig != null and camera_rig.has_method("unlock_focus"):
 		camera_rig.unlock_focus()
+
 
 func finish_answering() -> void:
 	if current_target != null and is_instance_valid(current_target):
@@ -304,6 +363,10 @@ func finish_answering() -> void:
 	if camera_rig != null and camera_rig.has_method("unlock_focus"):
 		camera_rig.unlock_focus()
 
+	if not is_dead and is_on_floor():
+		sprite.play("idle")
+
+
 func take_damage(amount: float) -> void:
 	if is_dead:
 		return
@@ -316,7 +379,6 @@ func take_damage(amount: float) -> void:
 	hp -= amount
 	hp = max(hp, 0.0)
 
-	# รีเซ็ตตัวจับเวลา regen ทุกครั้งที่โดนตี
 	time_since_last_damage = 0.0
 
 	print("player took damage:", amount, "hp left:", hp)
@@ -332,6 +394,7 @@ func take_damage(amount: float) -> void:
 	if not is_dead:
 		can_take_damage = true
 
+
 func heal(amount: float) -> void:
 	if is_dead:
 		return
@@ -342,6 +405,7 @@ func heal(amount: float) -> void:
 	if status_bars != null and status_bars.has_method("set_health"):
 		status_bars.set_health(hp, max_hp)
 
+
 func restore_stamina(amount: float) -> void:
 	if is_dead:
 		return
@@ -351,6 +415,7 @@ func restore_stamina(amount: float) -> void:
 
 	if status_bars != null and status_bars.has_method("set_stamina"):
 		status_bars.set_stamina(stamina, max_stamina)
+
 
 func consume_stamina(amount: float) -> void:
 	if is_dead:
@@ -364,6 +429,7 @@ func consume_stamina(amount: float) -> void:
 
 	if stamina <= 0.0:
 		cancel_math_mode()
+
 
 func die() -> void:
 	if is_dead:

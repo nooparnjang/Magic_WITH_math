@@ -90,7 +90,6 @@ func build_question_by_digits(a_min: int, a_max: int, b_min: int, b_max: int, op
 			a = randi_range(a_min, a_max)
 			b = randi_range(b_min, b_max)
 
-			# กันคำตอบติดลบ
 			if a < b:
 				var temp := a
 				a = b
@@ -104,7 +103,6 @@ func build_question_by_digits(a_min: int, a_max: int, b_min: int, b_max: int, op
 			answer = a * b
 
 		"/":
-			# ต้องหารลงตัว และ b ห้ามเป็น 0
 			b = randi_range(max(1, b_min), max(1, b_max))
 
 			var quotient_min := maxi(1, int(ceil(float(a_min) / float(b))))
@@ -130,19 +128,19 @@ func _on_answer_submitted(text: String) -> void:
 
 	var cleaned := text.strip_edges()
 	var player := player_ref
+	var target := current_target
 	var is_correct := cleaned.is_valid_int() and int(cleaned) == correct_answer
 
 	if is_correct:
-		if current_target.has_method("take_damage"):
-			current_target.take_damage(1)
-			print("Correct")
-
+		print("Correct")
 		close_ui_silent()
 
 		if player != null and is_instance_valid(player):
 			if player.has_method("start_cast_release"):
-				player.start_cast_release()
+				player.start_cast_release(target, 1)
 			else:
+				if target != null and is_instance_valid(target) and target.has_method("take_damage"):
+					target.take_damage(1)
 				player.finish_answering()
 	else:
 		print("Wrong")
