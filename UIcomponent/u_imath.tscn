@@ -33,6 +33,8 @@ horizontal_alignment = 1
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer" unique_id=2129675762]
 layout_mode = 2
 theme = SubResource("Theme_vy7jp")
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 5
 placeholder_text = "Enter..."
 alignment = 1
 flat = true
