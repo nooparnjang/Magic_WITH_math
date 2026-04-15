@@ -17,6 +17,18 @@ var question_pattern := 2
 
 @export var allowed_operators: Array[String] = ["+", "-", "*", "/"]
 
+# ---------------------------
+# ระบบดรอป
+# ---------------------------
+@export_enum("none", "blessings", "item", "both")
+var drop_type := 1
+
+@export var item_drop_scene: PackedScene
+@export var item_drop_count: int = 1
+@export var randomize_drop := false
+@export_range(0.0, 1.0, 0.01) var blessing_drop_chance := 1.0
+@export_range(0.0, 1.0, 0.01) var item_drop_chance := 1.0
+
 var hp := 0
 var player_ref: Node2D = null
 var can_attack := true
@@ -141,14 +153,12 @@ func try_attack_player() -> void:
 	var did_play_fight := false
 
 	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("fight"):
-		# สำคัญ: ปิด loop ไม่งั้น animation_finished จะไม่มา
 		sprite.sprite_frames.set_animation_loop("fight", false)
 		sprite.play("fight")
 		did_play_fight = true
 	else:
 		print("ไม่มีอนิเมชัน fight")
 
-	# จังหวะปล่อยดาเมจ อยู่กลาง ๆ อนิเมชัน
 	await get_tree().create_timer(0.18).timeout
 
 	if is_dead:
@@ -163,11 +173,9 @@ func try_attack_player() -> void:
 				print("enemy dealt damage:", contact_damage)
 				player_ref.take_damage(contact_damage)
 
-	# รอให้อนิเมชันตีจบจริง
 	if did_play_fight and sprite.animation == "fight":
 		await sprite.animation_finished
 	else:
-		# fallback เผื่อไม่มีอนิเมชัน
 		await get_tree().create_timer(0.15).timeout
 
 	if is_dead:
@@ -195,8 +203,7 @@ func die() -> void:
 	if hitbox_collision != null:
 		hitbox_collision.disabled = true
 
-	give_blessing()
-	show_blessing_popup()
+	handle_drops()
 	spawn_effect()
 
 	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("dead"):
@@ -204,6 +211,44 @@ func die() -> void:
 		await sprite.animation_finished
 
 	queue_free()
+
+func handle_drops() -> void:
+	match drop_type:
+		0:
+			# none
+			pass
+		1:
+			# blessings
+			try_drop_blessing()
+		2:
+			# item
+			try_drop_item()
+		3:
+			# both
+			try_drop_blessing()
+			try_drop_item()
+
+func try_drop_blessing() -> void:
+	if randomize_drop and randf() > blessing_drop_chance:
+		return
+
+	if blessing_reward <= 0:
+		return
+
+	give_blessing()
+	show_blessing_popup()
+
+func try_drop_item() -> void:
+	if item_drop_scene == null:
+		return
+
+	if randomize_drop and randf() > item_drop_chance:
+		return
+
+	for i in item_drop_count:
+		var item = item_drop_scene.instantiate()
+		get_tree().current_scene.add_child(item)
+		item.global_position = global_position + Vector2(randf_range(-12.0, 12.0), randf_range(-8.0, 8.0))
 
 func give_blessing() -> void:
 	BlessingManager.add_blessings(blessing_reward)
