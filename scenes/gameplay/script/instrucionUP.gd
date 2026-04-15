@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @export var required_blessings: int = 25
-@export var float_up_distance: float = 200.0
+@export var float_up_distance: float = 300.0
 @export var float_duration: float = 0.8
 
 var removed := false

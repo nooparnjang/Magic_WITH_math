@@ -240,6 +240,7 @@ sprite_frames = SubResource("SpriteFrames_7cl1g")
 animation = &"charge"
 frame = 1
 frame_progress = 0.43063262
+speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1737486176]
 shape = SubResource("CapsuleShape2D_m7d80")

@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="15_u54mw"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="17_5omta"]
 [ext_resource type="Texture2D" uid="uid://bxi8yctds1f8k" path="res://assets/UI/Instruction_small.png" id="21_s3kdt"]
-[ext_resource type="Script" path="res://scenes/gameplay/script/instrucionUP.gd" id="22_na311"]
+[ext_resource type="Script" uid="uid://douwhn1m13s20" path="res://scenes/gameplay/script/instrucionUP.gd" id="22_na311"]
 [ext_resource type="PackedScene" uid="uid://bucjdlqnlx10y" path="res://UIcomponent/item_rows.tscn" id="23_lg2a2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
@@ -218,7 +218,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(229, -200)]
+"values": [Vector2(229, -300)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -261,7 +261,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(229, -200), Vector2(229, 200)]
+"values": [Vector2(229, -300), Vector2(229, 250)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -565,7 +565,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/instructionforth" unique_id=2140930361]
-position = Vector2(229, -200)
+position = Vector2(229, -300)
 scale = Vector2(0.75749993, 0.7791666)
 texture = ExtResource("21_s3kdt")
 script = ExtResource("22_na311")
