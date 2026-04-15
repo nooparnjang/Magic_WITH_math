@@ -14,11 +14,10 @@ default_font_size = 40
 
 [node name="blessingUI" type="Control" unique_id=1912679126]
 layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -185.0
-offset_right = -185.0
+anchor_left = 0.80700004
+anchor_right = 0.80700004
+offset_left = 0.27996826
+offset_right = 0.27996826
 grow_horizontal = 0
 size_flags_horizontal = 8
 script = ExtResource("1_r8ah5")

@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="17_5omta"]
 [ext_resource type="Texture2D" uid="uid://0kcbwkpormqn" path="res://assets/UI/Instruction_small.png" id="21_s3kdt"]
 [ext_resource type="Script" uid="uid://douwhn1m13s20" path="res://scenes/gameplay/script/instrucionUP.gd" id="22_na311"]
+[ext_resource type="PackedScene" uid="uid://bucjdlqnlx10y" path="res://UIcomponent/item_rows.tscn" id="23_lg2a2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgty"]
 size = Vector2(8572.5, 36)
@@ -479,11 +480,10 @@ texture = ExtResource("10_e7oia")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tut/third" unique_id=69258935]
 libraries/ = SubResource("AnimationLibrary_an7bs")
 
-[node name="forth" type="Node2D" parent="Tut" unique_id=45996511 node_paths=PackedStringArray("camera_rig", "focus_target", "floating_sprite")]
+[node name="forth" type="Node2D" parent="Tut" unique_id=45996511 node_paths=PackedStringArray("camera_rig", "focus_target")]
 script = ExtResource("11_cscyk")
 camera_rig = NodePath("../../camera")
 focus_target = NodePath("../../obstacle/cone")
-floating_sprite = NodePath("../../CanvasLayer/instructionforth/Sprite2D")
 
 [node name="Area2D" type="Area2D" parent="Tut/forth" unique_id=23380089]
 
@@ -556,8 +556,6 @@ autoplay = true
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("15_u54mw")]
 
-[node name="blessingUI" parent="CanvasLayer" unique_id=1912679126 instance=ExtResource("17_5omta")]
-
 [node name="instructionforth" type="Control" parent="CanvasLayer" unique_id=1078328865]
 layout_mode = 3
 anchors_preset = 15
@@ -571,6 +569,21 @@ position = Vector2(229, -200)
 scale = Vector2(0.75749993, 0.7791666)
 texture = ExtResource("21_s3kdt")
 script = ExtResource("22_na311")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=479325024]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -179.0
+offset_bottom = 82.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="blessingUI" parent="CanvasLayer/HBoxContainer" unique_id=1912679126 instance=ExtResource("17_5omta")]
+layout_mode = 2
+
+[node name="ItemRows" parent="CanvasLayer/HBoxContainer" unique_id=1221718235 instance=ExtResource("23_lg2a2")]
+layout_mode = 2
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
