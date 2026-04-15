@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dgimx5hv2dph5"]
+
+[ext_resource type="Texture2D" uid="uid://mlr5mwcbw5xt" path="res://assets/object/Boom!!!.png" id="1_lxmjo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_digmo"]
+radius = 17.117243
+
+[node name="bomb" type="RigidBody2D" unique_id=535133874]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=201927180]
+position = Vector2(-1, -9)
+scale = Vector2(0.05, 0.052)
+texture = ExtResource("1_lxmjo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=799432632]
+shape = SubResource("CircleShape2D_digmo")
