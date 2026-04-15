@@ -305,6 +305,29 @@ text = "different types of robots
 different difficulty of problem"
 horizontal_alignment = 1
 
+[node name="first4" type="Control" parent="tut" unique_id=1136522391]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3234.0
+offset_top = 35.0
+offset_right = 3274.0
+offset_bottom = 75.0
+
+[node name="Label" type="Label" parent="tut/first4" unique_id=1656575857]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 83.0
+offset_right = 1072.0
+offset_bottom = 248.0
+theme = SubResource("Theme_qtbdr")
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "The demo end here
+sorry kaaaa
+
+ติดตามตัวเต็มได้ที่ https://github.com/nooparnjang/Magic_WITH_math"
+horizontal_alignment = 1
+
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
 [connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
