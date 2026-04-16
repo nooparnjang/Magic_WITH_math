@@ -88,6 +88,10 @@ default_font_size = 20
 default_font = ExtResource("9_spkd1")
 default_font_size = 30
 
+[sub_resource type="Theme" id="Theme_de61j"]
+default_font = ExtResource("9_spkd1")
+default_font_size = 35
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6m8wl"]
 atlas = ExtResource("21_de61j")
 region = Rect2(0, 0, 256, 256)
@@ -417,15 +421,28 @@ horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="tut/first3" unique_id=1071571761]
 layout_mode = 0
-offset_left = 1216.0
-offset_top = -2.9999993
-offset_right = 1507.0
-offset_bottom = 79.35498
+offset_left = 1181.0
+offset_top = 47.0
+offset_right = 1484.0
+offset_bottom = 129.35498
 theme = SubResource("Theme_qtbdr")
 theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
 theme_override_constants/outline_size = 8
 text = "You can talk to npc
 lets see what they want"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="tut/first3" unique_id=1705906609]
+layout_mode = 0
+offset_left = 1514.0
+offset_top = 160.0
+offset_right = 1718.0
+offset_bottom = 212.0
+theme = SubResource("Theme_de61j")
+theme_override_colors/font_color = Color(0.8784314, 0.68235296, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "E to interact"
 horizontal_alignment = 1
 
 [node name="first5" type="Control" parent="tut" unique_id=797086084]
@@ -477,6 +494,7 @@ shape = SubResource("RectangleShape2D_3762f")
 position = Vector2(3926, 320)
 scale = Vector2(2, 2)
 collision_mask = 0
+metadata/_edit_lock_ = true
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
