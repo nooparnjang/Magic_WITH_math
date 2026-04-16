@@ -478,7 +478,6 @@ shape = SubResource("RectangleShape2D_3762f")
 [node name="Wendy" parent="Npc" unique_id=768444084 instance=ExtResource("23_6dini")]
 position = Vector2(3926, 320)
 scale = Vector2(2, 2)
-collision_layer = 2
 collision_mask = 0
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
