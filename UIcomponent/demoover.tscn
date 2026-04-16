@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://br3128obts5ld"]
+
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="1_ix1na"]
+
+[sub_resource type="Theme" id="Theme_011to"]
+default_font = ExtResource("1_ix1na")
+default_font_size = 50
+
+[node name="demoover" type="Control" unique_id=1187714313]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=374644917]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.80784315)
+
+[node name="Label" type="Label" parent="." unique_id=631395326]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -22.5
+offset_right = 130.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_011to")
+text = "Demo over thanks for playing
+back to the main menu by pressing enter"
+horizontal_alignment = 1

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var gravity := 1200.0
 @export var math_ui: Control
 @export var camera_rig: Node2D
+@export var game_over_ui: Control
 
 @export var max_hp := 100.0
 @export var hp := 100.0
@@ -776,7 +777,21 @@ func die() -> void:
 	is_dead = true
 	can_take_damage = false
 	cancel_math_mode()
+	clear_bomb_target_icon()
+
+	if is_on_floor():
+		sprite.play("idle")
+
 	print("player dead")
+
+	if game_over_ui != null:
+		if game_over_ui.has_method("show_game_over"):
+			game_over_ui.show_game_over()
+		else:
+			game_over_ui.visible = true
+			game_over_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	get_tree().paused = true
 
 func begin_interaction() -> void:
 	if is_dead:

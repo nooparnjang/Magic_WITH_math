@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://dyml4yfos24sc" path="res://enemies/boss_robot.tscn" id="13_vsx7j"]
 [ext_resource type="PackedScene" uid="uid://ch4caakv7qigg" path="res://enemies/boss_projectile.tscn" id="14_kg1qh"]
 [ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="15_uw6w4"]
+[ext_resource type="PackedScene" uid="uid://bsj34t8c6jvea" path="res://UIcomponent/gameover.tscn" id="16_npuxs"]
 [ext_resource type="PackedScene" uid="uid://dgimx5hv2dph5" path="res://object/ItemPickup.tscn" id="16_xd0r6"]
+[ext_resource type="Script" uid="uid://fg0rocq663t1" path="res://UIcomponent/script/gameover.gd" id="17_sl3ip"]
 [ext_resource type="Texture2D" uid="uid://dy7ct2mxt56l" path="res://assets/object/Engine_SR20bigg.png" id="18_uw6w4"]
 [ext_resource type="Script" uid="uid://bek632y1p8chu" path="res://scenes/gameplay/script/zoomINBoss.gd" id="19_xd0r6"]
 
@@ -114,12 +116,13 @@ size = Vector2(12, 396)
 [node name="player" type="Node2D" parent="." unique_id=1293433591]
 z_index = 1
 
-[node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui", "camera_rig") groups=["projectile_blocker"] instance=ExtResource("2_tna8g")]
+[node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui", "camera_rig", "game_over_ui") groups=["projectile_blocker"] instance=ExtResource("2_tna8g")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(500, 308)
 scale = Vector2(2.5, 2.5)
 math_ui = NodePath("../../CanvasLayer/UImath")
 camera_rig = NodePath("../../camera")
+game_over_ui = NodePath("../../CanvasLayer/gameover")
 bomb_scene = ExtResource("3_uw6w4")
 bomb_target_icon_scene = ExtResource("4_xd0r6")
 
@@ -284,6 +287,9 @@ bbcode_enabled = true
 text = "[wave]fight for the engine"
 fit_content = true
 horizontal_alignment = 1
+
+[node name="gameover" parent="CanvasLayer" unique_id=1556702656 instance=ExtResource("16_npuxs")]
+script = ExtResource("17_sl3ip")
 
 [node name="boss" type="Node2D" parent="." unique_id=1442021845]
 
