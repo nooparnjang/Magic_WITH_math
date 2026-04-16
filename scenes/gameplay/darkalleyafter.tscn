@@ -399,42 +399,30 @@ horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="tut/first3" unique_id=2084983226]
 layout_mode = 0
-offset_left = 1181.0
-offset_top = 47.0
-offset_right = 1484.0
-offset_bottom = 129.35498
+offset_left = 1167.0
+offset_top = 39.0
+offset_right = 1595.0
+offset_bottom = 121.35498
 theme = SubResource("Theme_v2al5")
 theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
 theme_override_constants/outline_size = 8
-text = "You can talk to npc
-lets see what they want"
-horizontal_alignment = 1
-
-[node name="Label5" type="Label" parent="tut/first3" unique_id=1920667996]
-layout_mode = 0
-offset_left = 1507.0
-offset_top = 176.0
-offset_right = 1711.0
-offset_bottom = 228.0
-theme = SubResource("Theme_0mlqs")
-theme_override_colors/font_color = Color(0.8784314, 0.68235296, 1, 1)
-theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
-theme_override_constants/outline_size = 8
-text = "E to interact"
+text = "seem like you got a lot of blessings
+ESC to visit shop"
 horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="tut/first3" unique_id=1195582977]
 z_index = 1
 layout_mode = 0
-offset_left = 2107.0
-offset_top = 60.0
-offset_right = 2311.0
-offset_bottom = 112.0
+offset_left = 2067.0
+offset_top = 21.0
+offset_right = 2328.0
+offset_bottom = 116.0
 theme = SubResource("Theme_0mlqs")
 theme_override_colors/font_color = Color(0.8784314, 0.68235296, 1, 1)
 theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
 theme_override_constants/outline_size = 8
-text = "E to interact"
+text = "No business here....
+go back to Wendy"
 horizontal_alignment = 1
 
 [node name="first5" type="Control" parent="tut" unique_id=2031025577]
