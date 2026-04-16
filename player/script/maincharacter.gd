@@ -51,6 +51,9 @@ var is_cast_releasing := false
 var is_dead := false
 var can_take_damage := true
 
+# เพิ่มสำหรับคุยกับ NPC
+var is_interacting := false
+
 var time_since_last_damage := 0.0
 
 var pending_damage_target: Node2D = null
@@ -87,6 +90,10 @@ func _input(event: InputEvent) -> void:
 	if is_dead:
 		return
 
+	# ระหว่างคุย ไม่ให้สลับไอเท็ม
+	if is_interacting:
+		return
+
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			cycle_selected_item(-1)
@@ -107,6 +114,20 @@ func _physics_process(delta: float) -> void:
 
 	update_stamina(delta)
 	update_health_regen(delta)
+
+	# ระหว่างคุยกับ NPC
+	if is_interacting:
+		velocity.x = 0.0
+
+		if not is_on_floor():
+			velocity.y += gravity * delta
+
+		move_and_slide()
+
+		if is_on_floor() and sprite.animation != "idle":
+			sprite.play("idle")
+
+		return
 
 	if is_cast_releasing:
 		velocity.x = 0.0
@@ -186,7 +207,6 @@ func _build_item_texture_map() -> void:
 func refresh_selectable_items() -> void:
 	selectable_items.clear()
 
-	# มือเปล่า
 	selectable_items.append("")
 
 	var all_items: Dictionary = BlessingManager.get_all_items()
@@ -357,6 +377,9 @@ func update_health_regen(delta: float) -> void:
 		status_bars.set_health(hp, max_hp)
 
 func _on_target_radius_body_entered(body: Node2D) -> void:
+	if is_interacting:
+		return
+
 	if body.is_in_group("targetable"):
 		if not targets_in_range.has(body):
 			targets_in_range.append(body)
@@ -414,6 +437,9 @@ func cycle_target() -> void:
 
 func _cycle_target_async() -> void:
 	if is_dead:
+		return
+
+	if is_interacting:
 		return
 
 	if is_switching_target:
@@ -575,3 +601,13 @@ func die() -> void:
 	can_take_damage = false
 	cancel_math_mode()
 	print("player dead")
+
+func begin_interaction() -> void:
+	if is_dead:
+		return
+
+	is_interacting = true
+	cancel_math_mode()
+
+func end_interaction() -> void:
+	is_interacting = false

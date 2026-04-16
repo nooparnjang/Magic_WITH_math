@@ -223,7 +223,6 @@ offset_right = -0.01600647
 offset_bottom = 94.0
 
 [node name="transition" type="Control" parent="CanvasLayer" unique_id=1524151000 node_paths=PackedStringArray("bgm")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,7 +245,6 @@ color = Color(0, 0, 0.12941177, 1)
 libraries/ = SubResource("AnimationLibrary_lkn7p")
 
 [node name="title" type="Control" parent="CanvasLayer" unique_id=1968687870]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -407,10 +405,10 @@ horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="tut/first3" unique_id=712871161]
 layout_mode = 0
-offset_left = 689.0
-offset_top = 171.0
-offset_right = 808.0
-offset_bottom = 213.0
+offset_left = 796.0
+offset_top = 101.0
+offset_right = 915.0
+offset_bottom = 143.0
 theme = SubResource("Theme_qtbdr")
 theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
 theme_override_constants/outline_size = 8
