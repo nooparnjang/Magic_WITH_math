@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ch4caakv7qigg"]
+
+[ext_resource type="Script" uid="uid://b1ewsq333cfjb" path="res://enemies/script/boss_projectile.gd" id="1_fpg4s"]
+[ext_resource type="Texture2D" uid="uid://cpbwu2jb3mbu4" path="res://assets/player/craftpix-net-434566-free-robot-pixel-art-sprite-sheets/Infantryman/Charge_1.png" id="2_bnxsb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8k71"]
+atlas = ExtResource("2_bnxsb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k3fe"]
+atlas = ExtResource("2_bnxsb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jllg3"]
+atlas = ExtResource("2_bnxsb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0mm5"]
+atlas = ExtResource("2_bnxsb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kqq0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8k71")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k3fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jllg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0mm5")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vomy3"]
+radius = 6.0
+
+[node name="BossProjectile" type="Area2D" unique_id=2054459182]
+scale = Vector2(4, 4)
+script = ExtResource("1_fpg4s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=434203793]
+position = Vector2(0, -1.0000005)
+scale = Vector2(1.53125, 1.40625)
+sprite_frames = SubResource("SpriteFrames_kqq0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1897681169]
+shape = SubResource("CircleShape2D_vomy3")

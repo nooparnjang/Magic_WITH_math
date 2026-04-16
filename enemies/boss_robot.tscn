@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dyml4yfos24sc"]
+
+[ext_resource type="SpriteFrames" uid="uid://dowqmwuklkavm" path="res://assets/tres_enemy/robot1.tres" id="1_2pvil"]
+[ext_resource type="Script" uid="uid://nxxlkplyokn3" path="res://enemies/script/boss_robot.gd" id="1_5iw4k"]
+[ext_resource type="Texture2D" uid="uid://dvrmomkb4fi4a" path="res://assets/UI/SimpleBarRed-Sheet0.png" id="2_w8fcl"]
+[ext_resource type="Texture2D" uid="uid://diy4l0vm43qvv" path="res://assets/UI/SimpleBarRed-Sheet.png" id="3_ckat2"]
+[ext_resource type="Script" uid="uid://bgu3m16wxe7wy" path="res://enemies/script/bossstatus.gd" id="3_d86nd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h61wf"]
+height = 76.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iw4k"]
+size = Vector2(60, 34)
+
+[node name="BossRobot" type="CharacterBody2D" unique_id=184376337]
+script = ExtResource("1_5iw4k")
+max_hp = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1979198086]
+self_modulate = Color(0.6252791, 0.7812768, 0.2006616, 1)
+position = Vector2(0, -27)
+sprite_frames = ExtResource("1_2pvil")
+animation = &"fight"
+frame_progress = 0.0458596
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=801294347]
+shape = SubResource("CapsuleShape2D_h61wf")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=589606610]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=942705079]
+position = Vector2(18, -12)
+shape = SubResource("RectangleShape2D_5iw4k")
+
+[node name="Bossstatus" type="Node2D" parent="." unique_id=474560263]
+position = Vector2(-48, -46)
+script = ExtResource("3_d86nd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bossstatus" unique_id=1896373869]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="healthbar" type="TextureProgressBar" parent="Bossstatus/VBoxContainer" unique_id=1111151347]
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("2_w8fcl")
+texture_progress = ExtResource("3_ckat2")
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=1196710627]
+position = Vector2(-3, -13)
+
+[node name="Attacktimer" type="Timer" parent="." unique_id=1649754455]
+
+[node name="CollisionDamageCooldown" type="Timer" parent="." unique_id=655208789]

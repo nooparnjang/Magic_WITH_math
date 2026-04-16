@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="17_k4vop"]
 [ext_resource type="Shader" uid="uid://dl0pf55ys6tcy" path="res://scenes/gameplay/script/shader/darkalley.gdshader" id="21_3762f"]
 [ext_resource type="Texture2D" uid="uid://b6bbwlrq5y775" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_2/Idle.png" id="21_de61j"]
+[ext_resource type="Script" uid="uid://chp2s8lej77iv" path="res://scenes/gameplay/script/teleport.gd" id="22_6dini"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="23_6dini"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtbdr"]
@@ -121,18 +122,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6jmk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3762f"]
+size = Vector2(23, 837)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m8wl"]
+size = Vector2(63, 428)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_de61j"]
 shader = ExtResource("21_3762f")
 shader_parameter/shadow_color = Color(0, 0, 0, 0.95)
-shader_parameter/edge_width = 0.22
-shader_parameter/pixel_size = 6.0
+shader_parameter/edge_width = 0.1
+shader_parameter/pixel_size = 1.0
 shader_parameter/noise_speed = 0.6
 shader_parameter/noise_strength = 0.18
 shader_parameter/softness = 0.08
-shader_parameter/left_edge = true
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3762f"]
-size = Vector2(23, 837)
 
 [node name="Darkalley" type="Node2D" unique_id=1584864804]
 
@@ -434,10 +437,24 @@ horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="tut/first3" unique_id=1705906609]
 layout_mode = 0
-offset_left = 1514.0
-offset_top = 160.0
-offset_right = 1718.0
-offset_bottom = 212.0
+offset_left = 1507.0
+offset_top = 176.0
+offset_right = 1711.0
+offset_bottom = 228.0
+theme = SubResource("Theme_de61j")
+theme_override_colors/font_color = Color(0.8784314, 0.68235296, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "E to interact"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="tut/first3" unique_id=1978994924]
+z_index = 1
+layout_mode = 0
+offset_left = 2107.0
+offset_top = 60.0
+offset_right = 2311.0
+offset_bottom = 112.0
 theme = SubResource("Theme_de61j")
 theme_override_colors/font_color = Color(0.8784314, 0.68235296, 1, 1)
 theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
@@ -473,20 +490,27 @@ metadata/_edit_lock_ = true
 
 [node name="teleport" type="Node2D" parent="." unique_id=432697567]
 
-[node name="ColorRect" type="ColorRect" parent="teleport" unique_id=2041535016]
-material = SubResource("ShaderMaterial_i6jmk")
-offset_left = 4518.0
-offset_top = -417.0
-offset_right = 5451.0
-offset_bottom = 399.0
-color = Color(0, 0, 0, 1)
-
 [node name="Area2D" type="StaticBody2D" parent="teleport" unique_id=1644199302]
 disable_mode = 1
+script = ExtResource("22_6dini")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleport/Area2D" unique_id=1108669605]
 position = Vector2(4926, -16)
 shape = SubResource("RectangleShape2D_3762f")
+
+[node name="Area2D" type="Area2D" parent="teleport/Area2D" unique_id=625013078]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport/Area2D/Area2D" unique_id=1460501424]
+position = Vector2(4927.5, 185)
+shape = SubResource("RectangleShape2D_6m8wl")
+
+[node name="ColorRect" type="ColorRect" parent="teleport" unique_id=1056771199]
+material = SubResource("ShaderMaterial_de61j")
+offset_left = 4787.0
+offset_top = -373.0
+offset_right = 5761.0
+offset_bottom = 400.0
+color = Color(0, 0, 0, 1)
 
 [node name="Npc" type="Node2D" parent="." unique_id=210967284]
 
@@ -499,6 +523,7 @@ metadata/_edit_lock_ = true
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
 [connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
+[connection signal="area_entered" from="teleport/Area2D/Area2D" to="teleport/Area2D" method="_on_area_2d_area_entered"]
 
 [editable path="player/maincharacter"]
 [editable path="player/maincharacter/Statusbar"]

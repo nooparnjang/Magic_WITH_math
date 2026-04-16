@@ -5,6 +5,7 @@ extends HBoxContainer
 @export var gem_texture: Texture2D
 @export var potion_texture: Texture2D
 @export var coin_texture: Texture2D
+@export var engine_part_texture: Texture2D
 
 @export var icon_size: Vector2 = Vector2(32, 32)
 
@@ -16,7 +17,8 @@ func _ready() -> void:
 		"scrap": scrap_texture,
 		"gem": gem_texture,
 		"potion": potion_texture,
-		"coin": coin_texture
+		"coin": coin_texture,
+		"engine_part": engine_part_texture
 	}
 
 	if not BlessingManager.item_changed.is_connected(_on_item_changed):

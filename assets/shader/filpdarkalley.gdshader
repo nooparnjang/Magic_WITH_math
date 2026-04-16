@@ -13,11 +13,10 @@ float hash(vec2 p) {
 
 void fragment() {
 	vec2 uv = UV;
+	uv.x = 1.0 - uv.x;
 
-	// 👉 FIX: ใช้ด้านซ้ายตลอด
 	float edge_coord = uv.x;
 
-	// pixel noise
 	vec2 pixel_uv = floor(uv * vec2(200.0 / pixel_size, 120.0 / pixel_size));
 	float n = hash(pixel_uv + floor(TIME * noise_speed * 10.0));
 

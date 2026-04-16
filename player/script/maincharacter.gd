@@ -33,7 +33,8 @@ const ITEM_TEXTURE_PATHS: Dictionary = {
 	"scrap": "res://assets/UI/selecting/bombSelect.png",
 	"gem": "res://assets/UI/selecting/bombSelect.png",
 	"potion": "res://assets/UI/selecting/bombSelect.png",
-	"coin": "res://assets/UI/selecting/bombSelect.png"
+	"coin": "res://assets/UI/selecting/bombSelect.png",
+	"engine_part":"res://assets/UI/selecting/engineSelect.png"
 }
 
 var item_texture_map: Dictionary = {}

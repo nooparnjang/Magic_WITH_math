@@ -1,0 +1,334 @@
+[gd_scene format=3 uid="uid://dh0s2dsxankpp"]
+
+[ext_resource type="PackedScene" uid="uid://dxekltvf7m50c" path="res://scenes/gameplay/bg.tscn" id="1_c85w2"]
+[ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_tna8g"]
+[ext_resource type="Script" uid="uid://nu0mm7n41ijr" path="res://scenes/gameplay/script/camera_2d.gd" id="3_tkxmi"]
+[ext_resource type="Shader" uid="uid://dl0pf55ys6tcy" path="res://scenes/gameplay/script/shader/darkalley.gdshader" id="4_u3cvq"]
+[ext_resource type="Shader" uid="uid://dhnhnrr52sqkq" path="res://assets/shader/filpdarkalley.gdshader" id="5_eetoi"]
+[ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="6_im63x"]
+[ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="7_0yulc"]
+[ext_resource type="PackedScene" uid="uid://bucjdlqnlx10y" path="res://UIcomponent/item_rows.tscn" id="8_vsx7j"]
+[ext_resource type="Texture2D" uid="uid://hfixyib85kwh" path="res://assets/object/boomn4.png" id="9_l6ihi"]
+[ext_resource type="Texture2D" uid="uid://oylq43j21v42" path="res://assets/object/Engine_SR204545.png" id="9_uw6w4"]
+[ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="10_7uecy"]
+[ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="11_manml"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="12_kg1qh"]
+[ext_resource type="PackedScene" uid="uid://dyml4yfos24sc" path="res://enemies/boss_robot.tscn" id="13_vsx7j"]
+[ext_resource type="PackedScene" uid="uid://ch4caakv7qigg" path="res://enemies/boss_projectile.tscn" id="14_kg1qh"]
+[ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="15_uw6w4"]
+[ext_resource type="PackedScene" uid="uid://dgimx5hv2dph5" path="res://object/ItemPickup.tscn" id="16_xd0r6"]
+[ext_resource type="Texture2D" uid="uid://dy7ct2mxt56l" path="res://assets/object/Engine_SR20bigg.png" id="18_uw6w4"]
+[ext_resource type="Script" uid="uid://bek632y1p8chu" path="res://scenes/gameplay/script/zoomINBoss.gd" id="19_xd0r6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yulc"]
+size = Vector2(1724.25, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsx7j"]
+size = Vector2(45, 764.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0yulc"]
+shader = ExtResource("4_u3cvq")
+shader_parameter/shadow_color = Color(0, 0, 0, 0.95)
+shader_parameter/edge_width = 0.1
+shader_parameter/pixel_size = 1.0
+shader_parameter/noise_speed = 0.6
+shader_parameter/noise_strength = 0.18
+shader_parameter/softness = 0.08
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uecy"]
+shader = ExtResource("5_eetoi")
+shader_parameter/shadow_color = Color(0, 0, 0, 0.95)
+shader_parameter/edge_width = 0.1
+shader_parameter/pixel_size = 1.0
+shader_parameter/noise_speed = 0.6
+shader_parameter/noise_strength = 0.18
+shader_parameter/softness = 0.08
+
+[sub_resource type="Environment" id="Environment_manml"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.37
+glow_bloom = 0.72
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 19.92
+adjustment_enabled = true
+adjustment_brightness = 0.86
+adjustment_contrast = 1.2
+adjustment_saturation = 1.04
+
+[sub_resource type="Animation" id="Animation_rubjw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kilis"]
+resource_name = "transition"
+length = 1.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1), Color(0, 0, 0.12835406, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uw6w4"]
+_data = {
+&"RESET": SubResource("Animation_rubjw"),
+&"transition": SubResource("Animation_kilis")
+}
+
+[sub_resource type="Theme" id="Theme_xd0r6"]
+default_font = ExtResource("12_kg1qh")
+default_font_size = 20
+
+[sub_resource type="Theme" id="Theme_3e6ub"]
+default_font = ExtResource("12_kg1qh")
+default_font_size = 30
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxljt"]
+size = Vector2(12, 396)
+
+[node name="BossLevel" type="Node2D" unique_id=1641576644]
+
+[node name="Bg" parent="." unique_id=1426212521 instance=ExtResource("1_c85w2")]
+
+[node name="player" type="Node2D" parent="." unique_id=1293433591]
+z_index = 1
+
+[node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui", "camera_rig") groups=["projectile_blocker"] instance=ExtResource("2_tna8g")]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+position = Vector2(500, 308)
+scale = Vector2(2.5, 2.5)
+math_ui = NodePath("../../CanvasLayer/UImath")
+camera_rig = NodePath("../../camera")
+
+[node name="camera" type="Node2D" parent="." unique_id=856256863 node_paths=PackedStringArray("default_target")]
+script = ExtResource("3_tkxmi")
+default_target = NodePath("../player/maincharacter")
+
+[node name="Camera2D" type="Camera2D" parent="camera" unique_id=1075030270]
+limit_bottom = 540
+limit_smoothed = true
+
+[node name="invisibleWall" type="Node2D" parent="." unique_id=654853043]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="invisibleWall" unique_id=1575184959 groups=["projectile_blocker"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D" unique_id=1389977983]
+position = Vector2(860.875, 415)
+shape = SubResource("RectangleShape2D_0yulc")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="invisibleWall" unique_id=680665240 groups=["projectile_blocker"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D2" unique_id=1027284997]
+position = Vector2(3, 155.25)
+shape = SubResource("RectangleShape2D_vsx7j")
+
+[node name="ColorRect" type="ColorRect" parent="invisibleWall/StaticBody2D2" unique_id=1841943980]
+material = SubResource("ShaderMaterial_0yulc")
+offset_left = 1583.0
+offset_top = -231.0
+offset_right = 2467.0
+offset_bottom = 409.0
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="invisibleWall" unique_id=120877213 groups=["projectile_blocker"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D3" unique_id=1997988966]
+position = Vector2(1715, 198)
+shape = SubResource("RectangleShape2D_vsx7j")
+
+[node name="ColorRect" type="ColorRect" parent="invisibleWall/StaticBody2D3" unique_id=1880632997]
+material = SubResource("ShaderMaterial_7uecy")
+offset_left = -683.0
+offset_top = -242.0
+offset_right = 201.0
+offset_bottom = 398.0
+color = Color(0, 0, 0, 1)
+
+[node name="envi" type="Node2D" parent="." unique_id=433999072]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="envi" unique_id=1941087500]
+environment = SubResource("Environment_manml")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="envi" unique_id=736006743]
+position = Vector2(-1, 0)
+color = Color(1, 0.34117648, 0.5176471, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=128583139]
+stream = ExtResource("6_im63x")
+volume_db = -20.069
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=434856951]
+
+[node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("7_0yulc")]
+
+[node name="topright" type="Control" parent="CanvasLayer" unique_id=1586401245]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemRows" parent="CanvasLayer/topright" unique_id=1520677445 instance=ExtResource("8_vsx7j")]
+layout_mode = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+engine_part_texture = ExtResource("9_uw6w4")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/topright/ItemRows" unique_id=1123057203]
+layout_mode = 2
+texture = ExtResource("9_l6ihi")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/topright/ItemRows" unique_id=847462260]
+layout_mode = 2
+texture = ExtResource("9_l6ihi")
+
+[node name="blessingUI" parent="CanvasLayer/topright" unique_id=1912679126 instance=ExtResource("10_7uecy")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 723.0
+offset_right = 772.0
+offset_bottom = 85.0
+grow_horizontal = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="NinePatchRect" parent="CanvasLayer/topright/blessingUI" index="0" unique_id=1138250266]
+anchor_right = 4.472
+anchor_bottom = 0.0
+offset_right = -0.01600647
+offset_bottom = 94.0
+
+[node name="transition" type="Control" parent="CanvasLayer" unique_id=618131916]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_manml")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/transition" unique_id=802283621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.12941177, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/transition" unique_id=1123637959]
+libraries/ = SubResource("AnimationLibrary_uw6w4")
+
+[node name="title" type="Control" parent="CanvasLayer" unique_id=1899975111]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/title" unique_id=192458533]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/title/VBoxContainer" unique_id=70058244]
+layout_mode = 2
+theme = SubResource("Theme_xd0r6")
+theme_override_colors/default_color = Color(0.7589238, 0.16473606, 0.23774317, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+bbcode_enabled = true
+text = "[wave]Boss Level"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/title/VBoxContainer" unique_id=376142198]
+layout_mode = 2
+theme = SubResource("Theme_xd0r6")
+theme_override_colors/default_color = Color(0.7589238, 0.16473606, 0.23774317, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+bbcode_enabled = true
+text = "[wave]fight for the engine"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="boss" type="Node2D" parent="." unique_id=1442021845]
+
+[node name="BossRobot" parent="boss" unique_id=184376337 groups=["targetable"] instance=ExtResource("13_vsx7j")]
+position = Vector2(1251, 275)
+scale = Vector2(3, 3)
+projectile_scene = ExtResource("14_kg1qh")
+hit_effect_scene = ExtResource("15_uw6w4")
+item_drop_scene = ExtResource("16_xd0r6")
+item_drop_texture = ExtResource("18_uw6w4")
+question_pattern = 2
+allowed_operators = Array[String](["+", "-", "*", "/"])
+
+[node name="tut" type="Node2D" parent="." unique_id=2133531309]
+
+[node name="Control" type="Control" parent="tut" unique_id=351432781]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="tut/Control" unique_id=1298906974]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 101.0
+offset_right = 688.0
+offset_bottom = 182.0
+theme = SubResource("Theme_3e6ub")
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "here come the boss 
+with its special move!"
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="tut" unique_id=1829388128 node_paths=PackedStringArray("camera_rig", "focus_target")]
+script = ExtResource("19_xd0r6")
+camera_rig = NodePath("../../camera")
+focus_target = NodePath("../../boss/BossRobot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tut/Area2D" unique_id=1086311058]
+position = Vector2(607, 196)
+shape = SubResource("RectangleShape2D_wxljt")
+
+[connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
+[connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
+[connection signal="body_entered" from="tut/Area2D" to="tut/Area2D" method="_on_body_entered"]
+
+[editable path="player/maincharacter"]
+[editable path="player/maincharacter/Statusbar"]
+[editable path="CanvasLayer/UImath"]
+[editable path="CanvasLayer/topright/blessingUI"]
