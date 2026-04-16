@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://bs2vnxg4keh2i"]
 
 [ext_resource type="Script" uid="uid://kxmsv470qrxq" path="res://UIcomponent/script/u_imath.gd" id="1_fsfod"]
-[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="1_i1hw1"]
+[ext_resource type="FontFile" uid="uid://bkbespsxdoatm" path="res://assets/font/PaybAck.ttf" id="2_eyq3s"]
 
 [sub_resource type="Theme" id="Theme_fsfod"]
-default_font = ExtResource("1_i1hw1")
-default_font_size = 30
+default_font = ExtResource("2_eyq3s")
+default_font_size = 25
 
 [sub_resource type="Theme" id="Theme_vy7jp"]
-default_font = ExtResource("1_i1hw1")
-default_font_size = 25
+default_font = ExtResource("2_eyq3s")
+default_font_size = 20
 
 [node name="UImath" type="Control" unique_id=1769127361]
 layout_mode = 3

@@ -322,7 +322,6 @@ hit_effect_scene = ExtResource("15_uw6w4")
 item_drop_scene = ExtResource("16_xd0r6")
 item_drop_texture = ExtResource("18_uw6w4")
 question_pattern = 2
-allowed_operators = Array[String](["+"])
 
 [node name="tut" type="Node2D" parent="." unique_id=2133531309]
 
