@@ -9,6 +9,7 @@
 [ext_resource type="Shader" uid="uid://dhnhnrr52sqkq" path="res://assets/shader/filpdarkalley.gdshader" id="5_eetoi"]
 [ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="6_im63x"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="7_0yulc"]
+[ext_resource type="Script" uid="uid://ca6xok0lwdvia" path="res://scenes/gameplay/script/goback.gd" id="7_sl3ip"]
 [ext_resource type="PackedScene" uid="uid://bucjdlqnlx10y" path="res://UIcomponent/item_rows.tscn" id="8_vsx7j"]
 [ext_resource type="Texture2D" uid="uid://hfixyib85kwh" path="res://assets/object/boomn4.png" id="9_l6ihi"]
 [ext_resource type="Texture2D" uid="uid://oylq43j21v42" path="res://assets/object/Engine_SR204545.png" id="9_uw6w4"]
@@ -23,6 +24,8 @@
 [ext_resource type="Script" uid="uid://fg0rocq663t1" path="res://UIcomponent/script/gameover.gd" id="17_sl3ip"]
 [ext_resource type="Texture2D" uid="uid://dy7ct2mxt56l" path="res://assets/object/Engine_SR20bigg.png" id="18_uw6w4"]
 [ext_resource type="Script" uid="uid://bek632y1p8chu" path="res://scenes/gameplay/script/zoomINBoss.gd" id="19_xd0r6"]
+[ext_resource type="Texture2D" uid="uid://cw7pascjrdg7v" path="res://assets/UI/Screenshot_2026-04-16_165918-removebg-preview.png" id="24_ap6xw"]
+[ext_resource type="Texture2D" uid="uid://bjnqc70fma4wt" path="res://assets/UI/Screenshot_2026-04-16_165928-removebg-preview.png" id="25_wyqt1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yulc"]
 size = Vector2(1724.25, 36)
@@ -38,6 +41,9 @@ shader_parameter/pixel_size = 1.0
 shader_parameter/noise_speed = 0.6
 shader_parameter/noise_strength = 0.18
 shader_parameter/softness = 0.08
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npuxs"]
+size = Vector2(98, 400)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7uecy"]
 shader = ExtResource("5_eetoi")
@@ -106,6 +112,14 @@ default_font_size = 20
 default_font = ExtResource("12_kg1qh")
 default_font_size = 30
 
+[sub_resource type="Theme" id="Theme_sl3ip"]
+default_font = ExtResource("12_kg1qh")
+default_font_size = 35
+
+[sub_resource type="Theme" id="Theme_r5gp1"]
+default_font = ExtResource("12_kg1qh")
+default_font_size = 20
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxljt"]
 size = Vector2(12, 396)
 
@@ -143,6 +157,7 @@ position = Vector2(860.875, 415)
 shape = SubResource("RectangleShape2D_0yulc")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="invisibleWall" unique_id=680665240 groups=["projectile_blocker"]]
+script = ExtResource("7_sl3ip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D2" unique_id=1027284997]
 position = Vector2(3, 155.25)
@@ -155,6 +170,12 @@ offset_top = -231.0
 offset_right = 2467.0
 offset_bottom = 409.0
 color = Color(0, 0, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="invisibleWall/StaticBody2D2" unique_id=432631322]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D2/Area2D" unique_id=841467713]
+position = Vector2(-2, 190)
+shape = SubResource("RectangleShape2D_npuxs")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="invisibleWall" unique_id=120877213 groups=["projectile_blocker"]]
 
@@ -296,12 +317,12 @@ script = ExtResource("17_sl3ip")
 [node name="BossRobot" parent="boss" unique_id=184376337 groups=["targetable"] instance=ExtResource("13_vsx7j")]
 position = Vector2(1251, 275)
 scale = Vector2(3, 3)
-max_hp = 12
 projectile_scene = ExtResource("14_kg1qh")
 hit_effect_scene = ExtResource("15_uw6w4")
 item_drop_scene = ExtResource("16_xd0r6")
 item_drop_texture = ExtResource("18_uw6w4")
 question_pattern = 2
+allowed_operators = Array[String](["+"])
 
 [node name="tut" type="Node2D" parent="." unique_id=2133531309]
 
@@ -323,6 +344,45 @@ theme_override_constants/outline_size = 8
 text = "here come the boss 
 with its special move!"
 horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="tut/Control" unique_id=1050635464]
+z_index = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 105.0
+offset_right = 212.0
+offset_bottom = 157.0
+theme = SubResource("Theme_sl3ip")
+theme_override_colors/font_color = Color(0.8784314, 0.68235296, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "E to go back
+"
+
+[node name="Label2" type="Label" parent="tut/Control" unique_id=202055878]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 154.0
+offset_right = 252.0
+offset_bottom = 180.0
+theme = SubResource("Theme_r5gp1")
+text = "need engine part to go back!"
+
+[node name="TextureRect" type="TextureRect" parent="tut/Control" unique_id=32104505]
+layout_mode = 0
+offset_left = 779.0
+offset_top = 113.0
+offset_right = 1076.0
+offset_bottom = 212.0
+texture = ExtResource("24_ap6xw")
+
+[node name="TextureRect2" type="TextureRect" parent="tut/Control" unique_id=1262805643]
+layout_mode = 0
+offset_left = 839.0
+offset_top = 211.0
+offset_right = 1069.0
+offset_bottom = 307.0
+texture = ExtResource("25_wyqt1")
 
 [node name="Area2D" type="Area2D" parent="tut" unique_id=1829388128 node_paths=PackedStringArray("camera_rig", "focus_target")]
 script = ExtResource("19_xd0r6")

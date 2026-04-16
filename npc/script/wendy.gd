@@ -9,6 +9,7 @@ enum State {
 
 @export var interact_key := "ui_talk"
 @export var required_item := "engine_part"
+@export var demo_scene: Control
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hint = $hintE
@@ -19,6 +20,7 @@ var player_in_range := false
 var current_state = State.BEFORE_QUEST
 var current_player: Node2D = null
 var is_talking := false
+var is_ending_triggered := false
 
 func _ready() -> void:
 	if bubble.has_method("hide_bubble"):
@@ -31,10 +33,17 @@ func _ready() -> void:
 	else:
 		hint.hide()
 
+	if demo_scene != null:
+		demo_scene.visible = false
+		demo_scene.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
 
 func _process(_delta: float) -> void:
+	if is_ending_triggered:
+		return
+
 	if not player_in_range:
 		return
 
@@ -48,6 +57,9 @@ func _process(_delta: float) -> void:
 				end_dialog()
 
 func _on_body_entered(body: Node2D) -> void:
+	if is_ending_triggered:
+		return
+
 	if body.is_in_group("player"):
 		player_in_range = true
 		current_player = body
@@ -58,6 +70,9 @@ func _on_body_entered(body: Node2D) -> void:
 			hint.show()
 
 func _on_body_exited(body: Node2D) -> void:
+	if is_ending_triggered:
+		return
+
 	if body == current_player:
 		player_in_range = false
 		current_player = null
@@ -69,6 +84,9 @@ func _on_body_exited(body: Node2D) -> void:
 			hint.hide()
 
 func interact() -> void:
+	if is_ending_triggered:
+		return
+
 	if current_player != null and current_player.has_method("begin_interaction"):
 		current_player.begin_interaction()
 
@@ -84,6 +102,7 @@ func interact() -> void:
 	if current_player != null:
 		sprite.flip_h = current_player.global_position.x < global_position.x
 
+	# ถ้ามีของอยู่ตอนคุย ถือว่าเป็นการส่งเควส
 	if current_state == State.QUEST_ACCEPTED and BlessingManager.has_item(required_item):
 		current_state = State.HAS_ITEM
 
@@ -104,7 +123,7 @@ func end_dialog() -> void:
 	if current_player != null and current_player.has_method("end_interaction"):
 		current_player.end_interaction()
 
-	if player_in_range:
+	if player_in_range and not is_ending_triggered:
 		if hint.has_method("show_hint"):
 			hint.show_hint()
 		else:
@@ -131,7 +150,8 @@ func get_dialog_lines() -> Array[String]:
 			return [
 				"You found it?!",
 				"...I can't believe it.",
-				"Thank you."
+				"Thank you.",
+				"Get in. Let's get out of here."
 			]
 
 		State.QUEST_DONE:
@@ -150,7 +170,40 @@ func finish_dialog_state() -> void:
 		State.HAS_ITEM:
 			if BlessingManager.has_item(required_item):
 				BlessingManager.spend_item(required_item, 1)
+
 			current_state = State.QUEST_DONE
+			trigger_demo_ending()
 
 		State.QUEST_ACCEPTED, State.QUEST_DONE:
 			pass
+
+func trigger_demo_ending() -> void:
+	if is_ending_triggered:
+		return
+
+	is_ending_triggered = true
+
+	if hint.has_method("hide_hint"):
+		hint.hide_hint()
+	else:
+		hint.hide()
+
+	if bubble.has_method("hide_bubble"):
+		bubble.hide_bubble()
+	else:
+		bubble.hide()
+
+	is_talking = false
+
+	if sprite.animation != "idle":
+		sprite.play("idle")
+
+	if current_player != null and current_player.has_method("end_interaction"):
+		current_player.end_interaction()
+
+	if demo_scene != null:
+		demo_scene.visible = true
+	else:
+		push_warning("demo_scene ยังไม่ได้ assign ใน Inspector")
+
+	get_tree().paused = true
