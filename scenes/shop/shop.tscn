@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d0lby7eix2vck" path="res://assets/UI/uiforshop/สไลม์ (ฟ้า+selected).png" id="7_tp26b"]
 [ext_resource type="Texture2D" uid="uid://dm0f62shr1av4" path="res://assets/UI/uiforshop/Hp max.png" id="8_vk20h"]
 [ext_resource type="Texture2D" uid="uid://cgf6hkyrv7pr2" path="res://assets/UI/uiforshop/Bg blessings .png" id="9_tp26b"]
+[ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="10_vk20h"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptf86"]
 texture = ExtResource("1_7lxhl")
@@ -230,19 +231,9 @@ theme_override_font_sizes/font_size = 30
 text = "YOUR BLESSINGS :"
 horizontal_alignment = 1
 
-[node name="mybless" type="Sprite2D" parent="." unique_id=1523491378]
-position = Vector2(561, 491.00003)
-scale = Vector2(0.106, 0.106)
-texture = ExtResource("9_tp26b")
-
-[node name="my_bless" type="Label" parent="." unique_id=1772520543]
-layout_mode = 0
-offset_left = 477.0
-offset_top = 471.0
-offset_right = 644.0
-offset_bottom = 510.0
-theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
-theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
-text = "60 BLESSINGS"
-horizontal_alignment = 1
+[node name="blessingUI" parent="." unique_id=1912679126 instance=ExtResource("10_vk20h")]
+layout_mode = 1
+offset_left = 452.0
+offset_top = 445.0
+offset_right = 452.44
+offset_bottom = 444.76

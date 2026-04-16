@@ -156,7 +156,7 @@ bomb_target_icon_scene = ExtResource("4_2odly")
 
 [node name="camera" type="Node2D" parent="." unique_id=1188271418 node_paths=PackedStringArray("default_target")]
 script = ExtResource("5_4e8g1")
-default_target = NodePath("")
+default_target = NodePath("../player/maincharacter")
 
 [node name="Camera2D" type="Camera2D" parent="camera" unique_id=250639037]
 limit_bottom = 540
