@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dxekltvf7m50c" path="res://scenes/gameplay/bg.tscn" id="1_c85w2"]
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_tna8g"]
 [ext_resource type="Script" uid="uid://nu0mm7n41ijr" path="res://scenes/gameplay/script/camera_2d.gd" id="3_tkxmi"]
+[ext_resource type="PackedScene" uid="uid://dj377lrob4a4m" path="res://object/bombthrowable.tscn" id="3_uw6w4"]
 [ext_resource type="Shader" uid="uid://dl0pf55ys6tcy" path="res://scenes/gameplay/script/shader/darkalley.gdshader" id="4_u3cvq"]
+[ext_resource type="PackedScene" uid="uid://c0bp0shidp8ss" path="res://UIcomponent/bomb_target_icon.tscn" id="4_xd0r6"]
 [ext_resource type="Shader" uid="uid://dhnhnrr52sqkq" path="res://assets/shader/filpdarkalley.gdshader" id="5_eetoi"]
 [ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="6_im63x"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="7_0yulc"]
@@ -118,6 +120,8 @@ position = Vector2(500, 308)
 scale = Vector2(2.5, 2.5)
 math_ui = NodePath("../../CanvasLayer/UImath")
 camera_rig = NodePath("../../camera")
+bomb_scene = ExtResource("3_uw6w4")
+bomb_target_icon_scene = ExtResource("4_xd0r6")
 
 [node name="camera" type="Node2D" parent="." unique_id=856256863 node_paths=PackedStringArray("default_target")]
 script = ExtResource("3_tkxmi")
@@ -286,12 +290,12 @@ horizontal_alignment = 1
 [node name="BossRobot" parent="boss" unique_id=184376337 groups=["targetable"] instance=ExtResource("13_vsx7j")]
 position = Vector2(1251, 275)
 scale = Vector2(3, 3)
+max_hp = 12
 projectile_scene = ExtResource("14_kg1qh")
 hit_effect_scene = ExtResource("15_uw6w4")
 item_drop_scene = ExtResource("16_xd0r6")
 item_drop_texture = ExtResource("18_uw6w4")
 question_pattern = 2
-allowed_operators = Array[String](["+", "-", "*", "/"])
 
 [node name="tut" type="Node2D" parent="." unique_id=2133531309]
 

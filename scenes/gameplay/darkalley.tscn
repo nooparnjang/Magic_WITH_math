@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dxekltvf7m50c" path="res://scenes/gameplay/bg.tscn" id="1_dlg8t"]
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_akuhx"]
+[ext_resource type="PackedScene" uid="uid://dj377lrob4a4m" path="res://object/bombthrowable.tscn" id="3_5qegr"]
 [ext_resource type="Script" uid="uid://nu0mm7n41ijr" path="res://scenes/gameplay/script/camera_2d.gd" id="4_kilis"]
+[ext_resource type="PackedScene" uid="uid://c0bp0shidp8ss" path="res://UIcomponent/bomb_target_icon.tscn" id="4_n1frk"]
 [ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="5_lkn7p"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="6_spkd1"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="7_g7vwq"]
@@ -150,6 +152,8 @@ position = Vector2(500, 308)
 scale = Vector2(2.5, 2.5)
 math_ui = NodePath("../../CanvasLayer/UImath")
 camera_rig = NodePath("../../camera")
+bomb_scene = ExtResource("3_5qegr")
+bomb_target_icon_scene = ExtResource("4_n1frk")
 
 [node name="camera" type="Node2D" parent="." unique_id=701237699 node_paths=PackedStringArray("default_target")]
 script = ExtResource("4_kilis")

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dj377lrob4a4m"]
+
+[ext_resource type="Script" uid="uid://oxmdot8u55oq" path="res://object/script/bombthrowable.gd" id="1_8vf80"]
+[ext_resource type="Texture2D" uid="uid://mlr5mwcbw5xt" path="res://assets/object/Boom!!!.png" id="2_p4m8d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wt2c5"]
+radius = 25.019993
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hdto"]
+radius = 194.01031
+
+[node name="Bombthrowable" type="RigidBody2D" unique_id=1278639572]
+script = ExtResource("1_8vf80")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=71302893]
+scale = Vector2(0.061848957, 0.06504629)
+texture = ExtResource("2_p4m8d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1061145880]
+position = Vector2(1, 6)
+shape = SubResource("CircleShape2D_wt2c5")
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=201542400]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1624085010]
+shape = SubResource("CircleShape2D_8hdto")
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=1707064645]
+
+[node name="ExplodeDelay" type="Timer" parent="." unique_id=912069211]
