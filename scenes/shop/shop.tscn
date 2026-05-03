@@ -96,15 +96,22 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -690.0
+offset_bottom = -270.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="box_stamina" type="Panel" parent="." unique_id=540497048]
-layout_mode = 0
-offset_left = 43.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
 offset_top = 160.0
-offset_right = 313.0
-offset_bottom = 430.0
+offset_right = -648.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
 [node name="StaminaMax" type="Sprite2D" parent="." unique_id=1013047376]
@@ -142,11 +149,16 @@ text = "30 BLESSINGS"
 horizontal_alignment = 1
 
 [node name="box_monster" type="Panel" parent="." unique_id=729960447]
-layout_mode = 0
-offset_left = 345.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 343.0
 offset_top = 160.0
-offset_right = 615.0
-offset_bottom = 430.0
+offset_right = -347.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
 [node name="สไลม์(ฟ้า+selected)" type="Sprite2D" parent="." unique_id=1416709309]
@@ -173,11 +185,16 @@ scale = Vector2(0.106, 0.106)
 texture = ExtResource("9_tp26b")
 
 [node name="box_hp" type="Panel" parent="." unique_id=233470356]
-layout_mode = 0
-offset_left = 645.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 644.0
 offset_top = 160.0
-offset_right = 915.0
-offset_bottom = 430.0
+offset_right = -46.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
 [node name="HpMax" type="Sprite2D" parent="." unique_id=1943724388]
