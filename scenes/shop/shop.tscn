@@ -91,66 +91,72 @@ theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 40
 text = "FOR UPGRADING YOUR CHARACTER"
 
-[node name="C_Stamina" type="Container" parent="." unique_id=421681528]
+[node name="box_stamina" type="Panel" parent="." unique_id=540497048]
 layout_mode = 0
 offset_left = 42.0
 offset_top = 160.0
 offset_right = 312.0
 offset_bottom = 430.0
-
-[node name="box_stamina" type="Panel" parent="C_Stamina" unique_id=540497048]
-layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="StaminaMax" type="Sprite2D" parent="C_Stamina" unique_id=1013047376]
-position = Vector2(134.00002, 38)
+[node name="StaminaMax" type="Sprite2D" parent="." unique_id=1013047376]
+position = Vector2(176.00002, 198)
 scale = Vector2(0.0712963, 0.07129628)
 texture = ExtResource("6_xcdpw")
 
-[node name="bless_stamina" type="Sprite2D" parent="C_Stamina" unique_id=543141076]
-position = Vector2(133, 228)
+[node name="bless_stamina" type="Sprite2D" parent="." unique_id=543141076]
+position = Vector2(175, 388)
 scale = Vector2(0.10578704, 0.105787046)
 texture = ExtResource("9_tp26b")
 
-[node name="stamina" type="Label" parent="C_Stamina" unique_id=1242572193]
-layout_mode = 2
+[node name="stamina" type="Label" parent="." unique_id=1242572193]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 254.0
+offset_right = 312.0
+offset_bottom = 335.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "INCREASE STAMINA
 RECOVERY SPEED"
 horizontal_alignment = 1
 
-[node name="b_stamina" type="Label" parent="C_Stamina" unique_id=1663254311]
-layout_mode = 2
+[node name="b_stamina" type="Label" parent="." unique_id=1663254311]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 370.0
+offset_right = 258.0
+offset_bottom = 409.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "30 BLESSINGS"
 horizontal_alignment = 1
 
-[node name="C_Monster" type="Container" parent="." unique_id=1402754573]
+[node name="box_monster" type="Panel" parent="." unique_id=729960447]
 layout_mode = 0
 offset_left = 343.0
 offset_top = 160.0
 offset_right = 613.0
 offset_bottom = 430.0
-
-[node name="box_monster" type="Panel" parent="C_Monster" unique_id=729960447]
-layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="สไลม์(ฟ้า+selected)" type="Sprite2D" parent="C_Monster" unique_id=1416709309]
-position = Vector2(133, 42)
+[node name="สไลม์(ฟ้า+selected)" type="Sprite2D" parent="." unique_id=1416709309]
+position = Vector2(476, 202)
 scale = Vector2(0.05266203, 0.05266203)
 texture = ExtResource("7_tp26b")
 
-[node name="bless_monster" type="Sprite2D" parent="C_Monster" unique_id=1798200395]
-position = Vector2(131, 228)
+[node name="bless_monster" type="Sprite2D" parent="." unique_id=1798200395]
+position = Vector2(474, 388)
 scale = Vector2(0.106, 0.106)
 texture = ExtResource("9_tp26b")
 
-[node name="monster" type="Label" parent="C_Monster" unique_id=418250560]
-layout_mode = 2
+[node name="monster" type="Label" parent="." unique_id=418250560]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 233.0
+offset_right = 615.0
+offset_bottom = 356.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "-7% MONSTER
@@ -158,45 +164,54 @@ ATTACK SPEED
 + FOCUS TIME"
 horizontal_alignment = 1
 
-[node name="b_monster" type="Label" parent="C_Monster" unique_id=1919827227]
-layout_mode = 2
+[node name="b_monster" type="Label" parent="." unique_id=1919827227]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 370.0
+offset_right = 557.0
+offset_bottom = 409.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "70 BLESSINGS"
 horizontal_alignment = 1
 
-[node name="C_HP" type="Container" parent="." unique_id=1668711829]
+[node name="box_hp" type="Panel" parent="." unique_id=233470356]
 layout_mode = 0
 offset_left = 644.0
 offset_top = 160.0
 offset_right = 914.0
 offset_bottom = 430.0
-
-[node name="box_hp" type="Panel" parent="C_HP" unique_id=233470356]
-layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="HpMax" type="Sprite2D" parent="C_HP" unique_id=1943724388]
-position = Vector2(132, 46.000015)
+[node name="HpMax" type="Sprite2D" parent="." unique_id=1943724388]
+position = Vector2(776, 206.00002)
 scale = Vector2(0.07870369, 0.07870368)
 texture = ExtResource("8_vk20h")
 
-[node name="bless_hp" type="Sprite2D" parent="C_HP" unique_id=1470408973]
-position = Vector2(133, 228)
+[node name="bless_hp" type="Sprite2D" parent="." unique_id=1470408973]
+position = Vector2(777, 388)
 scale = Vector2(0.106, 0.106)
 texture = ExtResource("9_tp26b")
 
-[node name="hp" type="Label" parent="C_HP" unique_id=1597445837]
-layout_mode = 2
+[node name="hp" type="Label" parent="." unique_id=1597445837]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 254.0
+offset_right = 914.0
+offset_bottom = 335.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "INCREASE MAX HP
 BY 9%"
 horizontal_alignment = 1
 
-[node name="b_hp" type="Label" parent="C_HP" unique_id=1250027110]
-layout_mode = 2
+[node name="b_hp" type="Label" parent="." unique_id=1250027110]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 370.0
+offset_right = 860.0
+offset_bottom = 409.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
