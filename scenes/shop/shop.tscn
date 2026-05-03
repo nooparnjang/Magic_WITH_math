@@ -27,6 +27,13 @@ modulate_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
 shader = ExtResource("4_ctpgp")
 shader_parameter/blur_amount = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vk20h"]
+bg_color = Color(0.32941177, 0.16078432, 0.32941177, 0.87058824)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcdpw"]
 bg_color = Color(0.32941177, 0.16078432, 0.32941177, 0.87058824)
 corner_radius_top_left = 16
@@ -74,9 +81,9 @@ grow_vertical = 2
 [node name="shop" type="Label" parent="." unique_id=1698158722]
 layout_mode = 0
 offset_left = 395.0
-offset_top = 1.0
+offset_top = -5.0
 offset_right = 553.0
-offset_bottom = 105.0
+offset_bottom = 99.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 80
 text = "SHOP"
@@ -84,14 +91,46 @@ text = "SHOP"
 [node name="explainshop" type="Label" parent="." unique_id=1447984192]
 layout_mode = 0
 offset_left = 214.0
-offset_top = 89.0
+offset_top = 84.0
 offset_right = 738.0
-offset_bottom = 141.0
+offset_bottom = 136.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 40
 text = "FOR UPGRADING YOUR CHARACTER"
 
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1961504003]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 152.0
+offset_right = -649.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vk20h")
+
+[node name="StaminaMax" type="Sprite2D" parent="PanelContainer" unique_id=1013047376]
+position = Vector2(130.00002, 46)
+scale = Vector2(0.0712963, 0.07129628)
+texture = ExtResource("6_xcdpw")
+
+[node name="stamina" type="Label" parent="PanelContainer" unique_id=1242572193]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "INCREASE STAMINA
+RECOVERY SPEED"
+horizontal_alignment = 1
+
+[node name="bless_stamina" type="Sprite2D" parent="PanelContainer" unique_id=543141076]
+position = Vector2(129, 236)
+scale = Vector2(0.10578704, 0.105787046)
+texture = ExtResource("9_tp26b")
+
 [node name="box_stamina" type="Panel" parent="." unique_id=540497048]
+visible = false
 layout_mode = 0
 offset_left = 45.0
 offset_top = 160.0
@@ -102,52 +141,35 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 [node name="box_monster" type="Panel" parent="." unique_id=729960447]
 layout_mode = 0
 offset_left = 345.0
-offset_top = 160.0
+offset_top = 153.0
 offset_right = 610.0
-offset_bottom = 445.0
+offset_bottom = 438.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
 [node name="box_hp" type="Panel" parent="." unique_id=233470356]
 layout_mode = 0
 offset_left = 645.0
-offset_top = 160.0
+offset_top = 153.0
 offset_right = 910.0
-offset_bottom = 445.0
+offset_bottom = 438.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="StaminaMax" type="Sprite2D" parent="." unique_id=1013047376]
-position = Vector2(176.00002, 205)
-scale = Vector2(0.0712963, 0.07129628)
-texture = ExtResource("6_xcdpw")
-
 [node name="สไลม์(ฟ้า+selected)" type="Sprite2D" parent="." unique_id=1416709309]
-position = Vector2(474.00003, 204)
+position = Vector2(474, 197)
 scale = Vector2(0.05266203, 0.05266203)
 texture = ExtResource("7_tp26b")
 
 [node name="HpMax" type="Sprite2D" parent="." unique_id=1943724388]
-position = Vector2(776, 205.00002)
+position = Vector2(776, 198.00002)
 scale = Vector2(0.07870369, 0.07870368)
 texture = ExtResource("8_vk20h")
-
-[node name="stamina" type="Label" parent="." unique_id=1242572193]
-layout_mode = 0
-offset_left = 60.0
-offset_top = 255.0
-offset_right = 288.0
-offset_bottom = 336.0
-theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
-text = "INCREASE STAMINA
-RECOVERY SPEED"
-horizontal_alignment = 1
 
 [node name="monster" type="Label" parent="." unique_id=418250560]
 layout_mode = 0
 offset_left = 386.0
-offset_top = 232.0
+offset_top = 225.0
 offset_right = 557.0
-offset_bottom = 355.0
+offset_bottom = 348.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "-7% MONSTER
@@ -158,36 +180,31 @@ horizontal_alignment = 1
 [node name="hp" type="Label" parent="." unique_id=1597445837]
 layout_mode = 0
 offset_left = 673.0
-offset_top = 255.0
+offset_top = 248.0
 offset_right = 882.0
-offset_bottom = 336.0
+offset_bottom = 329.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
 text = "INCREASE MAX HP
 BY 9%"
 horizontal_alignment = 1
 
-[node name="bless_stamina" type="Sprite2D" parent="." unique_id=543141076]
-position = Vector2(175, 395)
-scale = Vector2(0.10578704, 0.105787046)
-texture = ExtResource("9_tp26b")
-
 [node name="bless_monster" type="Sprite2D" parent="." unique_id=1798200395]
-position = Vector2(474, 395)
+position = Vector2(474, 388)
 scale = Vector2(0.106, 0.106)
 texture = ExtResource("9_tp26b")
 
 [node name="bless_hp" type="Sprite2D" parent="." unique_id=1470408973]
-position = Vector2(777, 395)
+position = Vector2(777, 388)
 scale = Vector2(0.106, 0.106)
 texture = ExtResource("9_tp26b")
 
 [node name="b_stamina" type="Label" parent="." unique_id=1663254311]
 layout_mode = 0
 offset_left = 91.0
-offset_top = 376.0
+offset_top = 369.0
 offset_right = 258.0
-offset_bottom = 415.0
+offset_bottom = 408.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
@@ -197,9 +214,9 @@ horizontal_alignment = 1
 [node name="b_monster" type="Label" parent="." unique_id=1919827227]
 layout_mode = 0
 offset_left = 390.0
-offset_top = 376.0
+offset_top = 369.0
 offset_right = 557.0
-offset_bottom = 415.0
+offset_bottom = 408.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
@@ -209,9 +226,9 @@ horizontal_alignment = 1
 [node name="b_hp" type="Label" parent="." unique_id=1250027110]
 layout_mode = 0
 offset_left = 693.0
-offset_top = 376.0
+offset_top = 369.0
 offset_right = 860.0
-offset_bottom = 415.0
+offset_bottom = 408.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
