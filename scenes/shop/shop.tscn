@@ -27,6 +27,23 @@ modulate_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
 shader = ExtResource("4_ctpgp")
 shader_parameter/blur_amount = 1.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_131kw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xoc10"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k5co3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6kbe7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hbyua"]
+
+[sub_resource type="Theme" id="Theme_36j3v"]
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_131kw")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_xoc10")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_k5co3")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_6kbe7")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxTexture_hbyua")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcdpw"]
 bg_color = Color(0.32941177, 0.16078432, 0.32941177, 0.87058824)
 corner_radius_top_left = 16
@@ -114,6 +131,7 @@ offset_right = 433.0
 offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_36j3v")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer" unique_id=1293259807]
 layout_mode = 2
