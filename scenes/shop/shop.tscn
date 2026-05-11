@@ -125,9 +125,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 79.0
+offset_left = 55.0
 offset_top = 156.0
-offset_right = 433.0
+offset_right = -83.0
 offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -263,6 +263,182 @@ offset_bottom = 282.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
 [node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1250027110]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 210.0
+offset_right = 216.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "70 BLESSINGS"
+horizontal_alignment = 1
+
+[node name="box_hp2" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=651481762]
+custom_minimum_size = Vector2(270, 270)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+
+[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=1054047044]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 3.0
+offset_right = 207.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
+
+[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=127008678]
+layout_mode = 0
+offset_top = 94.0
+offset_right = 270.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "INCREASE MAX HP
+BY 9%"
+horizontal_alignment = 1
+
+[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=1471177758]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 178.0
+offset_right = 236.0
+offset_bottom = 282.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
+
+[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=1786087520]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 210.0
+offset_right = 216.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "70 BLESSINGS"
+horizontal_alignment = 1
+
+[node name="box_hp3" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1773840665]
+custom_minimum_size = Vector2(270, 270)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+
+[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=1251277642]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 3.0
+offset_right = 207.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
+
+[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=1198010210]
+layout_mode = 0
+offset_top = 94.0
+offset_right = 270.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "INCREASE MAX HP
+BY 9%"
+horizontal_alignment = 1
+
+[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=2141956394]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 178.0
+offset_right = 236.0
+offset_bottom = 282.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
+
+[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=2008336128]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 210.0
+offset_right = 216.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "70 BLESSINGS"
+horizontal_alignment = 1
+
+[node name="box_hp4" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1705586734]
+custom_minimum_size = Vector2(270, 270)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+
+[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1211051958]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 3.0
+offset_right = 207.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
+
+[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1546318335]
+layout_mode = 0
+offset_top = 94.0
+offset_right = 270.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "INCREASE MAX HP
+BY 9%"
+horizontal_alignment = 1
+
+[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1276939944]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 178.0
+offset_right = 236.0
+offset_bottom = 282.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
+
+[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1990240481]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 210.0
+offset_right = 216.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "70 BLESSINGS"
+horizontal_alignment = 1
+
+[node name="box_hp5" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1486841944]
+custom_minimum_size = Vector2(270, 270)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+
+[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=976845271]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 3.0
+offset_right = 207.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
+
+[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1781893294]
+layout_mode = 0
+offset_top = 94.0
+offset_right = 270.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 30
+text = "INCREASE MAX HP
+BY 9%"
+horizontal_alignment = 1
+
+[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1754895448]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 178.0
+offset_right = 236.0
+offset_bottom = 282.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
+
+[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1311232692]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 210.0
