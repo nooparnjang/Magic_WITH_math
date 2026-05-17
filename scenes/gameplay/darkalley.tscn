@@ -2,9 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxekltvf7m50c" path="res://scenes/gameplay/bg.tscn" id="1_dlg8t"]
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_akuhx"]
-[ext_resource type="PackedScene" uid="uid://dj377lrob4a4m" path="res://object/bombthrowable.tscn" id="3_5qegr"]
 [ext_resource type="Script" uid="uid://nu0mm7n41ijr" path="res://scenes/gameplay/script/camera_2d.gd" id="4_kilis"]
-[ext_resource type="PackedScene" uid="uid://c0bp0shidp8ss" path="res://UIcomponent/bomb_target_icon.tscn" id="4_n1frk"]
 [ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="5_lkn7p"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="6_spkd1"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="7_g7vwq"]
@@ -157,8 +155,9 @@ scale = Vector2(2.5, 2.5)
 math_ui = NodePath("../../CanvasLayer/UImath")
 camera_rig = NodePath("../../camera")
 game_over_ui = NodePath("../../CanvasLayer/gameover")
-bomb_scene = ExtResource("3_5qegr")
-bomb_target_icon_scene = ExtResource("4_n1frk")
+
+[node name="ItemUseController" parent="player/maincharacter/Items" parent_id_path=PackedInt32Array(1926872742, 1906238663) index="2" unique_id=38071017 node_paths=PackedStringArray("camera_rig")]
+camera_rig = NodePath("../../../../camera")
 
 [node name="camera" type="Node2D" parent="." unique_id=701237699 node_paths=PackedStringArray("default_target")]
 script = ExtResource("4_kilis")
@@ -534,6 +533,7 @@ color = Color(0, 0, 0, 1)
 position = Vector2(3926, 320)
 scale = Vector2(2, 2)
 collision_mask = 0
+dialog_json_path = "res://npc/dialogJson/wendyTest.json"
 demo_scene = NodePath("../../CanvasLayer/demoover")
 metadata/_edit_lock_ = true
 
@@ -545,3 +545,4 @@ metadata/_edit_lock_ = true
 [editable path="player/maincharacter/Statusbar"]
 [editable path="CanvasLayer/UImath"]
 [editable path="CanvasLayer/topright/blessingUI"]
+[editable path="Npc/Wendy"]

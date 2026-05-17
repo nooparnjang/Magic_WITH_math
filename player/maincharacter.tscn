@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bgk2mkq4jr6n0" path="res://player/ghost_trail.tscn" id="5_4oker"]
 [ext_resource type="PackedScene" uid="uid://b6eroap044uta" path="res://UIcomponent/statusbar.tscn" id="6_x4ckx"]
 [ext_resource type="Script" uid="uid://denbpqeeqt4uq" path="res://player/script/selecting.gd" id="9_y5o2c"]
+[ext_resource type="Script" uid="uid://cwjuso0l8x73j" path="res://player/script/item_selector.gd" id="10_k3a4p"]
+[ext_resource type="Script" uid="uid://bbofs5utuj7c4" path="res://player/script/item_use_controller.gd" id="11_cuai1"]
+[ext_resource type="PackedScene" uid="uid://dj377lrob4a4m" path="res://object/bombthrowable.tscn" id="12_we8ug"]
+[ext_resource type="PackedScene" uid="uid://c0bp0shidp8ss" path="res://UIcomponent/bomb_target_icon.tscn" id="13_7cl1g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldrqp"]
 atlas = ExtResource("1_bjxot")
@@ -272,5 +276,16 @@ position = Vector2(11, -30)
 position = Vector2(-11.000002, -44)
 scale = Vector2(0.475, 0.425)
 script = ExtResource("9_y5o2c")
+
+[node name="ItemSelector" type="Node2D" parent="Items" unique_id=1472066476 node_paths=PackedStringArray("selecting_icon")]
+script = ExtResource("10_k3a4p")
+selecting_icon = NodePath("../selecting")
+
+[node name="ItemUseController" type="Node2D" parent="Items" unique_id=38071017 node_paths=PackedStringArray("player", "item_selector")]
+script = ExtResource("11_cuai1")
+player = NodePath("../..")
+item_selector = NodePath("../ItemSelector")
+bomb_scene = ExtResource("12_we8ug")
+target_icon_scene = ExtResource("13_7cl1g")
 
 [editable path="Statusbar"]

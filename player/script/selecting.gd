@@ -5,9 +5,11 @@ extends Sprite2D
 
 var _hide_tween: Tween = null
 
+
 func _ready() -> void:
 	visible = false
 	modulate.a = 1.0
+
 
 func show_item(new_texture: Texture2D) -> void:
 	if new_texture == null:
@@ -26,6 +28,7 @@ func show_item(new_texture: Texture2D) -> void:
 	_hide_tween.tween_property(self, "modulate:a", 0.0, fade_duration)
 	_hide_tween.finished.connect(_on_hide_finished)
 
+
 func hide_item() -> void:
 	if _hide_tween != null and _hide_tween.is_running():
 		_hide_tween.kill()
@@ -33,6 +36,7 @@ func hide_item() -> void:
 	visible = false
 	modulate.a = 1.0
 	texture = null
+
 
 func _on_hide_finished() -> void:
 	visible = false

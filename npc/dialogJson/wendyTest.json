@@ -1,0 +1,45 @@
+{
+  "npc_name": "WENDY",
+  "required_item": "engine_part",
+  "consume_required_item": true,
+
+  "states": {
+    "before_quest": {
+      "lines": [
+        "Hey... You look lost.",
+        "I'm Wendy.",
+        "If you're trying to get somewhere, I can help.",
+        "But first... I need my dad's engine back.",
+        "A giant robot stole it."
+      ],
+      "next_state": "quest_accepted"
+    },
+
+    "quest_accepted": {
+      "lines": [
+        "Please find the engine.",
+        "That giant robot ran toward the dark alley."
+      ],
+      "next_state": "quest_accepted"
+    },
+
+    "has_item": {
+      "lines": [
+        "You found it?!",
+        "...I can't believe it.",
+        "Thank you.",
+        "Get in. Let's get out of here."
+      ],
+      "next_state": "quest_done",
+      "trigger_ending": true
+    },
+
+    "quest_done": {
+      "lines": [
+        "Hop in.",
+        "I'll take you wherever you want to go."
+      ],
+      "next_state": "quest_done"
+    }
+  }
+}

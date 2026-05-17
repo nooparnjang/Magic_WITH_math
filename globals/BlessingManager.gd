@@ -7,9 +7,15 @@ signal inventory_reset()
 var blessings: int = 0
 var items: Dictionary = {}
 
+
+# =========================
+# Blessings
+# =========================
+
 func set_blessings(value: int) -> void:
 	blessings = max(value, 0)
-	emit_signal("blessings_changed", blessings)
+	blessings_changed.emit(blessings)
+
 
 func add_blessings(amount: int) -> void:
 	if amount == 0:
@@ -17,7 +23,8 @@ func add_blessings(amount: int) -> void:
 
 	blessings += amount
 	blessings = max(blessings, 0)
-	emit_signal("blessings_changed", blessings)
+	blessings_changed.emit(blessings)
+
 
 func spend_blessings(amount: int) -> bool:
 	if amount <= 0:
@@ -27,11 +34,17 @@ func spend_blessings(amount: int) -> bool:
 		return false
 
 	blessings -= amount
-	emit_signal("blessings_changed", blessings)
+	blessings_changed.emit(blessings)
 	return true
+
 
 func get_blessings() -> int:
 	return blessings
+
+
+# =========================
+# Items
+# =========================
 
 func set_item_count(item_id: String, value: int) -> void:
 	if item_id.is_empty():
@@ -41,10 +54,11 @@ func set_item_count(item_id: String, value: int) -> void:
 
 	if items[item_id] <= 0:
 		items.erase(item_id)
-		emit_signal("item_changed", item_id, 0)
+		item_changed.emit(item_id, 0)
 		return
 
-	emit_signal("item_changed", item_id, items[item_id])
+	item_changed.emit(item_id, items[item_id])
+
 
 func add_item(item_id: String, amount: int = 1) -> void:
 	if item_id.is_empty():
@@ -61,10 +75,11 @@ func add_item(item_id: String, amount: int = 1) -> void:
 
 	if items[item_id] <= 0:
 		items.erase(item_id)
-		emit_signal("item_changed", item_id, 0)
+		item_changed.emit(item_id, 0)
 		return
 
-	emit_signal("item_changed", item_id, items[item_id])
+	item_changed.emit(item_id, items[item_id])
+
 
 func spend_item(item_id: String, amount: int = 1) -> bool:
 	if item_id.is_empty():
@@ -84,11 +99,12 @@ func spend_item(item_id: String, amount: int = 1) -> bool:
 
 	if items[item_id] <= 0:
 		items.erase(item_id)
-		emit_signal("item_changed", item_id, 0)
+		item_changed.emit(item_id, 0)
 	else:
-		emit_signal("item_changed", item_id, items[item_id])
+		item_changed.emit(item_id, items[item_id])
 
 	return true
+
 
 func has_item(item_id: String, amount: int = 1) -> bool:
 	if item_id.is_empty():
@@ -102,6 +118,7 @@ func has_item(item_id: String, amount: int = 1) -> bool:
 
 	return int(items[item_id]) >= amount
 
+
 func get_item_count(item_id: String) -> int:
 	if item_id.is_empty():
 		return 0
@@ -111,17 +128,26 @@ func get_item_count(item_id: String) -> int:
 
 	return int(items[item_id])
 
+
 func get_total_items() -> int:
 	var total := 0
+
 	for key in items.keys():
 		total += int(items[key])
+
 	return total
+
 
 func get_all_items() -> Dictionary:
 	return items.duplicate(true)
 
+
+# =========================
+# Reset
+# =========================
+
 func reset_data() -> void:
 	blessings = 0
 	items.clear()
-	emit_signal("blessings_changed", blessings)
-	emit_signal("inventory_reset")
+	blessings_changed.emit(blessings)
+	inventory_reset.emit()

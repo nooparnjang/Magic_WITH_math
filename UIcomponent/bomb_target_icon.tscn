@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://oyxcm52xj6or" path="res://UIcomponent/script/bomb_target_icon.gd" id="1_p0b60"]
 [ext_resource type="Texture2D" uid="uid://mlr5mwcbw5xt" path="res://assets/object/Boom!!!.png" id="2_rjrko"]
 
-[node name="BombTargetIcon" type="Node2D" unique_id=11538149]
+[node name="TargetIcon" type="Node2D" unique_id=11538149]
 script = ExtResource("1_p0b60")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=892807248]

@@ -21,41 +21,17 @@ extends CharacterBody2D
 @export var health_regen_per_second := 10.0
 @export var health_regen_delay := 4.0
 
-@export var bomb_scene: PackedScene
-@export var bomb_spawn_offset := Vector2(0, -16)
-@export var bomb_item_id: String = "bomb"
-@export var bomb_target_icon_scene: PackedScene
-@export var bomb_target_icon_offset := Vector2(0, -40)
-
-var is_bomb_targeting := false
-var current_bomb_target_icon: Node2D = null
-
-@onready var item_holder: Node2D = $Items
-@onready var selecting_icon: Sprite2D = $Items/selecting
+@onready var item_selector: Node = $Items/ItemSelector
+@onready var item_use_controller: Node = $Items/ItemUseController
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var target_radius: Area2D = $TargetRadius
 @onready var status_bars: Node2D = $Statusbar
 
-const ITEM_TEXTURE_PATHS: Dictionary = {
-	"": "res://assets/UI/selecting/handSelect.png",
-	"bomb": "res://assets/UI/selecting/bombSelect.png",
-	"scrap": "res://assets/UI/selecting/bombSelect.png",
-	"gem": "res://assets/UI/selecting/bombSelect.png",
-	"potion": "res://assets/UI/selecting/bombSelect.png",
-	"coin": "res://assets/UI/selecting/bombSelect.png",
-	"engine_part": "res://assets/UI/selecting/engineSelect.png"
-}
-
-var item_texture_map: Dictionary = {}
-
-var selectable_items: Array[String] = [""]
-var selected_item_index: int = 0
-var selected_item_id: String = ""
-
 var targets_in_range: Array[Node2D] = []
 var current_target: Node2D = null
 var current_target_index := -1
+
 var is_answering := false
 var is_switching_target := false
 var is_cast_releasing := false
@@ -69,32 +45,24 @@ var time_since_last_damage := 0.0
 var pending_damage_target: Node2D = null
 var pending_damage_amount: int = 0
 
+
 func _ready() -> void:
 	add_to_group("player")
 
-	if not target_radius.body_entered.is_connected(_on_target_radius_body_entered):
-		target_radius.body_entered.connect(_on_target_radius_body_entered)
+	if target_radius != null:
+		if not target_radius.body_entered.is_connected(_on_target_radius_body_entered):
+			target_radius.body_entered.connect(_on_target_radius_body_entered)
 
-	if not target_radius.body_exited.is_connected(_on_target_radius_body_exited):
-		target_radius.body_exited.connect(_on_target_radius_body_exited)
+		if not target_radius.body_exited.is_connected(_on_target_radius_body_exited):
+			target_radius.body_exited.connect(_on_target_radius_body_exited)
 
 	if status_bars != null and status_bars.has_method("setup"):
 		status_bars.setup(max_hp, hp, max_stamina, stamina)
 
-	if not sprite.animation_finished.is_connected(_on_animated_sprite_2d_animation_finished):
-		sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+	if sprite != null:
+		if not sprite.animation_finished.is_connected(_on_animated_sprite_2d_animation_finished):
+			sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
 
-	_build_item_texture_map()
-	refresh_selectable_items()
-	update_selected_item_visual(false)
-
-	if BlessingManager.has_signal("item_changed"):
-		if not BlessingManager.item_changed.is_connected(_on_inventory_item_changed):
-			BlessingManager.item_changed.connect(_on_inventory_item_changed)
-
-	if BlessingManager.has_signal("inventory_reset"):
-		if not BlessingManager.inventory_reset.is_connected(_on_inventory_reset):
-			BlessingManager.inventory_reset.connect(_on_inventory_reset)
 
 func _input(event: InputEvent) -> void:
 	if is_dead:
@@ -103,11 +71,15 @@ func _input(event: InputEvent) -> void:
 	if is_interacting:
 		return
 
+	if item_selector == null:
+		return
+
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			cycle_selected_item(-1)
+			item_selector.cycle_selected_item(-1)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			cycle_selected_item(1)
+			item_selector.cycle_selected_item(1)
+
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -125,12 +97,7 @@ func _physics_process(delta: float) -> void:
 	update_health_regen(delta)
 
 	if is_interacting:
-		velocity.x = 0.0
-
-		if not is_on_floor():
-			velocity.y += gravity * delta
-
-		move_and_slide()
+		_process_locked_movement(delta)
 
 		if is_on_floor() and sprite.animation != "idle":
 			sprite.play("idle")
@@ -138,12 +105,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if is_cast_releasing:
-		velocity.x = 0.0
-
-		if not is_on_floor():
-			velocity.y += gravity * delta
-
-		move_and_slide()
+		_process_locked_movement(delta)
 
 		if sprite.sprite_frames.has_animation("release"):
 			if sprite.animation != "release":
@@ -151,15 +113,10 @@ func _physics_process(delta: float) -> void:
 
 		return
 
-	if is_answering or is_switching_target or is_bomb_targeting:
-		velocity.x = 0.0
+	if _is_in_focus_mode():
+		_process_locked_movement(delta)
 
-		if not is_on_floor():
-			velocity.y += gravity * delta
-
-		move_and_slide()
-
-		if is_answering or is_bomb_targeting:
+		if _should_play_charge_animation():
 			if sprite.sprite_frames.has_animation("charge"):
 				if sprite.animation != "charge":
 					sprite.play("charge")
@@ -169,17 +126,30 @@ func _physics_process(delta: float) -> void:
 			return
 
 		if Input.is_action_just_pressed("target_select") and not is_switching_target:
-			if is_holding_item(bomb_item_id):
-				cycle_bomb_target()
-			else:
-				cycle_target()
+			_handle_target_select_pressed()
 
-		if is_holding_item(bomb_item_id) and is_bomb_targeting and Input.is_action_just_pressed("ui_accept"):
-			throw_bomb_at_current_target()
+		if Input.is_action_just_pressed("ui_accept"):
+			_handle_accept_pressed()
 			return
 
 		return
 
+	_process_normal_movement(delta)
+
+	if Input.is_action_just_pressed("target_select") and not is_switching_target:
+		_handle_target_select_pressed()
+
+
+func _process_locked_movement(delta: float) -> void:
+	velocity.x = 0.0
+
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+	move_and_slide()
+
+
+func _process_normal_movement(delta: float) -> void:
 	var direction: float = Input.get_axis("ui_left", "ui_right")
 
 	velocity.x = direction * speed
@@ -201,275 +171,51 @@ func _physics_process(delta: float) -> void:
 	else:
 		if sprite.animation != "walk":
 			sprite.play("walk")
+
 		sprite.flip_h = direction < 0
 
-	if Input.is_action_just_pressed("target_select") and not is_switching_target:
-		if is_holding_item(bomb_item_id):
-			cycle_bomb_target()
-		else:
-			cycle_target()
 
-func _build_item_texture_map() -> void:
-	item_texture_map.clear()
-
-	for item_id in ITEM_TEXTURE_PATHS.keys():
-		var path: String = String(ITEM_TEXTURE_PATHS[item_id])
-		var texture := load(path) as Texture2D
-
-		if texture == null:
-			push_warning("โหลด texture ไม่ได้: " + item_id + " จาก path: " + path)
-			continue
-
-		item_texture_map[item_id] = texture
-
-func refresh_selectable_items() -> void:
-	selectable_items.clear()
-	selectable_items.append("")
-
-	var all_items: Dictionary = BlessingManager.get_all_items()
-
-	for item_id in all_items.keys():
-		var count: int = int(all_items[item_id])
-		if count > 0:
-			selectable_items.append(String(item_id))
-
-	if selected_item_index >= selectable_items.size():
-		selected_item_index = 0
-
-	if selected_item_index < 0:
-		selected_item_index = 0
-
-	selected_item_id = selectable_items[selected_item_index]
-
-func cycle_selected_item(direction: int) -> void:
-	refresh_selectable_items()
-
-	if selectable_items.is_empty():
+func _handle_target_select_pressed() -> void:
+	if item_selector == null:
+		cycle_target()
 		return
 
-	selected_item_index += direction
+	var selected_item_id: String = item_selector.get_selected_item_id()
 
-	if selected_item_index >= selectable_items.size():
-		selected_item_index = 0
-	elif selected_item_index < 0:
-		selected_item_index = selectable_items.size() - 1
-
-	selected_item_id = selectable_items[selected_item_index]
-
-	print("ตอนนี้ถือ:", get_selected_item_display_name(), "id =", selected_item_id)
-	update_selected_item_visual(true)
-
-func cycle_bomb_target() -> void:
-	if is_dead:
-		return
-
-	if is_interacting:
-		return
-
-	if is_switching_target:
-		return
-
-	if stamina < min_stamina_to_focus:
-		print("stamina ไม่พอสำหรับ focus bomb")
-		return
-
-	is_switching_target = true
-	cleanup_targets()
-
-	if targets_in_range.is_empty():
-		print("ไม่มี target สำหรับ bomb")
-		is_bomb_targeting = false
-		clear_bomb_target_icon()
-
-		if camera_rig != null and camera_rig.has_method("unlock_focus"):
-			camera_rig.unlock_focus()
-
-		is_switching_target = false
-		return
-
-	if current_target != null and is_instance_valid(current_target):
-		if current_target.has_method("set_selected"):
-			current_target.set_selected(false)
-
-	clear_bomb_target_icon()
-
-	current_target_index += 1
-	if current_target_index >= targets_in_range.size():
-		current_target_index = 0
-
-	current_target = targets_in_range[current_target_index]
-
-	if current_target == null or not is_instance_valid(current_target):
-		is_bomb_targeting = false
-		clear_bomb_target_icon()
-
-		if camera_rig != null and camera_rig.has_method("unlock_focus"):
-			camera_rig.unlock_focus()
-
-		is_switching_target = false
-		return
-
-	is_bomb_targeting = true
-	is_answering = false
-	is_cast_releasing = false
-
-	if current_target.has_method("set_selected"):
-		current_target.set_selected(true)
-
-	if camera_rig != null and camera_rig.has_method("lock_focus"):
-		camera_rig.lock_focus(current_target)
-
-	show_bomb_target_icon(current_target)
-
-	print("bomb target:", current_target.name)
-	is_switching_target = false
-
-func throw_bomb_at_current_target() -> void:
-	if is_dead or is_interacting:
-		return
-
-	if not is_holding_item(bomb_item_id):
-		print("ไม่ได้ถือ bomb")
-		return
-
-	if not BlessingManager.has_item(bomb_item_id, 1):
-		print("ไม่มี bomb ใน inventory")
-		return
-
-	if current_target == null or not is_instance_valid(current_target):
-		print("ยังไม่ได้เลือก target")
-		return
-
-	if bomb_scene == null:
-		push_warning("ยังไม่ได้ assign bomb_scene")
-		return
-
-	var bomb = bomb_scene.instantiate()
-	get_tree().current_scene.add_child(bomb)
-
-	var spawn_pos := global_position + bomb_spawn_offset
-	var target_pos := current_target.global_position
-
-	if bomb is Node2D:
-		bomb.global_position = spawn_pos
-
-	if bomb is CollisionObject2D:
-		bomb.add_collision_exception_with(self)
-
-	if bomb.has_method("throw_to_position"):
-		bomb.throw_to_position(spawn_pos, target_pos)
-
-	var spent_ok := BlessingManager.spend_item(bomb_item_id, 1)
-	if not spent_ok:
-		push_warning("หัก bomb ไม่สำเร็จ")
-
-	if current_target != null and is_instance_valid(current_target):
-		if current_target.has_method("set_selected"):
-			current_target.set_selected(false)
-
-	clear_bomb_target_icon()
-
-	current_target = null
-	current_target_index = -1
-	is_bomb_targeting = false
-
-	if camera_rig != null and camera_rig.has_method("unlock_focus"):
-		camera_rig.unlock_focus()
-
-	if is_on_floor():
-		sprite.play("idle")
-
-	print("โยน bomb แล้ว")
-
-func show_bomb_target_icon(target: Node2D) -> void:
-	clear_bomb_target_icon()
-
-	if bomb_target_icon_scene == null:
-		return
-
-	if target == null or not is_instance_valid(target):
-		return
-
-	var icon = bomb_target_icon_scene.instantiate()
-	target.add_child(icon)
-
-	if icon is Node2D:
-		icon.position = bomb_target_icon_offset
-		icon.z_index = 999
-
-	current_bomb_target_icon = icon
-
-func clear_bomb_target_icon() -> void:
-	if current_bomb_target_icon != null and is_instance_valid(current_bomb_target_icon):
-		current_bomb_target_icon.queue_free()
-
-	current_bomb_target_icon = null
-
-func get_selected_item_display_name() -> String:
-	match selected_item_id:
-		"":
-			return "มือเปล่า"
-		"bomb":
-			return "ระเบิด"
-		"scrap":
-			return "เศษเหล็ก"
-		"gem":
-			return "อัญมณี"
-		"potion":
-			return "ยา"
-		"coin":
-			return "เหรียญ"
-		"engine_part":
-			return "ชิ้นส่วนเครื่องยนต์"
-		_:
-			return selected_item_id
-
-func update_selected_item_visual(show_popup: bool = true) -> void:
-	if selecting_icon == null:
-		return
-
-	var texture: Texture2D = item_texture_map.get(selected_item_id, null)
-
-	if texture == null:
-		if selecting_icon.has_method("hide_item"):
-			selecting_icon.hide_item()
-		else:
-			selecting_icon.visible = false
-		return
-
-	if show_popup:
-		if selecting_icon.has_method("show_item"):
-			selecting_icon.show_item(texture)
-		else:
-			selecting_icon.texture = texture
-			selecting_icon.visible = true
+	if selected_item_id != "":
+		if item_use_controller != null and item_use_controller.has_method("use_selected_item"):
+			item_use_controller.use_selected_item()
 	else:
-		selecting_icon.texture = texture
-		selecting_icon.visible = false
-		selecting_icon.modulate.a = 1.0
+		cycle_target()
 
-func get_selected_item_id() -> String:
-	return selected_item_id
 
-func is_holding_item(item_id: String) -> bool:
-	return selected_item_id == item_id
+func _handle_accept_pressed() -> void:
+	if item_use_controller != null:
+		if item_use_controller.has_method("is_item_targeting_active"):
+			if item_use_controller.is_item_targeting_active():
+				item_use_controller.confirm_item_use()
+				return
 
-func _on_inventory_item_changed(_item_id: String, _new_value: int) -> void:
-	var previous_selected := selected_item_id
 
-	refresh_selectable_items()
+func _is_in_focus_mode() -> bool:
+	var item_targeting := false
 
-	if previous_selected != "" and not BlessingManager.has_item(previous_selected, 1):
-		selected_item_index = 0
-		selected_item_id = ""
-		print("ไอเท็มที่เลือกหมดแล้ว กลับเป็นมือเปล่า")
-		update_selected_item_visual(true)
+	if item_use_controller != null and item_use_controller.has_method("is_item_targeting_active"):
+		item_targeting = item_use_controller.is_item_targeting_active()
 
-func _on_inventory_reset() -> void:
-	selected_item_index = 0
-	selected_item_id = ""
-	refresh_selectable_items()
-	update_selected_item_visual(false)
+	return is_answering or is_switching_target or item_targeting
+
+
+func _should_play_charge_animation() -> bool:
+	if is_answering:
+		return true
+
+	if item_use_controller != null and item_use_controller.has_method("is_item_targeting_active"):
+		if item_use_controller.is_item_targeting_active():
+			return true
+
+	return false
+
 
 func start_cast_release(target: Node2D = null, damage_amount: int = 1) -> void:
 	print("start_cast_release called")
@@ -494,6 +240,7 @@ func start_cast_release(target: Node2D = null, damage_amount: int = 1) -> void:
 	sprite.play("release")
 	print("playing release")
 
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if is_cast_releasing and sprite.animation == "release":
 		if pending_damage_target != null and is_instance_valid(pending_damage_target):
@@ -506,13 +253,18 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		is_cast_releasing = false
 		finish_answering()
 
+
 func update_stamina(delta: float) -> void:
 	if is_dead:
 		return
 
-	var is_focusing_target: bool = (is_answering or is_bomb_targeting) and current_target != null and is_instance_valid(current_target)
+	var is_math_focusing: bool = is_answering and current_target != null and is_instance_valid(current_target)
+	var is_item_focusing: bool = false
 
-	if is_focusing_target:
+	if item_use_controller != null and item_use_controller.has_method("has_focus_target"):
+		is_item_focusing = item_use_controller.has_focus_target()
+
+	if is_math_focusing or is_item_focusing:
 		stamina -= stamina_drain_per_second * delta
 		stamina = max(stamina, 0.0)
 
@@ -524,6 +276,7 @@ func update_stamina(delta: float) -> void:
 
 	if status_bars != null and status_bars.has_method("set_stamina"):
 		status_bars.set_stamina(stamina, max_stamina)
+
 
 func update_health_regen(delta: float) -> void:
 	if is_dead:
@@ -541,6 +294,7 @@ func update_health_regen(delta: float) -> void:
 	if status_bars != null and status_bars.has_method("set_health"):
 		status_bars.set_health(hp, max_hp)
 
+
 func _on_target_radius_body_entered(body: Node2D) -> void:
 	if is_interacting:
 		return
@@ -553,6 +307,7 @@ func _on_target_radius_body_entered(body: Node2D) -> void:
 		if body.has_method("activate"):
 			body.activate(self)
 
+
 func _on_target_radius_body_exited(body: Node2D) -> void:
 	if targets_in_range.has(body):
 		var removed_index: int = targets_in_range.find(body)
@@ -561,6 +316,9 @@ func _on_target_radius_body_exited(body: Node2D) -> void:
 		if removed_index <= current_target_index:
 			current_target_index -= 1
 
+	if item_use_controller != null and item_use_controller.has_method("on_target_exited"):
+		item_use_controller.on_target_exited(body)
+
 	if is_cast_releasing and body == current_target:
 		return
 
@@ -568,14 +326,11 @@ func _on_target_radius_body_exited(body: Node2D) -> void:
 		if current_target.has_method("set_selected"):
 			current_target.set_selected(false)
 
-		clear_bomb_target_icon()
-
 		current_target = null
 		current_target_index = -1
 		is_answering = false
 		is_switching_target = false
 		is_cast_releasing = false
-		is_bomb_targeting = false
 
 		if math_ui != null and math_ui.has_method("close_ui_silent"):
 			math_ui.close_ui_silent()
@@ -587,6 +342,7 @@ func _on_target_radius_body_exited(body: Node2D) -> void:
 
 		if not is_dead and is_on_floor():
 			sprite.play("idle")
+
 
 func cleanup_targets() -> void:
 	var valid_targets: Array[Node2D] = []
@@ -600,8 +356,10 @@ func cleanup_targets() -> void:
 	if current_target_index >= targets_in_range.size():
 		current_target_index = -1
 
+
 func cycle_target() -> void:
 	_cycle_target_async()
+
 
 func _cycle_target_async() -> void:
 	if is_dead:
@@ -629,6 +387,9 @@ func _cycle_target_async() -> void:
 		if current_target.has_method("set_selected"):
 			current_target.set_selected(false)
 
+	if item_use_controller != null and item_use_controller.has_method("cancel_item_use"):
+		item_use_controller.cancel_item_use()
+
 	current_target_index += 1
 	if current_target_index >= targets_in_range.size():
 		current_target_index = 0
@@ -647,13 +408,10 @@ func _cycle_target_async() -> void:
 		is_switching_target = false
 		return
 
-	clear_bomb_target_icon()
-
 	if camera_rig != null and camera_rig.has_method("lock_focus"):
 		camera_rig.lock_focus(current_target)
 
 	is_answering = true
-	is_bomb_targeting = false
 	is_cast_releasing = false
 
 	if sprite.sprite_frames.has_animation("charge"):
@@ -662,19 +420,20 @@ func _cycle_target_async() -> void:
 	math_ui.open_question(current_target, self)
 	is_switching_target = false
 
+
 func cancel_math_mode() -> void:
 	if current_target != null and is_instance_valid(current_target):
 		if current_target.has_method("set_selected"):
 			current_target.set_selected(false)
 
-	clear_bomb_target_icon()
+	if item_use_controller != null and item_use_controller.has_method("cancel_item_use"):
+		item_use_controller.cancel_item_use()
 
 	current_target = null
 	current_target_index = -1
 	is_answering = false
 	is_switching_target = false
 	is_cast_releasing = false
-	is_bomb_targeting = false
 	pending_damage_target = null
 	pending_damage_amount = 0
 
@@ -690,25 +449,29 @@ func cancel_math_mode() -> void:
 	if camera_rig != null and camera_rig.has_method("unlock_focus"):
 		camera_rig.unlock_focus()
 
+
 func finish_answering() -> void:
 	if current_target != null and is_instance_valid(current_target):
 		if current_target.has_method("set_selected"):
 			current_target.set_selected(false)
-
-	clear_bomb_target_icon()
 
 	current_target = null
 	current_target_index = -1
 	is_answering = false
 	is_switching_target = false
 	is_cast_releasing = false
-	is_bomb_targeting = false
 
 	if camera_rig != null and camera_rig.has_method("unlock_focus"):
 		camera_rig.unlock_focus()
 
 	if not is_dead and is_on_floor():
 		sprite.play("idle")
+
+
+func on_item_use_finished() -> void:
+	if not is_dead and is_on_floor():
+		sprite.play("idle")
+
 
 func take_damage(amount: float) -> void:
 	if is_dead:
@@ -734,8 +497,10 @@ func take_damage(amount: float) -> void:
 		return
 
 	await get_tree().create_timer(damage_invincibility_time).timeout
+
 	if not is_dead:
 		can_take_damage = true
+
 
 func heal(amount: float) -> void:
 	if is_dead:
@@ -747,6 +512,7 @@ func heal(amount: float) -> void:
 	if status_bars != null and status_bars.has_method("set_health"):
 		status_bars.set_health(hp, max_hp)
 
+
 func restore_stamina(amount: float) -> void:
 	if is_dead:
 		return
@@ -756,6 +522,7 @@ func restore_stamina(amount: float) -> void:
 
 	if status_bars != null and status_bars.has_method("set_stamina"):
 		status_bars.set_stamina(stamina, max_stamina)
+
 
 func consume_stamina(amount: float) -> void:
 	if is_dead:
@@ -770,14 +537,18 @@ func consume_stamina(amount: float) -> void:
 	if stamina <= 0.0:
 		cancel_math_mode()
 
+
 func die() -> void:
 	if is_dead:
 		return
 
 	is_dead = true
 	can_take_damage = false
+
 	cancel_math_mode()
-	clear_bomb_target_icon()
+
+	if item_use_controller != null and item_use_controller.has_method("cancel_item_use"):
+		item_use_controller.cancel_item_use()
 
 	if is_on_floor():
 		sprite.play("idle")
@@ -793,6 +564,7 @@ func die() -> void:
 
 	get_tree().paused = true
 
+
 func begin_interaction() -> void:
 	if is_dead:
 		return
@@ -800,5 +572,23 @@ func begin_interaction() -> void:
 	is_interacting = true
 	cancel_math_mode()
 
+
 func end_interaction() -> void:
 	is_interacting = false
+
+
+func get_targets_in_range() -> Array[Node2D]:
+	cleanup_targets()
+	return targets_in_range
+
+
+func get_stamina() -> float:
+	return stamina
+
+
+func is_player_dead() -> bool:
+	return is_dead
+
+
+func is_player_interacting() -> bool:
+	return is_interacting
