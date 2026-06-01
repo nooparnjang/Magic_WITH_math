@@ -89,15 +89,34 @@ theme_override_fonts/font = ExtResource("5_gixq5")
 theme_override_font_sizes/font_size = 80
 text = "OPTION"
 
-[node name="backset" type="Panel" parent="." unique_id=25216882]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 103.0
-offset_right = 906.0
-offset_bottom = 443.0
+[node name="TabContainer" type="TabContainer" parent="." unique_id=711854346]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 95.0
+offset_right = 904.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Setting" type="TabBar" parent="TabContainer" unique_id=682245352]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="backset" type="Panel" parent="TabContainer/Setting" unique_id=25216882]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gixq5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="backset" unique_id=759864490]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Setting/backset" unique_id=759864490]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -110,7 +129,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 120
 
-[node name="SFX_row" type="Button" parent="backset/VBoxContainer" unique_id=701284535]
+[node name="SFX_row" type="Button" parent="TabContainer/Setting/backset/VBoxContainer" unique_id=701284535]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_16s6x")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cw32j")
@@ -124,7 +143,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8oui")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7mcc6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8pvfr")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="backset/VBoxContainer/SFX_row" unique_id=1553755920]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Setting/backset/VBoxContainer/SFX_row" unique_id=1553755920]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -139,14 +158,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 370
 
-[node name="sfx" type="Label" parent="backset/VBoxContainer/SFX_row/HBoxContainer" unique_id=2108217947]
+[node name="sfx" type="Label" parent="TabContainer/Setting/backset/VBoxContainer/SFX_row/HBoxContainer" unique_id=2108217947]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_gixq5")
 theme_override_font_sizes/font_size = 80
 text = "SFX    "
 
-[node name="sfx_status" type="Label" parent="backset/VBoxContainer/SFX_row/HBoxContainer" unique_id=664447085]
+[node name="sfx_status" type="Label" parent="TabContainer/Setting/backset/VBoxContainer/SFX_row/HBoxContainer" unique_id=664447085]
 custom_minimum_size = Vector2(118, 104)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -155,7 +174,7 @@ theme_override_font_sizes/font_size = 80
 text = "OFF"
 horizontal_alignment = 1
 
-[node name="Music_row" type="Button" parent="backset/VBoxContainer" unique_id=910915275]
+[node name="Music_row" type="Button" parent="TabContainer/Setting/backset/VBoxContainer" unique_id=910915275]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_16s6x")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cw32j")
@@ -169,7 +188,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8oui")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7mcc6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8pvfr")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="backset/VBoxContainer/Music_row" unique_id=699499203]
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Setting/backset/VBoxContainer/Music_row" unique_id=699499203]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -184,14 +203,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 370
 
-[node name="music" type="Label" parent="backset/VBoxContainer/Music_row/HBoxContainer2" unique_id=806624806]
+[node name="music" type="Label" parent="TabContainer/Setting/backset/VBoxContainer/Music_row/HBoxContainer2" unique_id=806624806]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_gixq5")
 theme_override_font_sizes/font_size = 80
 text = "MUSIC"
 
-[node name="music_status" type="Label" parent="backset/VBoxContainer/Music_row/HBoxContainer2" unique_id=626434922]
+[node name="music_status" type="Label" parent="TabContainer/Setting/backset/VBoxContainer/Music_row/HBoxContainer2" unique_id=626434922]
 custom_minimum_size = Vector2(118, 104)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)

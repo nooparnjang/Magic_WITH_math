@@ -3,11 +3,11 @@ extends Control
 # =========================
 # 🎯 UI REFERENCES
 # =========================
-@onready var sfx_row = $backset/VBoxContainer/SFX_row
-@onready var music_row = $backset/VBoxContainer/Music_row
+@onready var sfx_row = $TabContainer/Setting/backset/VBoxContainer/SFX_row
+@onready var music_row = $TabContainer/Setting/backset/VBoxContainer/Music_row
 
-@onready var sfx_text = $backset/VBoxContainer/SFX_row/HBoxContainer/sfx_status
-@onready var music_text = $backset/VBoxContainer/Music_row/HBoxContainer2/music_status
+@onready var sfx_text = $TabContainer/Setting/backset/VBoxContainer/SFX_row/HBoxContainer/sfx_status
+@onready var music_text = $TabContainer/Setting/backset/VBoxContainer/Music_row/HBoxContainer2/music_status
 
 # =========================
 # 🎮 STATE
