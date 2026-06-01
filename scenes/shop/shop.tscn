@@ -450,42 +450,6 @@ theme_override_font_sizes/font_size = 30
 text = "70 BLESSINGS"
 horizontal_alignment = 1
 
-[node name="StaminaMax" type="Sprite2D" parent="." unique_id=1013047376]
-visible = false
-position = Vector2(176.00002, 198)
-scale = Vector2(0.0712963, 0.07129628)
-texture = ExtResource("6_xcdpw")
-
-[node name="bless_stamina" type="Sprite2D" parent="." unique_id=543141076]
-visible = false
-position = Vector2(175, 388)
-scale = Vector2(0.10578704, 0.105787046)
-texture = ExtResource("9_tp26b")
-
-[node name="สไลม์(ฟ้า+selected)" type="Sprite2D" parent="." unique_id=1416709309]
-visible = false
-position = Vector2(476, 202)
-scale = Vector2(0.05266203, 0.05266203)
-texture = ExtResource("7_tp26b")
-
-[node name="bless_monster" type="Sprite2D" parent="." unique_id=1798200395]
-visible = false
-position = Vector2(474, 388)
-scale = Vector2(0.106, 0.106)
-texture = ExtResource("9_tp26b")
-
-[node name="HpMax" type="Sprite2D" parent="." unique_id=1943724388]
-visible = false
-position = Vector2(776, 206.00002)
-scale = Vector2(0.07870369, 0.07870368)
-texture = ExtResource("8_vk20h")
-
-[node name="bless_hp" type="Sprite2D" parent="." unique_id=1470408973]
-visible = false
-position = Vector2(777, 388)
-scale = Vector2(0.106, 0.106)
-texture = ExtResource("9_tp26b")
-
 [node name="yourblessings" type="Label" parent="." unique_id=330585805]
 layout_mode = 0
 offset_left = 232.0
