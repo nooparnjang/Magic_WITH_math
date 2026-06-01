@@ -219,6 +219,11 @@ theme_override_font_sizes/font_size = 80
 text = "OFF"
 horizontal_alignment = 1
 
+[node name="Tutorial" type="TabBar" parent="TabContainer" unique_id=370899467]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
 [node name="recommend" type="Label" parent="." unique_id=83888040]
 layout_mode = 0
 offset_left = 94.0
