@@ -94,15 +94,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 44.0
+offset_left = 53.0
 offset_top = 95.0
-offset_right = 904.0
+offset_right = 913.0
 offset_bottom = 445.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 
 [node name="Setting" type="TabBar" parent="TabContainer" unique_id=682245352]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -220,15 +221,24 @@ text = "OFF"
 horizontal_alignment = 1
 
 [node name="Tutorial" type="TabBar" parent="TabContainer" unique_id=370899467]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="backset" type="Panel" parent="TabContainer/Tutorial" unique_id=1405009668]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gixq5")
+
 [node name="recommend" type="Label" parent="." unique_id=83888040]
 layout_mode = 0
-offset_left = 94.0
+offset_left = 90.0
 offset_top = 464.0
-offset_right = 876.0
+offset_right = 872.0
 offset_bottom = 510.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_gixq5")
