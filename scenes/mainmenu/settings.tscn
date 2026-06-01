@@ -100,6 +100,7 @@ offset_right = 913.0
 offset_bottom = 445.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_gixq5")
 current_tab = 1
 
 [node name="Setting" type="TabBar" parent="TabContainer" unique_id=682245352]
