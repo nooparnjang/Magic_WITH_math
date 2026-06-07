@@ -22,7 +22,7 @@ func _ready() -> void:
 	_last_spawn_position = player.global_position
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player is CharacterBody2D:
 		if player.velocity.length() < min_speed_for_trail:
 			_last_spawn_position = player.global_position
