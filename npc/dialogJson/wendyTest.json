@@ -4,42 +4,93 @@
   "consume_required_item": true,
 
   "states": {
-    "before_quest": {
-      "lines": [
-        "Hey... You look lost.",
-        "I'm Wendy.",
-        "If you're trying to get somewhere, I can help.",
-        "But first... I need my dad's engine back.",
-        "A giant robot stole it."
-      ],
-      "next_state": "quest_accepted"
-    },
+	"before_quest": {
+	  "lines": [
+		{
+		  "speaker": "Princess Tria",
+		  "text": "Are you alright?"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Hey... You look lost."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "I'm Wendy."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "If you're trying to get somewhere, I can help."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "But first... I need my dad's engine back."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "A giant robot stole it."
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "An engine core?"
+		}
+	  ],
+	  "next_state": "quest_accepted"
+	},
 
-    "quest_accepted": {
-      "lines": [
-        "Please find the engine.",
-        "That giant robot ran toward the dark alley."
-      ],
-      "next_state": "quest_accepted"
-    },
+	"quest_accepted": {
+	  "lines": [
+		{
+		  "speaker": "Wendy",
+		  "text": "Please find the engine."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "That giant robot ran toward the dark alley."
+		}
+	  ],
+	  "next_state": "quest_accepted"
+	},
 
-    "has_item": {
-      "lines": [
-        "You found it?!",
-        "...I can't believe it.",
-        "Thank you.",
-        "Get in. Let's get out of here."
-      ],
-      "next_state": "quest_done",
-      "trigger_ending": true
-    },
+	"has_item": {
+	  "lines": [
+		{
+		  "speaker": "Wendy",
+		  "text": "You found it?!"
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "Is this your father's engine?"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "...I can't believe it."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Thank you."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Get in. Let's get out of here."
+		}
+	  ],
+	  "next_state": "quest_done",
+	  "trigger_ending": true
+	},
 
-    "quest_done": {
-      "lines": [
-        "Hop in.",
-        "I'll take you wherever you want to go."
-      ],
-      "next_state": "quest_done"
-    }
+	"quest_done": {
+	  "lines": [
+		{
+		  "speaker": "Wendy",
+		  "text": "Hop in."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "I'll take you wherever you want to go."
+		}
+	  ],
+	  "next_state": "quest_done"
+	}
   }
 }

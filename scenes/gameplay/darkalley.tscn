@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://bsj34t8c6jvea" path="res://UIcomponent/gameover.tscn" id="13_sns8g"]
 [ext_resource type="Script" uid="uid://fg0rocq663t1" path="res://UIcomponent/script/gameover.gd" id="14_1i52o"]
 [ext_resource type="PackedScene" uid="uid://bnqmojmxftlgn" path="res://enemies/robot_3.tscn" id="14_pe584"]
-[ext_resource type="Script" uid="uid://dwbnin22yyune" path="res://object/script/cone.gd" id="14_qtbdr"]
 [ext_resource type="PackedScene" uid="uid://dgimx5hv2dph5" path="res://object/ItemPickup.tscn" id="15_k4vop"]
 [ext_resource type="PackedScene" uid="uid://br3128obts5ld" path="res://UIcomponent/demoover.tscn" id="15_taekv"]
 [ext_resource type="Script" uid="uid://dxl82somv1d0x" path="res://UIcomponent/script/demoover.gd" id="16_1i52o"]
@@ -343,7 +342,6 @@ item_drop_texture = ExtResource("16_6pjwb")
 [node name="car" parent="object" unique_id=1134860753 groups=["targetable"] instance=ExtResource("13_g7vwq")]
 position = Vector2(1824, 106)
 scale = Vector2(3, 3)
-script = ExtResource("14_qtbdr")
 hit_effect_scene = ExtResource("10_lkn7p")
 floating_text_scene = ExtResource("11_spkd1")
 

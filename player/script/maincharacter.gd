@@ -23,6 +23,7 @@ extends CharacterBody2D
 
 @onready var item_selector: Node = $Items/ItemSelector
 @onready var item_use_controller: Node = $Items/ItemUseController
+@onready var player_bubble: Node = $BubbleAnchor/DialogBubble
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var target_radius: Area2D = $TargetRadius
@@ -48,6 +49,12 @@ var pending_damage_amount: int = 0
 
 func _ready() -> void:
 	add_to_group("player")
+	if player_bubble != null:
+		
+		if player_bubble.has_method("hide_bubble"):
+			player_bubble.hide_bubble()
+		else:
+			player_bubble.hide()
 
 	if target_radius != null:
 		if not target_radius.body_entered.is_connected(_on_target_radius_body_entered):
@@ -139,6 +146,25 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("target_select") and not is_switching_target:
 		_handle_target_select_pressed()
 
+
+func set_status_bars_visible(value: bool) -> void:
+	if status_bars == null:
+		return
+
+	status_bars.visible = value
+	
+func get_dialog_bubble() -> Node:
+	return player_bubble
+
+
+func hide_player_bubble() -> void:
+	if player_bubble == null:
+		return
+
+	if player_bubble.has_method("hide_bubble"):
+		player_bubble.hide_bubble()
+	else:
+		player_bubble.hide()
 
 func _process_locked_movement(delta: float) -> void:
 	velocity.x = 0.0
@@ -571,10 +597,14 @@ func begin_interaction() -> void:
 
 	is_interacting = true
 	cancel_math_mode()
+	set_status_bars_visible(false)
 
 
 func end_interaction() -> void:
 	is_interacting = false
+
+	if not is_dead:
+		set_status_bars_visible(true)
 
 
 func get_targets_in_range() -> Array[Node2D]:

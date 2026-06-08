@@ -32,6 +32,10 @@ var current_state: String = ""
 var required_item: String = ""
 var consume_required_item: bool = true
 
+var current_lines: Array = []
+var current_line_index: int = 0
+var active_bubble: Node = null
+
 
 func _ready() -> void:
 	current_state = start_state
@@ -103,11 +107,8 @@ func setup_demo_scene() -> void:
 
 
 func hide_dialog_ui() -> void:
-	if bubble != null:
-		call_hide_bubble()
-
-	if hint != null:
-		call_hide_hint()
+	call_hide_bubble()
+	call_hide_hint()
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -146,51 +147,82 @@ func interact() -> void:
 	play_animation(talk_animation)
 	face_player()
 
-	var lines := get_current_lines()
+	current_lines = get_current_lines()
+	current_line_index = 0
 
-	if lines.is_empty():
+	if current_lines.is_empty():
 		push_warning("ไม่มีบทพูดใน state: " + current_state)
 		end_dialog()
 		return
 
-	if bubble != null and bubble.has_method("start_dialog"):
-		bubble.start_dialog(npc_name, lines)
-	else:
-		push_error("DialogBubble ต้องมี method start_dialog(npc_name, lines)")
+	show_current_line()
 
 
 func advance_dialog() -> void:
-	if bubble == null:
+	if active_bubble == null:
 		end_dialog()
 		return
 
-	if not bubble.has_method("advance_or_finish_line"):
+	if not active_bubble.has_method("advance_or_finish_line"):
 		push_error("DialogBubble ต้องมี method advance_or_finish_line()")
 		end_dialog()
 		return
 
-	var finished: bool = bubble.advance_or_finish_line()
+	var finished: bool = active_bubble.advance_or_finish_line()
 
 	if finished:
+		current_line_index += 1
+		show_current_line()
+
+
+func show_current_line() -> void:
+	if current_line_index >= current_lines.size():
 		finish_dialog_state()
 		end_dialog()
-
-
-func update_state_by_inventory() -> void:
-	if required_item.is_empty():
 		return
 
-	if current_state != item_check_state:
+	hide_all_bubbles()
+
+	var line_data = current_lines[current_line_index]
+
+	if typeof(line_data) != TYPE_DICTIONARY:
+		push_error("line_data ต้องเป็น Dictionary")
+		end_dialog()
 		return
 
-	if not has_blessing_item(required_item):
+	var speaker := str(line_data.get("speaker", npc_name))
+	var text := str(line_data.get("text", ""))
+
+	active_bubble = get_bubble_for_speaker(speaker)
+
+	if active_bubble == null:
+		push_error("ไม่พบ bubble สำหรับ speaker: " + speaker)
+		end_dialog()
 		return
 
-	current_state = has_item_state
+	if not active_bubble.has_method("start_dialog"):
+		push_error("DialogBubble ต้องมี method start_dialog(npc_name, lines)")
+		end_dialog()
+		return
+
+	var one_line: Array[String] = []
+	one_line.append(text)
+
+	active_bubble.start_dialog(speaker, one_line)
+
+func get_bubble_for_speaker(speaker: String) -> Node:
+	if speaker == "Princess Tria":
+		if current_player != null and current_player.has_method("get_dialog_bubble"):
+			return current_player.get_dialog_bubble()
+
+		push_error("player ไม่มี get_dialog_bubble()")
+		return null
+
+	return bubble
 
 
-func get_current_lines() -> Array[String]:
-	var result: Array[String] = []
+func get_current_lines() -> Array:
+	var result: Array = []
 
 	var state_data := get_state_data(current_state)
 
@@ -204,9 +236,28 @@ func get_current_lines() -> Array[String]:
 		return result
 
 	for line in raw_lines:
-		result.append(str(line))
+		if typeof(line) == TYPE_DICTIONARY:
+			result.append(line)
+		else:
+			result.append({
+				"speaker": npc_name,
+				"text": str(line)
+			})
 
 	return result
+
+
+func update_state_by_inventory() -> void:
+	if required_item.is_empty():
+		return
+
+	if current_state != item_check_state:
+		return
+
+	if not has_blessing_item(required_item):
+		return
+
+	current_state = has_item_state
 
 
 func finish_dialog_state() -> void:
@@ -266,8 +317,9 @@ func get_state_data(state_name: String) -> Dictionary:
 
 func end_dialog() -> void:
 	is_talking = false
+	active_bubble = null
 
-	call_hide_bubble()
+	hide_all_bubbles()
 
 	play_animation(idle_animation)
 
@@ -284,9 +336,10 @@ func trigger_demo_ending() -> void:
 
 	is_ending_triggered = true
 	is_talking = false
+	active_bubble = null
 
 	call_hide_hint()
-	call_hide_bubble()
+	hide_all_bubbles()
 
 	play_animation(idle_animation)
 
@@ -301,6 +354,13 @@ func trigger_demo_ending() -> void:
 	get_tree().paused = true
 
 
+func hide_all_bubbles() -> void:
+	call_hide_bubble()
+
+	if current_player != null and current_player.has_method("hide_player_bubble"):
+		current_player.hide_player_bubble()
+
+
 func face_player() -> void:
 	if current_player == null:
 		return
@@ -313,6 +373,9 @@ func face_player() -> void:
 
 func play_animation(animation_name: StringName) -> void:
 	if sprite == null:
+		return
+
+	if sprite.sprite_frames == null:
 		return
 
 	if not sprite.sprite_frames.has_animation(animation_name):
@@ -354,10 +417,6 @@ func call_hide_bubble() -> void:
 
 
 func has_blessing_item(item_id: String) -> bool:
-	if not Engine.has_singleton("BlessingManager"):
-		# หมายเหตุ: Autoload ปกติจะเข้าถึงด้วยชื่อได้เลย
-		pass
-
 	if not is_instance_valid(BlessingManager):
 		push_error("ไม่พบ BlessingManager Autoload")
 		return false

@@ -1,0 +1,186 @@
+{
+  "npc_name": "WENDY",
+  "required_item": "engine_part",
+  "consume_required_item": true,
+
+  "states": {
+	"before_quest": {
+	  "lines": [
+		{
+		  "speaker": "Princess Tria",
+		  "text": "Are you alright?"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Ah— thank goodness…"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "My name is Wendy."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "A giant robot broke into my father's workshop and stole his engine core."
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "An engine core?"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "It powers everything in our workshop. Without it... we can't survive here anymore."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "The robots suddenly started targeting energy systems recently."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "...Almost like someone changed their priorities."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "It's like they're searching for something."
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "Just like me, I'm searching for satellite fragments."
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "They're said to contain the power needed to destroy VOXTRON."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "...Satellite fragments…"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Then we're both looking for something important."
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "I'll help you recover the engine core first."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "You would really do that?"
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "I can't ignore people in danger."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "...Heh. Then maybe the stories about the princess are true after all."
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "Where did that giant robot go?"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "It went through the dark alley, that way."
+		}
+	  ],
+	  "next_state": "quest_accepted"
+	},
+
+	"quest_accepted": {
+	  "lines": [
+		{
+		  "speaker": "Wendy",
+		  "text": "Please be careful."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "That giant robot went through the dark alley, that way."
+		}
+	  ],
+	  "next_state": "quest_accepted"
+	},
+
+	"has_item": {
+	  "lines": [
+		{
+		  "speaker": "Wendy",
+		  "text": "You actually got it back…?"
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "Is this your father's engine?"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Yeah…"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "My father built it himself."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "He believed robots were meant to help people, not control them."
+		}
+	  ],
+	  "next_state": "fragment_reveal"
+	},
+
+	"fragment_reveal": {
+	  "lines": [
+		{
+		  "speaker": "Princess Tria",
+		  "text": "A satellite fragment…"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "So the prophecy was real after all."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "If you're really searching for the remaining fragments…"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Then let me help you."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "I know this city better than anyone left here."
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "...Alright."
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "But this journey will only become more dangerous from here."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Heh…"
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "I know."
+		}
+	  ],
+	  "next_state": "quest_done",
+	  "trigger_ending": true
+	},
+
+	"quest_done": {
+	  "lines": [
+		{
+		  "speaker": "Wendy",
+		  "text": "I'll help you find the remaining fragments."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "I know this city better than anyone left here."
+		}
+	  ],
+	  "next_state": "quest_done"
+	}
+  }
+}

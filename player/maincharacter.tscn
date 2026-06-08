@@ -13,6 +13,10 @@
 [ext_resource type="Script" uid="uid://bbofs5utuj7c4" path="res://player/script/item_use_controller.gd" id="11_cuai1"]
 [ext_resource type="PackedScene" uid="uid://dj377lrob4a4m" path="res://object/bombthrowable.tscn" id="12_we8ug"]
 [ext_resource type="PackedScene" uid="uid://c0bp0shidp8ss" path="res://UIcomponent/bomb_target_icon.tscn" id="13_7cl1g"]
+[ext_resource type="Script" uid="uid://kchdcg8jck8l" path="res://npc/script/dialog_bubble.gd" id="14_cib6f"]
+[ext_resource type="Texture2D" uid="uid://buofdlvjfr6k6" path="res://assets/npc/ui/darkbubble.png" id="15_pde1g"]
+[ext_resource type="FontFile" uid="uid://bkbespsxdoatm" path="res://assets/font/PaybAck.ttf" id="16_txfxw"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="17_od1am"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldrqp"]
 atlas = ExtResource("1_bjxot")
@@ -238,6 +242,17 @@ height = 70.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4oker"]
 radius = 135.93013
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsn4k"]
+texture = ExtResource("15_pde1g")
+
+[sub_resource type="Theme" id="Theme_gsf5c"]
+default_font = ExtResource("16_txfxw")
+default_font_size = 6
+
+[sub_resource type="Theme" id="Theme_4a5g1"]
+default_font = ExtResource("17_od1am")
+default_font_size = 10
+
 [node name="maincharacter" type="CharacterBody2D" unique_id=1926872742 groups=["player"]]
 script = ExtResource("1_qwy5e")
 
@@ -287,5 +302,55 @@ player = NodePath("../..")
 item_selector = NodePath("../ItemSelector")
 bomb_scene = ExtResource("12_we8ug")
 target_icon_scene = ExtResource("13_7cl1g")
+
+[node name="BubbleAnchor" type="Node2D" parent="." unique_id=1236391738]
+position = Vector2(-2, 11)
+
+[node name="DialogBubble" type="Control" parent="BubbleAnchor" unique_id=1200504848]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -5.0
+offset_right = 13.0
+offset_bottom = 31.0
+script = ExtResource("14_cib6f")
+
+[node name="BubbleVisual" type="Control" parent="BubbleAnchor/DialogBubble" unique_id=2057432703]
+layout_mode = 1
+anchors_preset = 0
+scale = Vector2(0.8, 0.8)
+
+[node name="Panel" type="Panel" parent="BubbleAnchor/DialogBubble/BubbleVisual" unique_id=927067649]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -63.0
+offset_right = 30.0
+offset_bottom = -48.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qsn4k")
+
+[node name="MarginContainer" type="MarginContainer" parent="BubbleAnchor/DialogBubble/BubbleVisual" unique_id=933629372]
+layout_mode = 0
+offset_left = -23.0
+offset_top = -77.595
+offset_right = 17.0
+offset_bottom = -49.595
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer" unique_id=765931761]
+layout_mode = 2
+
+[node name="name" type="Label" parent="BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" unique_id=339424069]
+layout_mode = 2
+theme = SubResource("Theme_gsf5c")
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("17_od1am")
+theme_override_font_sizes/font_size = 8
+text = "Pri ncess Tria"
+
+[node name="Label" type="Label" parent="BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" unique_id=1367956479]
+layout_mode = 2
+theme = SubResource("Theme_4a5g1")
+theme_override_colors/font_color = Color(0, 0.90431696, 0.82581776, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = " Matsuri"
 
 [editable path="Statusbar"]

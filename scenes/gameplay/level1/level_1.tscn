@@ -235,7 +235,7 @@ z_index = 1
 
 [node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui", "camera_rig", "game_over_ui") instance=ExtResource("2_lswdy")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(500, 308)
+position = Vector2(300, 308)
 scale = Vector2(2.5, 2.5)
 math_ui = NodePath("../../CanvasLayer/UImath")
 camera_rig = NodePath("../../camera")
