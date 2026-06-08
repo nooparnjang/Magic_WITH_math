@@ -20,7 +20,11 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "A giant robot broke into my father's workshop and stole his engine core."
+		  "text": "A giant robot broke into my father's workshop"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "and stole his engine core."
 		},
 		{
 		  "speaker": "Princess Tria",
@@ -28,15 +32,27 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "It powers everything in our workshop. Without it... we can't survive here anymore."
+		  "text": "It powers everything in our workshop."
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "The robots suddenly started targeting energy systems recently."
+		  "text": "Without it... we can't survive here anymore."
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "...Almost like someone changed their priorities."
+		  "text": "The robots suddenly started targeting"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "energy systems recently."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "...Almost like someone changed"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "their priorities."
 		},
 		{
 		  "speaker": "Wendy",
@@ -44,11 +60,19 @@
 		},
 		{
 		  "speaker": "Princess Tria",
-		  "text": "Just like me, I'm searching for satellite fragments."
+		  "text": "Just like me."
 		},
 		{
 		  "speaker": "Princess Tria",
-		  "text": "They're said to contain the power needed to destroy VOXTRON."
+		  "text": "I'm searching for satellite fragments."
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "They're said to contain the power"
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "needed to destroy VOXTRON."
 		},
 		{
 		  "speaker": "Wendy",
@@ -56,11 +80,19 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "Then we're both looking for something important."
+		  "text": "Then we're both looking for"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "something important."
 		},
 		{
 		  "speaker": "Princess Tria",
-		  "text": "I'll help you recover the engine core first."
+		  "text": "I'll help you recover"
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "the engine core first."
 		},
 		{
 		  "speaker": "Wendy",
@@ -72,7 +104,15 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "...Heh. Then maybe the stories about the princess are true after all."
+		  "text": "...Heh."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Then maybe the stories about the princess"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "are true after all."
 		},
 		{
 		  "speaker": "Princess Tria",
@@ -80,7 +120,11 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "It went through the dark alley, that way."
+		  "text": "It went through the dark alley,"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "that way."
 		}
 	  ],
 	  "next_state": "quest_accepted"
@@ -94,7 +138,11 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "That giant robot went through the dark alley, that way."
+		  "text": "That giant robot went through"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "the dark alley, that way."
 		}
 	  ],
 	  "next_state": "quest_accepted"
@@ -120,7 +168,15 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "He believed robots were meant to help people, not control them."
+		  "text": "He believed robots were meant"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "to help people,"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "not control them."
 		}
 	  ],
 	  "next_state": "fragment_reveal"
@@ -138,7 +194,11 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "If you're really searching for the remaining fragments…"
+		  "text": "If you're really searching"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "for the remaining fragments…"
 		},
 		{
 		  "speaker": "Wendy",
@@ -146,7 +206,11 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "I know this city better than anyone left here."
+		  "text": "I know this city better"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "than anyone left here."
 		},
 		{
 		  "speaker": "Princess Tria",
@@ -154,7 +218,11 @@
 		},
 		{
 		  "speaker": "Princess Tria",
-		  "text": "But this journey will only become more dangerous from here."
+		  "text": "But this journey will only become"
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "more dangerous from here."
 		},
 		{
 		  "speaker": "Wendy",
@@ -173,11 +241,19 @@
 	  "lines": [
 		{
 		  "speaker": "Wendy",
-		  "text": "I'll help you find the remaining fragments."
+		  "text": "I'll help you find"
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "I know this city better than anyone left here."
+		  "text": "the remaining fragments."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "I know this city better"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "than anyone left here."
 		}
 	  ],
 	  "next_state": "quest_done"

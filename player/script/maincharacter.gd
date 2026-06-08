@@ -598,6 +598,8 @@ func begin_interaction() -> void:
 	is_interacting = true
 	cancel_math_mode()
 	set_status_bars_visible(false)
+	if camera_rig != null and camera_rig.has_method("start_dialog_zoom"):
+		camera_rig.start_dialog_zoom()
 
 
 func end_interaction() -> void:
@@ -605,6 +607,8 @@ func end_interaction() -> void:
 
 	if not is_dead:
 		set_status_bars_visible(true)
+	if camera_rig != null and camera_rig.has_method("end_dialog_zoom"):
+		camera_rig.end_dialog_zoom()
 
 
 func get_targets_in_range() -> Array[Node2D]:

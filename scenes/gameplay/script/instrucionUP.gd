@@ -13,7 +13,7 @@ func _ready() -> void:
 	# กันกรณี blessings ถึงก่อน sprite นี้เกิด
 	_try_remove()
 
-func _on_blessings_changed(value: int) -> void:
+func _on_blessings_changed(_value: int) -> void:
 	_try_remove()
 
 func _try_remove() -> void:

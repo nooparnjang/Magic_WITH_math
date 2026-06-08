@@ -251,7 +251,10 @@ func update_state_by_inventory() -> void:
 	if required_item.is_empty():
 		return
 
-	if current_state != item_check_state:
+	if current_state == has_item_state:
+		return
+
+	if current_state == "quest_done":
 		return
 
 	if not has_blessing_item(required_item):

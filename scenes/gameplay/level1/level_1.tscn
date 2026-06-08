@@ -628,6 +628,7 @@ position = Vector2(2600, 0)
 [node name="Area2D" type="StaticBody2D" parent="teleport" unique_id=257389244]
 disable_mode = 1
 script = ExtResource("38_ss8k8")
+next_scene = "res://scenes/gameplay/level1/bosslevel_1.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleport/Area2D" unique_id=1950145761]
 position = Vector2(4926, -16)
@@ -665,6 +666,7 @@ horizontal_alignment = 1
 [node name="Wendy" parent="NPC" unique_id=1920401949 instance=ExtResource("40_rajh1")]
 position = Vector2(6135, 329)
 scale = Vector2(2, 2)
+dialog_json_path = "res://npc/dialogJson/Level1Wendy.json"
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]

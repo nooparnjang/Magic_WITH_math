@@ -8,6 +8,12 @@ var is_focusing := false
 var is_locked_focus := false
 
 @onready var camera: Camera2D = $Camera2D
+@export var dialog_zoom := Vector2(1.3, 1.3)
+@export var dialog_zoom_time := 0.25
+
+var normal_zoom := Vector2.ONE
+var has_saved_normal_zoom := false
+var zoom_tween: Tween = null
 
 func _ready() -> void:
 	current_target = default_target
@@ -61,3 +67,41 @@ func unlock_focus() -> void:
 
 	if default_target != null and is_instance_valid(default_target):
 		current_target = default_target
+		
+func start_dialog_zoom() -> void:
+	if camera == null:
+		return
+
+	if not has_saved_normal_zoom:
+		normal_zoom = camera.zoom
+		has_saved_normal_zoom = true
+
+	if zoom_tween != null:
+		zoom_tween.kill()
+
+	zoom_tween = create_tween()
+	zoom_tween.tween_property(
+		camera,
+		"zoom",
+		dialog_zoom,
+		dialog_zoom_time
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+
+func end_dialog_zoom() -> void:
+	if camera == null:
+		return
+
+	if not has_saved_normal_zoom:
+		return
+
+	if zoom_tween != null:
+		zoom_tween.kill()
+
+	zoom_tween = create_tween()
+	zoom_tween.tween_property(
+		camera,
+		"zoom",
+		normal_zoom,
+		dialog_zoom_time
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
