@@ -203,6 +203,7 @@ position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_vbaer")
 
 [node name="BubbleAnchor" type="Node2D" parent="." unique_id=761725737]
+position = Vector2(0, -8)
 
 [node name="DialogBubble" type="Control" parent="BubbleAnchor" unique_id=1653953348]
 layout_mode = 3
