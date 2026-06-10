@@ -11,9 +11,12 @@
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="7_qjid5"]
 [ext_resource type="Texture2D" uid="uid://cxo0mqvry6n6f" path="res://assets/UI/HARD_Hover.png" id="8_omhsx"]
 [ext_resource type="Texture2D" uid="uid://6xdxb4qb8m4m" path="res://assets/UI/0 - Tutorial.png" id="11_rxnfy"]
+[ext_resource type="Script" uid="uid://281pke2tgkjt" path="res://scenes/mainmenu/script/b_tutorial.gd" id="12_6vqln"]
 [ext_resource type="Texture2D" uid="uid://b1p15vna8l0fn" path="res://assets/UI/1.png" id="12_rxnfy"]
-[ext_resource type="Texture2D" uid="uid://cgf6hkyrv7pr2" path="res://assets/UI/uiforshop/Bg blessings .png" id="13_6vqln"]
-[ext_resource type="Texture2D" uid="uid://dm0f62shr1av4" path="res://assets/UI/uiforshop/Hp max.png" id="14_rm1fu"]
+[ext_resource type="Texture2D" uid="uid://dlxm5vobjlgnj" path="res://assets/UI/2.png" id="13_rxnfy"]
+[ext_resource type="Texture2D" uid="uid://b74bx01lkjvsm" path="res://assets/UI/3.png" id="14_hafae"]
+[ext_resource type="Script" uid="uid://drko6a25chsl6" path="res://scenes/mainmenu/script/b_chap_1.gd" id="14_rm1fu"]
+[ext_resource type="Texture2D" uid="uid://doprtl43rfdun" path="res://assets/UI/4.png" id="15_6vqln"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6vqln"]
 texture = ExtResource("1_wyes4")
@@ -70,14 +73,41 @@ corner_radius_bottom_left = 16
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fx8x8"]
 texture = ExtResource("11_rxnfy")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vqln"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5673677, 0.56736773, 0.56736773, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rm1fu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5686275, 0.5686275, 0.5686275, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xj1jj"]
 texture = ExtResource("12_rxnfy")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ylipw"]
-texture = ExtResource("14_rm1fu")
+texture = ExtResource("13_rxnfy")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fmvp0"]
-texture = ExtResource("13_6vqln")
+texture = ExtResource("14_hafae")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r1wjn"]
+texture = ExtResource("15_6vqln")
 
 [node name="Control" type="Control" unique_id=1040076162]
 layout_mode = 3
@@ -172,12 +202,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="box_stamina" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=772840466]
+[node name="Tutorial" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=772840466]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0x1q8")
 
-[node name="P_stamina" type="Panel" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1194439238]
+[node name="P_tutorial" type="Panel" parent="ScrollContainer/HBoxContainer/Tutorial" unique_id=1194439238]
 custom_minimum_size = Vector2(138, 73)
 layout_mode = 0
 offset_left = 56.0
@@ -186,7 +216,7 @@ offset_right = 211.0
 offset_bottom = 162.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_fx8x8")
 
-[node name="stamina" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1620850651]
+[node name="explain_t" type="Label" parent="ScrollContainer/HBoxContainer/Tutorial" unique_id=1620850651]
 layout_mode = 0
 offset_left = 17.0
 offset_top = 169.0
@@ -199,7 +229,8 @@ text = "The Beginning
 of Mathria"
 horizontal_alignment = 1
 
-[node name="b_stamina" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1023984119]
+[node name="text_tutorial" type="Label" parent="ScrollContainer/HBoxContainer/Tutorial" unique_id=1023984119]
+visible = false
 layout_mode = 0
 offset_left = 41.0
 offset_top = 251.0
@@ -211,12 +242,26 @@ theme_override_font_sizes/font_size = 50
 text = "TUTORIAL"
 horizontal_alignment = 1
 
-[node name="box_monster" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=781543572]
+[node name="B_tutorial" type="Button" parent="ScrollContainer/HBoxContainer/Tutorial" unique_id=318817406]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 256.0
+offset_right = 236.0
+offset_bottom = 329.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("7_qjid5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
+text = "TUTORIAL"
+script = ExtResource("12_6vqln")
+
+[node name="Chapter_1" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=781543572]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0x1q8")
 
-[node name="slimeblue" type="Panel" parent="ScrollContainer/HBoxContainer/box_monster" unique_id=757681558]
+[node name="P_Chap1" type="Panel" parent="ScrollContainer/HBoxContainer/Chapter_1" unique_id=757681558]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 14.0
@@ -224,7 +269,7 @@ offset_right = 213.0
 offset_bottom = 164.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_xj1jj")
 
-[node name="monster" type="Label" parent="ScrollContainer/HBoxContainer/box_monster" unique_id=223210488]
+[node name="explain_chap1" type="Label" parent="ScrollContainer/HBoxContainer/Chapter_1" unique_id=223210488]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 168.0
@@ -237,146 +282,185 @@ text = "The edge of
 the ruined city"
 horizontal_alignment = 1
 
-[node name="b_monster" type="Label" parent="ScrollContainer/HBoxContainer/box_monster" unique_id=458996680]
+[node name="text_chap1" type="Label" parent="ScrollContainer/HBoxContainer/Chapter_1" unique_id=458996680]
+visible = false
 layout_mode = 0
-offset_left = 34.0
-offset_top = 250.0
-offset_right = 236.0
-offset_bottom = 315.0
+offset_left = 35.0
+offset_top = 261.0
+offset_right = 237.0
+offset_bottom = 326.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("7_qjid5")
 theme_override_font_sizes/font_size = 50
 text = "CHAPTER 1"
 horizontal_alignment = 1
 
-[node name="box_hp" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=653952616]
+[node name="B_chap1" type="Button" parent="ScrollContainer/HBoxContainer/Chapter_1" unique_id=383197245]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 256.0
+offset_right = 240.0
+offset_bottom = 329.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("7_qjid5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
+text = "CHAPTER 1"
+script = ExtResource("14_rm1fu")
+
+[node name="Chapter_2" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=653952616]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0x1q8")
 
-[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1485232032]
+[node name="P_Chap2" type="Panel" parent="ScrollContainer/HBoxContainer/Chapter_2" unique_id=1485232032]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 58.0
 offset_top = 3.0
-offset_right = 207.0
-offset_bottom = 90.0
+offset_right = 218.0
+offset_bottom = 163.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ylipw")
 
-[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=48389976]
+[node name="explain_chap2" type="Label" parent="ScrollContainer/HBoxContainer/Chapter_2" unique_id=703415395]
 layout_mode = 0
-offset_top = 94.0
-offset_right = 270.0
-offset_bottom = 175.0
+offset_left = 42.0
+offset_top = 169.0
+offset_right = 227.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(0.047058824, 0.039215688, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("7_qjid5")
 theme_override_font_sizes/font_size = 30
-text = "INCREASE MAX HP
-BY 9%"
+text = "The Forgoten
+Factory"
 horizontal_alignment = 1
 
-[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=849512657]
+[node name="text_chap2" type="Label" parent="ScrollContainer/HBoxContainer/Chapter_2" unique_id=2039835015]
+visible = false
 layout_mode = 0
-offset_left = 34.0
-offset_top = 178.0
-offset_right = 236.0
-offset_bottom = 282.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_fmvp0")
-
-[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=2105172841]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 210.0
-offset_right = 216.0
-offset_bottom = 249.0
+offset_left = 31.0
+offset_top = 261.0
+offset_right = 241.0
+offset_bottom = 326.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("7_qjid5")
-theme_override_font_sizes/font_size = 30
-text = "70 BLESSINGS"
+theme_override_font_sizes/font_size = 50
+text = "CHAPTER 2"
 horizontal_alignment = 1
 
-[node name="box_hp2" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1653098263]
+[node name="B_chap2" type="Button" parent="ScrollContainer/HBoxContainer/Chapter_2" unique_id=1129801093]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 256.0
+offset_right = 237.0
+offset_bottom = 329.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("7_qjid5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
+text = "CHAPTER 2"
+
+[node name="Chapter_3" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1653098263]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0x1q8")
 
-[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=248763947]
+[node name="P_Chap3" type="Panel" parent="ScrollContainer/HBoxContainer/Chapter_3" unique_id=1698796335]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 58.0
 offset_top = 3.0
-offset_right = 207.0
-offset_bottom = 90.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_ylipw")
-
-[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=1100380854]
-layout_mode = 0
-offset_top = 94.0
-offset_right = 270.0
-offset_bottom = 175.0
-theme_override_fonts/font = ExtResource("7_qjid5")
-theme_override_font_sizes/font_size = 30
-text = "INCREASE MAX HP
-BY 9%"
-horizontal_alignment = 1
-
-[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=1432072464]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 178.0
-offset_right = 236.0
-offset_bottom = 282.0
+offset_right = 218.0
+offset_bottom = 163.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_fmvp0")
 
-[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=1985260766]
+[node name="explain_chap3" type="Label" parent="ScrollContainer/HBoxContainer/Chapter_3" unique_id=56611959]
 layout_mode = 0
-offset_left = 49.0
-offset_top = 210.0
-offset_right = 216.0
-offset_bottom = 249.0
-theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+offset_left = 30.0
+offset_top = 169.0
+offset_right = 238.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(0.047058824, 0.039215688, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("7_qjid5")
 theme_override_font_sizes/font_size = 30
-text = "70 BLESSINGS"
+text = "The Aboveground
+Network"
 horizontal_alignment = 1
 
-[node name="box_hp3" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1357458279]
+[node name="text_chap3" type="Label" parent="ScrollContainer/HBoxContainer/Chapter_3" unique_id=1532780373]
+visible = false
+layout_mode = 0
+offset_left = 31.0
+offset_top = 261.0
+offset_right = 241.0
+offset_bottom = 326.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("7_qjid5")
+theme_override_font_sizes/font_size = 50
+text = "CHAPTER 3"
+horizontal_alignment = 1
+
+[node name="B_chap3" type="Button" parent="ScrollContainer/HBoxContainer/Chapter_3" unique_id=264915803]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 257.0
+offset_right = 245.0
+offset_bottom = 330.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("7_qjid5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
+text = "CHAPTER 3"
+
+[node name="Chapter_4" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1357458279]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0x1q8")
 
-[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=641730895]
+[node name="P_Chap4" type="Panel" parent="ScrollContainer/HBoxContainer/Chapter_4" unique_id=1060718266]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 47.0
 offset_top = 3.0
 offset_right = 207.0
-offset_bottom = 90.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_ylipw")
+offset_bottom = 163.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_r1wjn")
 
-[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=510390104]
+[node name="explain_chap4" type="Label" parent="ScrollContainer/HBoxContainer/Chapter_4" unique_id=1166904355]
 layout_mode = 0
-offset_top = 94.0
-offset_right = 270.0
-offset_bottom = 175.0
+offset_left = 30.0
+offset_top = 169.0
+offset_right = 238.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(0.047058824, 0.039215688, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("7_qjid5")
 theme_override_font_sizes/font_size = 30
-text = "INCREASE MAX HP
-BY 9%"
+text = "The Heart of
+Mathtria"
 horizontal_alignment = 1
 
-[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=1038714783]
+[node name="text_chap4" type="Label" parent="ScrollContainer/HBoxContainer/Chapter_4" unique_id=345134027]
+visible = false
 layout_mode = 0
-offset_left = 34.0
-offset_top = 178.0
-offset_right = 236.0
-offset_bottom = 282.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_fmvp0")
-
-[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=1633205333]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 210.0
-offset_right = 216.0
-offset_bottom = 249.0
+offset_left = 28.0
+offset_top = 260.0
+offset_right = 239.0
+offset_bottom = 325.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("7_qjid5")
-theme_override_font_sizes/font_size = 30
-text = "70 BLESSINGS"
+theme_override_font_sizes/font_size = 50
+text = "CHAPTER 4"
 horizontal_alignment = 1
+
+[node name="B_chap4" type="Button" parent="ScrollContainer/HBoxContainer/Chapter_4" unique_id=2092070715]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 258.0
+offset_right = 244.0
+offset_bottom = 331.0
+theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
+theme_override_fonts/font = ExtResource("7_qjid5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
+text = "CHAPTER 4"
