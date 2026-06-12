@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="4_16s6x"]
 [ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="4_tnsq5"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_gixq5"]
+[ext_resource type="Texture2D" uid="uid://ho1q0tji626y" path="res://assets/UI/tutorail (1).png" id="7_cw32j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ewn18"]
 texture = ExtResource("1_tnsq5")
@@ -42,6 +43,8 @@ corner_radius_bottom_left = 16
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mcc6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8pvfr"]
+
+[sub_resource type="Theme" id="Theme_tvhyj"]
 
 [node name="Node2D" type="Control" unique_id=1565765914]
 layout_mode = 3
@@ -101,10 +104,9 @@ offset_bottom = 445.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_gixq5")
-current_tab = 1
+current_tab = 0
 
 [node name="Setting" type="TabBar" parent="TabContainer" unique_id=682245352]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -222,6 +224,7 @@ text = "OFF"
 horizontal_alignment = 1
 
 [node name="Tutorial" type="TabBar" parent="TabContainer" unique_id=370899467]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -234,6 +237,32 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gixq5")
+
+[node name="ScrollTutorial" type="ScrollContainer" parent="TabContainer/Tutorial" unique_id=25287385]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 13.0
+offset_right = 847.0
+offset_bottom = 306.0
+theme = SubResource("Theme_tvhyj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Tutorial/ScrollTutorial" unique_id=1958757859]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Tutorial/ScrollTutorial/VBoxContainer" unique_id=474479349]
+layout_mode = 2
+texture = ExtResource("7_cw32j")
+expand_mode = 5
+
+[node name="Tutorail(1)" type="Sprite2D" parent="." unique_id=1600343855]
+visible = false
+position = Vector2(484, 325.00003)
+scale = Vector2(0.42149928, 0.42149934)
+texture = ExtResource("7_cw32j")
+region_enabled = true
+region_rect = Rect2(0, 0, 1997.0276, 926.1583)
 
 [node name="recommend" type="Label" parent="." unique_id=83888040]
 layout_mode = 0
