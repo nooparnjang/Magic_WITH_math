@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://gl2jag4jd0p8"]
 
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="1_kipf3"]
+[ext_resource type="Texture2D" uid="uid://doprtl43rfdun" path="res://assets/UI/4.png" id="2_wuwgw"]
 
 [sub_resource type="Theme" id="Theme_wuwgw"]
 default_font = ExtResource("1_kipf3")
 default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_eenss"]
+default_font = ExtResource("1_kipf3")
+default_font_size = 20
 
 [node name="WonLevel" type="Control" unique_id=554814659]
 layout_mode = 3
@@ -30,15 +35,41 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -22.5
-offset_right = 130.0
-offset_bottom = 22.5
+offset_left = -293.0
+offset_top = -226.0
+offset_right = 309.0
+offset_bottom = 247.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_wuwgw")
 text = "Congratulation! 
 You have finished chapter 1
 
-Back to main menu by pressing enter"
+
+
+the first fragment recovered!
+"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=392261402]
+position = Vector2(484, 283)
+scale = Vector2(0.18500002, 0.19650002)
+texture = ExtResource("2_wuwgw")
+
+[node name="Label2" type="Label" parent="." unique_id=608715747]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 137.0
+offset_top = 238.0
+offset_right = 467.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_eenss")
+text = "pressing enter to go back to main menu"
 horizontal_alignment = 1

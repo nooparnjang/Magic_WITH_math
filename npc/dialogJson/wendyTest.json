@@ -20,7 +20,11 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "If you're trying to get somewhere, I can help."
+		  "text": "If you're trying to get somewhere"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "I can help."
 		},
 		{
 		  "speaker": "Wendy",

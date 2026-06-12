@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://r2eimy4lqgpi" path="res://assets/shader/gradient_blur.gdshader" id="2_balsr"]
 [ext_resource type="Texture2D" uid="uid://cjusbb24cphia" path="res://assets/UI/Rectangle 6.png" id="4_wvips"]
 [ext_resource type="Script" uid="uid://conllyvkfd5bl" path="res://scenes/mainmenu/script/selectchapter.gd" id="5_7j4e4"]
+[ext_resource type="Script" uid="uid://dc0acijiquukt" path="res://scenes/mainmenu/script/new_game.gd" id="5_n63p1"]
 [ext_resource type="Texture2D" uid="uid://cpakynryg5l8v" path="res://assets/UI/LEADERBOARD.png" id="5_ryigd"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_7j4e4"]
 [ext_resource type="Script" uid="uid://cyonbe8kq8xih" path="res://scenes/mainmenu/script/option.gd" id="6_chemg"]
@@ -56,45 +57,51 @@ offset_right = 413.0
 offset_bottom = 541.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_7j4e4")
 
-[node name="selectchapter" type="Button" parent="backbutton" unique_id=668538490]
-custom_minimum_size = Vector2(350, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="backbutton" unique_id=934727898]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 179.0
-offset_right = 359.0
-offset_bottom = 317.0
+offset_left = -43.0
+offset_top = -1.0
+offset_right = 404.0
+offset_bottom = 491.0
+alignment = 2
+
+[node name="New Game" type="Button" parent="backbutton/VBoxContainer" unique_id=1436446477]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
 theme_override_colors/font_color = Color(0.047058824, 0.039215688, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("6_7j4e4")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
+text = "New GAME"
+flat = true
+script = ExtResource("5_n63p1")
+
+[node name="selectchapter" type="Button" parent="backbutton/VBoxContainer" unique_id=668538490]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.039215688, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("6_7j4e4")
+theme_override_font_sizes/font_size = 40
 text = "SELECT
 CHAPTER"
 flat = true
 script = ExtResource("5_7j4e4")
 
-[node name="option" type="Button" parent="backbutton" unique_id=1102908938]
+[node name="option" type="Button" parent="backbutton/VBoxContainer" unique_id=1102908938]
 custom_minimum_size = Vector2(350, 0)
-layout_mode = 0
-offset_left = 10.0
-offset_top = 328.0
-offset_right = 360.0
-offset_bottom = 401.0
+layout_mode = 2
 theme_override_colors/font_color = Color(0.047058824, 0.039215688, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("6_7j4e4")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "OPTION"
 flat = true
 script = ExtResource("6_chemg")
 
-[node name="quit" type="Button" parent="backbutton" unique_id=1303901794]
+[node name="quit" type="Button" parent="backbutton/VBoxContainer" unique_id=1303901794]
 custom_minimum_size = Vector2(350, 0)
-layout_mode = 0
-offset_left = 10.0
-offset_top = 417.0
-offset_right = 360.0
-offset_bottom = 490.0
+layout_mode = 2
 theme_override_colors/font_color = Color(0.047058824, 0.039215688, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("6_7j4e4")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "QUIT GAME"
 flat = true
 script = ExtResource("7_gemsy")

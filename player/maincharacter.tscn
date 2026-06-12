@@ -16,7 +16,6 @@
 [ext_resource type="Script" uid="uid://kchdcg8jck8l" path="res://npc/script/dialog_bubble.gd" id="14_cib6f"]
 [ext_resource type="Texture2D" uid="uid://buofdlvjfr6k6" path="res://assets/npc/ui/darkbubble.png" id="15_pde1g"]
 [ext_resource type="FontFile" uid="uid://bkbespsxdoatm" path="res://assets/font/PaybAck.ttf" id="16_txfxw"]
-[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="17_od1am"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldrqp"]
 atlas = ExtResource("1_bjxot")
@@ -250,8 +249,8 @@ default_font = ExtResource("16_txfxw")
 default_font_size = 6
 
 [sub_resource type="Theme" id="Theme_4a5g1"]
-default_font = ExtResource("17_od1am")
-default_font_size = 10
+default_font = ExtResource("16_txfxw")
+default_font_size = 9
 
 [node name="maincharacter" type="CharacterBody2D" unique_id=1926872742 groups=["player"]]
 script = ExtResource("1_qwy5e")
@@ -330,9 +329,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_qsn4k")
 [node name="MarginContainer" type="MarginContainer" parent="BubbleAnchor/DialogBubble/BubbleVisual" unique_id=933629372]
 layout_mode = 0
 offset_left = -23.0
-offset_top = -77.595
-offset_right = 17.0
-offset_bottom = -49.595
+offset_top = -73.195
+offset_right = 31.0
+offset_bottom = -43.100002
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer" unique_id=765931761]
 layout_mode = 2
@@ -340,17 +339,16 @@ layout_mode = 2
 [node name="name" type="Label" parent="BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" unique_id=339424069]
 layout_mode = 2
 theme = SubResource("Theme_gsf5c")
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("17_od1am")
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 8
-text = "Pri ncess Tria"
+text = "Princess Tria"
 
 [node name="Label" type="Label" parent="BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" unique_id=1367956479]
 layout_mode = 2
 theme = SubResource("Theme_4a5g1")
 theme_override_colors/font_color = Color(0, 0.90431696, 0.82581776, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 6
 text = " Matsuri"
 
 [editable path="Statusbar"]

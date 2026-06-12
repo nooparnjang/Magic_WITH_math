@@ -281,7 +281,7 @@ theme = SubResource("Theme_spkd1")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 bbcode_enabled = true
-text = "[wave]Level 1"
+text = "[wave]Tutorial"
 fit_content = true
 horizontal_alignment = 1
 
@@ -307,14 +307,10 @@ script = ExtResource("16_1i52o")
 [node name="Robot1" parent="enemies" unique_id=1544183853 groups=["targetable"] instance=ExtResource("9_rubjw")]
 position = Vector2(1271, 305)
 scale = Vector2(2.5, 2.5)
-hit_effect_scene = ExtResource("10_lkn7p")
-floating_text_scene = ExtResource("11_spkd1")
 
 [node name="Robot2" parent="enemies" unique_id=1021456618 groups=["targetable"] instance=ExtResource("9_rubjw")]
 position = Vector2(1504, 310)
 scale = Vector2(2.5, 2.5)
-hit_effect_scene = ExtResource("10_lkn7p")
-floating_text_scene = ExtResource("11_spkd1")
 
 [node name="Robot3" parent="enemies" unique_id=759279220 groups=["targetable"] instance=ExtResource("13_l5mwx")]
 position = Vector2(2284.9998, 294.99997)

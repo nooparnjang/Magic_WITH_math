@@ -9,8 +9,8 @@ extends CharacterBody2D
 @export var max_vertical_attack_gap := 80.0
 
 @export var blessing_reward: int = 10
-@export var hit_effect_scene: PackedScene
-@export var floating_text_scene: PackedScene
+@export var hit_effect_scene: = preload("res://effect/PoofEffect.tscn")
+@export var floating_text_scene= preload("res://UIcomponent/FloatingBlessingText.tscn")
 
 @export_enum("3 digits with 1 digit", "2 digits with 1 digit", "1 digit with 1 digit")
 var question_pattern := 2

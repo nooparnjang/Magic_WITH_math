@@ -1,0 +1,629 @@
+[gd_scene format=3 uid="uid://dq5u62mqm5mgh"]
+
+[ext_resource type="Script" uid="uid://cfu6ekl1wayui" path="res://scenes/intro/script/intro_animation.gd" id="1_11brm"]
+[ext_resource type="Texture2D" uid="uid://c8uydiur3sse0" path="res://assets/bg/Intro/Intro_1.png" id="1_hvl6t"]
+[ext_resource type="Texture2D" uid="uid://d2b6ylpa2g56e" path="res://assets/bg/GameplayEndless/back.png" id="2_11brm"]
+[ext_resource type="Texture2D" uid="uid://4emjheu86vbp" path="res://assets/bg/GameplayEndless/middle.png" id="3_v1ffc"]
+[ext_resource type="Texture2D" uid="uid://b3yitaqxp4c4q" path="res://assets/bg/GameplayEndless/front.png" id="4_usrpv"]
+[ext_resource type="Shader" uid="uid://b3yc7qgr4rs6l" path="res://assets/shader/intro_blur.gdshader" id="5_555rf"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_bjbba"]
+[ext_resource type="AudioStream" uid="uid://dc63w6p2nlyuv" path="res://assets/sound/voiceActor/01.mp3" id="7_4weie"]
+[ext_resource type="AudioStream" uid="uid://bscb1h8nfisl4" path="res://assets/sound/voiceActor/02.mp3" id="8_gsugy"]
+[ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="8_v1ffc"]
+[ext_resource type="AudioStream" uid="uid://dqafxo8l171th" path="res://assets/sound/voiceActor/03.mp3" id="9_kyi4y"]
+[ext_resource type="AudioStream" uid="uid://cr8t71s0xwhdq" path="res://assets/sound/voiceActor/04.mp3" id="10_0mrxb"]
+[ext_resource type="AudioStream" uid="uid://btta34ks1s8av" path="res://assets/sound/voiceActor/05.mp3" id="11_r17dm"]
+[ext_resource type="AudioStream" uid="uid://cby4mqlmvdysl" path="res://assets/sound/voiceActor/06.mp3" id="12_b1q6i"]
+[ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="15_usrpv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vg2k"]
+shader = ExtResource("5_555rf")
+shader_parameter/blur_amount = 1.0000000475
+
+[sub_resource type="Theme" id="Theme_ixf0b"]
+default_font = ExtResource("6_bjbba")
+default_font_size = 30
+
+[sub_resource type="Animation" id="Animation_rubjw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kilis"]
+resource_name = "transition"
+length = 1.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1), Color(0, 0, 0.12835406, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_usrpv"]
+_data = {
+&"RESET": SubResource("Animation_rubjw"),
+&"transition": SubResource("Animation_kilis")
+}
+
+[sub_resource type="Theme" id="Theme_hvl6t"]
+default_font = ExtResource("6_bjbba")
+default_font_size = 40
+
+[sub_resource type="Animation" id="Animation_oj72m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("allContent/MarginContainer/VBoxContainer/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("01:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("allContent/MarginContainer/VBoxContainer2/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("02:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("03:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("allContent/MarginContainer/VBoxContainer3/Label:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("04:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("allContent/MarginContainer/VBoxContainer4/Label:visible_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("05:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("allContent/MarginContainer/VBoxContainer5/Label:visible_ratio")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("06:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("allContent/MarginContainer/VBoxContainer6/Label:visible_ratio")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("allContent:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_umdc6"]
+resource_name = "TextWithVoice"
+length = 100.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("allContent/MarginContainer/VBoxContainer/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 23.1, 24.366667, 25.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("01:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.76666665, 23.833334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("allContent/MarginContainer/VBoxContainer2/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(24.833334, 34.033333, 35.166668, 36.233334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("02:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(23.9, 24.7, 34.866665),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("03:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(34.833332, 36.5, 52.538208),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("allContent/MarginContainer/VBoxContainer3/Label:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(36.4, 51.533333, 52.366665, 53.066666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("04:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(52.666668, 52.9, 68.066666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("allContent/MarginContainer/VBoxContainer4/Label:visible_ratio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(53.166668, 67.2164, 68.3, 69.03333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("05:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(68.26667, 68.420746, 81.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("allContent/MarginContainer/VBoxContainer5/Label:visible_ratio")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(69, 81.07352, 81.68379, 82.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("06:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(81.9, 81.96667, 91),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("allContent/MarginContainer/VBoxContainer6/Label:visible_ratio")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(82.1609, 90.38598),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("allContent:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cbbjb"]
+_data = {
+&"RESET": SubResource("Animation_oj72m"),
+&"TextWithVoice": SubResource("Animation_umdc6")
+}
+
+[node name="IntroAnimation" type="Control" unique_id=1264421056]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_11brm")
+
+[node name="bgContainer" type="Control" parent="." unique_id=898860802]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg_1" type="TextureRect" parent="bgContainer" unique_id=1977149020]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hvl6t")
+expand_mode = 2
+
+[node name="bg_2" type="Control" parent="bgContainer" unique_id=516379160]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="TextureRect" parent="bgContainer/bg_2" unique_id=1861438053]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_11brm")
+expand_mode = 2
+
+[node name="middle" type="TextureRect" parent="bgContainer/bg_2" unique_id=523034659]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_v1ffc")
+expand_mode = 2
+
+[node name="front" type="TextureRect" parent="bgContainer/bg_2" unique_id=782559751]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_usrpv")
+expand_mode = 2
+
+[node name="blur" type="ColorRect" parent="." unique_id=33788715]
+z_index = 2
+material = SubResource("ShaderMaterial_2vg2k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="allContent" type="MarginContainer" parent="." unique_id=200997956]
+z_index = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="allContent" unique_id=1494041882]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="allContent/MarginContainer" unique_id=2071187130]
+custom_minimum_size = Vector2(900, 480)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="allContent/MarginContainer/VBoxContainer" unique_id=1685579008]
+layout_mode = 2
+theme = SubResource("Theme_ixf0b")
+text = "In the year 3030, Mathtria,
+a cyber city filled with a past of great glory,
+powered by intelligent calculation systems,
+is now shrouded in a dark ominous fog
+by the demon king VOXTRON
+and an army of autonomous machines that despise numbers"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="allContent/MarginContainer" unique_id=252811993]
+custom_minimum_size = Vector2(900, 480)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="allContent/MarginContainer/VBoxContainer2" unique_id=621402976]
+layout_mode = 2
+theme = SubResource("Theme_ixf0b")
+text = "one night, an ancient satellite burst into light from the sky
+its fragments scattering across the distant horizon"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="allContent/MarginContainer" unique_id=810913664]
+custom_minimum_size = Vector2(900, 480)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="allContent/MarginContainer/VBoxContainer3" unique_id=1484396588]
+layout_mode = 2
+theme = SubResource("Theme_ixf0b")
+text = "matching an ancient prophecy from the year 2026 that foretold
+a genius child born from the light of the heavens
+with the magic of mathematics to begin a world without automation"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="allContent/MarginContainer" unique_id=701802510]
+custom_minimum_size = Vector2(900, 480)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="allContent/MarginContainer/VBoxContainer4" unique_id=475635389]
+layout_mode = 2
+theme = SubResource("Theme_ixf0b")
+text = "that child is the princess of the kingdom of Mathtria
+in her youth, she trained to wield equations as weapons
+piercing demonic systems with computational magic in her blood"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="allContent/MarginContainer" unique_id=94882374]
+custom_minimum_size = Vector2(900, 480)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="allContent/MarginContainer/VBoxContainer5" unique_id=1472306208]
+layout_mode = 2
+theme = SubResource("Theme_ixf0b")
+text = "Now, she begins her journey to recover 
+the scattered fragments of the satellite, 
+believed to hold the power to destroy any threat to MATHTRIA."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="allContent/MarginContainer" unique_id=1451697587]
+custom_minimum_size = Vector2(900, 480)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="allContent/MarginContainer/VBoxContainer6" unique_id=830236788]
+layout_mode = 2
+theme = SubResource("Theme_ixf0b")
+text = "and her personal artificial intelligence companion
+is \"you\", the one who controls the fate of this cyber realm"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="transition" type="Control" parent="." unique_id=664002244]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_v1ffc")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="transition" unique_id=1702098781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.12941177, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="transition" unique_id=658757743]
+libraries/ = SubResource("AnimationLibrary_usrpv")
+
+[node name="blinkingText" type="RichTextLabel" parent="." unique_id=407152829]
+z_index = 999
+layout_mode = 0
+offset_top = 488.0
+offset_right = 960.0
+offset_bottom = 540.0
+size_flags_vertical = 8
+theme = SubResource("Theme_hvl6t")
+bbcode_enabled = true
+text = "[pulse freq=1.0]click anywhere to continue[/pulse]"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=96468091]
+libraries/ = SubResource("AnimationLibrary_cbbjb")
+
+[node name="01" type="AudioStreamPlayer" parent="." unique_id=537790360]
+stream = ExtResource("7_4weie")
+
+[node name="02" type="AudioStreamPlayer" parent="." unique_id=93637304]
+stream = ExtResource("8_gsugy")
+
+[node name="03" type="AudioStreamPlayer" parent="." unique_id=562168717]
+stream = ExtResource("9_kyi4y")
+
+[node name="04" type="AudioStreamPlayer" parent="." unique_id=48971296]
+stream = ExtResource("10_0mrxb")
+
+[node name="05" type="AudioStreamPlayer" parent="." unique_id=740355098]
+stream = ExtResource("11_r17dm")
+
+[node name="06" type="AudioStreamPlayer" parent="." unique_id=265672046]
+stream = ExtResource("12_b1q6i")
+
+[node name="bg" type="AudioStreamPlayer" parent="." unique_id=448482380]
+stream = ExtResource("15_usrpv")
+volume_db = -32.081
+autoplay = true
