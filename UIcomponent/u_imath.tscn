@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://kxmsv470qrxq" path="res://UIcomponent/script/u_imath.gd" id="1_fsfod"]
 [ext_resource type="FontFile" uid="uid://bkbespsxdoatm" path="res://assets/font/PaybAck.ttf" id="2_eyq3s"]
+[ext_resource type="AudioStream" uid="uid://c2crwbyrhfqjj" path="res://assets/sound/freesound_community-wrong-47985.mp3" id="3_i2cwl"]
+[ext_resource type="AudioStream" uid="uid://cf4ajdgw1dts8" path="res://assets/sound/daviddumaisaudio-sword-slash-with-a-designed-impact-185434.mp3" id="4_56gy0"]
 
 [sub_resource type="Theme" id="Theme_fsfod"]
 default_font = ExtResource("2_eyq3s")
@@ -38,3 +40,9 @@ theme_override_constants/outline_size = 5
 placeholder_text = "Enter..."
 alignment = 1
 flat = true
+
+[node name="wrongsong" type="AudioStreamPlayer" parent="." unique_id=1910203651]
+stream = ExtResource("3_i2cwl")
+
+[node name="correctsound" type="AudioStreamPlayer" parent="." unique_id=1057232038]
+stream = ExtResource("4_56gy0")

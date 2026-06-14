@@ -130,9 +130,6 @@ math_ui = NodePath("../../CanvasLayer/UImath")
 camera_rig = NodePath("../../camera")
 game_over_ui = NodePath("../../CanvasLayer/gameover")
 
-[node name="ItemUseController" parent="player/maincharacter/Items" parent_id_path=PackedInt32Array(1926872742, 1906238663) index="2" unique_id=38071017 node_paths=PackedStringArray("camera_rig")]
-camera_rig = NodePath("")
-
 [node name="camera" type="Node2D" parent="." unique_id=816937715 node_paths=PackedStringArray("default_target")]
 script = ExtResource("3_y267d")
 default_target = NodePath("../player/maincharacter")
@@ -355,10 +352,8 @@ theme = SubResource("Theme_tv1el")
 text = "need engine part to go back!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Area2D" type="Area2D" parent="tut" unique_id=1987289483 node_paths=PackedStringArray("camera_rig", "focus_target")]
+[node name="Area2D" type="Area2D" parent="tut" unique_id=1987289483]
 script = ExtResource("22_phwke")
-camera_rig = NodePath("")
-focus_target = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tut/Area2D" unique_id=825752842]
 position = Vector2(607, 196)

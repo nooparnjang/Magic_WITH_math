@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bkvnuyruos2j6"]
+
+[ext_resource type="Texture2D" uid="uid://bve8awcx0vohg" path="res://assets/bg/free-factory-pixel-art-32x32-tileset-for-cyberpunk/2 Background/Night/1.png" id="1_lolia"]
+[ext_resource type="Texture2D" uid="uid://baanuvs3hkg6" path="res://assets/bg/free-factory-pixel-art-32x32-tileset-for-cyberpunk/2 Background/Night/2.png" id="2_24bvo"]
+[ext_resource type="Texture2D" uid="uid://dfyruiwijgyk2" path="res://assets/bg/free-factory-pixel-art-32x32-tileset-for-cyberpunk/2 Background/Night/3.png" id="3_j28c6"]
+[ext_resource type="Texture2D" uid="uid://decw7f6oghxis" path="res://assets/bg/free-factory-pixel-art-32x32-tileset-for-cyberpunk/2 Background/Night/4.png" id="4_fwn7r"]
+[ext_resource type="Texture2D" uid="uid://8lqojtgpe5ow" path="res://assets/bg/free-factory-pixel-art-32x32-tileset-for-cyberpunk/2 Background/Night/5.png" id="5_ekdid"]
+
+[node name="bg" type="Node2D" unique_id=909150217]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=13596391]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(800, 0)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=622646163]
+position = Vector2(480, 271)
+scale = Vector2(1.6701388, 1.6790123)
+texture = ExtResource("1_lolia")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=251896669]
+scroll_scale = Vector2(0.7, 0.7)
+repeat_size = Vector2(960, 0)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1882774717]
+position = Vector2(481, 272)
+scale = Vector2(1.6701388, 1.6728395)
+texture = ExtResource("2_24bvo")
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=852888207]
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(965, 0)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=869460322]
+position = Vector2(480, 271)
+scale = Vector2(1.6701388, 1.6790123)
+texture = ExtResource("3_j28c6")
+
+[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=849919009]
+scroll_scale = Vector2(0.9, 0.9)
+repeat_size = Vector2(965, 0)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4" unique_id=593583387]
+position = Vector2(480, 271)
+scale = Vector2(1.6701388, 1.6790123)
+texture = ExtResource("4_fwn7r")
+
+[node name="Parallax2D5" type="Parallax2D" parent="." unique_id=467887623]
+repeat_size = Vector2(965, 0)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D5" unique_id=1445615434]
+position = Vector2(480, 271)
+scale = Vector2(1.6701388, 1.6790123)
+texture = ExtResource("5_ekdid")
