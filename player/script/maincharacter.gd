@@ -21,6 +21,8 @@ extends CharacterBody2D
 @export var health_regen_per_second := 10.0
 @export var health_regen_delay := 4.0
 
+@export var climb_speed := 270.0
+
 @onready var item_selector: Node = $Items/ItemSelector
 @onready var item_use_controller: Node = $Items/ItemUseController
 @onready var player_bubble: Node = $BubbleAnchor/DialogBubble
@@ -28,6 +30,11 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var target_radius: Area2D = $TargetRadius
 @onready var status_bars: Node2D = $Statusbar
+
+var ladder_tilemap: TileMapLayer = null
+
+var is_on_ladder := false
+var is_climbing := false
 
 var targets_in_range: Array[Node2D] = []
 var current_target: Node2D = null
@@ -48,9 +55,11 @@ var pending_damage_amount: int = 0
 
 
 func _ready() -> void:
+	ladder_tilemap = get_tree().get_first_node_in_group("ladder_tilemap") as TileMapLayer
+
 	add_to_group("player")
+
 	if player_bubble != null:
-		
 		if player_bubble.has_method("hide_bubble"):
 			player_bubble.hide_bubble()
 		else:
@@ -90,12 +99,7 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
-		velocity.x = 0.0
-
-		if not is_on_floor():
-			velocity.y += gravity * delta
-
-		move_and_slide()
+		process_dead_movement(delta)
 		return
 
 	time_since_last_damage += delta
@@ -141,10 +145,109 @@ func _physics_process(delta: float) -> void:
 
 		return
 
-	_process_normal_movement(delta)
+	process_player_movement(delta)
 
 	if Input.is_action_just_pressed("target_select") and not is_switching_target:
 		_handle_target_select_pressed()
+
+
+func process_dead_movement(delta: float) -> void:
+	velocity.x = 0.0
+
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+	move_and_slide()
+
+
+func process_player_movement(delta: float) -> void:
+	check_ladder()
+
+	var x_input := Input.get_axis("ui_left", "ui_right")
+	var y_input := Input.get_axis("ui_up", "ui_down")
+
+	if is_on_ladder and abs(y_input) > 0.0:
+		is_climbing = true
+
+	if not is_on_ladder:
+		is_climbing = false
+
+	if is_climbing:
+		handle_climb(x_input, y_input)
+	else:
+		handle_normal_move(delta, x_input)
+
+	move_and_slide()
+
+	update_player_animation(x_input)
+
+
+func handle_normal_move(delta: float, x_input: float) -> void:
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+	velocity.x = x_input * speed
+
+	if Input.is_action_just_pressed("ui_jump") and is_on_floor():
+		velocity.y = jump_velocity
+
+
+func handle_climb(x_input: float, y_input: float) -> void:
+	velocity.y = y_input * climb_speed
+	velocity.x = x_input * speed * 0.5
+
+	if Input.is_action_just_pressed("ui_jump"):
+		is_climbing = false
+		velocity.y = jump_velocity
+
+
+func update_player_animation(direction: float) -> void:
+	if sprite == null:
+		return
+
+	if is_climbing:
+		var y_input := Input.get_axis("ui_up", "ui_down")
+
+		if abs(y_input) > 0.0:
+			if sprite.animation != "walk":
+				sprite.play("walk")
+		else:
+			if sprite.animation != "idle":
+				sprite.play("idle")
+
+		if direction != 0:
+			sprite.flip_h = direction < 0
+
+		return
+
+	if not is_on_floor():
+		if sprite.animation != "jump":
+			sprite.play("jump")
+	elif direction == 0:
+		if sprite.animation != "idle":
+			sprite.play("idle")
+	else:
+		if sprite.animation != "walk":
+			sprite.play("walk")
+
+		sprite.flip_h = direction < 0
+
+func check_ladder() -> void:
+	is_on_ladder = false
+
+	if ladder_tilemap == null:
+		return
+
+	var check_pos := global_position + Vector2(0, -16)
+	var local_pos := ladder_tilemap.to_local(check_pos)
+	var cell := ladder_tilemap.local_to_map(local_pos)
+	var tile_data := ladder_tilemap.get_cell_tile_data(cell)
+
+	if tile_data == null:
+		return
+
+	if tile_data.get_custom_data("is_ladder") == true:
+		is_on_ladder = true
 
 
 func set_status_bars_visible(value: bool) -> void:
@@ -152,7 +255,8 @@ func set_status_bars_visible(value: bool) -> void:
 		return
 
 	status_bars.visible = value
-	
+
+
 func get_dialog_bubble() -> Node:
 	return player_bubble
 
@@ -166,6 +270,7 @@ func hide_player_bubble() -> void:
 	else:
 		player_bubble.hide()
 
+
 func _process_locked_movement(delta: float) -> void:
 	velocity.x = 0.0
 
@@ -173,32 +278,6 @@ func _process_locked_movement(delta: float) -> void:
 		velocity.y += gravity * delta
 
 	move_and_slide()
-
-
-func _process_normal_movement(delta: float) -> void:
-	var direction: float = Input.get_axis("ui_left", "ui_right")
-
-	velocity.x = direction * speed
-
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	if Input.is_action_just_pressed("ui_jump") and is_on_floor():
-		velocity.y = jump_velocity
-
-	move_and_slide()
-
-	if not is_on_floor():
-		if sprite.animation != "jump":
-			sprite.play("jump")
-	elif direction == 0:
-		if sprite.animation != "idle":
-			sprite.play("idle")
-	else:
-		if sprite.animation != "walk":
-			sprite.play("walk")
-
-		sprite.flip_h = direction < 0
 
 
 func _handle_target_select_pressed() -> void:
@@ -598,6 +677,7 @@ func begin_interaction() -> void:
 	is_interacting = true
 	cancel_math_mode()
 	set_status_bars_visible(false)
+
 	if camera_rig != null and camera_rig.has_method("start_dialog_zoom"):
 		camera_rig.start_dialog_zoom()
 
@@ -607,6 +687,7 @@ func end_interaction() -> void:
 
 	if not is_dead:
 		set_status_bars_visible(true)
+
 	if camera_rig != null and camera_rig.has_method("end_dialog_zoom"):
 		camera_rig.end_dialog_zoom()
 

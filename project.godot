@@ -40,6 +40,7 @@ project/assembly_name="เวท WTIH คณิต"
 player=""
 targetable=""
 projectile_blocker=""
+ladder_tilemap=""
 
 [input]
 

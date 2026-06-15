@@ -15,8 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://br3128obts5ld" path="res://UIcomponent/demoover.tscn" id="15_xltq2"]
 [ext_resource type="Script" uid="uid://dxl82somv1d0x" path="res://UIcomponent/script/demoover.gd" id="16_1efi0"]
 [ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="17_r186r"]
-[ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="19_trqg5"]
-[ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="20_dpbu8"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="21_sdrjv"]
 [ext_resource type="Texture2D" uid="uid://b6bbwlrq5y775" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_2/Idle.png" id="22_ybbiv"]
 [ext_resource type="Shader" uid="uid://dl0pf55ys6tcy" path="res://scenes/gameplay/script/shader/darkalley.gdshader" id="23_pe1bm"]
@@ -306,10 +304,8 @@ script = ExtResource("16_1efi0")
 [node name="car" parent="object" unique_id=1134860753 groups=["targetable"] instance=ExtResource("17_r186r")]
 position = Vector2(1824, 106)
 scale = Vector2(3, 3)
-hit_effect_scene = ExtResource("19_trqg5")
-floating_text_scene = ExtResource("20_dpbu8")
 
-[node name="Barrier" parent="object" unique_id=2142189157 instance=ExtResource("21_sdrjv")]
+[node name="Barrier" parent="object" unique_id=2142189157 groups=["targetable"] instance=ExtResource("21_sdrjv")]
 position = Vector2(3037, 341)
 scale = Vector2(0.5, 0.5)
 

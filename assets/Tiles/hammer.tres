@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cyeqsp4akx676"]
+
+[ext_resource type="Texture2D" uid="uid://6q0sncv2vkos" path="res://assets/object/industrial-zone-tileset-pixel-art/4 Animated objects/Hammer.png" id="1_ey3f6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at2n1"]
+atlas = ExtResource("1_ey3f6")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kys06"]
+atlas = ExtResource("1_ey3f6")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85p3g"]
+atlas = ExtResource("1_ey3f6")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovmux"]
+atlas = ExtResource("1_ey3f6")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_padrq"]
+atlas = ExtResource("1_ey3f6")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lla7m"]
+atlas = ExtResource("1_ey3f6")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guoux"]
+atlas = ExtResource("1_ey3f6")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8chwu"]
+atlas = ExtResource("1_ey3f6")
+region = Rect2(224, 0, 32, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at2n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kys06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85p3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovmux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_padrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lla7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guoux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8chwu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

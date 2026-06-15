@@ -1,0 +1,39 @@
+[gd_resource type="TileSet" format=3 uid="uid://bqoejewgftj1s"]
+
+[ext_resource type="Texture2D" uid="uid://b4obi6wl71wo" path="res://assets/object/industrial-zone-tileset-pixel-art/3 Objects/Ladder1.png" id="1_01a0m"]
+[ext_resource type="Texture2D" uid="uid://ccae6yoe1yfqn" path="res://assets/object/industrial-zone-tileset-pixel-art/3 Objects/Ladder2.png" id="2_em5u6"]
+[ext_resource type="Texture2D" uid="uid://b7lkfkhoxupo1" path="res://assets/object/industrial-zone-tileset-pixel-art/3 Objects/Ladder3.png" id="3_8j0fr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_padrq"]
+texture = ExtResource("1_01a0m")
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+1:0/0 = 0
+1:0/0/custom_data_0 = true
+0:1/0 = 0
+0:1/0/custom_data_0 = true
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lla7m"]
+texture = ExtResource("2_em5u6")
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+1:0/0 = 0
+1:0/0/custom_data_0 = true
+0:1/0 = 0
+0:1/0/custom_data_0 = true
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_guoux"]
+texture = ExtResource("3_8j0fr")
+0:1/0 = 0
+1:1/0 = 0
+
+[resource]
+custom_data_layer_0/name = "is_ladder"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_padrq")
+sources/1 = SubResource("TileSetAtlasSource_lla7m")
+sources/2 = SubResource("TileSetAtlasSource_guoux")

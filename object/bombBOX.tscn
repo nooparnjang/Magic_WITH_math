@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cpprad4thlnww"]
+
+[ext_resource type="Script" uid="uid://dwbnin22yyune" path="res://object/script/cone.gd" id="1_514gl"]
+[ext_resource type="Texture2D" uid="uid://uk462ceqbaxk" path="res://assets/object/industrial-zone-tileset-pixel-art/3 Objects/Box1.png" id="1_d3wnb"]
+[ext_resource type="Texture2D" uid="uid://mlr5mwcbw5xt" path="res://assets/object/Boom!!!.png" id="2_514gl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfax2"]
+size = Vector2(147, 105)
+
+[node name="bombBOX" type="StaticBody2D" unique_id=546974693]
+script = ExtResource("1_514gl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1227559212]
+scale = Vector2(5.25, 4.75)
+texture = ExtResource("1_d3wnb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1520720992]
+position = Vector2(21, 20.000002)
+scale = Vector2(0.056640625, 0.061921295)
+texture = ExtResource("2_514gl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1890392614]
+position = Vector2(0.5, 23.5)
+shape = SubResource("RectangleShape2D_wfax2")

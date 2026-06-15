@@ -1,0 +1,22 @@
+[gd_resource type="TileSet" format=3 uid="uid://cduhioovp8f64"]
+
+[ext_resource type="Texture2D" uid="uid://bdmkbqba2s8w7" path="res://assets/object/free-factory-pixel-art-32x32-tileset-for-cyberpunk/3 Objects/Ladders/1.png" id="1_5uuw1"]
+[ext_resource type="Texture2D" uid="uid://lc74sun0kjfi" path="res://assets/object/free-factory-pixel-art-32x32-tileset-for-cyberpunk/3 Objects/Ladders/2.png" id="2_qgmgo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_36tuw"]
+texture = ExtResource("1_5uuw1")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwd6j"]
+texture = ExtResource("2_qgmgo")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_36tuw")
+sources/1 = SubResource("TileSetAtlasSource_iwd6j")

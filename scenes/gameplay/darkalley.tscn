@@ -11,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bucjdlqnlx10y" path="res://UIcomponent/item_rows.tscn" id="8_skfqn"]
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="9_rubjw"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="9_spkd1"]
-[ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="10_lkn7p"]
-[ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="11_spkd1"]
 [ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="13_g7vwq"]
 [ext_resource type="PackedScene" uid="uid://3o4ccldb56av" path="res://enemies/Robot_2.tscn" id="13_l5mwx"]
 [ext_resource type="PackedScene" uid="uid://bsj34t8c6jvea" path="res://UIcomponent/gameover.tscn" id="13_sns8g"]
@@ -338,8 +336,6 @@ item_drop_texture = ExtResource("16_6pjwb")
 [node name="car" parent="object" unique_id=1134860753 groups=["targetable"] instance=ExtResource("13_g7vwq")]
 position = Vector2(1824, 106)
 scale = Vector2(3, 3)
-hit_effect_scene = ExtResource("10_lkn7p")
-floating_text_scene = ExtResource("11_spkd1")
 
 [node name="Barrier" parent="object" unique_id=2142189157 instance=ExtResource("17_k4vop")]
 position = Vector2(3037, 341)
