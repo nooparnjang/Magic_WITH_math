@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://11xnqtwje2wa"]
+
+[ext_resource type="Script" uid="uid://duhr014m56is0" path="res://object/script/hammer_trap.gd" id="1_gvsdy"]
+[ext_resource type="SpriteFrames" uid="uid://cyeqsp4akx676" path="res://assets/Tiles/hammer.tres" id="2_vc38f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ukyp"]
+size = Vector2(32, 18)
+
+[node name="hammerTrap" type="Node2D" unique_id=1989158342]
+script = ExtResource("1_gvsdy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=647454669]
+sprite_frames = ExtResource("2_vc38f")
+frame = 2
+frame_progress = 0.45092508
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=96526036]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1492049919]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_3ukyp")

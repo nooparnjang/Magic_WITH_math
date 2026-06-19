@@ -32,12 +32,14 @@
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="17_qgsik"]
 [ext_resource type="PackedScene" uid="uid://bsj34t8c6jvea" path="res://UIcomponent/gameover.tscn" id="18_61ok4"]
 [ext_resource type="Script" uid="uid://fg0rocq663t1" path="res://UIcomponent/script/gameover.gd" id="19_1b0a8"]
-[ext_resource type="SpriteFrames" uid="uid://cyeqsp4akx676" path="res://assets/Tiles/hammer.tres" id="19_7wb6f"]
 [ext_resource type="PackedScene" uid="uid://br3128obts5ld" path="res://UIcomponent/demoover.tscn" id="20_13jwx"]
-[ext_resource type="Texture2D" uid="uid://dyy6v8ir30ud6" path="res://assets/object/Animated Elevator Set/Spritesheets/SimpleElevatorDoors_animated_32x48.png" id="20_at2n1"]
 [ext_resource type="Script" uid="uid://dxl82somv1d0x" path="res://UIcomponent/script/demoover.gd" id="21_htmri"]
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="24_hu7b8"]
+[ext_resource type="PackedScene" uid="uid://11xnqtwje2wa" path="res://object/hammer_trap.tscn" id="24_lla7m"]
+[ext_resource type="PackedScene" uid="uid://dntueadeam8lf" path="res://object/a_2_door.tscn" id="25_8chwu"]
+[ext_resource type="Script" uid="uid://bfc5i8en13fuw" path="res://object/script/a_2_door.gd" id="26_1vgtq"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="38_lla7m"]
+[ext_resource type="Texture2D" uid="uid://s4nm7soi12r2" path="res://assets/object/keyA2.png" id="39_8chwu"]
 
 [sub_resource type="Theme" id="Theme_hu7b8"]
 default_font = ExtResource("17_qgsik")
@@ -59,63 +61,6 @@ adjustment_enabled = true
 adjustment_brightness = 0.86
 adjustment_contrast = 1.2
 adjustment_saturation = 1.04
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kys06"]
-atlas = ExtResource("20_at2n1")
-region = Rect2(0, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_85p3g"]
-atlas = ExtResource("20_at2n1")
-region = Rect2(32, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovmux"]
-atlas = ExtResource("20_at2n1")
-region = Rect2(64, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_padrq"]
-atlas = ExtResource("20_at2n1")
-region = Rect2(96, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lla7m"]
-atlas = ExtResource("20_at2n1")
-region = Rect2(128, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_guoux"]
-atlas = ExtResource("20_at2n1")
-region = Rect2(160, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8chwu"]
-atlas = ExtResource("20_at2n1")
-region = Rect2(192, 0, 32, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1vgtq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kys06")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_85p3g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ovmux")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_padrq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lla7m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_guoux")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8chwu")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_rubjw"]
 length = 0.001
@@ -225,6 +170,14 @@ offset_right = 9463.0
 offset_bottom = -82.0
 theme = SubResource("Theme_7wb6f")
 text = "to Level A2"
+
+[node name="Label3" type="Label" parent="deco/level" unique_id=938704606]
+offset_left = 9133.0
+offset_top = -232.0
+offset_right = 9462.0
+offset_bottom = -102.0
+theme = SubResource("Theme_7wb6f")
+text = "need A2 key to access next floor"
 
 [node name="Sprite2D2" type="Sprite2D" parent="deco" unique_id=7334066]
 position = Vector2(4418.0005, 418)
@@ -351,36 +304,31 @@ scale = Vector2(0.5, 0.5)
 
 [node name="hitfromabove" type="Node2D" parent="object" unique_id=745593584]
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="object/hitfromabove" unique_id=1968387134]
-position = Vector2(5413, 287.5)
-scale = Vector2(5, 6.2968755)
-sprite_frames = ExtResource("19_7wb6f")
-frame_progress = 0.12362223
+[node name="hammerTrap" parent="object/hitfromabove" unique_id=1989158342 instance=ExtResource("24_lla7m")]
+position = Vector2(5409.0005, 286)
+scale = Vector2(6.2, 6.2)
+animation_speed_scale = 0.6
 
-[node name="Sprite2D2" type="AnimatedSprite2D" parent="object/hitfromabove" unique_id=2049557135]
-position = Vector2(5859, 284.99997)
-scale = Vector2(5, 6.2968755)
-sprite_frames = ExtResource("19_7wb6f")
-frame_progress = 0.28776538
+[node name="hammerTrap2" parent="object/hitfromabove" unique_id=677144045 instance=ExtResource("24_lla7m")]
+position = Vector2(5853.0005, 286.00003)
+scale = Vector2(6.2, 6.2)
+animation_speed_scale = 0.7
 
-[node name="Sprite2D3" type="AnimatedSprite2D" parent="object/hitfromabove" unique_id=357236268]
-position = Vector2(6287, 282)
-scale = Vector2(5, 6.2968755)
-sprite_frames = ExtResource("19_7wb6f")
-frame_progress = 0.28776538
+[node name="hammerTrap3" parent="object/hitfromabove" unique_id=441927837 instance=ExtResource("24_lla7m")]
+position = Vector2(6286, 283)
+scale = Vector2(6.2, 6.2)
+animation_speed_scale = 0.6
 
-[node name="Sprite2D4" type="AnimatedSprite2D" parent="object/hitfromabove" unique_id=134221204]
-position = Vector2(6733, 285)
-scale = Vector2(5, 6.2968755)
-sprite_frames = ExtResource("19_7wb6f")
-frame_progress = 0.28776538
+[node name="hammerTrap4" parent="object/hitfromabove" unique_id=360030862 instance=ExtResource("24_lla7m")]
+position = Vector2(6719, 283.00003)
+scale = Vector2(6.2, 6.2)
+animation_speed_scale = 0.7
 
-[node name="door" type="AnimatedSprite2D" parent="object" unique_id=703222889]
-position = Vector2(9250, -68)
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_1vgtq")
-frame = 2
-frame_progress = 0.06987357
+[node name="A2door" parent="object" unique_id=2059681929 instance=ExtResource("25_8chwu")]
+position = Vector2(9252, -63)
+script = ExtResource("26_1vgtq")
+consume_key = true
+next_scene_path = "uid://b58665gbo711q"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1036939817]
 stream = ExtResource("11_rm1pe")
@@ -388,7 +336,6 @@ volume_db = -20.069
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=285603266]
-visible = false
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("12_owtn7")]
 
@@ -517,6 +464,10 @@ scale = Vector2(2, 2)
 [node name="Robot5" parent="enemies" unique_id=1942917787 instance=ExtResource("6_61ok4")]
 position = Vector2(7630, 385.00003)
 scale = Vector2(2.5, 2.5)
+drop_type = 2
+item_drop_scene = ExtResource("15_qgsik")
+item_drop_id = "A2 key"
+item_drop_texture = ExtResource("39_8chwu")
 
 [node name="npc" type="Node2D" parent="." unique_id=939377923]
 

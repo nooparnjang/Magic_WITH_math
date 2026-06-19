@@ -591,6 +591,9 @@ func take_damage(amount: float) -> void:
 	hp = max(hp, 0.0)
 
 	time_since_last_damage = 0.0
+	
+	flash_damage()
+
 
 	print("player took damage:", amount, "hp left:", hp)
 
@@ -707,3 +710,16 @@ func is_player_dead() -> bool:
 
 func is_player_interacting() -> bool:
 	return is_interacting
+	
+func flash_damage() -> void:
+	if sprite == null:
+		return
+
+	sprite.modulate = Color(1.0, 0.2, 0.2, 1.0)
+
+	await get_tree().create_timer(0.08).timeout
+
+	if is_dead:
+		return
+
+	sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)

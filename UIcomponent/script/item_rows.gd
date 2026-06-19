@@ -2,7 +2,7 @@ extends HBoxContainer
 
 @export var bomb_texture: Texture2D
 @export var scrap_texture: Texture2D
-@export var gem_texture: Texture2D
+@export var A2_texture: Texture2D
 @export var potion_texture: Texture2D
 @export var coin_texture: Texture2D
 @export var engine_part_texture: Texture2D
@@ -15,7 +15,7 @@ func _ready() -> void:
 	item_texture_map = {
 		"bomb": bomb_texture,
 		"scrap": scrap_texture,
-		"gem": gem_texture,
+		"A2 key": A2_texture,
 		"potion": potion_texture,
 		"coin": coin_texture,
 		"engine_part": engine_part_texture

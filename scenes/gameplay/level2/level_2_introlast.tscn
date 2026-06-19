@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://7iml7dmqcbl6"]
+
+[ext_resource type="PackedScene" uid="uid://dhau63s4ueqb3" path="res://scenes/gameplay/bgintrolevel2.tscn" id="1_d6kl2"]
+[ext_resource type="Texture2D" uid="uid://d4ihf45yrsm6d" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_2/Ride.png" id="2_ldlet"]
+[ext_resource type="Script" uid="uid://qt2xxkubvw2o" path="res://scenes/gameplay/level2/Parabgintrolevel_2.gd" id="2_x5jo3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5jo3"]
+atlas = ExtResource("2_ldlet")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sak0m"]
+atlas = ExtResource("2_ldlet")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1hh7"]
+atlas = ExtResource("2_ldlet")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad5dq"]
+atlas = ExtResource("2_ldlet")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g878f"]
+atlas = ExtResource("2_ldlet")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saoqm"]
+atlas = ExtResource("2_ldlet")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjrqe"]
+atlas = ExtResource("2_ldlet")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtmyf"]
+atlas = ExtResource("2_ldlet")
+region = Rect2(1792, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqy4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5jo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sak0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1hh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad5dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g878f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_saoqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjrqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtmyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Environment" id="Environment_il4hi"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.37
+glow_bloom = 0.72
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 19.92
+adjustment_enabled = true
+adjustment_brightness = 0.86
+adjustment_contrast = 1.2
+adjustment_saturation = 1.04
+
+[node name="level_2_introlast" type="Node2D" unique_id=1383468982]
+
+[node name="bg" parent="." unique_id=25557730 node_paths=PackedStringArray("target_animated_sprite") instance=ExtResource("1_d6kl2")]
+script = ExtResource("2_x5jo3")
+target_animated_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="Parallax2D" parent="bg" index="0" unique_id=1963326864]
+scroll_scale = Vector2(0.8, 0.8)
+
+[node name="Parallax2D2" parent="bg" index="1" unique_id=1267803957]
+scroll_scale = Vector2(0.9, 0.9)
+
+[node name="Parallax2D3" parent="bg" index="2" unique_id=1231748107]
+scroll_scale = Vector2(1, 1)
+
+[node name="Parallax2D4" parent="bg" index="3" unique_id=1623803133]
+scroll_scale = Vector2(1.1, 1.1)
+
+[node name="Parallax2D5" parent="bg" index="4" unique_id=163399712]
+scroll_scale = Vector2(1.2, 1.2)
+
+[node name="Parallax2D6" parent="bg" index="5" unique_id=1863385983]
+scroll_scale = Vector2(1.3, 1.3)
+
+[node name="Parallax2D7" parent="bg" index="6" unique_id=567425613]
+scroll_scale = Vector2(1.4, 1.4)
+
+[node name="Parallax2D8" parent="bg" index="7" unique_id=1526699292]
+scroll_scale = Vector2(1.5, 1.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=402886502]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(341.99997, 215)
+scale = Vector2(2.8046875, 2.5742188)
+sprite_frames = SubResource("SpriteFrames_nqy4u")
+frame_progress = 0.785226
+speed_scale = 5.0
+
+[node name="envi" type="Node2D" parent="." unique_id=900948677]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="envi" unique_id=1662818105]
+environment = SubResource("Environment_il4hi")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="envi" unique_id=1893518935]
+position = Vector2(-1, 0)
+
+[editable path="bg"]

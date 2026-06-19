@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://clllit81bxbp6"]
+
+[ext_resource type="Texture2D" uid="uid://dur7fbja6jc5d" path="res://assets/bg/level2/Garage.png" id="1_nehex"]
+[ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_80o1s"]
+[ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="3_jw85u"]
+[ext_resource type="Texture2D" uid="uid://doprtl43rfdun" path="res://assets/UI/4.png" id="4_jw85u"]
+
+[sub_resource type="Environment" id="Environment_ipquv"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.37
+glow_bloom = 0.72
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 19.92
+adjustment_enabled = true
+adjustment_brightness = 0.86
+adjustment_contrast = 1.2
+adjustment_saturation = 1.04
+
+[node name="level2_intro" type="Node2D" unique_id=675181224]
+
+[node name="bg" type="Node2D" parent="." unique_id=1421829845]
+
+[node name="Sprite2D" type="Sprite2D" parent="bg" unique_id=418309939]
+position = Vector2(482.50003, 268.5)
+scale = Vector2(0.5417136, 0.6054115)
+texture = ExtResource("1_nehex")
+
+[node name="player" type="Node2D" parent="." unique_id=284298865]
+visible = false
+z_index = 1
+
+[node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui", "camera_rig", "game_over_ui") instance=ExtResource("2_80o1s")]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+position = Vector2(293, 414)
+scale = Vector2(2.5, 2.5)
+math_ui = NodePath("")
+camera_rig = NodePath("")
+game_over_ui = NodePath("")
+
+[node name="name" parent="player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="0" unique_id=339424069]
+theme_override_colors/font_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
+
+[node name="Label" parent="player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="1" unique_id=1367956479]
+theme_override_colors/font_color = Color(3.3691526e-07, 0.5381211, 0.47927624, 1)
+
+[node name="npc" type="Node2D" parent="." unique_id=2043240915]
+position = Vector2(277, 8)
+
+[node name="Wendy" parent="npc" unique_id=1920401949 instance=ExtResource("3_jw85u")]
+position = Vector2(192, 418)
+scale = Vector2(2, 2)
+
+[node name="envi" type="Node2D" parent="." unique_id=1551684269]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="envi" unique_id=1940287228]
+environment = SubResource("Environment_ipquv")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="envi" unique_id=253324684]
+position = Vector2(-1, 0)
+color = Color(5.8719515e-06, 0.50418246, 0.5396703, 1)
+
+[node name="gem" type="Node2D" parent="." unique_id=1895027116]
+
+[node name="Sprite2D" type="Sprite2D" parent="gem" unique_id=2010381280]
+position = Vector2(410.00003, 386)
+scale = Vector2(0.06642193, 0.0685)
+texture = ExtResource("4_jw85u")
+
+[connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
+[connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
+
+[editable path="player/maincharacter"]
+[editable path="player/maincharacter/Statusbar"]
