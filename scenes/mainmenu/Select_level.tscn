@@ -360,6 +360,8 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
 text = "CHAPTER 2"
+script = ExtResource("14_rm1fu")
+target_scene_path = "uid://clllit81bxbp6"
 
 [node name="Chapter_3" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1653098263]
 custom_minimum_size = Vector2(270, 270)
