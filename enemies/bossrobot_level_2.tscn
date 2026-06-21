@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://bwlujfqpd5vog"]
+
+[ext_resource type="SpriteFrames" uid="uid://b7lq3gdjod2e5" path="res://assets/tres_enemy/robot2.tres" id="1_bbv8m"]
+[ext_resource type="Script" uid="uid://djrk1awutg273" path="res://enemies/script/bossrobot_level_2.gd" id="1_umbnv"]
+[ext_resource type="Script" uid="uid://bgu3m16wxe7wy" path="res://enemies/script/bossstatus.gd" id="2_umbnv"]
+[ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="3_0pr04"]
+[ext_resource type="Texture2D" uid="uid://dvrmomkb4fi4a" path="res://assets/UI/SimpleBarRed-Sheet0.png" id="3_glge4"]
+[ext_resource type="Texture2D" uid="uid://diy4l0vm43qvv" path="res://assets/UI/SimpleBarRed-Sheet.png" id="4_2ewa1"]
+[ext_resource type="PackedScene" uid="uid://dgimx5hv2dph5" path="res://object/ItemPickup.tscn" id="4_dsht7"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_ottdp"]
+[ext_resource type="Texture2D" uid="uid://c0vghjevgr86s" path="res://assets/effect/spark/spark1.png" id="6_0pr04"]
+[ext_resource type="Texture2D" uid="uid://ilkbit5afqgv" path="res://assets/effect/spark/spark2.png" id="7_dsht7"]
+[ext_resource type="Texture2D" uid="uid://btyylatu3do2p" path="res://assets/effect/spark/spark3.png" id="8_oylbv"]
+[ext_resource type="Texture2D" uid="uid://bhoa2au5aoiwg" path="res://assets/effect/spark/spark4.png" id="9_mubje"]
+[ext_resource type="Texture2D" uid="uid://cljfeeikaw6qy" path="res://assets/effect/spark/spark5.png" id="10_82uyn"]
+[ext_resource type="Texture2D" uid="uid://bc0r86xmwsa31" path="res://assets/effect/spark/spark6.png" id="11_2fyv6"]
+[ext_resource type="Texture2D" uid="uid://bsuvvlxejctk8" path="res://assets/effect/spark/spark7.png" id="12_7qlpo"]
+[ext_resource type="Texture2D" uid="uid://ymgguvodm3gw" path="res://assets/effect/spark/spark8.png" id="13_thh6s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vyuyw"]
+radius = 14.0
+height = 78.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtwqb"]
+size = Vector2(60, 34)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wufyv"]
+radius = 103.81715
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqbbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0pr04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dsht7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oylbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mubje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_82uyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2fyv6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7qlpo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_thh6s")
+}],
+"loop": false,
+"name": &"burst",
+"speed": 5.0
+}]
+
+[node name="bossrobot_level2" type="CharacterBody2D" unique_id=437712444]
+script = ExtResource("1_umbnv")
+hit_effect_scene = ExtResource("3_0pr04")
+item_drop_scene = ExtResource("4_dsht7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=228610932]
+self_modulate = Color(1, 1, 0.34901962, 1)
+position = Vector2(0, -27)
+sprite_frames = ExtResource("1_bbv8m")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1679834835]
+shape = SubResource("CapsuleShape2D_vyuyw")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=2038859938]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=793223909]
+position = Vector2(18, -12)
+shape = SubResource("RectangleShape2D_qtwqb")
+
+[node name="Bossstatus" type="Node2D" parent="." unique_id=2062641345]
+position = Vector2(-26, -57)
+script = ExtResource("2_umbnv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bossstatus" unique_id=702627307]
+offset_top = -2.0
+offset_right = 60.0
+offset_bottom = 38.0
+
+[node name="healthbar" type="TextureProgressBar" parent="Bossstatus/VBoxContainer" unique_id=180246533]
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("3_glge4")
+texture_progress = ExtResource("4_2ewa1")
+
+[node name="CollisionDamageCooldown" type="Timer" parent="." unique_id=1774691052]
+
+[node name="OverloadArea" type="Area2D" parent="." unique_id=272869119]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverloadArea" unique_id=914144177]
+shape = SubResource("CircleShape2D_wufyv")
+
+[node name="OverloadWarning" type="Node2D" parent="." unique_id=673212762]
+
+[node name="Label" type="Label" parent="OverloadWarning" unique_id=2122085878]
+offset_left = -46.0
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0.67058825, 0, 0.18039216, 0.5764706)
+theme_override_fonts/font = ExtResource("5_ottdp")
+theme_override_font_sizes/font_size = 30
+text = "Warning"
+
+[node name="OverloadBurst" type="AnimatedSprite2D" parent="." unique_id=1021423511]
+modulate = Color(1, 1, 1, 0.4745098)
+scale = Vector2(7.3745084, 6.9848633)
+sprite_frames = SubResource("SpriteFrames_sqbbm")
+animation = &"burst"
+
+[node name="OverloadCooldownLabel" type="Label" parent="." unique_id=203340682]
+offset_left = -5.0
+offset_top = -84.0
+offset_right = 55.0
+offset_bottom = -61.0
+theme_override_fonts/font = ExtResource("5_ottdp")
+text = "10"
