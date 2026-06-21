@@ -474,6 +474,7 @@ item_drop_texture = ExtResource("39_8chwu")
 [node name="Wendy" parent="npc" unique_id=1920401949 instance=ExtResource("38_lla7m")]
 position = Vector2(192, 418)
 scale = Vector2(2, 2)
+dialog_json_path = "res://npc/dialogJson/level2main.json"
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]

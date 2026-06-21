@@ -1,0 +1,28 @@
+{
+  "npc_name": "Wendy",
+  "required_item": "",
+  "consume_required_item": false,
+  "states": {
+    "before_quest": {
+      "lines": [
+        {
+          "speaker": "Princess Tria",
+          "text": "These machines seem organized."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "Almost like they're protecting something."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "The fragment perhaps?"
+        },
+        {
+          "speaker": "Wendy",
+          "text": "Most likely."
+        }
+      ],
+      "next_state": "before_quest"
+    }
+  }
+}

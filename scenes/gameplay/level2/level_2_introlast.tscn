@@ -116,8 +116,8 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(341.99997, 215)
 scale = Vector2(2.8046875, 2.5742188)
 sprite_frames = SubResource("SpriteFrames_nqy4u")
-frame_progress = 0.785226
-speed_scale = 5.0
+frame_progress = 0.06922524
+speed_scale = 2.0
 
 [node name="envi" type="Node2D" parent="." unique_id=900948677]
 

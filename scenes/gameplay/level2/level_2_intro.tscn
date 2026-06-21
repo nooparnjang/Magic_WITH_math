@@ -4,13 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_80o1s"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="3_jw85u"]
 [ext_resource type="Texture2D" uid="uid://doprtl43rfdun" path="res://assets/UI/4.png" id="4_jw85u"]
+[ext_resource type="Shader" uid="uid://cy4eivv3o1cut" path="res://assets/shader/gem.gdshader" id="4_k5a8w"]
+[ext_resource type="Script" uid="uid://chum37ynyhtpe" path="res://scenes/gameplay/level2/cutscene_controller.gd" id="5_ipquv"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_no1nc"]
+[ext_resource type="Script" uid="uid://c47rub84jvgxf" path="res://scenes/gameplay/level2/floating.gd" id="6_xyrhx"]
 
 [sub_resource type="Environment" id="Environment_ipquv"]
 background_mode = 3
 glow_enabled = true
 glow_normalized = true
 glow_intensity = 1.37
-glow_bloom = 0.72
+glow_strength = 0.75
+glow_bloom = 0.23
 glow_blend_mode = 0
 glow_hdr_luminance_cap = 19.92
 adjustment_enabled = true
@@ -18,26 +23,40 @@ adjustment_brightness = 0.86
 adjustment_contrast = 1.2
 adjustment_saturation = 1.04
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xyrhx"]
+shader = ExtResource("4_k5a8w")
+shader_parameter/glow_color = Color(0.35, 0.9, 1, 1)
+shader_parameter/shine_color = Color(1, 0.45, 1, 1)
+shader_parameter/glow_strength = 0.45
+shader_parameter/pulse_speed = 2.0
+shader_parameter/shine_strength = 0.75
+shader_parameter/shine_speed = 0.65
+shader_parameter/shine_width = 0.12
+shader_parameter/edge_glow_strength = 0.35
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw85u"]
+size = Vector2(950.5, 36)
+
 [node name="level2_intro" type="Node2D" unique_id=675181224]
 
 [node name="bg" type="Node2D" parent="." unique_id=1421829845]
 
 [node name="Sprite2D" type="Sprite2D" parent="bg" unique_id=418309939]
-position = Vector2(482.50003, 268.5)
+position = Vector2(482.99997, 270.00003)
 scale = Vector2(0.5417136, 0.6054115)
 texture = ExtResource("1_nehex")
 
 [node name="player" type="Node2D" parent="." unique_id=284298865]
-visible = false
 z_index = 1
 
-[node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui", "camera_rig", "game_over_ui") instance=ExtResource("2_80o1s")]
+[node name="maincharacter" parent="player" unique_id=1926872742 instance=ExtResource("2_80o1s")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(293, 414)
+z_index = 1
+position = Vector2(86.000015, 412)
 scale = Vector2(2.5, 2.5)
-math_ui = NodePath("")
-camera_rig = NodePath("")
-game_over_ui = NodePath("")
+
+[node name="Statusbar" parent="player/maincharacter" index="4" unique_id=50678111]
+visible = false
 
 [node name="name" parent="player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="0" unique_id=339424069]
 theme_override_colors/font_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
@@ -49,8 +68,10 @@ theme_override_colors/font_color = Color(3.3691526e-07, 0.5381211, 0.47927624, 1
 position = Vector2(277, 8)
 
 [node name="Wendy" parent="npc" unique_id=1920401949 instance=ExtResource("3_jw85u")]
-position = Vector2(192, 418)
+z_index = 1
+position = Vector2(208, 417)
 scale = Vector2(2, 2)
+script = null
 
 [node name="envi" type="Node2D" parent="." unique_id=1551684269]
 
@@ -59,14 +80,97 @@ environment = SubResource("Environment_ipquv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="envi" unique_id=253324684]
 position = Vector2(-1, 0)
-color = Color(5.8719515e-06, 0.50418246, 0.5396703, 1)
 
 [node name="gem" type="Node2D" parent="." unique_id=1895027116]
 
 [node name="Sprite2D" type="Sprite2D" parent="gem" unique_id=2010381280]
-position = Vector2(410.00003, 386)
+material = SubResource("ShaderMaterial_xyrhx")
+position = Vector2(407.00003, 388.00003)
 scale = Vector2(0.06642193, 0.0685)
 texture = ExtResource("4_jw85u")
+script = ExtResource("6_xyrhx")
+
+[node name="invisible" type="Node2D" parent="." unique_id=1866267244]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="invisible" unique_id=1992677831]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisible/StaticBody2D" unique_id=499449795]
+position = Vector2(475, 557)
+shape = SubResource("RectangleShape2D_jw85u")
+debug_color = Color(0.99999994, 0.22560388, 0.6326627, 0.41960785)
+
+[node name="CutsceneController" type="Node2D" parent="." unique_id=241783481 node_paths=PackedStringArray("tria_body", "wendy_body", "tria_sprite", "wendy_sprite", "tria_dialog_bubble", "wendy_dialog_bubble", "camera_2d", "tria_start", "tria_talk_point", "wendy_point", "camera_wide", "camera_tria", "camera_wendy", "camera_two_shot", "fade_rect")]
+script = ExtResource("5_ipquv")
+cutscene_json_path = "res://npc/dialogJson/Level2Intro.json"
+tria_body = NodePath("../player/maincharacter")
+wendy_body = NodePath("../npc/Wendy")
+tria_sprite = NodePath("../player/maincharacter/AnimatedSprite2D")
+wendy_sprite = NodePath("../npc/Wendy/AnimatedSprite2D")
+tria_dialog_bubble = NodePath("../player/maincharacter/BubbleAnchor/DialogBubble")
+wendy_dialog_bubble = NodePath("../npc/Wendy/BubbleAnchor/DialogBubble")
+camera_2d = NodePath("../Camera2D")
+tria_start = NodePath("../CutsceneMarkers/TriaStart")
+tria_talk_point = NodePath("../CutsceneMarkers/TriaTalkPoint")
+wendy_point = NodePath("../CutsceneMarkers/WendyPoint")
+camera_wide = NodePath("../CutsceneMarkers/CameraWide")
+camera_tria = NodePath("../CutsceneMarkers/CameraTria")
+camera_wendy = NodePath("../CutsceneMarkers/CameraWendy")
+camera_two_shot = NodePath("../CutsceneMarkers/CameraTwoShot")
+fade_rect = NodePath("../CanvasLayer/ColorRect")
+
+[node name="CutsceneMarkers" type="Node2D" parent="." unique_id=305994994]
+
+[node name="TriaStart" type="Marker2D" parent="CutsceneMarkers" unique_id=391101705]
+position = Vector2(81, 412)
+
+[node name="TriaTalkPoint" type="Marker2D" parent="CutsceneMarkers" unique_id=1326520377]
+position = Vector2(334, 418)
+
+[node name="WendyPoint" type="Marker2D" parent="CutsceneMarkers" unique_id=367757562]
+position = Vector2(484, 427)
+
+[node name="CameraWide" type="Marker2D" parent="CutsceneMarkers" unique_id=354958778]
+position = Vector2(394, 385)
+
+[node name="CameraTria" type="Marker2D" parent="CutsceneMarkers" unique_id=1301680165]
+position = Vector2(253, 301)
+
+[node name="CameraWendy" type="Marker2D" parent="CutsceneMarkers" unique_id=1044192431]
+position = Vector2(618, 301)
+
+[node name="CameraTwoShot" type="Marker2D" parent="CutsceneMarkers" unique_id=1342636542]
+position = Vector2(393, 385)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=313622651]
+limit_left = 960
+limit_top = 0
+limit_right = 0
+limit_bottom = 540
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2084901804]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=957857117]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=294682611]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -149.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_no1nc")
+theme_override_font_sizes/font_size = 27
+text = "E to continue cutscene"
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
@@ -74,3 +178,4 @@ texture = ExtResource("4_jw85u")
 
 [editable path="player/maincharacter"]
 [editable path="player/maincharacter/Statusbar"]
+[editable path="npc/Wendy"]
