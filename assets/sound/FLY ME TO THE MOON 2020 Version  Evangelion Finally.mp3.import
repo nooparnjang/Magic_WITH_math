@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b81x2ogcju1pa"
+path="res://.godot/imported/FLY ME TO THE MOON 2020 Version  Evangelion Finally.mp3-e65d0b7784da58a4d263176a1ee9af5e.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/FLY ME TO THE MOON 2020 Version  Evangelion Finally.mp3"
+dest_files=["res://.godot/imported/FLY ME TO THE MOON 2020 Version  Evangelion Finally.mp3-e65d0b7784da58a4d263176a1ee9af5e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

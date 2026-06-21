@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://chum37ynyhtpe" path="res://scenes/gameplay/level2/cutscene_controller.gd" id="5_ipquv"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_no1nc"]
 [ext_resource type="Script" uid="uid://c47rub84jvgxf" path="res://scenes/gameplay/level2/floating.gd" id="6_xyrhx"]
+[ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="9_ftjxm"]
 
 [sub_resource type="Environment" id="Environment_ipquv"]
 background_mode = 3
@@ -36,6 +37,43 @@ shader_parameter/edge_glow_strength = 0.35
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jw85u"]
 size = Vector2(950.5, 36)
+
+[sub_resource type="Animation" id="Animation_rubjw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kilis"]
+resource_name = "transition"
+length = 1.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1), Color(0, 0, 0.12835406, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4iyhn"]
+_data = {
+&"RESET": SubResource("Animation_rubjw"),
+&"transition": SubResource("Animation_kilis")
+}
 
 [node name="level2_intro" type="Node2D" unique_id=675181224]
 
@@ -171,6 +209,27 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_no1nc")
 theme_override_font_sizes/font_size = 27
 text = "E to continue cutscene"
+
+[node name="transition" type="Control" parent="CanvasLayer" unique_id=334362322]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_ftjxm")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/transition" unique_id=255843208]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.12941177, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/transition" unique_id=1726101806]
+libraries/ = SubResource("AnimationLibrary_4iyhn")
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]

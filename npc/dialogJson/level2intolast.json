@@ -1,0 +1,688 @@
+[
+{
+"type": "action",
+"speaker": "",
+"text": "Inside Wendy's old car.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "The fragment is still glowing.",
+"delay": 1.4,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Then we're going the right way.",
+"delay": 1.4,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "You sound very sure.",
+"delay": 1.4,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "I know old machines. They all have habits.",
+"delay": 1.6,
+"lifetime": 4.2
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Machines have habits?",
+"delay": 1.4,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Of course. Some break down when you need them most.",
+"delay": 1.7,
+"lifetime": 4.5
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Some keep working even when nobody thanks them.",
+"delay": 1.7,
+"lifetime": 4.5
+},
+{
+"type": "action",
+"speaker": "",
+"text": "The car shakes.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Like this one?",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Exactly like this one.",
+"delay": 1.4,
+"lifetime": 4.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "They both go quiet for a moment.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "I didn't think the journey would start like this.",
+"delay": 1.6,
+"lifetime": 4.5
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "What? Sitting in a half-dead car with a girl you just met?",
+"delay": 1.8,
+"lifetime": 4.8
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Something like that.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Sounds pretty heroic to me.",
+"delay": 1.4,
+"lifetime": 4.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "The car passes through the ruined city.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "You said your father used to work at the Forgotten Factory.",
+"delay": 1.8,
+"lifetime": 4.8
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Yeah. A long time ago.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Was he an engineer?",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "The best one I knew.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "You sound proud of him.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "I was.",
+"delay": 1.0,
+"lifetime": 3.5
+},
+{
+"type": "action",
+"speaker": "",
+"text": "Wendy looks at the road.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "He could fix engines, generators, broken robots... almost anything.",
+"delay": 1.8,
+"lifetime": 4.8
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Then he taught you?",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "A little.",
+"delay": 1.0,
+"lifetime": 3.5
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Mostly, I just watched.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "He was always busy with machines, work, and the city.",
+"delay": 1.7,
+"lifetime": 4.5
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Sometimes it felt like he chose everything else before me.",
+"delay": 1.7,
+"lifetime": 4.5
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "That must have hurt.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "It did.",
+"delay": 1.0,
+"lifetime": 3.5
+},
+{
+"type": "action",
+"speaker": "",
+"text": "Wendy smiles faintly.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "But I guess I learned how to survive around broken things.",
+"delay": 1.7,
+"lifetime": 4.5
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Is that why you stayed in the workshop?",
+"delay": 1.5,
+"lifetime": 4.3
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Someone had to.",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "For your father?",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "Wendy pauses.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "For what he left behind.",
+"delay": 1.4,
+"lifetime": 4.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "The car passes a torn royal poster.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Is that you?",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "It used to be.",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Used to be?",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Before people started hating the crown.",
+"delay": 1.5,
+"lifetime": 4.3
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Because of VOXTRON?",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "When VOXTRON attacked, everyone expected the royal family to protect them.",
+"delay": 2.0,
+"lifetime": 5.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "But the palace gates stayed closed.",
+"delay": 1.5,
+"lifetime": 4.3
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "And people blamed you?",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "They blamed my family.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "And I was part of it.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "You were just a child.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "That doesn't matter to them.",
+"delay": 1.4,
+"lifetime": 4.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "Tria looks down at the fragment.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "I grew up with guards, teachers, and rules.",
+"delay": 1.6,
+"lifetime": 4.5
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "But I never had friends.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "No friends at all?",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "People bowed to me.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "They never talked to me.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "Wendy becomes quiet.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "After VOXTRON took the city, people cursed my family's name.",
+"delay": 1.8,
+"lifetime": 4.8
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "They said the king and queen watched Mathtria fall.",
+"delay": 1.7,
+"lifetime": 4.5
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Did they?",
+"delay": 1.1,
+"lifetime": 4.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "Tria does not answer at first.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "I don't know.",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "But I know someone has to make it right.",
+"delay": 1.5,
+"lifetime": 4.3
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "So that someone is you?",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "If my family failed this city...",
+"delay": 1.4,
+"lifetime": 4.2
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Then I will repay that debt myself.",
+"delay": 1.5,
+"lifetime": 4.3
+},
+{
+"type": "action",
+"speaker": "",
+"text": "The car slows down.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "You know, I didn't expect the princess to be like this.",
+"delay": 1.7,
+"lifetime": 4.5
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Like what?",
+"delay": 1.1,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Stubborn. Reckless. A little too serious.",
+"delay": 1.5,
+"lifetime": 4.3
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Is that supposed to be a compliment?",
+"delay": 1.4,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "It is.",
+"delay": 1.0,
+"lifetime": 3.5
+},
+{
+"type": "action",
+"speaker": "",
+"text": "Wendy smiles.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "You're amazing, Tria.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "I'm not amazing.",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "I'm just trying to fix what was broken.",
+"delay": 1.5,
+"lifetime": 4.3
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "That's exactly why you're amazing.",
+"delay": 1.5,
+"lifetime": 4.3
+},
+{
+"type": "action",
+"speaker": "",
+"text": "The car stops near the factory gate.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Hey, princess.",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Yes?",
+"delay": 1.0,
+"lifetime": 3.5
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "When this is over...",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "I think I want to be your friend.",
+"delay": 1.5,
+"lifetime": 4.3
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "My friend?",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Yeah.",
+"delay": 1.0,
+"lifetime": 3.5
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Not your mechanic.",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Not someone you rescued.",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Just your friend.",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "Tria smiles softly.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "I would like that too.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "The fragment shines brighter.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Well then, friend...",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Ready to walk into a death trap?",
+"delay": 1.4,
+"lifetime": 4.2
+},
+{
+"type": "tria",
+"speaker": "Princess Tria",
+"text": "Not exactly.",
+"delay": 1.2,
+"lifetime": 4.0
+},
+{
+"type": "wendy",
+"speaker": "Wendy",
+"text": "Good. Me neither.",
+"delay": 1.3,
+"lifetime": 4.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "They step out of the car.",
+"delay": 1.0,
+"lifetime": 3.0
+},
+{
+"type": "action",
+"speaker": "",
+"text": "The Forgotten Factory stands ahead.",
+"delay": 1.0,
+"lifetime": 3.5
+}
+]

@@ -3,6 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dhau63s4ueqb3" path="res://scenes/gameplay/bgintrolevel2.tscn" id="1_d6kl2"]
 [ext_resource type="Texture2D" uid="uid://d4ihf45yrsm6d" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_2/Ride.png" id="2_ldlet"]
 [ext_resource type="Script" uid="uid://qt2xxkubvw2o" path="res://scenes/gameplay/level2/Parabgintrolevel_2.gd" id="2_x5jo3"]
+[ext_resource type="Script" uid="uid://dl1rmcfj168lr" path="res://scenes/gameplay/script/chat_cutscene_manager.gd" id="4_x5jo3"]
+[ext_resource type="PackedScene" uid="uid://d01dck6djpw3g" path="res://npc/chat_bubble.tscn" id="5_sak0m"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_o1hh7"]
+[ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="7_ad5dq"]
+[ext_resource type="AudioStream" uid="uid://glxkssthls04" path="res://assets/sound/eVANrADIO.mp3" id="8_g878f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5jo3"]
 atlas = ExtResource("2_ldlet")
@@ -81,6 +86,57 @@ adjustment_brightness = 0.86
 adjustment_contrast = 1.2
 adjustment_saturation = 1.04
 
+[sub_resource type="Animation" id="Animation_rubjw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kilis"]
+resource_name = "transition"
+length = 1.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1), Color(0, 0, 0.12835406, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g878f"]
+_data = {
+&"RESET": SubResource("Animation_rubjw"),
+&"transition": SubResource("Animation_kilis")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ad5dq"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.9647059, 0.30980393, 0.6509804, 0.30588236)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g878f"]
+bg_color = Color(0.050980393, 0.023529412, 0.019607844, 0.7647059)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
 [node name="level_2_introlast" type="Node2D" unique_id=1383468982]
 
 [node name="bg" parent="." unique_id=25557730 node_paths=PackedStringArray("target_animated_sprite") instance=ExtResource("1_d6kl2")]
@@ -126,5 +182,94 @@ environment = SubResource("Environment_il4hi")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="envi" unique_id=1893518935]
 position = Vector2(-1, 0)
+
+[node name="ChatCutsceneManager" type="CanvasLayer" parent="." unique_id=156893588]
+script = ExtResource("4_x5jo3")
+bubble_scene = ExtResource("5_sak0m")
+chat_json_path = "res://npc/dialogJson/level2intolast.json"
+auto_start = true
+next_scene_path = "uid://b8tn7j3rldppx"
+
+[node name="transition" type="Control" parent="ChatCutsceneManager" unique_id=1551576241]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_ad5dq")
+
+[node name="ColorRect" type="ColorRect" parent="ChatCutsceneManager/transition" unique_id=482916884]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.12941177, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChatCutsceneManager/transition" unique_id=608123766]
+libraries/ = SubResource("AnimationLibrary_g878f")
+
+[node name="BubbleStack" type="VBoxContainer" parent="ChatCutsceneManager" unique_id=556606544]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChatCutsceneManager" unique_id=172525582]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -51.0
+offset_right = -12.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="autoplay" type="Button" parent="ChatCutsceneManager/HBoxContainer" unique_id=1116744717]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_o1hh7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ad5dq")
+text = "Autoplay"
+
+[node name="skip" type="Button" parent="ChatCutsceneManager/HBoxContainer" unique_id=331498824]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_o1hh7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_g878f")
+text = "Skip"
+
+[node name="Label" type="Label" parent="ChatCutsceneManager" unique_id=1332917191]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -33.0
+offset_right = 332.0
+grow_vertical = 0
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("6_o1hh7")
+theme_override_font_sizes/font_size = 25
+text = "E to keep the conversation going"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1175034757]
+stream = ExtResource("8_g878f")
+volume_db = -21.093
+autoplay = true
+mix_target = 1
+parameters/looping = true
 
 [editable path="bg"]

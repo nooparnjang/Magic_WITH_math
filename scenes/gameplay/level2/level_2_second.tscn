@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://j3accnrdrbsj" path="res://assets/Tiles/basetilesfactory.tres" id="4_v14ts"]
 [ext_resource type="TileSet" uid="uid://n3hkh7xmmxss" path="res://assets/Tiles/factory2.tres" id="5_na0s4"]
 [ext_resource type="TileSet" uid="uid://bqoejewgftj1s" path="res://assets/Tiles/ladderTrue.tres" id="6_k4haq"]
+[ext_resource type="Script" uid="uid://dp6v5o2ouigic" path="res://scenes/gameplay/level2/deathtrap.gd" id="7_cq1xu"]
 [ext_resource type="Texture2D" uid="uid://dyy6v8ir30ud6" path="res://assets/object/Animated Elevator Set/Spritesheets/SimpleElevatorDoors_animated_32x48.png" id="7_ghsif"]
 [ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="8_3ksqk"]
 [ext_resource type="PackedScene" uid="uid://pbk26hqvqvku" path="res://object/cone.tscn" id="9_v14ts"]
@@ -47,6 +48,9 @@ adjustment_enabled = true
 adjustment_brightness = 0.86
 adjustment_contrast = 1.2
 adjustment_saturation = 1.04
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5ury"]
+size = Vector2(3032.25, 159)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kys06"]
 atlas = ExtResource("7_ghsif")
@@ -224,6 +228,14 @@ tile_set = ExtResource("5_na0s4")
 scale = Vector2(2.5, 2.5)
 tile_map_data = PackedByteArray("AAAjAAMAAAAAAAAAAAAjAAQAAAAAAAEAAAAkAAMAAAABAAAAAAAkAAQAAAABAAEAAAAjAAUAAAAAAAAAAAAjAAYAAAAAAAEAAAAkAAUAAAABAAAAAAAkAAYAAAABAAEAAAAjAAcAAAAAAAAAAAAjAAgAAAAAAAEAAAAkAAcAAAABAAAAAAAkAAgAAAABAAEAAAAjAAkAAAAAAAAAAAAjAAoAAAAAAAEAAAAkAAkAAAABAAAAAAAkAAoAAAABAAEAAAAjAAsAAAAAAAAAAAAjAAwAAAAAAAEAAAAkAAsAAAABAAAAAAAkAAwAAAABAAEAAAAjAA0AAAAAAAAAAAAjAA4AAAAAAAEAAAAkAA0AAAABAAAAAAAkAA4AAAABAAEAAAAjAA8AAAAAAAAAAAAjABAAAAAAAAEAAAAkAA8AAAABAAAAAAAkABAAAAABAAEAAAAjABEAAAAAAAAAAAAkABEAAAABAAAAAAAjAAEAAAAAAAAAAAAjAAIAAAAAAAEAAAAkAAEAAAABAAAAAAAkAAIAAAABAAEAAAA=")
 tile_set = ExtResource("6_k4haq")
+
+[node name="deathtrap" type="Area2D" parent="tilemap" unique_id=359843793]
+position = Vector2(-2697, 531)
+script = ExtResource("7_cq1xu")
+
+[node name="deathtrap" type="CollisionShape2D" parent="tilemap/deathtrap" unique_id=1283374308]
+position = Vector2(7408.875, 755.245)
+shape = SubResource("RectangleShape2D_d5ury")
 
 [node name="object" type="Node2D" parent="." unique_id=1042083590]
 

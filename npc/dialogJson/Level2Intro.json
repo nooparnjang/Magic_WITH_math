@@ -1,5 +1,5 @@
 {
-  "next_scene": "res://scenes/gameplay/level2/level_2_main.tscn",
+  "next_scene": "res://scenes/gameplay/level2/level_2_introlast.tscn",
   "steps": [
     {
       "type": "setup_actor",

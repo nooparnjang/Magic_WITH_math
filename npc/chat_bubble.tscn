@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d01dck6djpw3g"]
+
+[ext_resource type="Script" uid="uid://d1nu67mevin5d" path="res://npc/script/chat_bubble.gd" id="1_l5isx"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="1_splv2"]
+[ext_resource type="FontFile" uid="uid://tmlm6tcqp1fd" path="res://assets/font/Jersey10-Regular.ttf" id="3_l5isx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twdsd"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="ChatBubble" type="PanelContainer" unique_id=775033461]
+custom_minimum_size = Vector2(680, 0)
+offset_right = 860.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_twdsd")
+script = ExtResource("1_l5isx")
+action_color = Color(1, 1, 1, 0.78039217)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=227276581]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=785477809]
+custom_minimum_size = Vector2(680, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_splv2")
+theme_override_font_sizes/font_size = 35
+text = "wee"
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="TextLabel" type="Label" parent="VBoxContainer" unique_id=606576951]
+custom_minimum_size = Vector2(680, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l5isx")
+theme_override_font_sizes/font_size = 30
+text = "fsdfs"
+horizontal_alignment = 3
+autowrap_mode = 3
