@@ -1,244 +1,244 @@
 {
   "next_scene": "res://scenes/gameplay/level2/level_2_introlast.tscn",
   "steps": [
-    {
-      "type": "setup_actor",
-      "actor": "tria",
-      "marker": "tria_start",
-      "animation": "idle",
-      "flip_h": false
-    },
-    {
-      "type": "setup_actor",
-      "actor": "wendy",
-      "marker": "wendy_point",
-      "animation": "idle",
-      "flip_h": false
-    },
-    {
-      "type": "camera",
-      "marker": "camera_wide",
-      "zoom": 1.0,
-      "duration": 0.01
-    },
-    {
-      "type": "fade_in",
-      "duration": 0.8
-    },
-    {
-      "type": "wait",
-      "duration": 0.25
-    },
-    {
-      "type": "actor_anim",
-      "actor": "tria",
-      "animation": "walk"
-    },
-    {
-      "type": "move_actor",
-      "actor": "tria",
-      "marker": "tria_talk_point",
-      "duration": 1.4,
-      "animation": "walk"
-    },
-    {
-      "type": "actor_anim",
-      "actor": "tria",
-      "animation": "idle"
-    },
-    {
-      "type": "camera",
-      "marker": "camera_two_shot",
-      "zoom": 1.3,
-      "duration": 0.5
-    },
-    {
-      "type": "wait",
-      "duration": 0.3
-    },
-    {
-      "type": "turn_actor",
-      "actor": "wendy",
-      "face_actor": "tria",
-      "turn_animation": "turn",
-      "fallback_delay": 0.35
-    },
+	{
+	  "type": "setup_actor",
+	  "actor": "tria",
+	  "marker": "tria_start",
+	  "animation": "idle",
+	  "flip_h": false
+	},
+	{
+	  "type": "setup_actor",
+	  "actor": "wendy",
+	  "marker": "wendy_point",
+	  "animation": "idle",
+	  "flip_h": false
+	},
+	{
+	  "type": "camera",
+	  "marker": "camera_wide",
+	  "zoom": 1.0,
+	  "duration": 0.01
+	},
+	{
+	  "type": "fade_in",
+	  "duration": 0.8
+	},
+	{
+	  "type": "wait",
+	  "duration": 0.25
+	},
+	{
+	  "type": "actor_anim",
+	  "actor": "tria",
+	  "animation": "walk"
+	},
+	{
+	  "type": "move_actor",
+	  "actor": "tria",
+	  "marker": "tria_talk_point",
+	  "duration": 1.4,
+	  "animation": "walk"
+	},
+	{
+	  "type": "actor_anim",
+	  "actor": "tria",
+	  "animation": "idle"
+	},
+	{
+	  "type": "camera",
+	  "marker": "camera_two_shot",
+	  "zoom": 1.3,
+	  "duration": 0.5
+	},
+	{
+	  "type": "wait",
+	  "duration": 0.3
+	},
+	{
+	  "type": "turn_actor",
+	  "actor": "wendy",
+	  "face_actor": "tria",
+	  "turn_animation": "turn",
+	  "fallback_delay": 0.35
+	},
 
-    {
-      "type": "dialog",
-      "speaker": "Princess Tria",
-      "text": "The fragment is reacting.",
-      "camera_marker": "camera_tria",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "It must be detecting",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "another piece nearby.",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Princess Tria",
-      "text": "Then our next destination",
-      "camera_marker": "camera_tria",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Princess Tria",
-      "text": "is clear.",
-      "camera_marker": "camera_tria",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "The Forgotten Factory.",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.45
-    },
-    {
-      "type": "dialog",
-      "speaker": "Princess Tria",
-      "text": "Do you know it?",
-      "camera_marker": "camera_tria",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "A little.",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "My father used to work there",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "years ago.",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "If that fragment is really there,",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "you should not go alone.",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Princess Tria",
-      "text": "Then what do you suggest?",
-      "camera_marker": "camera_tria",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "I'll drive you there.",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.3
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "I know a route",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.3
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "through the old industrial road.",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.3
-    },
-    {
-      "type": "dialog",
-      "speaker": "Princess Tria",
-      "text": "You're coming with me?",
-      "camera_marker": "camera_tria",
-      "zoom": 1.35
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "Yes.",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.3
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "Besides, if this has something",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.3
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "to do with my father's old workplace,",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.3
-    },
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "I need to see it for myself.",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.3
-    },
-    {
-      "type": "dialog",
-      "speaker": "Princess Tria",
-      "text": "Then let's go.",
-      "camera_marker": "camera_tria",
-      "zoom": 1.35
-    },
+	{
+	  "type": "dialog",
+	  "speaker": "Princess Tria",
+	  "text": "The fragment is reacting.",
+	  "camera_marker": "camera_tria",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "It must be detecting",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "another piece nearby.",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Princess Tria",
+	  "text": "Then our next destination",
+	  "camera_marker": "camera_tria",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Princess Tria",
+	  "text": "is clear.",
+	  "camera_marker": "camera_tria",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "The Forgotten Factory.",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.45
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Princess Tria",
+	  "text": "Do you know it?",
+	  "camera_marker": "camera_tria",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "A little.",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "My father used to work there",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "years ago.",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "If that fragment is really there,",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "you should not go alone.",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Princess Tria",
+	  "text": "Then what do you suggest?",
+	  "camera_marker": "camera_tria",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "I'll drive you there.",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.3
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "I know a route",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.3
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "through the old industrial road.",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.3
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Princess Tria",
+	  "text": "You're coming with me?",
+	  "camera_marker": "camera_tria",
+	  "zoom": 1.35
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "Yes.",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.3
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "Besides, if this has something",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.3
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "to do with my father's old workplace,",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.3
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "I need to see it for myself.",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.3
+	},
+	{
+	  "type": "dialog",
+	  "speaker": "Princess Tria",
+	  "text": "Then let's go.",
+	  "camera_marker": "camera_tria",
+	  "zoom": 1.35
+	},
 
-    {
-      "type": "dialog",
-      "speaker": "Wendy",
-      "text": "We're leaving now, princess.",
-      "camera_marker": "camera_wendy",
-      "zoom": 1.45
-    },
+	{
+	  "type": "dialog",
+	  "speaker": "Wendy",
+	  "text": "We're leaving now, princess.",
+	  "camera_marker": "camera_wendy",
+	  "zoom": 1.45
+	},
 
-    {
-      "type": "camera",
-      "marker": "camera_two_shot",
-      "zoom": 1.1,
-      "duration": 0.5
-    },
-    {
-      "type": "fade_out",
-      "duration": 0.9
-    },
-    {
-      "type": "change_scene"
-    }
+	{
+	  "type": "camera",
+	  "marker": "camera_two_shot",
+	  "zoom": 1.1,
+	  "duration": 0.5
+	},
+	{
+	  "type": "fade_out",
+	  "duration": 0.9
+	},
+	{
+	  "type": "change_scene"
+	}
   ]
 }

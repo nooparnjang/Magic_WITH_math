@@ -35,6 +35,8 @@
 [ext_resource type="PackedScene" uid="uid://br3128obts5ld" path="res://UIcomponent/demoover.tscn" id="22_wnb8e"]
 [ext_resource type="Script" uid="uid://dxl82somv1d0x" path="res://UIcomponent/script/demoover.gd" id="23_0ekqs"]
 [ext_resource type="Shader" uid="uid://dl0pf55ys6tcy" path="res://scenes/gameplay/script/shader/darkalley.gdshader" id="33_kbcqb"]
+[ext_resource type="Script" uid="uid://chp2s8lej77iv" path="res://scenes/gameplay/script/teleport.gd" id="35_chmo2"]
+[ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="36_d5ury"]
 
 [sub_resource type="Environment" id="Environment_vygmk"]
 background_mode = 3
@@ -480,6 +482,8 @@ position = Vector2(2250, 464)
 
 [node name="Area2D" type="StaticBody2D" parent="teleport" unique_id=614820891]
 disable_mode = 1
+script = ExtResource("35_chmo2")
+next_scene = "res://scenes/gameplay/level2/level_2_boss.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleport/Area2D" unique_id=1642061488]
 position = Vector2(4926, -16)
@@ -498,6 +502,13 @@ offset_top = -392.0
 offset_right = 5742.0
 offset_bottom = 381.0
 color = Color(0, 0, 0, 1)
+
+[node name="npc" type="Node2D" parent="." unique_id=1016279921]
+
+[node name="Wendy" parent="npc" unique_id=1920401949 instance=ExtResource("36_d5ury")]
+position = Vector2(6606, 573)
+scale = Vector2(2, 2)
+dialog_json_path = "res://npc/dialogJson/level2Wendy2.json"
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]

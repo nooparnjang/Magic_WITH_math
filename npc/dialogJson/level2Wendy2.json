@@ -1,0 +1,144 @@
+{
+  "npc_name": "WENDY",
+  "states": {
+    "before_quest": {
+      "lines": [
+        {
+          "speaker": "Princess Tria",
+          "text": "Wendy, is this the place?"
+        },
+        {
+          "speaker": "Wendy",
+          "text": "Yes..."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "But be careful."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "It is very dangerous inside."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "More dangerous than before."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "What is waiting in there?"
+        },
+        {
+          "speaker": "Wendy",
+          "text": "A giant robot."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "It has a powerful core."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "Inside that core..."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "There is a fragment."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "The fragment we need..."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "Yes."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "I can feel its energy."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "It is coming from inside."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "We have to get it."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "Then I will defeat it."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "And take the fragment back."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "Let me help you."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "I know this factory."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "I can guide you inside."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "No."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "Stay here, Wendy."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "It is too dangerous."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "But..."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "You already helped me enough."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "Wait here."
+        },
+        {
+          "speaker": "Princess Tria",
+          "text": "I will handle this."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "...Alright."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "Please be careful, Tria."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "May your courage guide you."
+        }
+      ],
+      "next_state": "quest_accepted",
+      "trigger_boss_intro": true
+    },
+    "quest_accepted": {
+      "lines": [
+        {
+          "speaker": "Wendy",
+          "text": "I will wait here."
+        },
+        {
+          "speaker": "Wendy",
+          "text": "Please come back safely."
+        }
+      ],
+      "next_state": "quest_accepted"
+    }
+  }
+}

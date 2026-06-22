@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://3o4ccldb56av"]
 
 [ext_resource type="Script" uid="uid://c2j3ydo7tep8w" path="res://enemies/script/robot_1.gd" id="1_iep1s"]
-[ext_resource type="SpriteFrames" uid="uid://b7lq3gdjod2e5" path="res://assets/tres_enemy/robot2.tres" id="2_g6a5x"]
+[ext_resource type="SpriteFrames" uid="uid://rkooe2qu4ay6" path="res://assets/tres_enemy/robot2.tres" id="2_g6a5x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_re2hq"]
 height = 80.0
