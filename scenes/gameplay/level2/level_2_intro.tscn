@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_80o1s"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="3_jw85u"]
 [ext_resource type="Texture2D" uid="uid://doprtl43rfdun" path="res://assets/UI/4.png" id="4_jw85u"]
-[ext_resource type="Shader" uid="uid://cy4eivv3o1cut" path="res://assets/shader/gem.gdshader" id="4_k5a8w"]
-[ext_resource type="Script" uid="uid://chum37ynyhtpe" path="res://scenes/gameplay/level2/cutscene_controller.gd" id="5_ipquv"]
+[ext_resource type="Shader" path="res://assets/shader/gem.gdshader" id="4_k5a8w"]
+[ext_resource type="Script" path="res://scenes/gameplay/level2/cutscene_controller.gd" id="5_ipquv"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_no1nc"]
-[ext_resource type="Script" uid="uid://c47rub84jvgxf" path="res://scenes/gameplay/level2/floating.gd" id="6_xyrhx"]
+[ext_resource type="Script" path="res://scenes/gameplay/level2/floating.gd" id="6_xyrhx"]
 [ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="9_ftjxm"]
 
 [sub_resource type="Environment" id="Environment_ipquv"]
@@ -220,6 +220,7 @@ grow_vertical = 2
 script = ExtResource("9_ftjxm")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/transition" unique_id=255843208]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
