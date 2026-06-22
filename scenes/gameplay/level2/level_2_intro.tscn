@@ -93,9 +93,6 @@ z_index = 1
 position = Vector2(86.000015, 412)
 scale = Vector2(2.5, 2.5)
 
-[node name="Statusbar" parent="player/maincharacter" index="4" unique_id=50678111]
-visible = false
-
 [node name="name" parent="player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="0" unique_id=339424069]
 theme_override_colors/font_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
 
@@ -188,7 +185,6 @@ limit_bottom = 540
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2084901804]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=957857117]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -220,7 +216,6 @@ grow_vertical = 2
 script = ExtResource("9_ftjxm")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/transition" unique_id=255843208]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

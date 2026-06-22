@@ -1,3 +1,162 @@
 [gd_scene format=3 uid="uid://pym1rgw6dwbg"]
 
+[ext_resource type="PackedScene" path="res://scenes/gameplay/bgintrolevel2.tscn" id="1_ag2mm"]
+[ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="1_x25rp"]
+[ext_resource type="Texture2D" uid="uid://cjbdo2dpm1rn3" path="res://assets/bg/EndlessNew/middlemerge.png" id="2_4o184"]
+[ext_resource type="Script" path="res://scenes/gameplay/level2/Parabgintrolevel_2.gd" id="2_uhctc"]
+[ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_vm7ds"]
+[ext_resource type="Texture2D" uid="uid://hg5eiyc6xh3h" path="res://assets/bg/EndlessNew/Game play(1).png" id="3_qcg8b"]
+[ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="3_w7xbo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qcg8b"]
+shader = ExtResource("1_x25rp")
+shader_parameter/blur_amount = 0.75
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnhvb"]
+bg_color = Color(0.12156863, 0.105882354, 0.49411765, 0.19607843)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnhvb"]
+size = Vector2(950.5, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpiew"]
+size = Vector2(13.5, 548)
+
 [node name="Level4Intro" type="Node2D" unique_id=259357613]
+
+[node name="bg" parent="." unique_id=25557730 node_paths=PackedStringArray("target_animated_sprite") instance=ExtResource("1_ag2mm")]
+script = ExtResource("2_uhctc")
+target_animated_sprite = NodePath("")
+
+[node name="Parallax2D" parent="bg" index="0" unique_id=1963326864]
+scroll_scale = Vector2(0.8, 0.8)
+
+[node name="Parallax2D2" parent="bg" index="1" unique_id=1267803957]
+scroll_scale = Vector2(0.9, 0.9)
+
+[node name="Parallax2D3" parent="bg" index="2" unique_id=1231748107]
+scroll_scale = Vector2(1, 1)
+
+[node name="Parallax2D4" parent="bg" index="3" unique_id=1623803133]
+scroll_scale = Vector2(1.1, 1.1)
+
+[node name="Parallax2D5" parent="bg" index="4" unique_id=163399712]
+scroll_scale = Vector2(1.2, 1.2)
+
+[node name="Parallax2D6" parent="bg" index="5" unique_id=1863385983]
+scroll_scale = Vector2(1.3, 1.3)
+
+[node name="Parallax2D7" parent="bg" index="6" unique_id=567425613]
+scroll_scale = Vector2(1.4, 1.4)
+
+[node name="Parallax2D8" parent="bg" index="7" unique_id=1526699292]
+scroll_scale = Vector2(1.5, 1.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1676064610]
+
+[node name="player" type="Node2D" parent="CanvasLayer" unique_id=530356179]
+z_index = 99
+position = Vector2(79, -95)
+
+[node name="maincharacter" parent="CanvasLayer/player" unique_id=1926872742 instance=ExtResource("2_vm7ds")]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+z_index = 1
+position = Vector2(86.000015, 412)
+scale = Vector2(2.5, 2.5)
+
+[node name="Statusbar" parent="CanvasLayer/player/maincharacter" index="4" unique_id=50678111]
+visible = false
+
+[node name="name" parent="CanvasLayer/player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="0" unique_id=339424069]
+theme_override_colors/font_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
+
+[node name="Label" parent="CanvasLayer/player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="1" unique_id=1367956479]
+theme_override_colors/font_color = Color(3.3691526e-07, 0.5381211, 0.47927624, 1)
+
+[node name="npc" type="Node2D" parent="CanvasLayer" unique_id=556491484]
+z_index = 99
+position = Vector2(131, -90)
+
+[node name="Wendy" parent="CanvasLayer/npc" unique_id=1920401949 instance=ExtResource("3_w7xbo")]
+z_index = 1
+position = Vector2(208, 417)
+scale = Vector2(2, 2)
+script = null
+
+[node name="middle" type="Parallax2D" parent="CanvasLayer" unique_id=1716366260]
+z_index = 10
+scroll_scale = Vector2(0.8, 1)
+repeat_size = Vector2(1960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/middle" unique_id=882072659]
+position = Vector2(983.0001, 261.00003)
+scale = Vector2(1.0250001, 1.1111112)
+texture = ExtResource("2_4o184")
+
+[node name="foremost" type="Parallax2D" parent="CanvasLayer" unique_id=1292470193]
+z_index = 10
+scroll_offset = Vector2(895, 3)
+repeat_size = Vector2(900, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/foremost" unique_id=85519201]
+position = Vector2(480.83713, 273.49997)
+scale = Vector2(0.49912798, 0.50277776)
+texture = ExtResource("3_qcg8b")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1512759903]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.12941177, 0.98039216)
+
+[node name="blur" type="Panel" parent="CanvasLayer" unique_id=818764847]
+z_index = 1
+material = SubResource("ShaderMaterial_qcg8b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wnhvb")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1354840327]
+z_index = 99
+limit_left = 960
+limit_top = 0
+limit_right = 0
+limit_bottom = 540
+
+[node name="boxwei" type="Node2D" parent="." unique_id=429560166]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="boxwei" unique_id=672870477]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxwei/StaticBody2D" unique_id=1873986869]
+position = Vector2(475, 420)
+shape = SubResource("RectangleShape2D_wnhvb")
+debug_color = Color(0.99999994, 0.22560388, 0.6326627, 0.41960785)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="boxwei" unique_id=1375415457]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxwei/StaticBody2D2" unique_id=905047754]
+position = Vector2(-3.75, 274)
+shape = SubResource("RectangleShape2D_rpiew")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="boxwei" unique_id=2094740850]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxwei/StaticBody2D3" unique_id=13498639]
+position = Vector2(967, 274)
+shape = SubResource("RectangleShape2D_rpiew")
+
+[connection signal="animation_finished" from="CanvasLayer/player/maincharacter/AnimatedSprite2D" to="CanvasLayer/player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="CanvasLayer/player/maincharacter/TargetRadius" to="CanvasLayer/player/maincharacter" method="_on_target_radius_body_entered"]
+[connection signal="body_exited" from="CanvasLayer/player/maincharacter/TargetRadius" to="CanvasLayer/player/maincharacter" method="_on_target_radius_body_exited"]
+
+[editable path="bg"]
+[editable path="CanvasLayer/player/maincharacter"]
+[editable path="CanvasLayer/player/maincharacter/Statusbar"]
+[editable path="CanvasLayer/npc/Wendy"]
