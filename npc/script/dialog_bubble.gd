@@ -9,12 +9,29 @@ extends Control
 @export var max_bubble_width := 240.0
 @export var typing_speed := 40.0
 
+# -------------------------
+# Voice Beep
+# -------------------------
+@export var beep_enabled := true
+
+# ยิ่งน้อยยิ่งปิ๊ปถี่ เช่น 0.03 = ถี่มาก, 0.08 = อ่านง่ายกว่า
+@export var beep_interval := 0.045
+
+# สุ่ม pitch นิด ๆ ให้เหมือนพูด ไม่ใช่เสียงเดียวแข็ง ๆ
+@export var beep_pitch_min := 0.92
+@export var beep_pitch_max := 1.08
+
+# ไม่ให้ beep ตอนเป็นช่องว่าง/สัญลักษณ์บางตัว
+@export var beep_only_on_letters := false
+
 @onready var bubble_visual: Control = $BubbleVisual
 @onready var panel: Panel = $BubbleVisual/Panel
 @onready var margin_container: MarginContainer = $BubbleVisual/MarginContainer
 @onready var vbox: VBoxContainer = $BubbleVisual/MarginContainer/VBoxContainer
 @onready var name_label: Label = $BubbleVisual/MarginContainer/VBoxContainer/name
 @onready var text_label: Label = $BubbleVisual/MarginContainer/VBoxContainer/Label
+
+@onready var beep_player: AudioStreamPlayer = $BeepPlayer
 
 var _float_time := 0.0
 var _base_visual_position := Vector2.ZERO
@@ -25,6 +42,10 @@ var _current_full_text := ""
 var _visible_characters := 0.0
 var _is_typing := false
 var _dialog_active := false
+
+var _beep_timer := 0.0
+var _last_char_count := 0
+
 
 func _ready() -> void:
 	hide()
@@ -43,6 +64,7 @@ func _ready() -> void:
 	name_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 	text_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 
+
 func _process(delta: float) -> void:
 	if not visible:
 		return
@@ -52,15 +74,25 @@ func _process(delta: float) -> void:
 	bubble_visual.position = _base_visual_position + Vector2(0, offset_y)
 
 	if _is_typing:
+		_beep_timer += delta
+
 		_visible_characters += typing_speed * delta
 		var char_count := mini(int(_visible_characters), _current_full_text.length())
+
 		text_label.text = _current_full_text.substr(0, char_count)
+
+		if char_count > _last_char_count:
+			_try_play_beep(char_count)
+
+		_last_char_count = char_count
 
 		if char_count >= _current_full_text.length():
 			_is_typing = false
 
+
 func show_bubble(npc_name: String, text: String) -> void:
 	start_dialog(npc_name, [text])
+
 
 func start_dialog(npc_name: String, lines: Array[String]) -> void:
 	if lines.is_empty():
@@ -80,6 +112,7 @@ func start_dialog(npc_name: String, lines: Array[String]) -> void:
 	_current_line_index = 0
 	_show_current_line()
 
+
 func _show_current_line() -> void:
 	if _current_line_index < 0 or _current_line_index >= _lines.size():
 		return
@@ -89,7 +122,45 @@ func _show_current_line() -> void:
 	_is_typing = true
 	text_label.text = ""
 
+	_beep_timer = beep_interval
+	_last_char_count = 0
+
 	_resize_bubble_for_text(_current_full_text)
+
+
+func _try_play_beep(char_count: int) -> void:
+	if not beep_enabled:
+		return
+
+	if beep_player == null:
+		return
+
+	if beep_player.stream == null:
+		return
+
+	if _beep_timer < beep_interval:
+		return
+
+	var char_index := char_count - 1
+
+	if char_index < 0 or char_index >= _current_full_text.length():
+		return
+
+	var current_char := _current_full_text[char_index]
+
+	if beep_only_on_letters:
+		if current_char == " " or current_char == "." or current_char == "," or current_char == "!" or current_char == "?":
+			return
+	else:
+		if current_char == " ":
+			return
+
+	_beep_timer = 0.0
+
+	beep_player.pitch_scale = randf_range(beep_pitch_min, beep_pitch_max)
+	beep_player.stop()
+	beep_player.play()
+
 
 func _resize_bubble_for_text(text: String) -> void:
 	var font: Font = text_label.get_theme_font("font")
@@ -116,6 +187,7 @@ func _resize_bubble_for_text(text: String) -> void:
 	vbox.custom_minimum_size = Vector2(final_width, bubble_height)
 	vbox.size = Vector2(final_width, bubble_height)
 
+
 func advance_or_finish_line() -> bool:
 	if not _dialog_active:
 		return false
@@ -133,6 +205,7 @@ func advance_or_finish_line() -> bool:
 	_show_current_line()
 	return false
 
+
 func hide_bubble() -> void:
 	hide()
 	_dialog_active = false
@@ -143,8 +216,13 @@ func hide_bubble() -> void:
 	text_label.text = ""
 	bubble_visual.position = _base_visual_position
 
+	if beep_player != null:
+		beep_player.stop()
+
+
 func is_dialog_active() -> bool:
 	return _dialog_active
+
 
 func is_typing() -> bool:
 	return _is_typing

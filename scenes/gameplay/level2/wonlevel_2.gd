@@ -9,7 +9,7 @@ extends Control
 var enter_scene_path: String = "res://scenes/gameplay/level1/intro_for_level_1.tscn"
 
 @export_file("*.tscn")
-var backspace_scene_path: String = "res://scenes/menu/select_level.tscn"
+var backspace_scene_path: String = "res://scenes/mainmenu/MainMenu.tscn"
 
 var already_triggered: bool = false
 
@@ -18,7 +18,7 @@ func _ready() -> void:
 	hide()
 
 	# สำคัญมาก ถ้าเกม pause แล้ว popup ยังต้องรับ input ได้
-	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 func _process(_delta: float) -> void:

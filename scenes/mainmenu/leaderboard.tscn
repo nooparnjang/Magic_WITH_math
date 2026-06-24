@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://oktc7reqjkjc"]
 
+[ext_resource type="Script" uid="uid://dtijqkv4uf8rd" path="res://scenes/mainmenu/script/main_menu.gd" id="1_7eecl"]
 [ext_resource type="Texture2D" uid="uid://msilb3kx2n0" path="res://assets/bg/MainMenu/Main menu.png" id="1_p0qcm"]
 [ext_resource type="Script" uid="uid://q7qq0fpr7uem" path="res://scenes/mainmenu/script/goback.gd" id="3_dh7hh"]
 [ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="4_dh7hh"]
@@ -27,6 +28,7 @@ corner_radius_bottom_left = 30
 [node name="Node2D" type="Control" unique_id=1269873416]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_7eecl")
 
 [node name="bg" type="Panel" parent="." unique_id=371563221]
 layout_mode = 0

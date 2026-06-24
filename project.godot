@@ -25,6 +25,7 @@ config/icon="uid://dnbvcr2kqm81u"
 
 BlessingManager="*uid://bflh3kkq1yri2"
 PausePopupManager="*uid://do1ydtsrklagq"
+MusicManager="*uid://bjjgg11q785bo"
 
 [display]
 

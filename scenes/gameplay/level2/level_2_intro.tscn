@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_80o1s"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="3_jw85u"]
 [ext_resource type="Texture2D" uid="uid://doprtl43rfdun" path="res://assets/UI/4.png" id="4_jw85u"]
-[ext_resource type="Shader" path="res://assets/shader/gem.gdshader" id="4_k5a8w"]
-[ext_resource type="Script" path="res://scenes/gameplay/level2/cutscene_controller.gd" id="5_ipquv"]
+[ext_resource type="Shader" uid="uid://cy4eivv3o1cut" path="res://assets/shader/gem.gdshader" id="4_k5a8w"]
+[ext_resource type="Script" uid="uid://chum37ynyhtpe" path="res://scenes/gameplay/level2/cutscene_controller.gd" id="5_ipquv"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_no1nc"]
-[ext_resource type="Script" path="res://scenes/gameplay/level2/floating.gd" id="6_xyrhx"]
+[ext_resource type="Script" uid="uid://c47rub84jvgxf" path="res://scenes/gameplay/level2/floating.gd" id="6_xyrhx"]
 [ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="9_ftjxm"]
 
 [sub_resource type="Environment" id="Environment_ipquv"]
@@ -93,6 +93,9 @@ z_index = 1
 position = Vector2(86.000015, 412)
 scale = Vector2(2.5, 2.5)
 
+[node name="Statusbar" parent="player/maincharacter" index="4" unique_id=50678111]
+visible = false
+
 [node name="name" parent="player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="0" unique_id=339424069]
 theme_override_colors/font_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
 
@@ -115,6 +118,7 @@ environment = SubResource("Environment_ipquv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="envi" unique_id=253324684]
 position = Vector2(-1, 0)
+color = Color(0.954884, 0.8880222, 1, 1)
 
 [node name="gem" type="Node2D" parent="." unique_id=1895027116]
 

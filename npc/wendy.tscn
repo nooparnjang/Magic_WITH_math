@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://banuauxgr2hnf" path="res://assets/npc/wendy/Dialogue.png" id="2_2ebar"]
 [ext_resource type="Script" uid="uid://kchdcg8jck8l" path="res://npc/script/dialog_bubble.gd" id="4_bpofj"]
 [ext_resource type="Texture2D" uid="uid://buofdlvjfr6k6" path="res://assets/npc/ui/darkbubble.png" id="5_7hmhq"]
+[ext_resource type="AudioStream" uid="uid://dr83rlyvrpae5" path="res://assets/sound/bleep023.mp3" id="7_8ko6q"]
 [ext_resource type="FontFile" uid="uid://bkbespsxdoatm" path="res://assets/font/PaybAck.ttf" id="7_bpofj"]
 [ext_resource type="Script" uid="uid://bmfaali7wk8g6" path="res://npc/script/hintE.gd" id="7_v81ec"]
 [ext_resource type="Texture2D" uid="uid://du1nolgtdntuy" path="res://assets/npc/ui/interact.png" id="8_l2qb5"]
@@ -247,6 +248,9 @@ theme_override_colors/font_color = Color(0.8784314, 0.7019608, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 text = " Matsuri"
+
+[node name="BeepPlayer" type="AudioStreamPlayer" parent="BubbleAnchor/DialogBubble" unique_id=1394560149]
+stream = ExtResource("7_8ko6q")
 
 [node name="hintE" type="Node2D" parent="." unique_id=2105040704]
 position = Vector2(-8, -65)

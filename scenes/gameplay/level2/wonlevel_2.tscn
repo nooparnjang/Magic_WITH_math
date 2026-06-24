@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="1_xkbpa"]
 [ext_resource type="Texture2D" uid="uid://doprtl43rfdun" path="res://assets/UI/4.png" id="2_on6yq"]
+[ext_resource type="AudioStream" uid="uid://bxbrqltascn0r" path="res://assets/sound/eaglaxle-gaming-victory-2-464017.mp3" id="3_on6yq"]
 
 [sub_resource type="Theme" id="Theme_oogrc"]
 default_font = ExtResource("1_xkbpa")
@@ -75,3 +76,7 @@ theme = SubResource("Theme_rit18")
 text = "pressing Backspace to go back to main menu
 pressing  Enter to continue to next chapter"
 horizontal_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=15414291]
+stream = ExtResource("3_on6yq")
+autoplay = true

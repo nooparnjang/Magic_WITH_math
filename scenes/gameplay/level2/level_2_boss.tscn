@@ -127,6 +127,7 @@ grow_vertical = 2
 layout_mode = 1
 size_flags_horizontal = 0
 size_flags_vertical = 4
+Gem2_texture = ExtResource("15_6o4a1")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/topright/ItemRows" unique_id=1336659642]
 layout_mode = 2
@@ -232,6 +233,7 @@ node_to_hide = NodePath("../title")
 z_index = 1
 position = Vector2(742.99994, 458)
 scale = Vector2(2.5, 2.5)
+max_hp = 2
 item_drop_id = "Gem2"
 item_drop_texture = ExtResource("15_6o4a1")
 question_pattern = 0

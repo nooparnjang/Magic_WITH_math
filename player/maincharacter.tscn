@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://kchdcg8jck8l" path="res://npc/script/dialog_bubble.gd" id="14_cib6f"]
 [ext_resource type="Texture2D" uid="uid://buofdlvjfr6k6" path="res://assets/npc/ui/darkbubble.png" id="15_pde1g"]
 [ext_resource type="FontFile" uid="uid://bkbespsxdoatm" path="res://assets/font/PaybAck.ttf" id="16_txfxw"]
+[ext_resource type="AudioStream" uid="uid://btvruj266anir" path="res://assets/sound/bleep001.mp3" id="17_cib6f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldrqp"]
 atlas = ExtResource("1_bjxot")
@@ -348,5 +349,8 @@ theme_override_colors/font_color = Color(0, 0.90431696, 0.82581776, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 text = " Matsuri"
+
+[node name="BeepPlayer" type="AudioStreamPlayer" parent="BubbleAnchor/DialogBubble" unique_id=1285900798]
+stream = ExtResource("17_cib6f")
 
 [editable path="Statusbar"]

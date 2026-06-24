@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ds8i0pdswdh0r"]
 
+[ext_resource type="Script" uid="uid://dtijqkv4uf8rd" path="res://scenes/mainmenu/script/main_menu.gd" id="1_lvv5q"]
 [ext_resource type="Texture2D" uid="uid://msilb3kx2n0" path="res://assets/bg/MainMenu/Main menu.png" id="1_o8ig8"]
 [ext_resource type="Shader" uid="uid://r2eimy4lqgpi" path="res://assets/shader/gradient_blur.gdshader" id="2_balsr"]
 [ext_resource type="Texture2D" uid="uid://cjusbb24cphia" path="res://assets/UI/Rectangle 6.png" id="4_wvips"]
@@ -31,6 +32,7 @@ modulate_color = Color(1, 1, 1, 0.5882353)
 [node name="Node2D" type="Control" unique_id=1375618234]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_lvv5q")
 
 [node name="bg" type="Panel" parent="." unique_id=503739451]
 layout_mode = 0
