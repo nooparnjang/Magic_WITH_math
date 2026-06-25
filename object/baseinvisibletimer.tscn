@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d0td5roiokli2"]
+
+[ext_resource type="Script" uid="uid://u13d2odml605" path="res://object/script/baseinvisibletimer.gd" id="1_qwcei"]
+[ext_resource type="Texture2D" uid="uid://b11l2s714d3nh" path="res://assets/Tiles/industrial-zone-tileset-pixel-art/1 Tiles/IndustrialTile_72.png" id="2_u87cr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f0jp"]
+size = Vector2(33, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwcei"]
+size = Vector2(33, 22)
+
+[node name="Baseinvisibletimer" type="StaticBody2D" unique_id=1735210055]
+script = ExtResource("1_qwcei")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1245641399]
+position = Vector2(0, 6)
+texture = ExtResource("2_u87cr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=810372052]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_4f0jp")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=872345532]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=213096359]
+position = Vector2(-0.5, -4)
+shape = SubResource("RectangleShape2D_qwcei")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
