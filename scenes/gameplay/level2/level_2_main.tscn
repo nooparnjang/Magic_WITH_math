@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="24_hu7b8"]
 [ext_resource type="PackedScene" uid="uid://11xnqtwje2wa" path="res://object/hammer_trap.tscn" id="24_lla7m"]
 [ext_resource type="PackedScene" uid="uid://dntueadeam8lf" path="res://object/a_2_door.tscn" id="25_8chwu"]
-[ext_resource type="Script" path="res://object/script/a_2_door.gd" id="26_1vgtq"]
+[ext_resource type="Script" uid="uid://bfc5i8en13fuw" path="res://object/script/a_2_door.gd" id="26_1vgtq"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="38_lla7m"]
 [ext_resource type="Texture2D" uid="uid://s4nm7soi12r2" path="res://assets/object/keyA2.png" id="39_8chwu"]
 

@@ -233,7 +233,6 @@ node_to_hide = NodePath("../title")
 z_index = 1
 position = Vector2(742.99994, 458)
 scale = Vector2(2.5, 2.5)
-max_hp = 2
 item_drop_id = "Gem2"
 item_drop_texture = ExtResource("15_6o4a1")
 question_pattern = 0
