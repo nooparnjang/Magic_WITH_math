@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://pym1rgw6dwbg"]
 
-[ext_resource type="PackedScene" path="res://scenes/gameplay/bgintrolevel2.tscn" id="1_ag2mm"]
-[ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="1_x25rp"]
-[ext_resource type="Texture2D" uid="uid://cjbdo2dpm1rn3" path="res://assets/bg/EndlessNew/middlemerge.png" id="2_4o184"]
-[ext_resource type="Script" path="res://scenes/gameplay/level2/Parabgintrolevel_2.gd" id="2_uhctc"]
-[ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_vm7ds"]
-[ext_resource type="Texture2D" uid="uid://hg5eiyc6xh3h" path="res://assets/bg/EndlessNew/Game play(1).png" id="3_qcg8b"]
-[ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="3_w7xbo"]
+[ext_resource type="PackedScene" uid="uid://dhau63s4ueqb3" path="res://scenes/gameplay/bgintrolevel2.tscn" id="1_n65j3"]
+[ext_resource type="Script" uid="uid://qt2xxkubvw2o" path="res://scenes/gameplay/level2/Parabgintrolevel_2.gd" id="2_6hfad"]
+[ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="3_av4td"]
+[ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="4_jbef3"]
+[ext_resource type="Texture2D" uid="uid://cjbdo2dpm1rn3" path="res://assets/bg/EndlessNew/middlemerge.png" id="5_nswyb"]
+[ext_resource type="Texture2D" uid="uid://hg5eiyc6xh3h" path="res://assets/bg/EndlessNew/Game play(1).png" id="6_ibpcf"]
+[ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="7_i1qj5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qcg8b"]
-shader = ExtResource("1_x25rp")
+shader = ExtResource("7_i1qj5")
 shader_parameter/blur_amount = 0.75
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnhvb"]
@@ -23,9 +23,8 @@ size = Vector2(13.5, 548)
 
 [node name="Level4Intro" type="Node2D" unique_id=259357613]
 
-[node name="bg" parent="." unique_id=25557730 node_paths=PackedStringArray("target_animated_sprite") instance=ExtResource("1_ag2mm")]
-script = ExtResource("2_uhctc")
-target_animated_sprite = NodePath("")
+[node name="bg" parent="." unique_id=25557730 instance=ExtResource("1_n65j3")]
+script = ExtResource("2_6hfad")
 
 [node name="Parallax2D" parent="bg" index="0" unique_id=1963326864]
 scroll_scale = Vector2(0.8, 0.8)
@@ -57,7 +56,7 @@ scroll_scale = Vector2(1.5, 1.5)
 z_index = 99
 position = Vector2(79, -95)
 
-[node name="maincharacter" parent="CanvasLayer/player" unique_id=1926872742 instance=ExtResource("2_vm7ds")]
+[node name="maincharacter" parent="CanvasLayer/player" unique_id=1926872742 instance=ExtResource("3_av4td")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 z_index = 1
 position = Vector2(86.000015, 412)
@@ -76,7 +75,7 @@ theme_override_colors/font_color = Color(3.3691526e-07, 0.5381211, 0.47927624, 1
 z_index = 99
 position = Vector2(131, -90)
 
-[node name="Wendy" parent="CanvasLayer/npc" unique_id=1920401949 instance=ExtResource("3_w7xbo")]
+[node name="Wendy" parent="CanvasLayer/npc" unique_id=1920401949 instance=ExtResource("4_jbef3")]
 z_index = 1
 position = Vector2(208, 417)
 scale = Vector2(2, 2)
@@ -90,7 +89,7 @@ repeat_size = Vector2(1960, 0)
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/middle" unique_id=882072659]
 position = Vector2(983.0001, 261.00003)
 scale = Vector2(1.0250001, 1.1111112)
-texture = ExtResource("2_4o184")
+texture = ExtResource("5_nswyb")
 
 [node name="foremost" type="Parallax2D" parent="CanvasLayer" unique_id=1292470193]
 z_index = 10
@@ -100,7 +99,7 @@ repeat_size = Vector2(900, 0)
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/foremost" unique_id=85519201]
 position = Vector2(480.83713, 273.49997)
 scale = Vector2(0.49912798, 0.50277776)
-texture = ExtResource("3_qcg8b")
+texture = ExtResource("6_ibpcf")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1512759903]
 z_index = 2
