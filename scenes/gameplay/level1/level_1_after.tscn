@@ -339,6 +339,7 @@ script = ExtResource("14_46gy8")
 [node name="wonlevel1" parent="CanvasLayer" unique_id=554814659 instance=ExtResource("15_144w2")]
 visible = false
 script = ExtResource("16_nwjkc")
+main_menu_scene_path = "res://scenes/mainmenu/MainMenu.tscn"
 
 [node name="deco" type="Node2D" parent="." unique_id=1817783042]
 
