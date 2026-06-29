@@ -1,9 +1,9 @@
 extends StaticBody2D
 
-@export var disappear_time: float = 3.0
-@export var respawn_time: float = 3.0
+@export var disappear_time: float = 1.0 # เวลากระพริบก่อนหาย
+@export var respawn_time: float = 3.0 # เวลาก่อนกลับมา
 @export var blink_speed: float = 0.15
-@export var wait_a: float = 1.5
+@export var wait_a: float = 2.0 # เวลาที่ผู้เล่นยืนก่อนเตือน
 
 var timer_started := false
 
@@ -13,21 +13,21 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("player") and !timer_started:
 		timer_started = true
+
+		# รอให้ผู้เล่นยืน 2 วิ
+		await get_tree().create_timer(wait_a).timeout
 		
+		# กระพริบเตือน 3 วิ
+		await blink_warning()
 		
-		await waitbeforeblink()
-		
+		# หาย
 		disappear()
-		
+
+		# รอ 3 วิแล้วกลับมา
 		await get_tree().create_timer(respawn_time).timeout
 		
 		respawn()
 
-func waitbeforeblink():
-	await get_tree().create_timer(wait_a).timeout
-	
-	blink_warning()
-	
 
 func blink_warning():
 	var time_passed := 0.0
@@ -44,15 +44,15 @@ func blink_warning():
 
 func disappear():
 	print("พื้นหาย")
-	
+
 	$CollisionShape2D.disabled = true
 	$Sprite2D.hide()
 
 
 func respawn():
 	print("พื้นกลับมา")
-	
+
 	$CollisionShape2D.disabled = false
 	$Sprite2D.show()
-	
+
 	timer_started = false

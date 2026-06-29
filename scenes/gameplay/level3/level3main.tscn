@@ -211,7 +211,7 @@ tile_set = ExtResource("15_bxm8r")
 [node name="objectmap3" type="Node2D" parent="." unique_id=2130884751]
 
 [node name="Baseinvisibletimer" parent="objectmap3" unique_id=1735210055 instance=ExtResource("16_bxm8r")]
-position = Vector2(593, 382)
+position = Vector2(561.0002, 358)
 scale = Vector2(2.5, 2.5)
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
