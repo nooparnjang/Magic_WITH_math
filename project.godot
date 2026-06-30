@@ -42,7 +42,6 @@ player=""
 targetable=""
 projectile_blocker=""
 ladder_tilemap=""
-robot_hai=""
 
 [input]
 

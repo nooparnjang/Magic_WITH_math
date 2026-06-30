@@ -104,7 +104,7 @@ default_font_size = 20
 size = Vector2(23, 837)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3rqu"]
-size = Vector2(63, 428)
+size = Vector2(281, 428)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i8ybx"]
 shader = ExtResource("37_pre4x")
@@ -445,7 +445,6 @@ player_path = NodePath("../../player/maincharacter")
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
 [connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
-[connection signal="body_entered" from="teleport/Area2D/Area2D" to="teleport/Area2D/Area2D" method="_on_body_entered"]
 
 [editable path="Bg"]
 [editable path="player/maincharacter"]

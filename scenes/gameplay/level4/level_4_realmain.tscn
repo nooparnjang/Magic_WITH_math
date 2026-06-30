@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bskqonyt30tac" path="res://assets/bg/city 1/1.png" id="1_uc1uy"]
 [ext_resource type="Texture2D" uid="uid://hg5eiyc6xh3h" path="res://assets/bg/EndlessNew/Game play(1).png" id="2_tgpvi"]
 [ext_resource type="Texture2D" uid="uid://cpxywhntcj2ls" path="res://assets/bg/city 1/2.png" id="2_vo8j3"]
-[ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="3_bmcef"]
 [ext_resource type="Texture2D" uid="uid://dakg23gfxthel" path="res://assets/bg/city 1/3.png" id="3_vtcuo"]
 [ext_resource type="Texture2D" uid="uid://dqc0qsi70bv5l" path="res://assets/bg/city 1/4.png" id="4_scvgv"]
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="4_vtcuo"]
@@ -24,25 +23,18 @@
 [ext_resource type="Script" uid="uid://fg0rocq663t1" path="res://UIcomponent/script/gameover.gd" id="14_n7fxc"]
 [ext_resource type="PackedScene" uid="uid://br3128obts5ld" path="res://UIcomponent/demoover.tscn" id="15_1xfms"]
 [ext_resource type="Script" uid="uid://dxl82somv1d0x" path="res://UIcomponent/script/demoover.gd" id="16_3b35o"]
-[ext_resource type="Texture2D" uid="uid://qw80s4eae8er" path="res://assets/object/trash assets/trash assets/box 3.png" id="19_jynyc"]
 [ext_resource type="Texture2D" uid="uid://bd1jv5jcadc3q" path="res://assets/object/trash assets/trash assets/box 1.png" id="20_yprs3"]
-[ext_resource type="Texture2D" uid="uid://d2wrb183haufa" path="res://assets/object/industrial-zone-tileset-pixel-art/3 Objects/Pointer1.png" id="21_y51nu"]
 [ext_resource type="Texture2D" uid="uid://b85pjlvteamn2" path="res://assets/object/trash assets/trash assets/box 2.png" id="22_lmwe7"]
-[ext_resource type="Texture2D" uid="uid://bwff7xdq0s8ka" path="res://assets/object/trash assets/trash assets/satellite dish.png" id="23_fgh2v"]
 [ext_resource type="Texture2D" uid="uid://dbyxmiv1johe0" path="res://assets/object/trash assets/trash assets/garbage bag 1.png" id="24_081lh"]
-[ext_resource type="Texture2D" uid="uid://mo1wheuaf20o" path="res://assets/object/trash assets/trash assets/washer.png" id="25_83dbv"]
-[ext_resource type="Texture2D" uid="uid://bkmjk22j2l1fc" path="res://assets/object/trash assets/trash assets/screen 1.png" id="26_7a7s3"]
-[ext_resource type="Texture2D" uid="uid://bltqcnbh74jyp" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/2Squad13.png" id="27_dy6v2"]
 [ext_resource type="Texture2D" uid="uid://ckkp1japuqvvj" path="res://assets/object/power-station-free-tileset-pixel-art/3 Objects/2 Decoration/17.png" id="29_v3kne"]
-[ext_resource type="Texture2D" uid="uid://dx52w6a08uocx" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_1/Destroyed.png" id="31_8083q"]
-[ext_resource type="Texture2D" uid="uid://b6bbwlrq5y775" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_2/Idle.png" id="32_kvjwc"]
-[ext_resource type="Texture2D" uid="uid://dcivcygyx8g0u" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/8Loot.png" id="33_y3hhj"]
+[ext_resource type="PackedScene" uid="uid://3o4ccldb56av" path="res://enemies/Robot_2.tscn" id="31_uuds1"]
+[ext_resource type="PackedScene" uid="uid://bnqmojmxftlgn" path="res://enemies/robot_3.tscn" id="32_74rus"]
+[ext_resource type="PackedScene" uid="uid://dgimx5hv2dph5" path="res://object/ItemPickup.tscn" id="33_l2eo7"]
+[ext_resource type="Texture2D" uid="uid://mlr5mwcbw5xt" path="res://assets/object/Boom!!!.png" id="34_edmd7"]
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="35_gddhm"]
 [ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="37_24sdo"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="38_ht6qj"]
-[ext_resource type="Script" uid="uid://chp2s8lej77iv" path="res://scenes/gameplay/script/teleport.gd" id="40_j715b"]
 [ext_resource type="Shader" uid="uid://dhnhnrr52sqkq" path="res://assets/shader/filpdarkalley.gdshader" id="40_tgpvi"]
-[ext_resource type="Shader" uid="uid://dl0pf55ys6tcy" path="res://scenes/gameplay/script/shader/darkalley.gdshader" id="41_cp3jk"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="42_2dvl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dodc"]
@@ -105,85 +97,12 @@ _data = {
 default_font = ExtResource("12_1as65")
 default_font_size = 20
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vo8j3"]
-shader = ExtResource("3_bmcef")
-shader_parameter/blur_amount = 0.75
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtcuo"]
-bg_color = Color(0.12156863, 0.105882354, 0.49411765, 0.19607843)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1ngy"]
-atlas = ExtResource("31_8083q")
-region = Rect2(1920, 0, 192, 192)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5n22e"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d1ngy")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6m8wl"]
-atlas = ExtResource("32_kvjwc")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5qegr"]
-atlas = ExtResource("32_kvjwc")
-region = Rect2(256, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n1frk"]
-atlas = ExtResource("32_kvjwc")
-region = Rect2(512, 0, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ohwlt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6m8wl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5qegr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n1frk")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="Theme" id="Theme_vj36c"]
 default_font = ExtResource("12_1as65")
 default_font_size = 20
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5x67w"]
-size = Vector2(23, 837)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vw6eq"]
-size = Vector2(63, 428)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_htnap"]
-shader = ExtResource("41_cp3jk")
-shader_parameter/shadow_color = Color(0, 0, 0, 0.95)
-shader_parameter/edge_width = 0.1
-shader_parameter/pixel_size = 1.0
-shader_parameter/noise_speed = 0.6
-shader_parameter/noise_strength = 0.18
-shader_parameter/softness = 0.08
-
-[sub_resource type="Theme" id="Theme_8hc50"]
-default_font = ExtResource("12_1as65")
-default_font_size = 35
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmcef"]
 size = Vector2(1724.25, 36)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc1uy"]
-size = Vector2(45, 764.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_scvgv"]
 shader = ExtResource("40_tgpvi")
@@ -198,8 +117,12 @@ shader_parameter/softness = 0.08
 
 [node name="bg" type="Node2D" parent="." unique_id=959506131]
 
-[node name="Parallax2D" type="Parallax2D" parent="bg" unique_id=1206982759]
+[node name="scroll dai" type="Node2D" parent="bg" unique_id=802328532]
 visible = false
+z_index = -99
+
+[node name="Parallax2D" type="Parallax2D" parent="bg/scroll dai" unique_id=1206982759]
+z_index = -3
 scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
@@ -207,13 +130,13 @@ repeat_size = Vector2(576, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D" unique_id=1300012908]
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D" unique_id=1300012908]
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("1_uc1uy")
 
-[node name="Parallax2D2" type="Parallax2D" parent="bg" unique_id=19123386]
-visible = false
+[node name="Parallax2D2" type="Parallax2D" parent="bg/scroll dai" unique_id=19123386]
+z_index = -3
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-973, -367)
@@ -221,13 +144,13 @@ repeat_size = Vector2(576, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D2" unique_id=1354641247]
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D2" unique_id=1354641247]
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("2_vo8j3")
 
-[node name="Parallax2D3" type="Parallax2D" parent="bg" unique_id=1214989972]
-visible = false
+[node name="Parallax2D3" type="Parallax2D" parent="bg/scroll dai" unique_id=1214989972]
+z_index = -3
 scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.6, 0.6)
 scroll_offset = Vector2(-970, -360)
@@ -235,13 +158,13 @@ repeat_size = Vector2(576, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D3" unique_id=1036356839]
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D3" unique_id=1036356839]
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("3_vtcuo")
 
-[node name="Parallax2D4" type="Parallax2D" parent="bg" unique_id=707017943]
-visible = false
+[node name="Parallax2D4" type="Parallax2D" parent="bg/scroll dai" unique_id=707017943]
+z_index = -3
 scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
@@ -249,13 +172,13 @@ repeat_size = Vector2(576, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D4" unique_id=730640336]
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D4" unique_id=730640336]
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("4_scvgv")
 
-[node name="Parallax2D5" type="Parallax2D" parent="bg" unique_id=1528672908]
-visible = false
+[node name="Parallax2D5" type="Parallax2D" parent="bg/scroll dai" unique_id=1528672908]
+z_index = -3
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
@@ -263,13 +186,13 @@ repeat_size = Vector2(576, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D5" unique_id=1622392695]
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D5" unique_id=1622392695]
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("5_n43t0")
 
-[node name="Parallax2D6" type="Parallax2D" parent="bg" unique_id=971880770]
-visible = false
+[node name="Parallax2D6" type="Parallax2D" parent="bg/scroll dai" unique_id=971880770]
+z_index = -3
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
@@ -277,13 +200,13 @@ repeat_size = Vector2(576, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D6" unique_id=510182175]
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D6" unique_id=510182175]
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("6_4hgco")
 
-[node name="Parallax2D7" type="Parallax2D" parent="bg" unique_id=1889076851]
-visible = false
+[node name="Parallax2D7" type="Parallax2D" parent="bg/scroll dai" unique_id=1889076851]
+z_index = -3
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
@@ -291,13 +214,13 @@ repeat_size = Vector2(576, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D7" unique_id=844109571]
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D7" unique_id=844109571]
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("7_w83ke")
 
-[node name="Parallax2D8" type="Parallax2D" parent="bg" unique_id=1734201343]
-visible = false
+[node name="Parallax2D8" type="Parallax2D" parent="bg/scroll dai" unique_id=1734201343]
+z_index = -3
 scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
@@ -305,13 +228,12 @@ repeat_size = Vector2(576, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D8" unique_id=1113475001]
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D8" unique_id=1113475001]
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("8_b6wpq")
 
 [node name="middle" type="Parallax2D" parent="bg" unique_id=354133826]
-scroll_scale = Vector2(0.9, 0.9)
 repeat_size = Vector2(1960, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/middle" unique_id=643128161]
@@ -476,67 +398,14 @@ fit_content = true
 horizontal_alignment = 1
 
 [node name="gameover" parent="CanvasLayer" unique_id=1556702656 instance=ExtResource("13_w45u5")]
+visible = true
 script = ExtResource("14_n7fxc")
 
 [node name="demoover" parent="CanvasLayer" unique_id=1187714313 instance=ExtResource("15_1xfms")]
 visible = false
 script = ExtResource("16_3b35o")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=490158892]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=1601932791]
-z_index = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_right = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0.12941177, 0.98039216)
-
-[node name="blur" type="Panel" parent="CanvasLayer2" unique_id=531759959]
-material = SubResource("ShaderMaterial_vo8j3")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vtcuo")
-
 [node name="deco" type="Node2D" parent="." unique_id=1692334841]
-
-[node name="box3" type="Sprite2D" parent="deco" unique_id=1000961792]
-position = Vector2(937.99994, 320)
-scale = Vector2(7.9892282, 7.7511106)
-texture = ExtResource("19_jynyc")
-
-[node name="box" type="Sprite2D" parent="deco" unique_id=542283595]
-position = Vector2(716.5, 342)
-scale = Vector2(5.269231, 6.111111)
-texture = ExtResource("20_yprs3")
-
-[node name="warning" type="Sprite2D" parent="deco" unique_id=650984941]
-position = Vector2(656, 306.125)
-scale = Vector2(6.0625, 5.7578125)
-texture = ExtResource("21_y51nu")
-
-[node name="box2" type="Sprite2D" parent="deco" unique_id=54816531]
-position = Vector2(804.5, 351)
-scale = Vector2(5.269231, 6.111111)
-texture = ExtResource("22_lmwe7")
-
-[node name="Satellite" type="Sprite2D" parent="deco" unique_id=745035382]
-position = Vector2(771, 236)
-scale = Vector2(4, 4)
-texture = ExtResource("23_fgh2v")
-
-[node name="trash" type="Sprite2D" parent="deco" unique_id=1289982259]
-position = Vector2(1040, 343)
-scale = Vector2(6, 6)
-texture = ExtResource("24_081lh")
 
 [node name="box5" type="Sprite2D" parent="deco" unique_id=1448286538]
 position = Vector2(1665.5, 339.5111)
@@ -548,79 +417,8 @@ position = Vector2(1753.5, 348.5111)
 scale = Vector2(5.269231, 6.111111)
 texture = ExtResource("22_lmwe7")
 
-[node name="box7" type="Sprite2D" parent="deco" unique_id=1586792559]
-position = Vector2(2505, 351.00003)
-scale = Vector2(5.269231, 6.111111)
-texture = ExtResource("22_lmwe7")
-
-[node name="washing" type="Sprite2D" parent="deco" unique_id=668121793]
-position = Vector2(2583, 356)
-scale = Vector2(3, 3)
-texture = ExtResource("25_83dbv")
-
-[node name="trash2" type="Sprite2D" parent="deco" unique_id=1374460231]
-position = Vector2(2638, 370)
-scale = Vector2(3, 3)
-texture = ExtResource("24_081lh")
-
-[node name="TV" type="Sprite2D" parent="deco" unique_id=601941165]
-position = Vector2(2503, 280)
-scale = Vector2(3, 3)
-texture = ExtResource("26_7a7s3")
-
-[node name="box4" type="Sprite2D" parent="deco" unique_id=728803150]
-position = Vector2(2790, 368)
-scale = Vector2(3, 2.911)
-texture = ExtResource("19_jynyc")
-
-[node name="box8" type="Sprite2D" parent="deco" unique_id=702095757]
-position = Vector2(2719, 372)
-scale = Vector2(3, 2.911)
-texture = ExtResource("20_yprs3")
-
-[node name="box9" type="Sprite2D" parent="deco" unique_id=2091340074]
-position = Vector2(2849, 375.00003)
-scale = Vector2(3, 2.911)
-texture = ExtResource("22_lmwe7")
-
-[node name="Satellite2" type="Sprite2D" parent="deco" unique_id=1906118284]
-position = Vector2(2740, 305)
-scale = Vector2(3, 2.911)
-texture = ExtResource("23_fgh2v")
-
-[node name="grafiti2" type="Sprite2D" parent="deco" unique_id=986991680]
-position = Vector2(925.9999, 323.99997)
-rotation = -0.41484904
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("27_dy6v2")
-
-[node name="box10" type="Sprite2D" parent="deco" unique_id=1324824831]
-position = Vector2(3795, 318)
-scale = Vector2(7.9892282, 7.7511106)
-texture = ExtResource("19_jynyc")
-
-[node name="box11" type="Sprite2D" parent="deco" unique_id=1099075714]
-position = Vector2(3573.5002, 340)
-scale = Vector2(5.269231, 6.111111)
-texture = ExtResource("20_yprs3")
-
-[node name="warning2" type="Sprite2D" parent="deco" unique_id=1564263263]
-position = Vector2(3513, 304.125)
-scale = Vector2(6.0625, 5.7578125)
-texture = ExtResource("21_y51nu")
-
-[node name="box12" type="Sprite2D" parent="deco" unique_id=22948729]
-position = Vector2(3661.5002, 349)
-scale = Vector2(5.269231, 6.111111)
-texture = ExtResource("22_lmwe7")
-
-[node name="Satellite3" type="Sprite2D" parent="deco" unique_id=1310821232]
-position = Vector2(3628.0002, 234)
-scale = Vector2(4, 4)
-texture = ExtResource("23_fgh2v")
-
 [node name="trash3" type="Sprite2D" parent="deco" unique_id=2014127077]
-position = Vector2(3876, 341)
+position = Vector2(4010, 341)
 scale = Vector2(6, 6)
 texture = ExtResource("24_081lh")
 
@@ -629,34 +427,45 @@ position = Vector2(4164, 364)
 scale = Vector2(4, 4)
 texture = ExtResource("29_v3kne")
 
-[node name="car2" type="AnimatedSprite2D" parent="deco" unique_id=975758512]
-position = Vector2(5418, 166)
-scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_5n22e")
-
-[node name="Wendycar" type="AnimatedSprite2D" parent="deco" unique_id=413814232]
-position = Vector2(6728, 82)
-scale = Vector2(2.484375, 2.484375)
-sprite_frames = SubResource("SpriteFrames_ohwlt")
-
-[node name="grafiti3" type="Sprite2D" parent="deco" unique_id=1730379671]
-position = Vector2(5397, 340)
-scale = Vector2(1.5, 1.366)
-texture = ExtResource("33_y3hhj")
-
 [node name="enemies" type="Node2D" parent="." unique_id=1341026400]
 
-[node name="Robot1" parent="enemies" unique_id=1544183853 instance=ExtResource("35_gddhm")]
-position = Vector2(3353, 311)
+[node name="Robot1" parent="enemies" unique_id=1544183853 groups=["targetable"] instance=ExtResource("35_gddhm")]
+position = Vector2(2120, 311)
 scale = Vector2(2.5, 2.5)
 
-[node name="Robot2" parent="enemies" unique_id=1126672223 instance=ExtResource("35_gddhm")]
-position = Vector2(3833, 307)
+[node name="Robot2" parent="enemies" unique_id=1126672223 groups=["targetable"] instance=ExtResource("35_gddhm")]
+position = Vector2(2600, 307)
 scale = Vector2(2.5, 2.5)
 
-[node name="Robot3" parent="enemies" unique_id=1052038677 instance=ExtResource("35_gddhm")]
-position = Vector2(4555, 108.000046)
+[node name="Robot3" parent="enemies" unique_id=759279220 groups=["targetable"] instance=ExtResource("31_uuds1")]
+position = Vector2(3397, 294.99997)
 scale = Vector2(2.5, 2.5)
+move_speed = 80.0
+allowed_operators = Array[String](["+", "-"])
+
+[node name="Robot4" parent="enemies" unique_id=641355134 groups=["targetable"] instance=ExtResource("31_uuds1")]
+position = Vector2(3673, 293)
+scale = Vector2(2.5, 2.5)
+move_speed = 80.0
+allowed_operators = Array[String](["+", "-"])
+
+[node name="Robot_3" parent="enemies" unique_id=1125943764 groups=["targetable"] instance=ExtResource("32_74rus")]
+position = Vector2(5203, 321)
+scale = Vector2(2, 2)
+blessing_reward = 5
+drop_type = 3
+item_drop_scene = ExtResource("33_l2eo7")
+item_drop_id = "bomb"
+item_drop_texture = ExtResource("34_edmd7")
+
+[node name="Robot_4" parent="enemies" unique_id=1930585620 groups=["targetable"] instance=ExtResource("32_74rus")]
+position = Vector2(5637, 321)
+scale = Vector2(2, 2)
+blessing_reward = 5
+drop_type = 3
+item_drop_scene = ExtResource("33_l2eo7")
+item_drop_id = "bomb"
+item_drop_texture = ExtResource("34_edmd7")
 
 [node name="object" type="Node2D" parent="." unique_id=1924884676]
 
@@ -675,62 +484,12 @@ scale = Vector2(3.5, 3.5)
 [node name="textThought" type="Node2D" parent="." unique_id=877775830]
 
 [node name="Label" type="Label" parent="textThought" unique_id=1580968892]
-offset_left = 855.0
+offset_left = 774.0
 offset_top = 166.0
-offset_right = 1142.0
-offset_bottom = 189.0
+offset_right = 1231.0
+offset_bottom = 192.0
 theme = SubResource("Theme_vj36c")
-text = "“So this is the abandoned city…” Tria Thought"
-metadata/_edit_use_anchors_ = true
-
-[node name="Label2" type="Label" parent="textThought" unique_id=267722091]
-offset_left = 1938.0
-offset_top = 169.0
-offset_right = 2296.0
-offset_bottom = 195.0
-theme = SubResource("Theme_vj36c")
-text = "“A robot? ,Why would one be here?...”"
-metadata/_edit_use_anchors_ = true
-
-[node name="teleport" type="Node2D" parent="." unique_id=1067639669]
-position = Vector2(2600, 0)
-
-[node name="Area2D" type="StaticBody2D" parent="teleport" unique_id=928322585]
-disable_mode = 1
-script = ExtResource("40_j715b")
-next_scene = "res://scenes/gameplay/level1/bosslevel_1.tscn"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport/Area2D" unique_id=1475986475]
-position = Vector2(4926, -16)
-shape = SubResource("RectangleShape2D_5x67w")
-
-[node name="Area2D" type="Area2D" parent="teleport/Area2D" unique_id=786663335]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport/Area2D/Area2D" unique_id=759613428]
-position = Vector2(4927.5, 185)
-shape = SubResource("RectangleShape2D_vw6eq")
-
-[node name="ColorRect" type="ColorRect" parent="teleport" unique_id=2003134361]
-material = SubResource("ShaderMaterial_htnap")
-offset_left = 4787.0
-offset_top = -373.0
-offset_right = 5761.0
-offset_bottom = 400.0
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Label6" type="Label" parent="teleport" unique_id=941347383]
-z_index = 1
-offset_left = 4689.0
-offset_top = 50.0
-offset_right = 4893.0
-offset_bottom = 102.0
-theme = SubResource("Theme_8hc50")
-theme_override_colors/font_color = Color(0.8784314, 0.68235296, 1, 1)
-theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
-theme_override_constants/outline_size = 8
-text = "E to interact"
-horizontal_alignment = 1
+text = "“Wow, so this where all the robots is going?” Tria Thought"
 metadata/_edit_use_anchors_ = true
 
 [node name="NPC" type="Node2D" parent="." unique_id=610343128]
@@ -748,13 +507,7 @@ dialog_json_path = "res://npc/dialogJson/Level1Wendy.json"
 position = Vector2(860.875, 415)
 shape = SubResource("RectangleShape2D_bmcef")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="invisibleWall2" unique_id=1541260864 groups=["projectile_blocker"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall2/StaticBody2D3" unique_id=1121882813]
-position = Vector2(1715, 198)
-shape = SubResource("RectangleShape2D_uc1uy")
-
-[node name="ColorRect" type="ColorRect" parent="invisibleWall2/StaticBody2D3" unique_id=418512612]
+[node name="ColorRect" type="ColorRect" parent="invisibleWall2" unique_id=418512612]
 material = SubResource("ShaderMaterial_scvgv")
 offset_left = -683.0
 offset_top = -242.0
