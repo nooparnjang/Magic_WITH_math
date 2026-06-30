@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bskqonyt30tac" path="res://assets/bg/city 1/1.png" id="1_uc1uy"]
 [ext_resource type="Texture2D" uid="uid://hg5eiyc6xh3h" path="res://assets/bg/EndlessNew/Game play(1).png" id="2_tgpvi"]
 [ext_resource type="Texture2D" uid="uid://cpxywhntcj2ls" path="res://assets/bg/city 1/2.png" id="2_vo8j3"]
+[ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="3_bmcef"]
 [ext_resource type="Texture2D" uid="uid://dakg23gfxthel" path="res://assets/bg/city 1/3.png" id="3_vtcuo"]
 [ext_resource type="Texture2D" uid="uid://dqc0qsi70bv5l" path="res://assets/bg/city 1/4.png" id="4_scvgv"]
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="4_vtcuo"]
@@ -104,6 +105,13 @@ _data = {
 default_font = ExtResource("12_1as65")
 default_font_size = 20
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vo8j3"]
+shader = ExtResource("3_bmcef")
+shader_parameter/blur_amount = 0.75
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtcuo"]
+bg_color = Color(0.12156863, 0.105882354, 0.49411765, 0.19607843)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1ngy"]
 atlas = ExtResource("31_8083q")
 region = Rect2(1920, 0, 192, 192)
@@ -191,10 +199,13 @@ shader_parameter/softness = 0.08
 [node name="bg" type="Node2D" parent="." unique_id=959506131]
 
 [node name="Parallax2D" type="Parallax2D" parent="bg" unique_id=1206982759]
-scale = Vector2(1.5, 1.5)
+visible = false
+scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(473, -276)
-repeat_size = Vector2(962, 0)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D" unique_id=1300012908]
 position = Vector2(480.5, 270.5)
@@ -202,10 +213,13 @@ scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("1_uc1uy")
 
 [node name="Parallax2D2" type="Parallax2D" parent="bg" unique_id=19123386]
+visible = false
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(473, -276)
-repeat_size = Vector2(962, 0)
+scroll_offset = Vector2(-973, -367)
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D2" unique_id=1354641247]
 position = Vector2(480.5, 270.5)
@@ -213,10 +227,13 @@ scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("2_vo8j3")
 
 [node name="Parallax2D3" type="Parallax2D" parent="bg" unique_id=1214989972]
-scale = Vector2(1.5, 1.5)
+visible = false
+scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.6, 0.6)
-scroll_offset = Vector2(473, -276)
-repeat_size = Vector2(962, 0)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D3" unique_id=1036356839]
 position = Vector2(480.5, 270.5)
@@ -224,10 +241,13 @@ scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("3_vtcuo")
 
 [node name="Parallax2D4" type="Parallax2D" parent="bg" unique_id=707017943]
-scale = Vector2(1.5, 1.5)
+visible = false
+scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(473, -276)
-repeat_size = Vector2(962, 0)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D4" unique_id=730640336]
 position = Vector2(480.5, 270.5)
@@ -235,10 +255,13 @@ scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("4_scvgv")
 
 [node name="Parallax2D5" type="Parallax2D" parent="bg" unique_id=1528672908]
+visible = false
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(473, -276)
-repeat_size = Vector2(962, 0)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D5" unique_id=1622392695]
 position = Vector2(480.5, 270.5)
@@ -246,10 +269,13 @@ scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("5_n43t0")
 
 [node name="Parallax2D6" type="Parallax2D" parent="bg" unique_id=971880770]
+visible = false
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(473, -276)
-repeat_size = Vector2(962, 0)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D6" unique_id=510182175]
 position = Vector2(480.5, 270.5)
@@ -257,10 +283,13 @@ scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("6_4hgco")
 
 [node name="Parallax2D7" type="Parallax2D" parent="bg" unique_id=1889076851]
+visible = false
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(473, -276)
-repeat_size = Vector2(962, 0)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D7" unique_id=844109571]
 position = Vector2(480.5, 270.5)
@@ -268,10 +297,13 @@ scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("7_w83ke")
 
 [node name="Parallax2D8" type="Parallax2D" parent="bg" unique_id=1734201343]
-scale = Vector2(1.5, 1.5)
+visible = false
+scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(473, -276)
-repeat_size = Vector2(962, 0)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D8" unique_id=1113475001]
 position = Vector2(480.5, 270.5)
@@ -449,6 +481,30 @@ script = ExtResource("14_n7fxc")
 [node name="demoover" parent="CanvasLayer" unique_id=1187714313 instance=ExtResource("15_1xfms")]
 visible = false
 script = ExtResource("16_3b35o")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=490158892]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=1601932791]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.12941177, 0.98039216)
+
+[node name="blur" type="Panel" parent="CanvasLayer2" unique_id=531759959]
+material = SubResource("ShaderMaterial_vo8j3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vtcuo")
 
 [node name="deco" type="Node2D" parent="." unique_id=1692334841]
 
@@ -679,7 +735,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="NPC" type="Node2D" parent="." unique_id=610343128]
 
-[node name="Wendy" parent="NPC" unique_id=1920401949 instance=ExtResource("42_2dvl1")]
+[node name="Wendy" parent="NPC" unique_id=1969566122 instance=ExtResource("42_2dvl1")]
 position = Vector2(6135, 329)
 scale = Vector2(2, 2)
 dialog_json_path = "res://npc/dialogJson/Level1Wendy.json"
@@ -705,6 +761,8 @@ offset_top = -242.0
 offset_right = 201.0
 offset_bottom = 398.0
 color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=340469201]
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
