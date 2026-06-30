@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="19_ulelb"]
 [ext_resource type="PackedScene" uid="uid://3o4ccldb56av" path="res://enemies/Robot_2.tscn" id="20_oh1lb"]
 [ext_resource type="PackedScene" uid="uid://cpprad4thlnww" path="res://object/bombBOX.tscn" id="27_wct7u"]
+[ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="28_jc2gh"]
 
 [sub_resource type="Animation" id="Animation_rubjw"]
 length = 0.001
@@ -175,6 +176,7 @@ limit_bottom = 540
 limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1083533064]
+visible = false
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("4_bxm8r")]
 
@@ -366,6 +368,9 @@ script = ExtResource("19_li05q")
 position = Vector2(11748, 134)
 shape = SubResource("RectangleShape2D_d5ury")
 
+[node name="bombBOX" parent="objectmap3" unique_id=546974693 instance=ExtResource("27_wct7u")]
+position = Vector2(17636, 398)
+
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1009230100 groups=["projectile_blocker"]]
 position = Vector2(-26, -289)
 scale = Vector2(1.5, 1.5)
@@ -432,8 +437,9 @@ scale = Vector2(2.5, 2.5)
 position = Vector2(16268.001, 396.00003)
 scale = Vector2(2.5, 2.5)
 
-[node name="bombBOX" parent="." unique_id=546974693 instance=ExtResource("27_wct7u")]
-position = Vector2(17636, 398)
+[node name="Wendy" parent="." unique_id=1920401949 instance=ExtResource("28_jc2gh")]
+position = Vector2(368, 410)
+scale = Vector2(2, 2)
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
