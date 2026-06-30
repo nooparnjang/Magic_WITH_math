@@ -531,6 +531,7 @@ metadata/_edit_lock_ = true
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
 [connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
 
+[editable path="Bg"]
 [editable path="player/maincharacter"]
 [editable path="player/maincharacter/Statusbar"]
 [editable path="CanvasLayer/UImath"]

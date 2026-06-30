@@ -56,11 +56,12 @@ scroll_scale = Vector2(1.5, 1.5)
 z_index = 99
 position = Vector2(79, -95)
 
-[node name="maincharacter" parent="CanvasLayer/player" unique_id=1926872742 instance=ExtResource("3_av4td")]
+[node name="maincharacter" parent="CanvasLayer/player" unique_id=1926872742 node_paths=PackedStringArray("camera_rig") instance=ExtResource("3_av4td")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 z_index = 1
 position = Vector2(86.000015, 412)
 scale = Vector2(2.5, 2.5)
+camera_rig = NodePath("../../../Camera2D")
 
 [node name="Statusbar" parent="CanvasLayer/player/maincharacter" index="4" unique_id=50678111]
 visible = false

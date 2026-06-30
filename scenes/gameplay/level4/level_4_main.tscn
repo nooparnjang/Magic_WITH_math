@@ -404,11 +404,10 @@ horizontal_alignment = 1
 [node name="NPC" type="Node2D" parent="." unique_id=1692380655]
 position = Vector2(-5833, 0)
 
-[node name="Wendy" parent="NPC" unique_id=1920401949 node_paths=PackedStringArray("demo_scene") instance=ExtResource("38_ppteb")]
+[node name="Wendy" parent="NPC" unique_id=1920401949 instance=ExtResource("38_ppteb")]
 position = Vector2(6135, 329)
 scale = Vector2(2, 2)
 dialog_json_path = "res://npc/dialogJson/Level1Wendy.json"
-demo_scene = NodePath("")
 
 [node name="enemies" type="Node2D" parent="." unique_id=1982011690]
 position = Vector2(-2051, 0)
@@ -448,6 +447,7 @@ player_path = NodePath("../../player/maincharacter")
 [connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
 [connection signal="body_entered" from="teleport/Area2D/Area2D" to="teleport/Area2D/Area2D" method="_on_body_entered"]
 
+[editable path="Bg"]
 [editable path="player/maincharacter"]
 [editable path="player/maincharacter/Statusbar"]
 [editable path="CanvasLayer/UImath"]
