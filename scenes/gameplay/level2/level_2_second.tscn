@@ -52,7 +52,7 @@ adjustment_contrast = 1.2
 adjustment_saturation = 1.04
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5ury"]
-size = Vector2(3032.25, 159)
+size = Vector2(2373.125, 79.88254)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kys06"]
 atlas = ExtResource("7_ghsif")
