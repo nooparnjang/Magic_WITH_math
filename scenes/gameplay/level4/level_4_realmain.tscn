@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cklruqwydumpk" path="res://assets/bg/city 1/8.png" id="8_b6wpq"]
 [ext_resource type="PackedScene" uid="uid://bucjdlqnlx10y" path="res://UIcomponent/item_rows.tscn" id="8_w83ke"]
 [ext_resource type="Texture2D" uid="uid://hfixyib85kwh" path="res://assets/object/boomn4.png" id="9_b6wpq"]
+[ext_resource type="Script" uid="uid://b0gn57jrl5ihl" path="res://scenes/gameplay/level4/script/scrolldai_2.gd" id="9_ktlvb"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="10_cehek"]
 [ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="11_nglro"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="12_1as65"]
@@ -33,12 +34,13 @@
 [ext_resource type="Texture2D" uid="uid://mlr5mwcbw5xt" path="res://assets/object/Boom!!!.png" id="34_edmd7"]
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="35_gddhm"]
 [ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="37_24sdo"]
+[ext_resource type="Texture2D" uid="uid://3fln3785cdkc" path="res://assets/Tiles/free-factory-pixel-art-32x32-tileset-for-cyberpunk/1 Tiles/Tileset.png" id="38_74rus"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="38_ht6qj"]
 [ext_resource type="Shader" uid="uid://dhnhnrr52sqkq" path="res://assets/shader/filpdarkalley.gdshader" id="40_tgpvi"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="42_2dvl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dodc"]
-size = Vector2(8572.5, 36)
+size = Vector2(11163.25, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jdec"]
 size = Vector2(45, 764.5)
@@ -113,6 +115,538 @@ shader_parameter/noise_speed = 0.6
 shader_parameter/noise_strength = 0.18
 shader_parameter/softness = 0.08
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74rus"]
+texture = ExtResource("38_74rus")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+0:8/0 = 0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+1:8/0 = 0
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+2:8/0 = 0
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+3:8/0 = 0
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+4:8/0 = 0
+4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+5:8/0 = 0
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+11:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_l2eo7"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_74rus")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2eo7"]
+texture = ExtResource("38_74rus")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+0:8/0 = 0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+1:8/0 = 0
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+2:8/0 = 0
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+3:8/0 = 0
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+4:8/0 = 0
+4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+5:8/0 = 0
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 1.0791531, -8, 0.8992939)
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+11:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_edmd7"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_l2eo7")
+
 [node name="Level4Realmain" type="Node2D" unique_id=807364710]
 
 [node name="bg" type="Node2D" parent="." unique_id=959506131]
@@ -120,6 +654,7 @@ shader_parameter/softness = 0.08
 [node name="scroll dai" type="Node2D" parent="bg" unique_id=802328532]
 visible = false
 z_index = -99
+position = Vector2(1925, 0)
 
 [node name="Parallax2D" type="Parallax2D" parent="bg/scroll dai" unique_id=1206982759]
 z_index = -3
@@ -129,6 +664,7 @@ scroll_offset = Vector2(-970, -360)
 repeat_size = Vector2(576, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
+ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D" unique_id=1300012908]
 position = Vector2(480.5, 270.5)
@@ -140,9 +676,10 @@ z_index = -3
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-973, -367)
-repeat_size = Vector2(576, 0)
+repeat_size = Vector2(960, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
+ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D2" unique_id=1354641247]
 position = Vector2(480.5, 270.5)
@@ -154,9 +691,10 @@ z_index = -3
 scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.6, 0.6)
 scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(576, 0)
+repeat_size = Vector2(960, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
+ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D3" unique_id=1036356839]
 position = Vector2(480.5, 270.5)
@@ -168,9 +706,10 @@ z_index = -3
 scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(576, 0)
+repeat_size = Vector2(960, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
+ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D4" unique_id=730640336]
 position = Vector2(480.5, 270.5)
@@ -182,9 +721,10 @@ z_index = -3
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(576, 0)
+repeat_size = Vector2(960, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
+ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D5" unique_id=1622392695]
 position = Vector2(480.5, 270.5)
@@ -196,9 +736,10 @@ z_index = -3
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(576, 0)
+repeat_size = Vector2(960, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
+ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D6" unique_id=510182175]
 position = Vector2(480.5, 270.5)
@@ -210,9 +751,10 @@ z_index = -3
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(576, 0)
+repeat_size = Vector2(960, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
+ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D7" unique_id=844109571]
 position = Vector2(480.5, 270.5)
@@ -224,11 +766,106 @@ z_index = -3
 scale = Vector2(1.7, 1.7)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(576, 0)
+repeat_size = Vector2(960, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
+ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D8" unique_id=1113475001]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("8_b6wpq")
+
+[node name="scrolldai2" type="Node2D" parent="bg" unique_id=738000737]
+visible = false
+z_index = -99
+position = Vector2(0, -429)
+scale = Vector2(2, 2)
+script = ExtResource("9_ktlvb")
+
+[node name="Parallax2D" type="Parallax2D" parent="bg/scrolldai2" unique_id=271603261]
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D" unique_id=1983142512]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("1_uc1uy")
+
+[node name="Parallax2D2" type="Parallax2D" parent="bg/scrolldai2" unique_id=698170845]
+scroll_scale = Vector2(0.9, 0.9)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D2" unique_id=1993129591]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("2_vo8j3")
+
+[node name="Parallax2D3" type="Parallax2D" parent="bg/scrolldai2" unique_id=646153384]
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D3" unique_id=1029492866]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("3_vtcuo")
+
+[node name="Parallax2D4" type="Parallax2D" parent="bg/scrolldai2" unique_id=585501347]
+scroll_scale = Vector2(1.1, 1.1)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D4" unique_id=355453618]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("4_scvgv")
+
+[node name="Parallax2D5" type="Parallax2D" parent="bg/scrolldai2" unique_id=948941791]
+scroll_scale = Vector2(1.2, 1.2)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D5" unique_id=1314680941]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("5_n43t0")
+
+[node name="Parallax2D6" type="Parallax2D" parent="bg/scrolldai2" unique_id=1853661414]
+scroll_scale = Vector2(1.3, 1.3)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D6" unique_id=386280295]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("6_4hgco")
+
+[node name="Parallax2D7" type="Parallax2D" parent="bg/scrolldai2" unique_id=1360287446]
+scroll_scale = Vector2(1.4, 1.4)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D7" unique_id=2067290023]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("7_w83ke")
+
+[node name="Parallax2D8" type="Parallax2D" parent="bg/scrolldai2" unique_id=1636388131]
+scroll_scale = Vector2(1.5, 1.5)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D8" unique_id=851726504]
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("8_b6wpq")
@@ -273,7 +910,7 @@ limit_smoothed = true
 [node name="StaticBody2D" type="StaticBody2D" parent="invisibleWall" unique_id=1322717280]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D" unique_id=1466989309]
-position = Vector2(4284, 416)
+position = Vector2(5579.375, 416)
 shape = SubResource("RectangleShape2D_0dodc")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="invisibleWall" unique_id=703641325]
@@ -489,10 +1126,32 @@ offset_top = 166.0
 offset_right = 1231.0
 offset_bottom = 192.0
 theme = SubResource("Theme_vj36c")
-text = "“Wow, so this where all the robots is going?” Tria Thought"
+text = "“Shold I go on that way?” Tria Thought"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="textThought" unique_id=1935970069]
+offset_left = 3925.0
+offset_top = 166.0
+offset_right = 4382.0
+offset_bottom = 192.0
+theme = SubResource("Theme_vj36c")
+text = "“There's so many robots, will I survied?” Tria Thought"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="textThought" unique_id=1322050967]
+offset_left = 6113.0
+offset_top = 166.0
+offset_right = 6754.0
+offset_bottom = 192.0
+theme = SubResource("Theme_vj36c")
+text = "“The defense system is still active. One touch could be dangerous.” Tria Thought"
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="NPC" type="Node2D" parent="." unique_id=610343128]
+visible = false
 
 [node name="Wendy" parent="NPC" unique_id=1969566122 instance=ExtResource("42_2dvl1")]
 position = Vector2(6135, 329)
@@ -515,7 +1174,13 @@ offset_right = 201.0
 offset_bottom = 398.0
 color = Color(0, 0, 0, 1)
 
-[node name="Node2D" type="Node2D" parent="." unique_id=340469201]
+[node name="tilejr2" type="Node2D" parent="." unique_id=893397785]
+
+[node name="laserbon" type="TileMapLayer" parent="tilejr2" unique_id=122634035]
+tile_set = SubResource("TileSet_l2eo7")
+
+[node name="laserlang" type="TileMapLayer" parent="tilejr2" unique_id=1175192358]
+tile_set = SubResource("TileSet_edmd7")
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]

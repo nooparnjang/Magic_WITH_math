@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b6kjpclnb7r1a"]
+
+[node name="Laserwei" type="Node2D" unique_id=1896552408]
+
+[node name="laser beam" type="Sprite2D" parent="." unique_id=831292958]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=231478774]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=775324803]
+
+[node name="Timer" type="Timer" parent="." unique_id=1262245995]
