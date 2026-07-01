@@ -1,9 +1,33 @@
 [gd_scene format=3 uid="uid://bhalcshhglvab"]
 
+[ext_resource type="Script" uid="uid://1tojea22g8im" path="res://object/script/comwendy.gd" id="1_4cegs"]
 [ext_resource type="Texture2D" uid="uid://t1bebnhr54am" path="res://assets/object/craftpix-net-618358-cyber-intrusion-free-gui-pixel-art-pack/1 Monitor/2.png" id="1_hu7x1"]
+[ext_resource type="Texture2D" uid="uid://ckkp1japuqvvj" path="res://assets/object/power-station-free-tileset-pixel-art/3 Objects/2 Decoration/17.png" id="2_8ue3n"]
 
-[node name="Comwendy" type="Node2D" unique_id=191366616]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_joa1o"]
+size = Vector2(131, 73)
 
-[node name="2" type="Sprite2D" parent="." unique_id=1790736249]
-position = Vector2(130, 101)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4n10"]
+size = Vector2(149, 75)
+
+[node name="Comwendy" type="StaticBody2D" unique_id=850464304]
+script = ExtResource("1_4cegs")
+
+[node name="com" type="Sprite2D" parent="." unique_id=293747161]
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_hu7x1")
+
+[node name="desk" type="Sprite2D" parent="." unique_id=1201604368]
+position = Vector2(2, 36)
+scale = Vector2(2, 2)
+texture = ExtResource("2_8ue3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1828457237]
+position = Vector2(1.5, 16.5)
+shape = SubResource("RectangleShape2D_joa1o")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=808581529]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=125838617]
+position = Vector2(0.5, 15.5)
+shape = SubResource("RectangleShape2D_k4n10")

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://yquftrdlly5q"]
+
+[ext_resource type="Texture2D" uid="uid://t1bebnhr54am" path="res://assets/object/craftpix-net-618358-cyber-intrusion-free-gui-pixel-art-pack/1 Monitor/2.png" id="1_ph25c"]
+[ext_resource type="FontFile" uid="uid://bkbespsxdoatm" path="res://assets/font/PaybAck.ttf" id="2_yngd4"]
+
+[node name="Textcomwendy" type="Control" unique_id=392261789]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2" type="Sprite2D" parent="." unique_id=1662960981]
+position = Vector2(483, 269)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_ph25c")
+
+[node name="Label" type="Label" parent="." unique_id=182232236]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 148.0
+offset_right = 724.0
+offset_bottom = 313.0
+theme_override_constants/line_spacing = 10
+theme_override_fonts/font = ExtResource("2_yngd4")
+theme_override_font_sizes/font_size = 40
+text = "PROJECT : VROXTON
+STATUS : ACTIVE
+LEAD ENGINEER : W"
+horizontal_alignment = 1
+vertical_alignment = 1
