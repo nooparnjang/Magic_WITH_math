@@ -26,8 +26,19 @@
 [ext_resource type="Script" uid="uid://dp6v5o2ouigic" path="res://scenes/gameplay/level2/deathtrap.gd" id="19_li05q"]
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="19_ulelb"]
 [ext_resource type="PackedScene" uid="uid://3o4ccldb56av" path="res://enemies/Robot_2.tscn" id="20_oh1lb"]
+[ext_resource type="PackedScene" uid="uid://dgimx5hv2dph5" path="res://object/ItemPickup.tscn" id="25_c276e"]
+[ext_resource type="Texture2D" uid="uid://mlr5mwcbw5xt" path="res://assets/object/Boom!!!.png" id="26_pkrtw"]
 [ext_resource type="PackedScene" uid="uid://cpprad4thlnww" path="res://object/bombBOX.tscn" id="27_wct7u"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="28_jc2gh"]
+[ext_resource type="Texture2D" uid="uid://bwff7xdq0s8ka" path="res://assets/object/trash assets/trash assets/satellite dish.png" id="31_6aarm"]
+[ext_resource type="Texture2D" uid="uid://bd1jv5jcadc3q" path="res://assets/object/trash assets/trash assets/box 1.png" id="32_1fvvk"]
+[ext_resource type="Texture2D" uid="uid://b85pjlvteamn2" path="res://assets/object/trash assets/trash assets/box 2.png" id="33_0mct1"]
+[ext_resource type="Texture2D" uid="uid://bkmjk22j2l1fc" path="res://assets/object/trash assets/trash assets/screen 1.png" id="34_inhx8"]
+[ext_resource type="Texture2D" uid="uid://dbyxmiv1johe0" path="res://assets/object/trash assets/trash assets/garbage bag 1.png" id="35_25biu"]
+[ext_resource type="Texture2D" uid="uid://d2wrb183haufa" path="res://assets/object/industrial-zone-tileset-pixel-art/3 Objects/Pointer1.png" id="36_e6d1a"]
+[ext_resource type="Texture2D" uid="uid://ckkp1japuqvvj" path="res://assets/object/power-station-free-tileset-pixel-art/3 Objects/2 Decoration/17.png" id="37_1fvvk"]
+[ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="37_1ttkn"]
+[ext_resource type="Texture2D" uid="uid://mo1wheuaf20o" path="res://assets/object/trash assets/trash assets/washer.png" id="38_0mct1"]
 
 [sub_resource type="Animation" id="Animation_rubjw"]
 length = 0.001
@@ -88,9 +99,11 @@ shader_parameter/softness = 0.08
 [node name="Level3Main" type="Node2D" unique_id=1463865920]
 
 [node name="bg" type="Node2D" parent="." unique_id=1454116807]
+z_index = -2
+position = Vector2(20, -105)
 
 [node name="Parallax2D" type="Parallax2D" parent="bg" unique_id=1767566575]
-scale = Vector2(1.3, 1.3)
+scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.6, 0.6)
 scroll_offset = Vector2(3, -184)
 repeat_size = Vector2(800, 0)
@@ -102,7 +115,7 @@ scale = Vector2(1.6701388, 1.6790123)
 texture = ExtResource("1_obnr1")
 
 [node name="Parallax2D2" type="Parallax2D" parent="bg" unique_id=1778444677]
-scale = Vector2(1.3, 1.3)
+scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.7, 0.7)
 scroll_offset = Vector2(3, -184)
 repeat_size = Vector2(960, 0)
@@ -114,7 +127,7 @@ scale = Vector2(1.6701388, 1.6728395)
 texture = ExtResource("2_wct7u")
 
 [node name="Parallax2D3" type="Parallax2D" parent="bg" unique_id=1662720790]
-scale = Vector2(1.3, 1.3)
+scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(3, -184)
 repeat_size = Vector2(965, 0)
@@ -126,7 +139,7 @@ scale = Vector2(1.6701388, 1.6790123)
 texture = ExtResource("3_jc2gh")
 
 [node name="Parallax2D4" type="Parallax2D" parent="bg" unique_id=1033695968]
-scale = Vector2(1.3, 1.3)
+scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.9, 0.9)
 scroll_offset = Vector2(3, -184)
 repeat_size = Vector2(965, 0)
@@ -138,7 +151,7 @@ scale = Vector2(1.6701388, 1.6790123)
 texture = ExtResource("4_8bfm3")
 
 [node name="Parallax2D5" type="Parallax2D" parent="bg" unique_id=834053917]
-scale = Vector2(1.3, 1.3)
+scale = Vector2(1.5, 1.5)
 scroll_offset = Vector2(6, -168.00003)
 repeat_size = Vector2(965, 0)
 repeat_times = 18
@@ -150,7 +163,7 @@ texture = ExtResource("5_c276e")
 
 [node name="player" type="Node2D" parent="." unique_id=523557102]
 z_index = 1
-position = Vector2(-207, 0)
+position = Vector2(-296, -3)
 
 [node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui", "camera_rig", "game_over_ui") instance=ExtResource("2_ckrk2")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
@@ -176,7 +189,6 @@ limit_bottom = 540
 limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1083533064]
-visible = false
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("4_bxm8r")]
 
@@ -370,6 +382,10 @@ shape = SubResource("RectangleShape2D_d5ury")
 
 [node name="bombBOX" parent="objectmap3" unique_id=546974693 instance=ExtResource("27_wct7u")]
 position = Vector2(17636, 398)
+drop_type = 2
+item_drop_scene = ExtResource("25_c276e")
+item_drop_id = "bomb"
+item_drop_texture = ExtResource("26_pkrtw")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1009230100 groups=["projectile_blocker"]]
 position = Vector2(-26, -289)
@@ -440,6 +456,138 @@ scale = Vector2(2.5, 2.5)
 [node name="Wendy" parent="." unique_id=1920401949 instance=ExtResource("28_jc2gh")]
 position = Vector2(368, 410)
 scale = Vector2(2, 2)
+
+[node name="decolv3" type="Node2D" parent="." unique_id=1631794816]
+
+[node name="Satellite" type="Sprite2D" parent="decolv3" unique_id=159554917]
+z_index = -1
+position = Vector2(1513, 374)
+scale = Vector2(8, 8)
+texture = ExtResource("31_6aarm")
+
+[node name="box" type="Sprite2D" parent="decolv3" unique_id=786098795]
+z_index = -1
+position = Vector2(1719, 425)
+scale = Vector2(5.269231, 6.111111)
+texture = ExtResource("32_1fvvk")
+
+[node name="box2" type="Sprite2D" parent="decolv3" unique_id=850459124]
+z_index = -1
+position = Vector2(1858, 425)
+scale = Vector2(5.269231, 6.111111)
+texture = ExtResource("32_1fvvk")
+
+[node name="box3" type="Sprite2D" parent="decolv3" unique_id=466738342]
+z_index = -1
+position = Vector2(1790, 313)
+scale = Vector2(5.269231, 6.111111)
+texture = ExtResource("32_1fvvk")
+
+[node name="box4" type="Sprite2D" parent="decolv3" unique_id=789292553]
+z_index = -1
+position = Vector2(2303, 434.00003)
+scale = Vector2(5.269231, 6.111111)
+texture = ExtResource("33_0mct1")
+
+[node name="box5" type="Sprite2D" parent="decolv3" unique_id=1920942599]
+z_index = -1
+position = Vector2(6235, 427)
+scale = Vector2(5.269231, 6.111111)
+texture = ExtResource("32_1fvvk")
+
+[node name="box6" type="Sprite2D" parent="decolv3" unique_id=1813808290]
+z_index = -1
+position = Vector2(6336, 427.00003)
+scale = Vector2(5.269231, 6.111111)
+texture = ExtResource("32_1fvvk")
+
+[node name="box7" type="Sprite2D" parent="decolv3" unique_id=1538265226]
+z_index = -1
+position = Vector2(6890, 436.00003)
+scale = Vector2(5.269231, 6.111111)
+texture = ExtResource("33_0mct1")
+
+[node name="box8" type="Sprite2D" parent="decolv3" unique_id=1528659628]
+z_index = -1
+position = Vector2(10959, 425)
+scale = Vector2(5.269231, 6.111111)
+texture = ExtResource("32_1fvvk")
+
+[node name="box9" type="Sprite2D" parent="decolv3" unique_id=850357434]
+z_index = -1
+position = Vector2(11082.001, 425)
+scale = Vector2(5.269231, 6.111111)
+texture = ExtResource("32_1fvvk")
+
+[node name="box10" type="Sprite2D" parent="decolv3" unique_id=1637409492]
+z_index = -1
+position = Vector2(11046.001, 314)
+scale = Vector2(5.269231, 6.111111)
+texture = ExtResource("32_1fvvk")
+
+[node name="TV" type="Sprite2D" parent="decolv3" unique_id=1590447080]
+z_index = -1
+position = Vector2(2301, 358)
+scale = Vector2(3, 3)
+texture = ExtResource("34_inhx8")
+
+[node name="TV2" type="Sprite2D" parent="decolv3" unique_id=517875399]
+z_index = -1
+position = Vector2(4930, 388)
+scale = Vector2(3, 3)
+texture = ExtResource("34_inhx8")
+
+[node name="TV3" type="Sprite2D" parent="decolv3" unique_id=1586573517]
+z_index = -1
+position = Vector2(5010, 390.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("34_inhx8")
+
+[node name="TV4" type="Sprite2D" parent="decolv3" unique_id=1981960271]
+z_index = -1
+position = Vector2(5087, 388.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("34_inhx8")
+
+[node name="trash" type="Sprite2D" parent="decolv3" unique_id=1874907586]
+position = Vector2(2387, 424.00003)
+scale = Vector2(6, 6)
+texture = ExtResource("35_25biu")
+
+[node name="trash2" type="Sprite2D" parent="decolv3" unique_id=1381332641]
+position = Vector2(6414, 422)
+scale = Vector2(6, 6)
+texture = ExtResource("35_25biu")
+
+[node name="trash3" type="Sprite2D" parent="decolv3" unique_id=1718673895]
+position = Vector2(11164, 423)
+scale = Vector2(6, 6)
+texture = ExtResource("35_25biu")
+
+[node name="warning" type="Sprite2D" parent="decolv3" unique_id=54643106]
+position = Vector2(2933.0002, 393)
+scale = Vector2(6.0625, 5.7578125)
+texture = ExtResource("36_e6d1a")
+
+[node name="warning2" type="Sprite2D" parent="decolv3" unique_id=566965410]
+position = Vector2(7399, 393)
+scale = Vector2(6.0625, 5.7578125)
+texture = ExtResource("36_e6d1a")
+
+[node name="desk" type="Sprite2D" parent="decolv3" unique_id=1961882066]
+position = Vector2(5011, 447)
+scale = Vector2(4, 4)
+texture = ExtResource("37_1fvvk")
+
+[node name="washing" type="Sprite2D" parent="decolv3" unique_id=1060006637]
+position = Vector2(6974, 440)
+scale = Vector2(3, 3)
+texture = ExtResource("38_0mct1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=996938083]
+stream = ExtResource("37_1ttkn")
+volume_db = -20.069
+autoplay = true
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]

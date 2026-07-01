@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bhalcshhglvab"]
+
+[ext_resource type="Texture2D" uid="uid://t1bebnhr54am" path="res://assets/object/craftpix-net-618358-cyber-intrusion-free-gui-pixel-art-pack/1 Monitor/2.png" id="1_hu7x1"]
+
+[node name="Comwendy" type="Node2D" unique_id=191366616]
+
+[node name="2" type="Sprite2D" parent="." unique_id=1790736249]
+position = Vector2(130, 101)
+texture = ExtResource("1_hu7x1")
