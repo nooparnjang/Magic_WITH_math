@@ -43,7 +43,7 @@ animations = [{
 size = Vector2(96, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxbj4"]
-size = Vector2(96, 3)
+size = Vector2(96, 8)
 
 [node name="ConveyorBelt" type="StaticBody2D" unique_id=1605356801]
 script = ExtResource("1_cxbj4")
@@ -51,7 +51,7 @@ move_right = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=214574734]
 sprite_frames = SubResource("SpriteFrames_ha3fg")
-frame_progress = 0.43144313
+frame_progress = 0.26486272
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2016717901]
 position = Vector2(0, -8)
@@ -60,8 +60,8 @@ shape = SubResource("RectangleShape2D_0e838")
 [node name="Area2D" type="Area2D" parent="." unique_id=42693861]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=881375622]
-position = Vector2(0, -14.5)
+position = Vector2(0, -17)
 shape = SubResource("RectangleShape2D_cxbj4")
 
-[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
-[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

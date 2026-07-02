@@ -3,21 +3,26 @@ extends StaticBody2D
 @export var conveyor_speed: float = 120.0
 @export var move_right := true
 
+# Name of the animation inside AnimatedSprite2D
+@export var animation_name: StringName = "default"
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var player: CharacterBody2D = null
 
 
 func _ready():
-	sprite.play()
+	if sprite.sprite_frames.has_animation(animation_name):
+		sprite.play(animation_name)
+	else:
+		push_warning("Animation '" + str(animation_name) + "' not found.")
 
 
 func _physics_process(delta):
 	if player == null:
 		return
 
-	var direction = 1
-
+	var direction := 1
 	if !move_right:
 		direction = -1
 
