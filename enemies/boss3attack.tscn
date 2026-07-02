@@ -1,7 +1,77 @@
 [gd_scene format=3 uid="uid://c5qvbdcwi5fn6"]
 
+[ext_resource type="Script" uid="uid://b6mq4f0ota0hw" path="res://enemies/script/boss_3_attack.gd" id="1_jeehc"]
+[ext_resource type="Texture2D" uid="uid://dannqs46csa55" path="res://assets/object/Laser Shot Assets/LaserShot.png" id="2_dsnco"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cli4"]
+atlas = ExtResource("2_dsnco")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s4ew"]
+atlas = ExtResource("2_dsnco")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5ivc"]
+atlas = ExtResource("2_dsnco")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcrpw"]
+atlas = ExtResource("2_dsnco")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a8e3"]
+atlas = ExtResource("2_dsnco")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nemxs"]
+atlas = ExtResource("2_dsnco")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf4w2"]
+atlas = ExtResource("2_dsnco")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cpyni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cli4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s4ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5ivc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcrpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a8e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nemxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf4w2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lvkc"]
+size = Vector2(10, 64)
+
 [node name="Boss3Attack" type="Area2D" unique_id=1011499843]
+scale = Vector2(3.5, 3.5)
+script = ExtResource("1_jeehc")
+play_animation_name = "default"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2139125045]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_cpyni")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=429949280]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_7lvkc")

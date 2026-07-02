@@ -1,22 +1,30 @@
 extends CharacterBody2D
 
 # ==============================================================================
-# 🛠️ การจัดหมวดหมู่ตัวแปรใน INSPECTOR (ปรับปรุงให้อ่านง่ายขึ้น)
+# 🛠️ การจัดหมวดหมู่ตัวแปรใน INSPECTOR
 # ==============================================================================
 @export_category("Boss Physics & Movement")
-@export var move_speed := 0.0 # ปรับเป็น 0 เพื่อให้บอสยืนเท่ๆ บนแท่นร่ายเวท หรือใส่ค่าหากอยากให้เดิน
+@export var move_speed := 0.0 
 @export var gravity := 1200.0
 
 @export_category("Combat Stats")
 @export var max_hp := 100
-@export var contact_damage := 10
-@export var attack_cooldown := 1.5 # ระยะเวลาพักก่อนสุ่มโจมตีรอบถัดไป
-@export var attack_range := 9999.0 # ตั้งไว้สูงเพื่อให้สุ่มเวทได้ทั่วทั้งห้อง
+@export var contact_damage := 25        # 🤜 ดาเมจตบประชิด (ตั้งให้แรงกว่าการร่ายเวทเลเซอร์ระยะไกล)
+@export var attack_cooldown := 1.5 
+@export var attack_range := 9999.0     # ระยะเปิดใช้งานสุ่มเวท (ตั้งไว้กว้างเพื่อให้คลุมทั้งห้อง)
 @export var max_vertical_attack_gap := 9999.0
 
+@export_category("Melee Attack Settings")
+## ⚔️ ระยะแนวนอนที่บอสจะเปลี่ยนมาใช้ท่าตบประชิด (อิงจากโค้ดแรกคือ 60.0)
+@export var melee_range := 60.0
+## ⚔️ ระยะแนวตั้งที่บอสจะเปลี่ยนมาใช้ท่าตบประชิด (อิงจากโค้ดแรกคือ 80.0)
+@export var melee_vertical_gap := 80.0
+
 @export_category("Ranged Skill Settings")
-@export var marker_root: NodePath # ลาก Node แม่ 'marker2d' มาใส่
-@export var attack_effect: PackedScene # ลาก Scene วงเวทดาเมจมาใส่
+@export var marker_root: NodePath 
+@export var attack_effect: PackedScene 
+## 📐 ปรับระยะเยื้องแกน Y ของลำแสงเลเซอร์ (ค่าลบ = เลื่อนขึ้นบน / ค่าบวก = เลื่อนลงล่าง)
+@export var attack_offset_y := -100.0 
 
 @export_category("Drops & Rewards")
 @export var blessing_reward: int = 50
@@ -56,6 +64,9 @@ var last_attack_index := -1
 @onready var body_collision: CollisionShape2D = $CollisionShape2D
 @onready var hitbox_collision: CollisionShape2D = $Hitbox/CollisionShape2D
 
+# 🏥 [ระบบ Status] ดึงตำแหน่ง Node ลูกตามไฟล์ Screenshot 2026-07-02 175319.png
+@onready var status_bar: Node2D = $Bossstatus
+
 # ==============================================================================
 # 🎮 ฟังก์ชันหลักและระบบ AI
 # ==============================================================================
@@ -64,13 +75,11 @@ func _ready() -> void:
 	add_to_group("targetable")
 	randomize()
 
-	# เชื่อมต่อสัญญาณจากกล่องส้มอัตโนมัติ
 	if not hitbox.body_entered.is_connected(_on_hitbox_body_entered):
 		hitbox.body_entered.connect(_on_hitbox_body_entered)
 
 	player_ref = get_tree().get_first_node_in_group("player") as Node2D
 
-	# ดึงตำแหน่งจุดสุ่มเสาหินเก็บเข้าคลัง Array
 	if not marker_root.is_empty():
 		var root = get_node_or_null(marker_root)
 		if root:
@@ -78,7 +87,11 @@ func _ready() -> void:
 				if child is Marker2D:
 					markers.append(child)
 		else:
-			push_error("❌ [Boss Error] หาไม่เจอโหนดพิกัดเสา กรุณาลากโหนด marker2d ใส่ใน Inspector ของบอสด้วยนะ!")
+			push_error("❌ [Boss Error] หาไม่เจอโหนดพิกัดเสา กรุณาลากโหนด marker2d ใส่ใน Inspector ด้วย!")
+
+	# 🔗 เชื่อมต่อและเริ่มทำงานระบบหลอดเลือด UI (ดึงวิธีการเชื่อมต่อมาจากบอสตัวอย่าง)
+	if status_bar != null and status_bar.has_method("setup"):
+		status_bar.setup(max_hp, hp)
 
 func activate(player: Node2D) -> void:
 	if is_dead: return
@@ -92,7 +105,6 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	# ถ้ายังไม่มีผู้เล่นเข้ามาทักทาย ให้ยืนหล่อๆ รออยู่กับที่
 	if player_ref == null or not is_instance_valid(player_ref):
 		velocity.x = 0.0
 		_apply_gravity(delta)
@@ -107,22 +119,27 @@ func _physics_process(delta: float) -> void:
 	if is_attacking:
 		velocity.x = 0.0
 	elif is_activated:
-		# ตรวจสอบระยะพิกัด ถ้าเงื่อนไขผ่านและคูลดาวน์เสร็จ บอสจะเปิดฉากร่ายเวททันที
 		if vertical_distance > max_vertical_attack_gap:
 			velocity.x = 0.0
 		elif horizontal_distance > attack_range:
 			velocity.x = sign(to_player.x) * move_speed
 		else:
 			velocity.x = 0.0
+			
+			# 🧠 [ระบบเลือกท่าโจมตีอัจฉริยะ]
 			if can_attack:
-				trigger_marker_attack()
+				# ถ้าผู้เล่นอยู่ในระยะประชิด (Melee) -> ใช้ท่าตบที่ทำดาเมจ contact_damage แรงๆ
+				if horizontal_distance <= melee_range and vertical_distance <= melee_vertical_gap:
+					trigger_melee_attack()
+				# ถ้าผู้เล่นอยู่ไกลออกไป -> ใช้ท่าเสกเลเซอร์ลงเสาหินตามเดิม (ดาเมจเบากว่า/ขึ้นกับตัวเสาเลเซอร์)
+				else:
+					trigger_marker_attack()
 	else:
 		velocity.x = 0.0
 
 	_apply_gravity(delta)
 	move_and_slide()
 	
-	# ปรับปรุง: ถ้าไม่ได้กำลังโจมตี ให้บอสคอยหันหน้ามองตามผู้เล่นตลอดเวลาเพื่อความสมจริง
 	if not is_attacking:
 		update_animation(to_player)
 
@@ -153,9 +170,14 @@ func update_animation(direction: Vector2) -> void:
 func take_damage(amount: int) -> void:
 	if is_dead: return
 
-	is_activated = true # ตื่นทันทีถ้าโดนผู้เล่นลอบโจมตีก่อนเดินเข้ากล่องส้ม
+	is_activated = true 
 	hp -= amount
+	hp = max(hp, 0) # ป้องกันไม่ให้เลือดติดลบ
 	print("💥 ", name, " โดนอัดเข้าให้! ดาเมจ: ", amount, " | เลือดเหลือ: ", hp)
+
+	# 🩸 อัปเดตข้อมูลเลือดบนแถบ UI ทันทีเมื่อโดนโจมตี
+	if status_bar != null and status_bar.has_method("set_health"):
+		status_bar.set_health(hp, max_hp)
 
 	flash_hit()
 
@@ -163,7 +185,59 @@ func take_damage(amount: int) -> void:
 		die()
 
 # ==============================================================================
-# ✨ ระบบสุ่มมหาเวทลงทัณฑ์ตามเสาหิน (สูตรห้ามซ้ำจุดเดิมติดกัน)
+# ⚔️ [ท่วงท่าที่ 1] โจมตีประชิดตัวเมื่อผู้เล่นอยู่ใกล้ (ตบด้วยมือเปล่าทำดาเมจหนักมาก)
+# ==============================================================================
+func trigger_melee_attack() -> void:
+	if is_dead or is_attacking or not can_attack:
+		return
+
+	is_attacking = true
+	can_attack = false
+	velocity.x = 0.0
+
+	print("🤜 บอสใช้ท่าตบประชิด! เพราะผู้เล่นเข้ามาใกล้เกินไป")
+
+	# หันหน้าไปหาผู้เล่นก่อนตบ
+	if sprite != null and player_ref != null:
+		var to_player = player_ref.global_position - global_position
+		if to_player.x != 0.0:
+			sprite.flip_h = to_player.x < 0.0
+
+	var did_play_fight := false
+	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("fight"):
+		sprite.sprite_frames.set_animation_loop("fight", false)
+		sprite.play("fight")
+		did_play_fight = true
+
+	# หน่วงเวลาสับมือตบ (0.18 วินาที)
+	await get_tree().create_timer(0.18).timeout
+	if is_dead: return
+
+	# ตรวจสอบอีกครั้งว่าจังหวะที่มือสับลงไป ผู้เล่นยังอยู่ให้ตบไหม
+	if player_ref != null and is_instance_valid(player_ref):
+		var horizontal_distance = abs(player_ref.global_position.x - global_position.x)
+		var vertical_distance = abs(player_ref.global_position.y - global_position.y)
+
+		if horizontal_distance <= melee_range and vertical_distance <= melee_vertical_gap:
+			if player_ref.has_method("take_damage"):
+				print("💥 บอสอัดโดนผู้เล่นตัว ๆ! ทำดาเมจประชิดอย่างแรง: ", contact_damage)
+				player_ref.take_damage(contact_damage)
+
+	if did_play_fight and sprite.animation == "fight":
+		await sprite.animation_finished
+	else:
+		await get_tree().create_timer(0.15).timeout
+
+	if is_dead: return
+	is_attacking = false
+
+	# เข้าสู่ช่วงรอคูลดาวน์ก่อนจะโจมตีรอบถัดไปได้
+	await get_tree().create_timer(attack_cooldown).timeout
+	if not is_dead:
+		can_attack = true
+
+# ==============================================================================
+# ✨ [ท่วงท่าที่ 2] ระบบสุ่มมหาเวทเลเซอร์ลงทัณฑ์ (ใช้เมื่อผู้เล่นอยู่ไกล)
 # ==============================================================================
 func trigger_marker_attack() -> void:
 	if is_dead or is_attacking or not can_attack or markers.is_empty():
@@ -173,7 +247,6 @@ func trigger_marker_attack() -> void:
 	can_attack = false
 	velocity.x = 0.0
 
-	# 1. วนลูปสุ่มหาตำแหน่งเสาหิน โดยล็อกไม่ให้หยิบได้เสาต้นเดิมจากรอบล่าสุด
 	var index := randi_range(0, markers.size() - 1)
 	while markers.size() > 1 and index == last_attack_index:
 		index = randi_range(0, markers.size() - 1)
@@ -181,34 +254,43 @@ func trigger_marker_attack() -> void:
 	last_attack_index = index
 	var target_marker = markers[index]
 	
-	print("🔮 บอสเสกเวทมนตร์อัญเชิญ! ชี้เป้าไปที่: ", target_marker.name)
+	print("🔮 บอสเสกเลเซอร์! ชี้เป้าไปที่: ", target_marker.name)
 
-	# 🌟 [แก้ตามใจฉัน] เพิ่มความเท่: บอสจะหันหน้าขวับไปทางเสาหินต้นที่กำลังจะระเบิดทันที!
 	if sprite != null:
 		var to_marker = target_marker.global_position - global_position
 		if to_marker.x != 0.0:
 			sprite.flip_h = to_marker.x < 0.0
 
-	# 2. เริ่มเล่นอนิเมชันท่าร่ายเวท (Fight)
 	var did_play_fight := false
 	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("fight"):
 		sprite.sprite_frames.set_animation_loop("fight", false)
 		sprite.play("fight")
 		did_play_fight = true
 
-	# 3. หน่วงเวลารอจังหวะสะบัดมือร่ายเวท (0.18 วินาทีตามต้นฉบับเดิมของคุณ)
 	await get_tree().create_timer(0.18).timeout
 	if is_dead: return
 
-	# 4. อัญเชิญภาพวงเวทระเบิด (Attack Effect) ออกมาทำลายล้าง ณ ตำแหน่งพิกัดของเสาต้นนั้น!
 	if attack_effect != null:
 		var attack = attack_effect.instantiate()
 		get_tree().current_scene.add_child(attack)
-		attack.global_position = target_marker.global_position
+		attack.global_position = target_marker.global_position + Vector2(0, attack_offset_y)
+		
+		var effect_sprite = attack.get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
+		if effect_sprite and effect_sprite.sprite_frames:
+			var anim_names = effect_sprite.sprite_frames.get_animation_names()
+			if anim_names.size() > 0:
+				if effect_sprite.sprite_frames.has_animation("attack"):
+					effect_sprite.play("attack")
+				elif effect_sprite.sprite_frames.has_animation("default"):
+					effect_sprite.play("default")
+				else:
+					effect_sprite.play(anim_names[0])
+		
+		# 💡 หมายเหตุ: สำหรับดาเมจท่าร่ายเวทเลเซอร์ จะถูกจัดการโดยตรงในโค้ดของไฟล์อินสแตนซ์เลเซอร์ (boss3attack.tscn) 
+		# แนะนำให้ปรับแต่งดาเมจในซีนนั้นให้เบากว่าค่า contact_damage ของตัวบอส เพื่อให้ตรงกับเงื่อนไขเกมของคุณครับ
 	else:
-		push_warning("⚠️ [Boss Warning] อย่าลืมสร้าง Attack Effect Scene แล้วเอามาใส่ใน Inspector ของบอสด้วยนะ ไม่งั้นไม่มีดาเมจเกิดขึ้น!")
+		push_warning("⚠️ [Boss Warning] อย่าลืมใส่ไฟล์ boss3attack.tscn ใน Inspector ช่อง Attack Effect นะครับ!")
 
-	# 5. รอจนกระทั่งบอสเล่นท่าร่ายเวทจบลงอย่างสมบูรณ์
 	if did_play_fight and sprite.animation == "fight":
 		await sprite.animation_finished
 	else:
@@ -217,13 +299,12 @@ func trigger_marker_attack() -> void:
 	if is_dead: return
 	is_attacking = false
 
-	# 6. พักเหนื่อยตามเวลาคูลดาวน์ ก่อนจะอนุญาตให้เริ่มสุ่มรอบใหม่ได้
 	await get_tree().create_timer(attack_cooldown).timeout
 	if not is_dead:
 		can_attack = true
 
 # ==============================================================================
-# 💀 ระบบจบชีวิตและดรอปของรางวัล (คงโครงสร้างเดิมของคุณไว้ครบถ้วน)
+# 💀 ระบบจบชีวิตและดรอปของรางวัล
 # ==============================================================================
 func die() -> void:
 	if is_dead: return
@@ -235,9 +316,12 @@ func die() -> void:
 
 	remove_from_group("targetable")
 
-	# ปิดกล่องชนทั้งหมดทันที ป้องกันบั๊กโดนโจมตีซ้ำซ้อนขณะกำลังเล่นอนิเมชันตาย
 	if body_collision != null: body_collision.disabled = true
 	if hitbox_collision != null: hitbox_collision.disabled = true
+
+	# 🚫 ซ่อนหลอดเลือดบอสบน UI ทันทีเมื่อบอสตาย (อิงจากบอสตัวอย่าง)
+	if status_bar != null:
+		status_bar.visible = false
 
 	handle_drops()
 	spawn_effect()
