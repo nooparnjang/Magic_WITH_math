@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c5qvbdcwi5fn6"]
+
+[node name="Boss3Attack" type="Area2D" unique_id=1011499843]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2139125045]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=429949280]
