@@ -1,11 +1,83 @@
 [gd_scene format=3 uid="uid://b6kjpclnb7r1a"]
 
-[node name="Laserwei" type="Node2D" unique_id=1896552408]
+[ext_resource type="Script" uid="uid://bpficyoo5l13q" path="res://object/script/laserwei.gd" id="1_p8heg"]
+[ext_resource type="Texture2D" path="res://assets/object/Laser Shot Assets/LaserShot.png" id="2_i0dty"]
 
-[node name="laser beam" type="Sprite2D" parent="." unique_id=831292958]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1voa6"]
+atlas = ExtResource("2_i0dty")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06ydi"]
+atlas = ExtResource("2_i0dty")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d4p6"]
+atlas = ExtResource("2_i0dty")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh11b"]
+atlas = ExtResource("2_i0dty")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl658"]
+atlas = ExtResource("2_i0dty")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hon3k"]
+atlas = ExtResource("2_i0dty")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ibmd"]
+atlas = ExtResource("2_i0dty")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_68aj5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1voa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06ydi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d4p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh11b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl658")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hon3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ibmd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0dty"]
+size = Vector2(64, 12)
+
+[node name="Laserwei" type="Node2D" unique_id=1896552408]
+script = ExtResource("1_p8heg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=583640701]
+sprite_frames = SubResource("SpriteFrames_68aj5")
+frame = 4
+frame_progress = 0.44980508
 
 [node name="Area2D" type="Area2D" parent="." unique_id=231478774]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=775324803]
+shape = SubResource("RectangleShape2D_i0dty")
 
 [node name="Timer" type="Timer" parent="." unique_id=1262245995]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

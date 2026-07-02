@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://7866gx1yx766"]
+
+[ext_resource type="Texture2D" uid="uid://cbficppdaw7is" path="res://assets/object/industrial-zone-tileset-pixel-art/4 Animated objects/Transporter.png" id="1_0e838"]
+[ext_resource type="Script" uid="uid://dqfefmjdsrxy2" path="res://object/script/conveyor_belt.gd" id="1_cxbj4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e838"]
+atlas = ExtResource("1_0e838")
+region = Rect2(288, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxbj4"]
+atlas = ExtResource("1_0e838")
+region = Rect2(192, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu6qn"]
+atlas = ExtResource("1_0e838")
+region = Rect2(96, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfihb"]
+atlas = ExtResource("1_0e838")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ha3fg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e838")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxbj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu6qn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfihb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e838"]
+size = Vector2(96, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxbj4"]
+size = Vector2(96, 3)
+
+[node name="ConveyorBelt" type="StaticBody2D" unique_id=1605356801]
+script = ExtResource("1_cxbj4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=214574734]
+sprite_frames = SubResource("SpriteFrames_ha3fg")
+frame_progress = 0.86962026
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2016717901]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_0e838")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=42693861]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=881375622]
+position = Vector2(0, -14.5)
+shape = SubResource("RectangleShape2D_cxbj4")
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
