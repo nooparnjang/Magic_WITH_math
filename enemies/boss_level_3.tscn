@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://7dip7rtm64io"]
+
+[ext_resource type="Script" uid="uid://b6n6kkq1ovfwa" path="res://enemies/script/boss_level_3.gd" id="1_ag20f"]
+[ext_resource type="SpriteFrames" uid="uid://dnpakjbf6qbpu" path="res://assets/tres_enemy/robot3.tres" id="1_t1ev3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ag20f"]
+height = 86.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhedc"]
+size = Vector2(39, 30)
+
+[node name="BossLevel3" type="CharacterBody2D" unique_id=138737344]
+script = ExtResource("1_ag20f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1333466602]
+position = Vector2(-3, -25)
+sprite_frames = ExtResource("1_t1ev3")
+animation = &"fight"
+frame = 15
+speed_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=455167688]
+shape = SubResource("CapsuleShape2D_ag20f")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=90220204]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=551744998]
+position = Vector2(30.5, -18)
+shape = SubResource("RectangleShape2D_mhedc")

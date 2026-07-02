@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://1tojea22g8im" path="res://object/script/comwendy.gd" id="1_4cegs"]
 [ext_resource type="Texture2D" uid="uid://t1bebnhr54am" path="res://assets/object/craftpix-net-618358-cyber-intrusion-free-gui-pixel-art-pack/1 Monitor/2.png" id="1_hu7x1"]
 [ext_resource type="Texture2D" uid="uid://ckkp1japuqvvj" path="res://assets/object/power-station-free-tileset-pixel-art/3 Objects/2 Decoration/17.png" id="2_8ue3n"]
+[ext_resource type="PackedScene" uid="uid://yquftrdlly5q" path="res://object/textcomwendy.tscn" id="2_joa1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joa1o"]
 size = Vector2(131, 73)
@@ -12,6 +13,7 @@ size = Vector2(149, 75)
 
 [node name="Comwendy" type="StaticBody2D" unique_id=850464304]
 script = ExtResource("1_4cegs")
+computer_scene = ExtResource("2_joa1o")
 
 [node name="com" type="Sprite2D" parent="." unique_id=293747161]
 scale = Vector2(0.2, 0.2)

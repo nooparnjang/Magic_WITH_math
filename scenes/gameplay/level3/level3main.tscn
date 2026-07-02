@@ -189,7 +189,7 @@ position = Vector2(-296, -3)
 
 [node name="maincharacter" parent="player" unique_id=1926872742 node_paths=PackedStringArray("math_ui", "camera_rig", "game_over_ui") instance=ExtResource("2_ckrk2")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(400.00003, 405)
+position = Vector2(18887, 403)
 scale = Vector2(2.5, 2.5)
 math_ui = NodePath("../../CanvasLayer/UImath")
 camera_rig = NodePath("../../camera")
@@ -728,9 +728,24 @@ stream = ExtResource("37_1ttkn")
 volume_db = -20.069
 autoplay = true
 
-[node name="Comwendy" parent="." unique_id=850464304 instance=ExtResource("42_e6d1a")]
+[node name="comwendy" type="Node2D" parent="." unique_id=1096523601]
+
+[node name="Comwendy" parent="comwendy" unique_id=850464304 instance=ExtResource("42_e6d1a")]
 position = Vector2(19029, 375)
 scale = Vector2(2, 2)
+
+[node name="Label6" type="Label" parent="comwendy" unique_id=1491937017]
+z_index = 1
+offset_left = 18932.0
+offset_top = 271.0
+offset_right = 19136.0
+offset_bottom = 323.0
+theme = SubResource("Theme_3j5rj")
+theme_override_colors/font_color = Color(0.8784314, 0.68235296, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0018487984, 0.10478277, 0.52717316, 1)
+theme_override_constants/outline_size = 8
+text = "E to interact"
+horizontal_alignment = 1
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
