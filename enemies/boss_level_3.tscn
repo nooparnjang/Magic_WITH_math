@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b6n6kkq1ovfwa" path="res://enemies/script/boss_level_3.gd" id="1_ag20f"]
 [ext_resource type="SpriteFrames" uid="uid://dnpakjbf6qbpu" path="res://assets/tres_enemy/robot3.tres" id="1_t1ev3"]
+[ext_resource type="PackedScene" uid="uid://c5qvbdcwi5fn6" path="res://enemies/boss3attack.tscn" id="2_mhedc"]
+[ext_resource type="Script" uid="uid://bgu3m16wxe7wy" path="res://enemies/script/bossstatus.gd" id="4_64i5o"]
+[ext_resource type="Texture2D" uid="uid://dvrmomkb4fi4a" path="res://assets/UI/SimpleBarRed-Sheet0.png" id="5_umxfx"]
+[ext_resource type="Texture2D" uid="uid://diy4l0vm43qvv" path="res://assets/UI/SimpleBarRed-Sheet.png" id="6_bstjl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ag20f"]
 height = 86.0
@@ -11,6 +15,7 @@ size = Vector2(39, 30)
 
 [node name="BossLevel3" type="CharacterBody2D" unique_id=138737344]
 script = ExtResource("1_ag20f")
+attack_effect = ExtResource("2_mhedc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1333466602]
 position = Vector2(-3, -25)
@@ -27,3 +32,19 @@ shape = SubResource("CapsuleShape2D_ag20f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=551744998]
 position = Vector2(30.5, -18)
 shape = SubResource("RectangleShape2D_mhedc")
+
+[node name="Bossstatus" type="Node2D" parent="." unique_id=580524949]
+position = Vector2(-28, -63)
+script = ExtResource("4_64i5o")
+base_position = Vector2(-30, -63)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bossstatus" unique_id=2106281711]
+offset_top = -2.0
+offset_right = 60.0
+offset_bottom = 38.0
+
+[node name="healthbar" type="TextureProgressBar" parent="Bossstatus/VBoxContainer" unique_id=876797447]
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("5_umxfx")
+texture_progress = ExtResource("6_bstjl")
