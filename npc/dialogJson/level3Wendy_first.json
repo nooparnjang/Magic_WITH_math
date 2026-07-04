@@ -1,0 +1,36 @@
+{
+  "npc_name": "Wendy",
+  "required_item": "",
+  "consume_required_item": false,
+  "states": {
+	"before_quest": {
+	  "lines": [
+		{
+		  "speaker": "Princess Tria",
+		  "text": "The signal comes from aboveground."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Then we'll have to enter the old network. "
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "You sound familiar with this place. "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "I've read about it. "
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "You've read about everything. "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "...I like old technology. "
+		}
+	  ],
+	  "next_state": "before_quest"
+	}
+  }
+}

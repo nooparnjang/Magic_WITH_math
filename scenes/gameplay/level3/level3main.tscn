@@ -210,6 +210,7 @@ limit_bottom = 540
 limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1083533064]
+visible = false
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("4_bxm8r")]
 
@@ -687,7 +688,7 @@ position = Vector2(15426, 274)
 [node name="Area2D" type="StaticBody2D" parent="teleporttoboss" unique_id=1435292608]
 disable_mode = 1
 script = ExtResource("39_25biu")
-next_scene = "res://scenes/gameplay/level1/bosslevel_1.tscn"
+next_scene = "res://scenes/gameplay/level3/level3boss.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleporttoboss/Area2D" unique_id=781205115]
 position = Vector2(4926, -16)
@@ -723,6 +724,7 @@ horizontal_alignment = 1
 [node name="Wendy" parent="." unique_id=1920401949 instance=ExtResource("28_jc2gh")]
 position = Vector2(368, 410)
 scale = Vector2(2, 2)
+dialog_json_path = "res://npc/dialogJson/level3Wendy_first.json"
 
 [node name="comwendy" type="Node2D" parent="." unique_id=1096523601]
 
