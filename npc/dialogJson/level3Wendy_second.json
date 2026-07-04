@@ -23,7 +23,7 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "Then everything will finally be decided. "
+		  "text": "Everything will be decided. "
 		}
 	  ],
 	  "next_state": "before_quest"
