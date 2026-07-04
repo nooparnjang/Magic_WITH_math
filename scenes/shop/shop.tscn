@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dm0f62shr1av4" path="res://assets/UI/uiforshop/Hp max.png" id="8_vk20h"]
 [ext_resource type="Texture2D" uid="uid://cgf6hkyrv7pr2" path="res://assets/UI/uiforshop/Bg blessings .png" id="9_tp26b"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="10_vk20h"]
+[ext_resource type="Script" uid="uid://5pyya7y8e28e" path="res://scenes/shop/script/gotomainmenu.gd" id="11_dww4p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptf86"]
 texture = ExtResource("1_7lxhl")
@@ -62,6 +63,20 @@ texture = ExtResource("7_tp26b")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g6lcs"]
 texture = ExtResource("8_vk20h")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qn5i"]
+bg_color = Color(0.32941177, 0.16078432, 0.32941177, 0.87058824)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dww4p"]
+bg_color = Color(0.2803291, 0.13203362, 0.28133154, 0.87058824)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Control" type="Control" unique_id=70788292]
 layout_mode = 3
@@ -467,3 +482,16 @@ offset_left = 452.0
 offset_top = 445.0
 offset_right = 452.44
 offset_bottom = 444.76
+
+[node name="gotomainmenu" type="Button" parent="." unique_id=747291196]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 30.0
+offset_right = 217.0
+offset_bottom = 75.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_8qn5i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dww4p")
+text = "GO TO MAINMENU"
+script = ExtResource("11_dww4p")
