@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://btctgrqv5mrab"]
+
+[ext_resource type="Script" uid="uid://b27hhfh3u7pns" path="res://object/script/quiz_structure.gd" id="1_krg6v"]
+[ext_resource type="Texture2D" uid="uid://6wwm007kdq14" path="res://assets/object/industrial-zone-tileset-pixel-art/3 Objects/Locker3.png" id="2_tcv7o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dju0g"]
+size = Vector2(32, 32)
+
+[node name="QuizStructure" type="Node2D" unique_id=1827108777]
+script = ExtResource("1_krg6v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1219794713]
+texture = ExtResource("2_tcv7o")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=352661959]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=39954890]
+shape = SubResource("RectangleShape2D_dju0g")

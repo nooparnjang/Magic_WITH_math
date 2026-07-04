@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://bmlxchry2ghbh"]
+
+[ext_resource type="Texture2D" uid="uid://t1bebnhr54am" path="res://assets/object/craftpix-net-618358-cyber-intrusion-free-gui-pixel-art-pack/1 Monitor/2.png" id="1_u31tx"]
+[ext_resource type="Script" uid="uid://swctj4g0iyet" path="res://object/Quiz/scripts/QuizUI.gd" id="1_wd5g5"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="2_jp7qx"]
+[ext_resource type="Script" uid="uid://bd565jgas4nsy" path="res://object/Quiz/scripts/Quizback.gd" id="3_cf4tv"]
+[ext_resource type="Texture2D" uid="uid://b5w41f1x6p1u2" path="res://assets/UI/quiz choice.png" id="3_jtw7l"]
+[ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="4_po2by"]
+
+[node name="QuizUi" type="CanvasLayer" unique_id=1250368315]
+process_mode = 3
+script = ExtResource("1_wd5g5")
+
+[node name="Background" type="TextureRect" parent="." unique_id=69116632]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 201.00002
+offset_top = 69.0
+offset_right = -497.0
+offset_bottom = -269.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.25, 2.25)
+mouse_filter = 2
+texture = ExtResource("1_u31tx")
+
+[node name="Content" type="Control" parent="Background" unique_id=1753451804]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Button" parent="Background/Content" unique_id=1668316547]
+z_index = 99
+layout_mode = 0
+offset_left = -71.111115
+offset_top = -14.666667
+offset_right = -19.111115
+offset_bottom = 37.333332
+scale = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+action_mode = 0
+script = ExtResource("3_cf4tv")
+
+[node name="goback" type="Sprite2D" parent="Background/Content/back" unique_id=594816292]
+z_index = 99
+position = Vector2(28.444448, 25.777775)
+scale = Vector2(0.11851851, 0.11851852)
+texture = ExtResource("4_po2by")
+region_enabled = true
+region_rect = Rect2(0, 0, 480, 540)
+
+[node name="QuestionLabel" type="Label" parent="Background/Content" unique_id=1712893166]
+layout_mode = 0
+offset_left = 11.999992
+offset_top = 11.555555
+offset_right = 250.4
+offset_bottom = 63.15555
+theme_override_fonts/font = ExtResource("2_jp7qx")
+theme_override_font_sizes/font_size = 20
+text = "Question Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="Choice1" type="TextureButton" parent="Background/Content" unique_id=117953957]
+z_index = 99
+layout_mode = 0
+offset_left = 30.0
+offset_top = 71.155556
+offset_right = 360.0
+offset_bottom = 181.15555
+scale = Vector2(0.3, 0.3)
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("3_jtw7l")
+
+[node name="Text" type="Label" parent="Background/Content/Choice1" unique_id=1250169208]
+z_index = 99
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.59259
+offset_top = -26.703705
+offset_right = 142.74078
+offset_bottom = 35.96295
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jp7qx")
+theme_override_font_sizes/font_size = 36
+text = "Choice"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="Choice2" type="TextureButton" parent="Background/Content" unique_id=227924832]
+z_index = 99
+layout_mode = 0
+offset_left = 135.6
+offset_top = 71.155556
+offset_right = 465.6
+offset_bottom = 181.15555
+scale = Vector2(0.3, 0.3)
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("3_jtw7l")
+
+[node name="Text" type="Label" parent="Background/Content/Choice2" unique_id=1406309338]
+z_index = 99
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.59259
+offset_top = -26.703705
+offset_right = 142.74078
+offset_bottom = 35.96295
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jp7qx")
+theme_override_font_sizes/font_size = 36
+text = "Choice"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="Choice3" type="TextureButton" parent="Background/Content" unique_id=1407514058]
+z_index = 99
+layout_mode = 0
+offset_left = 30.0
+offset_top = 107.95556
+offset_right = 360.0
+offset_bottom = 217.95557
+scale = Vector2(0.3, 0.3)
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("3_jtw7l")
+
+[node name="Text" type="Label" parent="Background/Content/Choice3" unique_id=1300214668]
+z_index = 99
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.59259
+offset_top = -26.703705
+offset_right = 142.74078
+offset_bottom = 35.96295
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jp7qx")
+theme_override_font_sizes/font_size = 36
+text = "Choice"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+max_lines_visible = 2
+
+[node name="Choice4" type="TextureButton" parent="Background/Content" unique_id=843095213]
+z_index = 99
+layout_mode = 0
+offset_left = 135.6
+offset_top = 107.95556
+offset_right = 465.6
+offset_bottom = 217.95557
+scale = Vector2(0.3, 0.3)
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("3_jtw7l")
+
+[node name="Text" type="Label" parent="Background/Content/Choice4" unique_id=71004132]
+z_index = 99
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.59259
+offset_top = -26.703705
+offset_right = 142.74078
+offset_bottom = 35.96295
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jp7qx")
+theme_override_font_sizes/font_size = 36
+text = "Choice"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+max_lines_visible = 2

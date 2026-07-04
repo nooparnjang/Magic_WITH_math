@@ -1,0 +1,134 @@
+{
+	"questions":[
+		{
+			"question": "Who is the main character?",
+			"choices": ["Princess Tria", "Wendy", "VOXTRON", "Wendy's father"],
+			"answer": 0
+		},
+		{
+			"question": "Who guides Princess Tria during her journey?",
+			"choices": ["Nobody", "Wendy", "VOXTRON", "Wendy's father"],
+			"answer": 1
+		},
+		{
+			"question": "What is the name of the princess?",
+			"choices": ["Luna", "Tria", "Wendy", "Alice"],
+			"answer": 1
+		},
+		{
+			"question": "Who warns Tria about the dangers ahead?",
+			"choices": ["Wendy", "VOXTRON", "Wendy's father", "Nobody"],
+			"answer": 0
+		},
+		{
+			"question": "What happens if you answer a shrine quiz incorrectly?",
+			"choices": ["Nothing", "You lose coins", "You die", "VOXTRON appear"],
+			"answer": 2
+		},
+		{
+			"question": "What do you receive for answering correctly?",
+			"choices": ["A blessing", "A weapon", "Coins", "Nothing"],
+			"answer": 0
+		},
+		{
+			"question": "Who accompanies Tria before meeting the boss?",
+			"choices": ["Wendy", "Wendy's father", "VOXTRON", "Nobody"],
+			"answer": 0
+		},
+		{
+			"question": "What is the purpose of blessings?",
+			"choices": ["Help the player", "Open the map", "Buy items", "Skip levels"],
+			"answer": 2
+		},
+		{
+			"question": "Which button is used to interact with objects?",
+			"choices": ["E", "Q", "F", "R"],
+			"answer": 0
+		},
+		{
+			"question": "Who is the playable character?",
+			"choices": ["Princess Tria", "Wendy", "VOXTRON", "Nobody"],
+			"answer": 0
+		},
+		{
+			"question": "What should players do before entering dangerous areas?",
+			"choices": ["Jump constantly", "Be careful", "Run away", "Close the game"],
+			"answer": 1
+		},
+		{
+			"question": "Who knows more about the dangerous place than Tria?",
+			"choices": ["Wendy", "VOXTRON", "Wendy's father", "Nobody"],
+			"answer": 0
+		},
+		{
+			"question": "Why should players pay attention to dialogue?",
+			"choices": ["It changes graphics", "It gives FPS", "It unlocks skins", "It contains story information"],
+			"answer": 3
+		},
+		{
+			"question": "What kind of game is this?",
+			"choices": ["Educational Action", "Racing", "Sports", "Farming"],
+			"answer": 0
+		},
+		{
+			"question": "What usually blocks the player's path?",
+			"choices": ["Locked doors", "Cars", "Boats", "Trees only"],
+			"answer": 0
+		},
+		{
+			"question": "Who is Princess Tria searching with?",
+			"choices": ["Wendy", "VOXTRON", "Wendy's father", "Nobody"],
+			"answer": 0
+		},
+		{
+			"question": "What is one way players progress through the game?",
+			"choices": ["Sleep", "Trade houses", "Complete challenges", "Cook food"],
+			"answer": 2
+		},
+		{
+			"question": "What can happen after defeating bosses?",
+			"choices": ["Continue the journey", "Delete your save", "End the game immediately", "Lose all controls"],
+			"answer": 0
+		},
+		{
+			"question": "Who speaks with Tria during important story moments?",
+			"choices": ["Wendy", "Wendy's father", "Her mother", "Nobody"],
+			"answer": 0
+		},
+		{
+			"question": "Who is Princess Tria?",
+			"choices": ["The villain", "The heroine", "A merchant", "A guard"],
+			"answer": 1
+		},
+		{
+			"question": "What does Wendy often provide?",
+			"choices": ["Guidance", "Weapons", "Armor", "Money"],
+			"answer": 0
+		},
+		{
+			"question": "Why is remembering the story important?",
+			"choices": ["It helps answer quizzes", "It changes the weather", "It increases FPS", "It unlocks cheats"],
+			"answer": 0
+		},
+		{
+			"question": "What happens after receiving a blessing?",
+			"choices": ["The player gains an advantage", "The game closes", "The level resets", "Nothing"],
+			"answer": 3
+		},
+		{
+			"question": "What should players do if Wendy gives a warning?",
+			"choices": ["Ignore it", "Walk away", "Listen carefully", "Close the dialogue"],
+			"answer": 2
+		},
+		{
+			"question": "Who is one of the most important supporting characters?",
+			"choices": ["Wendy", "Wendy's father", "Nobody", "Robots"],
+			"answer": 0
+		},
+		{
+			"question": "What helps players overcome quiz shrines?",
+			"choices": ["Paying attention to the story", "Running faster", "Collecting more coins", "Jumping higher"],
+			"answer": 0
+		}
+	]
+}
