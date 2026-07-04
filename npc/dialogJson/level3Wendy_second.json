@@ -1,0 +1,32 @@
+{
+  "npc_name": "Wendy",
+  "required_item": "",
+  "consume_required_item": false,
+  "states": {
+	"before_quest": {
+	  "lines": [
+		{
+		  "speaker": "Princess Tria",
+		  "text": "Who is W ? "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Probably damaged records. "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "We should keep moving. "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Only one remains. "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Then everything will finally be decided. "
+		}
+	  ],
+	  "next_state": "before_quest"
+	}
+  }
+}

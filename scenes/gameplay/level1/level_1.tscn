@@ -39,8 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://b6bbwlrq5y775" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_2/Idle.png" id="32_00sx4"]
 [ext_resource type="Texture2D" uid="uid://dcivcygyx8g0u" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/8Loot.png" id="33_ss8k8"]
 [ext_resource type="Texture2D" uid="uid://b8b77ng6rk6ew" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/6Benice.png" id="34_o6e0x"]
-[ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="36_rajh1"]
-[ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="37_d1ngy"]
 [ext_resource type="Script" uid="uid://chp2s8lej77iv" path="res://scenes/gameplay/script/teleport.gd" id="38_ss8k8"]
 [ext_resource type="Shader" uid="uid://dl0pf55ys6tcy" path="res://scenes/gameplay/script/shader/darkalley.gdshader" id="39_o6e0x"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="40_rajh1"]
@@ -563,20 +561,14 @@ texture = ExtResource("34_o6e0x")
 [node name="Robot1" parent="enemies" unique_id=1544183853 instance=ExtResource("15_lswdy")]
 position = Vector2(3353, 311)
 scale = Vector2(2.5, 2.5)
-hit_effect_scene = ExtResource("36_rajh1")
-floating_text_scene = ExtResource("37_d1ngy")
 
 [node name="Robot2" parent="enemies" unique_id=410667977 instance=ExtResource("15_lswdy")]
 position = Vector2(3833, 307)
 scale = Vector2(2.5, 2.5)
-hit_effect_scene = ExtResource("36_rajh1")
-floating_text_scene = ExtResource("37_d1ngy")
 
 [node name="Robot3" parent="enemies" unique_id=265158031 instance=ExtResource("15_lswdy")]
 position = Vector2(4555, 108.000046)
 scale = Vector2(2.5, 2.5)
-hit_effect_scene = ExtResource("36_rajh1")
-floating_text_scene = ExtResource("37_d1ngy")
 
 [node name="object" type="Node2D" parent="." unique_id=394836808]
 
