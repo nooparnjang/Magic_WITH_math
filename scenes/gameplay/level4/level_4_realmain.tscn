@@ -358,7 +358,7 @@ position = Vector2(480.83713, 273.49997)
 scale = Vector2(0.49912798, 0.50277776)
 texture = ExtResource("2_tgpvi")
 
-[node name="player" type="Node2D" parent="." unique_id=1208893058 groups=["player"]]
+[node name="player" type="Node2D" parent="." unique_id=1208893058]
 z_index = 1
 position = Vector2(9815, 0)
 
@@ -777,8 +777,8 @@ scale = Vector2(2, 1)
 position = Vector2(9965, 193)
 scale = Vector2(2, 1)
 
-[node name="QuizStructure" parent="." unique_id=1827108777 instance=ExtResource("13_bmcef")]
-position = Vector2(10256, 318.00003)
+[node name="QuizStructure" parent="floatjra" unique_id=1827108777 instance=ExtResource("13_bmcef")]
+position = Vector2(10256, 398.00003)
 scale = Vector2(5, 5)
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
@@ -789,3 +789,4 @@ scale = Vector2(5, 5)
 [editable path="player/maincharacter/Statusbar"]
 [editable path="CanvasLayer/UImath"]
 [editable path="CanvasLayer/topright/blessingUI"]
+[editable path="floatjra/QuizStructure"]
