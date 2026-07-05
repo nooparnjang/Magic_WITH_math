@@ -22,8 +22,10 @@
 [ext_resource type="TileSet" uid="uid://swcmh0ctr5au" path="res://assets/Tiles/basetilelevel3.tres" id="19_f3jyg"]
 [ext_resource type="PackedScene" uid="uid://7dip7rtm64io" path="res://enemies/boss_level_3.tscn" id="20_cvidc"]
 [ext_resource type="PackedScene" uid="uid://dgimx5hv2dph5" path="res://object/ItemPickup.tscn" id="21_5bb52"]
+[ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="22_3hqhk"]
 [ext_resource type="Texture2D" uid="uid://doprtl43rfdun" path="res://assets/UI/4.png" id="22_d3bvf"]
 [ext_resource type="Script" uid="uid://dp6v5o2ouigic" path="res://scenes/gameplay/level2/deathtrap.gd" id="23_kqitv"]
+[ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="23_n8oj4"]
 [ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="25_kqitv"]
 [ext_resource type="Shader" uid="uid://dhnhnrr52sqkq" path="res://assets/shader/filpdarkalley.gdshader" id="26_hi4l8"]
 [ext_resource type="Shader" uid="uid://dl0pf55ys6tcy" path="res://scenes/gameplay/script/shader/darkalley.gdshader" id="27_v7nk8"]
@@ -352,11 +354,30 @@ position = Vector2(1797, 221)
 [node name="BossLevel3" parent="." unique_id=138737344 instance=ExtResource("20_cvidc")]
 position = Vector2(2076.0002, 97)
 scale = Vector2(2.5, 2.5)
+move_speed = 0.0
+gravity = 1200.0
 max_hp = 10
+contact_damage = 25
+attack_cooldown = 1.5
+attack_range = 9999.0
+max_vertical_attack_gap = 9999.0
+melee_range = 60.0
+melee_vertical_gap = 80.0
 marker_root = NodePath("../marker2d")
+attack_offset_y = -100.0
+blessing_reward = 50
+hit_effect_scene = ExtResource("22_3hqhk")
+floating_text_scene = ExtResource("23_n8oj4")
+question_pattern = 2
+allowed_operators = Array[String](["+", "-", "*", "/"])
 drop_type = 2
 item_drop_scene = ExtResource("21_5bb52")
+item_drop_count = 1
+randomize_drop = false
+blessing_drop_chance = 1.0
+item_drop_chance = 1.0
 item_drop_id = "Gem2"
+item_drop_amount = 1
 item_drop_texture = ExtResource("22_d3bvf")
 
 [node name="deathtrap" type="Area2D" parent="." unique_id=1684379556]

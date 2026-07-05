@@ -64,7 +64,7 @@ var last_attack_index := -1
 @onready var body_collision: CollisionShape2D = $CollisionShape2D
 @onready var hitbox_collision: CollisionShape2D = $Hitbox/CollisionShape2D
 
-# 🏥 [ระบบ Status] ดึงตำแหน่ง Node ลูกตามไฟล์ Screenshot 2026-07-02 175319.png
+# 🏥 [ระบบ Status] ดึงตำแหน่ง Node ลูกตามโครงสร้าง UI
 @onready var status_bar: Node2D = $Bossstatus
 
 # ==============================================================================
@@ -89,7 +89,7 @@ func _ready() -> void:
 		else:
 			push_error("❌ [Boss Error] หาไม่เจอโหนดพิกัดเสา กรุณาลากโหนด marker2d ใส่ใน Inspector ด้วย!")
 
-	# 🔗 เชื่อมต่อและเริ่มทำงานระบบหลอดเลือด UI (ดึงวิธีการเชื่อมต่อมาจากบอสตัวอย่าง)
+	# 🔗 เชื่อมต่อและเริ่มทำงานระบบหลอดเลือด UI
 	if status_bar != null and status_bar.has_method("setup"):
 		status_bar.setup(max_hp, hp)
 
@@ -131,7 +131,7 @@ func _physics_process(delta: float) -> void:
 				# ถ้าผู้เล่นอยู่ในระยะประชิด (Melee) -> ใช้ท่าตบที่ทำดาเมจ contact_damage แรงๆ
 				if horizontal_distance <= melee_range and vertical_distance <= melee_vertical_gap:
 					trigger_melee_attack()
-				# ถ้าผู้เล่นอยู่ไกลออกไป -> ใช้ท่าเสกเลเซอร์ลงเสาหินตามเดิม (ดาเมจเบากว่า/ขึ้นกับตัวเสาเลเซอร์)
+				# ถ้าผู้เล่นอยู่ไกลออกไป -> ใช้ท่าเสกเลเซอร์ลงเสาหิน (สุ่มพร้อมกัน 3 จุด)
 				else:
 					trigger_marker_attack()
 	else:
@@ -237,7 +237,7 @@ func trigger_melee_attack() -> void:
 		can_attack = true
 
 # ==============================================================================
-# ✨ [ท่วงท่าที่ 2] ระบบสุ่มมหาเวทเลเซอร์ลงทัณฑ์ (ใช้เมื่อผู้เล่นอยู่ไกล)
+# ✨ [ท่วงท่าที่ 2] ระบบสุ่มมหาเวทเลเซอร์/สายฟ้าลงทัณฑ์ (สุ่มลงพร้อมกัน 3 จุดแบบไม่ซ้ำเสา)
 # ==============================================================================
 func trigger_marker_attack() -> void:
 	if is_dead or is_attacking or not can_attack or markers.is_empty():
@@ -247,19 +247,11 @@ func trigger_marker_attack() -> void:
 	can_attack = false
 	velocity.x = 0.0
 
-	var index := randi_range(0, markers.size() - 1)
-	while markers.size() > 1 and index == last_attack_index:
-		index = randi_range(0, markers.size() - 1)
-	
-	last_attack_index = index
-	var target_marker = markers[index]
-	
-	print("🔮 บอสเสกเลเซอร์! ชี้เป้าไปที่: ", target_marker.name)
-
-	if sprite != null:
-		var to_marker = target_marker.global_position - global_position
-		if to_marker.x != 0.0:
-			sprite.flip_h = to_marker.x < 0.0
+	# หันหน้าไปหาผู้เล่นก่อนร่ายเวท
+	if sprite != null and player_ref != null:
+		var to_player = player_ref.global_position - global_position
+		if to_player.x != 0.0:
+			sprite.flip_h = to_player.x < 0.0
 
 	var did_play_fight := false
 	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("fight"):
@@ -267,29 +259,41 @@ func trigger_marker_attack() -> void:
 		sprite.play("fight")
 		did_play_fight = true
 
+	# หน่วงเวลาชาร์จพลังก่อนสายฟ้าฟาดลงมา (0.18 วินาทีตามอนิเมชันเดิม)
 	await get_tree().create_timer(0.18).timeout
 	if is_dead: return
 
-	if attack_effect != null:
-		var attack = attack_effect.instantiate()
-		get_tree().current_scene.add_child(attack)
-		attack.global_position = target_marker.global_position + Vector2(0, attack_offset_y)
-		
-		var effect_sprite = attack.get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
-		if effect_sprite and effect_sprite.sprite_frames:
-			var anim_names = effect_sprite.sprite_frames.get_animation_names()
-			if anim_names.size() > 0:
-				if effect_sprite.sprite_frames.has_animation("attack"):
-					effect_sprite.play("attack")
-				elif effect_sprite.sprite_frames.has_animation("default"):
-					effect_sprite.play("default")
-				else:
-					effect_sprite.play(anim_names[0])
-		
-		# 💡 หมายเหตุ: สำหรับดาเมจท่าร่ายเวทเลเซอร์ จะถูกจัดการโดยตรงในโค้ดของไฟล์อินสแตนซ์เลเซอร์ (boss3attack.tscn) 
-		# แนะนำให้ปรับแต่งดาเมจในซีนนั้นให้เบากว่าค่า contact_damage ของตัวบอส เพื่อให้ตรงกับเงื่อนไขเกมของคุณครับ
-	else:
-		push_warning("⚠️ [Boss Warning] อย่าลืมใส่ไฟล์ boss3attack.tscn ใน Inspector ช่อง Attack Effect นะครับ!")
+	# ⚡ คัดลอกรายชื่อเสาทั้งหมดที่มี แล้วทำการสับตำแหน่งแบบสุ่ม (Shuffle)
+	var available_markers = markers.duplicate()
+	available_markers.shuffle()
+	
+	# ⚡ เลือกจำนวนเสาที่จะโจมตีสูงสุด 3 จุด (หรือเท่าที่มีอยู่จริงในห้องขณะนั้น)
+	var attack_count = min(3, available_markers.size())
+	
+	# ลูปสร้างสายฟ้าออกมาทำงานพร้อมกันตามจำนวนที่ระบุ
+	for i in range(attack_count):
+		var target_marker = available_markers[i]
+		print("🔮 สายฟ้าเส้นที่ ", i + 1, " ฟาดลงที่เสา: ", target_marker.name)
+
+		if attack_effect != null:
+			var attack = attack_effect.instantiate()
+			get_tree().current_scene.add_child(attack)
+			# ปรับตำแหน่งแกน Y ตามค่า Offset 
+			attack.global_position = target_marker.global_position + Vector2(0, attack_offset_y)
+			
+			# สั่งให้อนิเมชันสายฟ้าเริ่มเล่นทันที
+			var effect_sprite = attack.get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
+			if effect_sprite and effect_sprite.sprite_frames:
+				var anim_names = effect_sprite.sprite_frames.get_animation_names()
+				if anim_names.size() > 0:
+					if effect_sprite.sprite_frames.has_animation("attack"):
+						effect_sprite.play("attack")
+					elif effect_sprite.sprite_frames.has_animation("default"):
+						effect_sprite.play("default")
+					else:
+						effect_sprite.play(anim_names[0])
+		else:
+			push_warning("⚠️ [Boss Warning] อย่าลืมใส่ไฟล์ boss3attack.tscn ใน Inspector ช่อง Attack Effect นะครับ!")
 
 	if did_play_fight and sprite.animation == "fight":
 		await sprite.animation_finished
@@ -299,6 +303,7 @@ func trigger_marker_attack() -> void:
 	if is_dead: return
 	is_attacking = false
 
+	# รอคูลดาวน์ก่อนจะเปิดให้เลือกท่าโจมตีในครั้งต่อไป
 	await get_tree().create_timer(attack_cooldown).timeout
 	if not is_dead:
 		can_attack = true
@@ -319,7 +324,7 @@ func die() -> void:
 	if body_collision != null: body_collision.disabled = true
 	if hitbox_collision != null: hitbox_collision.disabled = true
 
-	# 🚫 ซ่อนหลอดเลือดบอสบน UI ทันทีเมื่อบอสตาย (อิงจากบอสตัวอย่าง)
+	# 🚫 ซ่อนหลอดเลือดบอสบน UI ทันทีเมื่อบอสตาย
 	if status_bar != null:
 		status_bar.visible = false
 

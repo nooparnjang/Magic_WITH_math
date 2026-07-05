@@ -15,7 +15,30 @@ size = Vector2(39, 30)
 
 [node name="BossLevel3" type="CharacterBody2D" unique_id=138737344]
 script = ExtResource("1_ag20f")
+move_speed = null
+gravity = null
+max_hp = null
+contact_damage = null
+attack_cooldown = null
+attack_range = null
+max_vertical_attack_gap = null
+melee_range = null
+melee_vertical_gap = null
+marker_root = null
 attack_effect = ExtResource("2_mhedc")
+attack_offset_y = null
+blessing_reward = null
+hit_effect_scene = null
+floating_text_scene = null
+question_pattern = null
+allowed_operators = null
+drop_type = null
+item_drop_count = null
+randomize_drop = null
+blessing_drop_chance = null
+item_drop_chance = null
+item_drop_id = null
+item_drop_amount = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1333466602]
 position = Vector2(-3, -25)
