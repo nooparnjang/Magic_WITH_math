@@ -27,12 +27,12 @@ func _ready() -> void:
 	QuizManager.quiz_finished.connect(_on_quiz_finished)
 
 	# connect buttons safely
-	for i in range(buttons.size()):
-		var b := buttons[i]
-		if b:
-			b.pressed.connect(func(i=i):
-				_on_choice_pressed(i)
-			)
+	#for i in range(buttons.size()):
+		#var b := buttons[i]
+		#if b:
+			#b.pressed.connect(func(i=i):
+				#_on_choice_pressed(i)
+			#)
 
 	print("QuizUI READY")
 
