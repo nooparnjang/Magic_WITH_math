@@ -1,0 +1,44 @@
+{
+  "npc_name": "Wendy",
+  "required_item": "",
+  "consume_required_item": false,
+  "states": {
+	"before_quest": {
+	  "lines": [
+		{
+		  "speaker": "Princess Tria",
+		  "text": "...Wendy? "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "I'm surprised it took this long. "
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "You created VOXTRON? "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "Yes. "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "I built VOXTRON to create a perfect Mathtria. "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "A city free from human error. "
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "The final fragment must be inside. "
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "Let’s follow them."
+		}
+	  ],
+	  "next_state": "before_quest"
+	}
+  }
+}
