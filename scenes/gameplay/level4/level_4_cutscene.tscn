@@ -1,0 +1,465 @@
+[gd_scene format=3 uid="uid://wp002abeydr5"]
+
+[ext_resource type="Texture2D" uid="uid://bskqonyt30tac" path="res://assets/bg/city 1/1.png" id="1_wkdal"]
+[ext_resource type="Texture2D" uid="uid://cpxywhntcj2ls" path="res://assets/bg/city 1/2.png" id="2_v6ae7"]
+[ext_resource type="Texture2D" uid="uid://dakg23gfxthel" path="res://assets/bg/city 1/3.png" id="3_meb5a"]
+[ext_resource type="Texture2D" uid="uid://dqc0qsi70bv5l" path="res://assets/bg/city 1/4.png" id="4_7d1o3"]
+[ext_resource type="Texture2D" uid="uid://bvcobkfod881e" path="res://assets/bg/city 1/5.png" id="5_4s1tk"]
+[ext_resource type="Texture2D" uid="uid://b0xyr6tavbeu0" path="res://assets/bg/city 1/6.png" id="6_k0kop"]
+[ext_resource type="Texture2D" uid="uid://b7tmtglnfhsca" path="res://assets/bg/city 1/7.png" id="7_bvbqx"]
+[ext_resource type="Texture2D" uid="uid://cklruqwydumpk" path="res://assets/bg/city 1/8.png" id="8_d2ovc"]
+[ext_resource type="Script" uid="uid://b0gn57jrl5ihl" path="res://scenes/gameplay/level4/script/scrolldai_2.gd" id="9_qa0fj"]
+[ext_resource type="Texture2D" uid="uid://cjbdo2dpm1rn3" path="res://assets/bg/EndlessNew/middlemerge.png" id="10_qwv0k"]
+[ext_resource type="Texture2D" uid="uid://hg5eiyc6xh3h" path="res://assets/bg/EndlessNew/Game play(1).png" id="11_00o53"]
+[ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="12_77aam"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="13_4s1tk"]
+[ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="13_eumvi"]
+[ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="14_hwhtg"]
+[ext_resource type="PackedScene" uid="uid://bhalcshhglvab" path="res://object/comwendy.tscn" id="15_thcl7"]
+[ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="16_meb5a"]
+[ext_resource type="PackedScene" uid="uid://dwbhemgiqwldq" path="res://object/textcomwendy2.tscn" id="16_nn133"]
+[ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="17_7d1o3"]
+[ext_resource type="Script" uid="uid://6xnjq7ef5fpu" path="res://scenes/gameplay/level4/script/cutsceneintro.gd" id="18_4s1tk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4klv"]
+size = Vector2(11939.25, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psqtc"]
+size = Vector2(45, 764.5)
+
+[sub_resource type="Animation" id="Animation_rubjw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kilis"]
+resource_name = "transition"
+length = 1.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0.12941177, 1), Color(0, 0, 0.12835406, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7d1o3"]
+_data = {
+&"RESET": SubResource("Animation_rubjw"),
+&"transition": SubResource("Animation_kilis")
+}
+
+[node name="level4_cutscene" type="Node2D" unique_id=743973375]
+
+[node name="bg" type="Node2D" parent="." unique_id=1246388817]
+
+[node name="scroll dai" type="Node2D" parent="bg" unique_id=1691774699]
+visible = false
+z_index = -99
+position = Vector2(1925, 0)
+
+[node name="Parallax2D" type="Parallax2D" parent="bg/scroll dai" unique_id=1187712185]
+z_index = -3
+scale = Vector2(1.7, 1.7)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D" unique_id=335801535]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("1_wkdal")
+
+[node name="Parallax2D2" type="Parallax2D" parent="bg/scroll dai" unique_id=1387255953]
+z_index = -3
+scale = Vector2(1.5, 1.5)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-973, -367)
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D2" unique_id=550334018]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("2_v6ae7")
+
+[node name="Parallax2D3" type="Parallax2D" parent="bg/scroll dai" unique_id=1806077310]
+z_index = -3
+scale = Vector2(1.7, 1.7)
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D3" unique_id=2112880687]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("3_meb5a")
+
+[node name="Parallax2D4" type="Parallax2D" parent="bg/scroll dai" unique_id=1219345789]
+z_index = -3
+scale = Vector2(1.7, 1.7)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D4" unique_id=688015926]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("4_7d1o3")
+
+[node name="Parallax2D5" type="Parallax2D" parent="bg/scroll dai" unique_id=1919957966]
+z_index = -3
+scale = Vector2(1.5, 1.5)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D5" unique_id=858928675]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("5_4s1tk")
+
+[node name="Parallax2D6" type="Parallax2D" parent="bg/scroll dai" unique_id=803650541]
+z_index = -3
+scale = Vector2(1.5, 1.5)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D6" unique_id=1254084081]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("6_k0kop")
+
+[node name="Parallax2D7" type="Parallax2D" parent="bg/scroll dai" unique_id=1459005566]
+z_index = -3
+scale = Vector2(1.5, 1.5)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D7" unique_id=706366091]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("7_bvbqx")
+
+[node name="Parallax2D8" type="Parallax2D" parent="bg/scroll dai" unique_id=1882681169]
+z_index = -3
+scale = Vector2(1.7, 1.7)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-970, -360)
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D8" unique_id=1828957437]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("8_d2ovc")
+
+[node name="scrolldai2" type="Node2D" parent="bg" unique_id=2078514389]
+visible = false
+z_index = -99
+position = Vector2(0, -429)
+scale = Vector2(2, 2)
+script = ExtResource("9_qa0fj")
+
+[node name="Parallax2D" type="Parallax2D" parent="bg/scrolldai2" unique_id=684874985]
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D" unique_id=388945370]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("1_wkdal")
+
+[node name="Parallax2D2" type="Parallax2D" parent="bg/scrolldai2" unique_id=1504189346]
+scroll_scale = Vector2(0.9, 0.9)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D2" unique_id=1751472542]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("2_v6ae7")
+
+[node name="Parallax2D3" type="Parallax2D" parent="bg/scrolldai2" unique_id=1993880339]
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D3" unique_id=1542624192]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("3_meb5a")
+
+[node name="Parallax2D4" type="Parallax2D" parent="bg/scrolldai2" unique_id=788070425]
+scroll_scale = Vector2(1.1, 1.1)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D4" unique_id=1332319950]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("4_7d1o3")
+
+[node name="Parallax2D5" type="Parallax2D" parent="bg/scrolldai2" unique_id=1958982563]
+scroll_scale = Vector2(1.2, 1.2)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D5" unique_id=404169450]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("5_4s1tk")
+
+[node name="Parallax2D6" type="Parallax2D" parent="bg/scrolldai2" unique_id=334991431]
+scroll_scale = Vector2(1.3, 1.3)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D6" unique_id=1108398404]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("6_k0kop")
+
+[node name="Parallax2D7" type="Parallax2D" parent="bg/scrolldai2" unique_id=972313090]
+scroll_scale = Vector2(1.4, 1.4)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D7" unique_id=1613921466]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("7_bvbqx")
+
+[node name="Parallax2D8" type="Parallax2D" parent="bg/scrolldai2" unique_id=2133959805]
+scroll_scale = Vector2(1.5, 1.5)
+repeat_size = Vector2(962, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D8" unique_id=1354066629]
+position = Vector2(480.5, 270.5)
+scale = Vector2(1.671875, 1.675926)
+texture = ExtResource("8_d2ovc")
+
+[node name="middle" type="Parallax2D" parent="bg" unique_id=338496261]
+repeat_size = Vector2(1960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/middle" unique_id=936742894]
+position = Vector2(983.0001, 261.00003)
+scale = Vector2(1.0250001, 1.1111112)
+texture = ExtResource("10_qwv0k")
+
+[node name="foremost" type="Parallax2D" parent="bg" unique_id=50610065]
+repeat_size = Vector2(900, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/foremost" unique_id=250708608]
+position = Vector2(480.83713, 273.49997)
+scale = Vector2(0.49912798, 0.50277776)
+texture = ExtResource("11_00o53")
+
+[node name="invisibleWall" type="Node2D" parent="." unique_id=986557588]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="invisibleWall" unique_id=427611489]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D" unique_id=1773799031]
+position = Vector2(5967.375, 416)
+shape = SubResource("RectangleShape2D_t4klv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="invisibleWall" unique_id=1393442535]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleWall/StaticBody2D2" unique_id=1990836701]
+position = Vector2(3, 155.25)
+shape = SubResource("RectangleShape2D_psqtc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=378718970]
+
+[node name="transition" type="Control" parent="CanvasLayer" unique_id=945083264]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_77aam")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/transition" unique_id=865529449]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.12941177, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/transition" unique_id=1551182600]
+libraries/ = SubResource("AnimationLibrary_7d1o3")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2041448452]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=235075209]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -149.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("13_4s1tk")
+theme_override_font_sizes/font_size = 27
+text = "E to continue cutscene"
+
+[node name="object" type="Node2D" parent="." unique_id=1329228235]
+
+[node name="car" parent="object" unique_id=1134860753 instance=ExtResource("13_eumvi")]
+position = Vector2(1468, 59.999996)
+scale = Vector2(3.5, 3.5)
+
+[node name="Barrier" parent="object" unique_id=2142189157 instance=ExtResource("14_hwhtg")]
+position = Vector2(2944, 352)
+scale = Vector2(0.4, 0.4)
+
+[node name="car2" parent="object" unique_id=1429220147 instance=ExtResource("13_eumvi")]
+position = Vector2(4582, 65)
+scale = Vector2(3.5, 3.5)
+
+[node name="Comwendy" parent="object" unique_id=850464304 instance=ExtResource("15_thcl7")]
+position = Vector2(11196, 320)
+scale = Vector2(1.5, 1.5)
+computer_scene = ExtResource("16_nn133")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=125984770]
+position = Vector2(11219, 579)
+limit_left = 960
+limit_top = 0
+limit_bottom = 540
+
+[node name="marker" type="Node2D" parent="." unique_id=1364607088]
+
+[node name="triaStart" type="Marker2D" parent="marker" unique_id=1148999790]
+position = Vector2(10973, 396)
+
+[node name="triarun" type="Marker2D" parent="marker" unique_id=1427030337]
+position = Vector2(11767, 307)
+
+[node name="camera_two_shot" type="Marker2D" parent="marker" unique_id=633144618]
+position = Vector2(11213, 199)
+
+[node name="camera_tria" type="Marker2D" parent="marker" unique_id=496751916]
+position = Vector2(11004, 231)
+
+[node name="camera_wendy" type="Marker2D" parent="marker" unique_id=431384863]
+position = Vector2(11500, 233)
+
+[node name="wendyPoint" type="Marker2D" parent="marker" unique_id=205938858]
+position = Vector2(11494, 386)
+
+[node name="player" type="Node2D" parent="." unique_id=790987346]
+z_index = 1
+
+[node name="maincharacter" parent="player" unique_id=1926872742 instance=ExtResource("16_meb5a")]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+z_index = 1
+position = Vector2(11006.001, 310)
+scale = Vector2(2.5, 2.5)
+
+[node name="Statusbar" parent="player/maincharacter" index="4" unique_id=50678111]
+visible = false
+
+[node name="name" parent="player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="0" unique_id=339424069]
+theme_override_colors/font_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
+
+[node name="Label" parent="player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="1" unique_id=1367956479]
+theme_override_colors/font_color = Color(3.3691526e-07, 0.5381211, 0.47927624, 1)
+
+[node name="npc" type="Node2D" parent="." unique_id=501757006]
+position = Vector2(277, 8)
+
+[node name="Wendy" parent="npc" unique_id=1920401949 instance=ExtResource("17_7d1o3")]
+z_index = 1
+position = Vector2(11218, 315)
+scale = Vector2(2, 2)
+script = null
+
+[node name="cutsceneintro" type="Node2D" parent="." unique_id=1411615705 node_paths=PackedStringArray("tria_body", "wendy_body", "tria_sprite", "wendy_sprite", "tria_dialog_bubble", "wendy_dialog_bubble", "camera_2d", "tria_start", "tria_talk_point", "tria_run", "wendy_point", "camera_wide", "camera_tria", "camera_wendy", "camera_two_shot", "wendy_nodes_to_hide", "fade_rect")]
+position = Vector2(1, -79)
+script = ExtResource("18_4s1tk")
+cutscene_json_path = "res://npc/dialogJson/lv4_wendyreveal.json"
+tria_body = NodePath("../player/maincharacter")
+wendy_body = NodePath("../npc/Wendy")
+tria_sprite = NodePath("../player/maincharacter/AnimatedSprite2D")
+wendy_sprite = NodePath("../npc/Wendy/AnimatedSprite2D")
+tria_dialog_bubble = NodePath("../player/maincharacter/BubbleAnchor/DialogBubble")
+wendy_dialog_bubble = NodePath("../npc/Wendy/BubbleAnchor/DialogBubble")
+camera_2d = NodePath("../Camera2D")
+tria_start = NodePath("../marker/triaStart")
+tria_talk_point = NodePath("../marker/triaStart")
+tria_run = NodePath("../marker/triarun")
+wendy_point = NodePath("../marker/wendyPoint")
+camera_wide = NodePath("../marker/camera_two_shot")
+camera_tria = NodePath("../marker/camera_tria")
+camera_wendy = NodePath("../marker/camera_wendy")
+camera_two_shot = NodePath("../marker/camera_two_shot")
+wendy_nodes_to_hide = [NodePath("../npc/Wendy")]
+fade_rect = NodePath("../CanvasLayer/ColorRect")
+
+[connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_entered"]
+[connection signal="body_exited" from="player/maincharacter/TargetRadius" to="player/maincharacter" method="_on_target_radius_body_exited"]
+
+[editable path="player/maincharacter"]
+[editable path="player/maincharacter/Statusbar"]
+[editable path="npc/Wendy"]

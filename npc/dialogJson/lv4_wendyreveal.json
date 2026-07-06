@@ -1,0 +1,151 @@
+{
+	"next_scene": "res://scenes/gameplay/level4/level_4_boss.tscn",
+	"steps": [
+		{
+			"type": "setup_actor",
+			"actor": "tria",
+			"animation": "idle",
+			"flip_h": false
+		},
+		{
+			"type": "actor_anim",
+			"actor": "wendy",
+			"animation": "idle"
+		},
+		{
+			"type": "camera",
+			"marker": "camera_two_shot",
+			"zoom": 1.2,
+			"duration": 0.35,
+			"camera_offset": [0, 25]
+		},
+		{
+			"type": "fade_in",
+			"duration": 0.2
+		},
+		{
+			"type": "dialog",
+			"speaker": "Princess Tria",
+			"text": "...Wendy?",
+			"camera_marker": "camera_two_shot",
+			"zoom": 1.2,
+			"camera_duration": 0.2,
+			"camera_offset": [0, 25]
+		},
+		{
+			"type": "dialog",
+			"speaker": "Wendy",
+			"text": "Took you long enough.",
+			"camera_marker": "camera_wendy",
+			"zoom": 1.6,
+			"camera_duration": 0.25,
+			"camera_offset": [0, 20]
+		},
+		{
+			"type": "dialog",
+			"speaker": "Princess Tria",
+			"text": "You made VOXTRON?",
+			"camera_marker": "camera_tria",
+			"zoom": 1.6,
+			"camera_duration": 0.25,
+			"camera_offset": [0, 20]
+		},
+		{
+			"type": "dialog",
+			"speaker": "Wendy",
+			"text": "Yes.",
+			"camera_marker": "camera_wendy",
+			"zoom": 1.6,
+			"camera_duration": 0.25,
+			"camera_offset": [0, 20]
+		},
+		{
+			"type": "dialog",
+			"speaker": "Wendy",
+			"text": "For a perfect Mathtria.",
+			"camera_marker": "camera_wendy",
+			"zoom": 1.55,
+			"camera_duration": 0.2,
+			"camera_offset": [0, 20]
+		},
+		{
+			"type": "dialog",
+			"speaker": "Wendy",
+			"text": "No human error.",
+			"camera_marker": "camera_wendy",
+			"zoom": 1.55,
+			"camera_duration": 0.2,
+			"camera_offset": [0, 20]
+		},
+		{
+			"type": "dialog",
+			"speaker": "Wendy",
+			"text": "Only logic.",
+			"camera_marker": "camera_wendy",
+			"zoom": 1.55,
+			"camera_duration": 0.2,
+			"camera_offset": [0, 20]
+		},
+		{
+			"type": "dialog",
+			"speaker": "Princess Tria",
+			"text": "Look at it now.",
+			"camera_marker": "camera_tria",
+			"zoom": 1.55,
+			"camera_duration": 0.25,
+			"camera_offset": [0, 20]
+		},
+		{
+			"type": "dialog",
+			"speaker": "Wendy",
+			"text": "...A needed sacrifice.",
+			"camera_marker": "camera_wendy",
+			"zoom": 1.75,
+			"camera_duration": 0.25,
+			"camera_offset": [0, 20]
+		},
+		{
+			"type": "fade_out",
+			"duration": 0.12
+		},
+		{
+			"type": "hide_wendy"
+		},
+		{
+			"type": "wait",
+			"duration": 0.18
+		},
+		{
+			"type": "fade_in",
+			"duration": 0.18
+		},
+		{
+			"type": "dialog",
+			"speaker": "Princess Tria",
+			"text": "I must follow her.",
+			"camera_marker": "camera_tria",
+			"zoom": 1.45,
+			"camera_duration": 0.25,
+			"camera_offset": [0, 20]
+		},
+		{
+			"type": "move_actor",
+			"actor": "tria",
+			"marker": "triarun",
+			"duration": 1.4,
+			"animation": "walk",
+			"x_only": true
+		},
+		
+{
+	"type": "fade_out",
+	"duration": 0.35
+},
+{
+	"type": "change_scene"
+}
+
+
+
+	]
+}
