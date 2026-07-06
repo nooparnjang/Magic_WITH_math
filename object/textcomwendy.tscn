@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://t1bebnhr54am" path="res://assets/object/craftpix-net-618358-cyber-intrusion-free-gui-pixel-art-pack/1 Monitor/2.png" id="1_ph25c"]
 [ext_resource type="Script" uid="uid://ds3ptkvd4iy56" path="res://object/script/textcomwendy.gd" id="1_yngd4"]
 [ext_resource type="FontFile" uid="uid://bkbespsxdoatm" path="res://assets/font/PaybAck.ttf" id="2_yngd4"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="3_b1y6s"]
 
 [node name="Textcomwendy" type="Control" unique_id=1230793659]
 layout_mode = 3
@@ -18,15 +19,15 @@ texture = ExtResource("1_ph25c")
 
 [node name="text" type="Label" parent="CanvasLayer" unique_id=182232236]
 offset_left = 234.0
-offset_top = 148.0
+offset_top = 99.0
 offset_right = 724.0
-offset_bottom = 313.0
+offset_bottom = 353.0
 theme_override_constants/line_spacing = 10
-theme_override_fonts/font = ExtResource("2_yngd4")
-theme_override_font_sizes/font_size = 40
-text = "PROJECT : VROXTON
+theme_override_fonts/font = ExtResource("3_b1y6s")
+theme_override_font_sizes/font_size = 60
+text = "PROJECT : VOXTON
 STATUS : ACTIVE
-LEAD ENGINEER : W"
+LEAD ENGINEER : W...."
 horizontal_alignment = 1
 vertical_alignment = 1
 

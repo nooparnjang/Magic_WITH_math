@@ -176,6 +176,7 @@ limit_bottom = 700
 limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1861217414]
+visible = false
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("4_5fyw4")]
 
