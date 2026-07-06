@@ -15,7 +15,6 @@
 [ext_resource type="Script" uid="uid://dxl82somv1d0x" path="res://UIcomponent/script/demoover.gd" id="14_sqxds"]
 [ext_resource type="PackedScene" uid="uid://o256kaanef14" path="res://scenes/gameplay/level2/wonlevel_2.tscn" id="15_a52er"]
 [ext_resource type="Script" uid="uid://dblpiue1d2her" path="res://scenes/gameplay/level2/wonlevel_2.gd" id="16_tol5x"]
-[ext_resource type="PackedScene" uid="uid://bwlujfqpd5vog" path="res://enemies/bossrobot_level_2.tscn" id="17_6mt7u"]
 [ext_resource type="PackedScene" uid="uid://d0td5roiokli2" path="res://object/baseinvisibletimer.tscn" id="17_mg02f"]
 [ext_resource type="TileSet" uid="uid://cxud2l6oipbji" path="res://assets/Tiles/vel4bosskub.tres" id="19_kfyq2"]
 [ext_resource type="AudioStream" uid="uid://4en5l2qywoj2" path="res://assets/sound/ABSOLUTE TERRITORY - Ken Ashcorp (OVERDRIVE MIX) Instrumental - KETSU! (128k).mp3" id="24_84a8q"]
@@ -177,6 +176,7 @@ limit_bottom = 700
 limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1861217414]
+visible = false
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("4_5fyw4")]
 
@@ -294,15 +294,6 @@ script = ExtResource("16_tol5x")
 node_to_hide = NodePath("../title")
 
 [node name="enemies" type="Node2D" parent="." unique_id=253038640]
-
-[node name="bossrobot_level2" parent="enemies" unique_id=437712444 instance=ExtResource("17_6mt7u")]
-z_index = 1
-position = Vector2(742.99994, 458)
-scale = Vector2(2.5, 2.5)
-item_drop_id = "Gem2"
-item_drop_texture = ExtResource("6_vfqut")
-question_pattern = 0
-allowed_operators = Array[String](["-"])
 
 [node name="object" type="Node2D" parent="." unique_id=161147895]
 
