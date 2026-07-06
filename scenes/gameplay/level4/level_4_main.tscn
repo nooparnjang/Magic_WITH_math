@@ -407,7 +407,7 @@ position = Vector2(-5833, 0)
 [node name="Wendy" parent="NPC" unique_id=1920401949 instance=ExtResource("38_ppteb")]
 position = Vector2(6135, 329)
 scale = Vector2(2, 2)
-dialog_json_path = "res://npc/dialogJson/Level1Wendy.json"
+dialog_json_path = "res://npc/dialogJson/level4Wendy_first.json"
 
 [node name="enemies" type="Node2D" parent="." unique_id=1982011690]
 position = Vector2(-2051, 0)

@@ -1,0 +1,32 @@
+{
+  "npc_name": "Wendy",
+  "required_item": "",
+  "consume_required_item": false,
+  "states": {
+	"before_quest": {
+	  "lines": [
+		{
+		  "speaker": "Princess Tria",
+		  "text": "This is where it all began."
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "...Yes. "
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "Why did all the machines go that way?"
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "The final fragment must be inside. "
+		},
+		{
+		  "speaker": "Princess Tria",
+		  "text": "Let’s follow them."
+		}
+	  ],
+	  "next_state": "before_quest"
+	}
+  }
+}
