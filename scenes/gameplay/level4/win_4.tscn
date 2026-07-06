@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://bqjxvb45d23vi"]
+
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="1_8av2f"]
+[ext_resource type="Texture2D" uid="uid://6xdxb4qb8m4m" path="res://assets/UI/0 - Tutorial.png" id="2_pyfdl"]
+[ext_resource type="AudioStream" uid="uid://bxbrqltascn0r" path="res://assets/sound/eaglaxle-gaming-victory-2-464017.mp3" id="3_160x2"]
+
+[sub_resource type="Theme" id="Theme_cvaan"]
+default_font = ExtResource("1_8av2f")
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_df1eq"]
+default_font = ExtResource("1_8av2f")
+default_font_size = 20
+
+[node name="Win4" type="Control" unique_id=1346840330]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=897816589]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.80784315)
+
+[node name="Label" type="Label" parent="." unique_id=280651864]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -293.0
+offset_top = -226.0
+offset_right = 309.0
+offset_bottom = 247.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_cvaan")
+text = "Congratulation! 
+You have finished chapter 4
+
+
+
+the ancient satellight has been recovered
+"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1762458122]
+position = Vector2(484, 283)
+scale = Vector2(0.18500002, 0.19650002)
+texture = ExtResource("2_pyfdl")
+
+[node name="Label2" type="Label" parent="." unique_id=365406346]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = 206.0
+offset_right = 470.0
+offset_bottom = 261.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_df1eq")
+text = "pressing Backspace to go back to main menu
+pressing  Enter to the summary"
+horizontal_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1180048365]
+stream = ExtResource("3_160x2")
+autoplay = true

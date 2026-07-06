@@ -11,6 +11,7 @@ shader_parameter/blur_amount = 1.0
 
 [node name="Summarystory" type="Node2D" unique_id=1868565213]
 script = ExtResource("1_rchj3")
+enter_scene_path = "uid://cfy2dma4tkuky"
 
 [node name="Intro1" type="Sprite2D" parent="." unique_id=1557165609]
 position = Vector2(481, 269)
@@ -41,4 +42,14 @@ Princess Tria unites all four
 satellite fragments and unleashes
 her mathematical magic to defeat VOXTRON,
 restoring light and peace to Mathtria."
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1818502248]
+offset_left = 674.0
+offset_top = 486.0
+offset_right = 969.0
+offset_bottom = 537.0
+theme_override_fonts/font = ExtResource("3_vrb0x")
+theme_override_font_sizes/font_size = 30
+text = "left click to continue"
 horizontal_alignment = 1

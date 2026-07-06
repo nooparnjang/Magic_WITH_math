@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://cfy2dma4tkuky"]
 
 [ext_resource type="FontFile" uid="uid://tmlm6tcqp1fd" path="res://assets/font/Jersey10-Regular.ttf" id="1_3btb6"]
+[ext_resource type="Script" uid="uid://b0bkec1p0mf7r" path="res://UIcomponent/script/summarystory.gd" id="1_hda1n"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="3_0dp6v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkq1v"]
 bg_color = Color(0, 0, 0, 1)
 
 [node name="Endcredit" type="Node2D" unique_id=1173107354]
+script = ExtResource("1_hda1n")
+enter_scene_path = "uid://ds8i0pdswdh0r"
 
 [node name="bg" type="Panel" parent="." unique_id=725696341]
 offset_right = 960.0
@@ -115,3 +119,13 @@ theme_override_font_sizes/font_size = 40
 text = "Sahatchai Phoombamyen"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1317805500]
+offset_left = 674.0
+offset_top = 486.0
+offset_right = 969.0
+offset_bottom = 537.0
+theme_override_fonts/font = ExtResource("3_0dp6v")
+theme_override_font_sizes/font_size = 30
+text = "left click to continue"
+horizontal_alignment = 1
