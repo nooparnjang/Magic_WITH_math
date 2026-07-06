@@ -44,7 +44,6 @@
 [ext_resource type="PackedScene" uid="uid://7866gx1yx766" path="res://object/ConveyorBelt.tscn" id="40_edmd7"]
 [ext_resource type="Shader" uid="uid://dhnhnrr52sqkq" path="res://assets/shader/filpdarkalley.gdshader" id="40_tgpvi"]
 [ext_resource type="PackedScene" uid="uid://d0td5roiokli2" path="res://object/baseinvisibletimer.tscn" id="41_tgpvi"]
-[ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="42_2dvl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dodc"]
 size = Vector2(11939.25, 36)
@@ -683,14 +682,6 @@ theme_override_font_sizes/font_size = 30
 text = "to interact"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="NPC" type="Node2D" parent="." unique_id=610343128]
-visible = false
-
-[node name="Wendy" parent="NPC" unique_id=1969566122 instance=ExtResource("42_2dvl1")]
-position = Vector2(6135, 329)
-scale = Vector2(2, 2)
-dialog_json_path = "res://npc/dialogJson/Level1Wendy.json"
 
 [node name="invisibleWall2" type="Node2D" parent="." unique_id=1679500515]
 

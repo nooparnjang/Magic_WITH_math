@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dt4dtimks7vx4"]
+
+[ext_resource type="Script" uid="uid://b0bkec1p0mf7r" path="res://UIcomponent/script/summarystory.gd" id="1_rchj3"]
+[ext_resource type="Texture2D" uid="uid://c8uydiur3sse0" path="res://assets/bg/Intro/Intro_1.png" id="1_rk6jx"]
+[ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="2_rchj3"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="3_vrb0x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_le65u"]
+shader = ExtResource("2_rchj3")
+shader_parameter/blur_amount = 1.0
+
+[node name="Summarystory" type="Node2D" unique_id=1868565213]
+script = ExtResource("1_rchj3")
+
+[node name="Intro1" type="Sprite2D" parent="." unique_id=1557165609]
+position = Vector2(481, 269)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_rk6jx")
+
+[node name="blur" type="Panel" parent="Intro1" unique_id=1953542753]
+material = SubResource("ShaderMaterial_le65u")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=166941986]
+offset_left = 49.0
+offset_top = 100.0
+offset_right = 920.0
+offset_bottom = 437.0
+theme_override_fonts/font = ExtResource("3_vrb0x")
+theme_override_font_sizes/font_size = 50
+text = "Discovering Wendy’s shocking betrayal,
+Princess Tria unites all four
+satellite fragments and unleashes
+her mathematical magic to defeat VOXTRON,
+restoring light and peace to Mathtria."
+horizontal_alignment = 1

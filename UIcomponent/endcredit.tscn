@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://cfy2dma4tkuky"]
+
+[ext_resource type="FontFile" uid="uid://tmlm6tcqp1fd" path="res://assets/font/Jersey10-Regular.ttf" id="1_3btb6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkq1v"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Endcredit" type="Node2D" unique_id=1173107354]
+
+[node name="bg" type="Panel" parent="." unique_id=725696341]
+offset_right = 960.0
+offset_bottom = 540.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jkq1v")
+
+[node name="endcredit" type="Label" parent="." unique_id=1514635946]
+offset_left = 354.0
+offset_top = 18.0
+offset_right = 590.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("1_3btb6")
+theme_override_font_sizes/font_size = 70
+text = "Endcredit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="art" type="Label" parent="." unique_id=1326839494]
+offset_left = 84.0
+offset_top = 110.0
+offset_right = 392.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(3.465414e-06, 0.85855967, 0.99578995, 1)
+theme_override_fonts/font = ExtResource("1_3btb6")
+theme_override_font_sizes/font_size = 40
+text = "Art / Disign Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mei" type="Label" parent="." unique_id=690287643]
+offset_left = 47.0
+offset_top = 159.0
+offset_right = 432.0
+offset_bottom = 203.0
+theme_override_fonts/font = ExtResource("1_3btb6")
+theme_override_font_sizes/font_size = 40
+text = "Natthamon Romruenboonkij"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="uidesign" type="Label" parent="." unique_id=128501999]
+offset_left = 80.0
+offset_top = 218.0
+offset_right = 380.0
+offset_bottom = 262.0
+theme_override_colors/font_color = Color(0, 0.85882354, 0.99607843, 1)
+theme_override_fonts/font = ExtResource("1_3btb6")
+theme_override_font_sizes/font_size = 40
+text = "UI Disign / Level Disign"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="nicesaipan" type="Label" parent="." unique_id=1453267182]
+offset_left = 45.0
+offset_top = 267.0
+offset_right = 430.0
+offset_bottom = 358.0
+theme_override_fonts/font = ExtResource("1_3btb6")
+theme_override_font_sizes/font_size = 40
+text = "Natsinee Sampannirandorn
+Yatip Chinpattanawanich"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="devgame" type="Label" parent="." unique_id=2091415698]
+offset_left = 94.0
+offset_top = 373.0
+offset_right = 364.0
+offset_bottom = 417.0
+theme_override_colors/font_color = Color(0, 0.85882354, 0.99607843, 1)
+theme_override_fonts/font = ExtResource("1_3btb6")
+theme_override_font_sizes/font_size = 40
+text = "Game Programming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bam" type="Label" parent="." unique_id=180400501]
+offset_left = 105.0
+offset_top = 422.0
+offset_right = 354.0
+offset_bottom = 466.0
+theme_override_fonts/font = ExtResource("1_3btb6")
+theme_override_font_sizes/font_size = 40
+text = "Sutthida Joiroong"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="consultant" type="Label" parent="." unique_id=787785921]
+offset_left = 610.0
+offset_top = 109.0
+offset_right = 760.0
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(0, 0.85882354, 0.99607843, 1)
+theme_override_fonts/font = ExtResource("1_3btb6")
+theme_override_font_sizes/font_size = 40
+text = "Consultant"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="nischin" type="Label" parent="." unique_id=1677166278]
+offset_left = 509.0
+offset_top = 160.0
+offset_right = 856.0
+offset_bottom = 204.0
+theme_override_fonts/font = ExtResource("1_3btb6")
+theme_override_font_sizes/font_size = 40
+text = "Sahatchai Phoombamyen"
+horizontal_alignment = 1
+vertical_alignment = 1
