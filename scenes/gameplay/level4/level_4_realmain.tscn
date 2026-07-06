@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://dgimx5hv2dph5" path="res://object/ItemPickup.tscn" id="33_l2eo7"]
 [ext_resource type="Texture2D" uid="uid://mlr5mwcbw5xt" path="res://assets/object/Boom!!!.png" id="34_edmd7"]
 [ext_resource type="PackedScene" uid="uid://bh121x0gokun3" path="res://enemies/robot_1.tscn" id="35_gddhm"]
+[ext_resource type="Texture2D" uid="uid://bsyjl7ymjedld" path="res://assets/UI/E button.png" id="36_uc1uy"]
 [ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="37_24sdo"]
 [ext_resource type="TileSet" uid="uid://b71vu5qr2srbh" path="res://assets/Tiles/tilelevel3.tres" id="38_74rus"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="38_ht6qj"]
@@ -632,6 +633,25 @@ text = "“Those platforms look unstable... but they're safer than walking throu
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="E to interact" type="Node2D" parent="textThought" unique_id=928358555]
+position = Vector2(-28, 32)
+
+[node name="E Button" type="Sprite2D" parent="textThought/E to interact" unique_id=1514110354]
+position = Vector2(10408.001, 180)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("36_uc1uy")
+
+[node name="Label5" type="Label" parent="textThought/E to interact" unique_id=1800688918]
+offset_left = 10103.0
+offset_top = 158.0
+offset_right = 10895.0
+offset_bottom = 197.0
+theme = SubResource("Theme_vj36c")
+theme_override_font_sizes/font_size = 30
+text = "to interact"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="NPC" type="Node2D" parent="." unique_id=610343128]
 visible = false
 
@@ -778,7 +798,7 @@ position = Vector2(9965, 193)
 scale = Vector2(2, 1)
 
 [node name="QuizStructure" parent="floatjra" unique_id=1827108777 instance=ExtResource("13_bmcef")]
-position = Vector2(10256, 398.00003)
+position = Vector2(10434.001, 398.00003)
 scale = Vector2(5, 5)
 
 [connection signal="animation_finished" from="player/maincharacter/AnimatedSprite2D" to="player/maincharacter" method="_on_animated_sprite_2d_animation_finished"]

@@ -21,7 +21,7 @@
 			"answer": 0
 		},
 		{
-			"question": "What happens if you answer a shrine quiz incorrectly?",
+			"question": "What happens if you answer a incorrectly?",
 			"choices": ["Nothing", "You lose coins", "You die", "VOXTRON appear"],
 			"answer": 2
 		},
@@ -87,7 +87,7 @@
 		},
 		{
 			"question": "What can happen after defeating bosses?",
-			"choices": ["Continue the journey", "Delete your save", "End the game immediately", "Lose all controls"],
+			"choices": ["Nothing", "Delete your save", "End the game", "Lose all controls"],
 			"answer": 0
 		},
 		{
@@ -107,7 +107,7 @@
 		},
 		{
 			"question": "Why is remembering the story important?",
-			"choices": ["It helps answer quizzes", "It changes the weather", "It increases FPS", "It unlocks cheats"],
+			"choices": ["To answer quizzes", "It changes gameplay", "It increases FPS", "It unlocks cheats"],
 			"answer": 0
 		},
 		{
@@ -126,7 +126,7 @@
 			"answer": 0
 		},
 		{
-			"question": "What helps players overcome quiz shrines?",
+			"question": "What helps players overcome question?",
 			"choices": ["Paying attention to the story", "Running faster", "Collecting more coins", "Jumping higher"],
 			"answer": 0
 		}
