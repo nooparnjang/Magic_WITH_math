@@ -416,6 +416,8 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
 text = "CHAPTER 3"
+script = ExtResource("14_rm1fu")
+target_scene_path = "uid://c3plwejnfd5fa"
 
 [node name="Chapter_4" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1357458279]
 custom_minimum_size = Vector2(270, 270)
@@ -468,3 +470,5 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
 text = "CHAPTER 4"
+script = ExtResource("14_rm1fu")
+target_scene_path = "uid://d0k4j7fxwj4jm"
