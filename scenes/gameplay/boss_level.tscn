@@ -205,7 +205,6 @@ volume_db = -20.069
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=434856951]
-visible = false
 
 [node name="UImath" parent="CanvasLayer" unique_id=1769127361 instance=ExtResource("7_0yulc")]
 metadata/_edit_use_anchors_ = true
@@ -314,6 +313,7 @@ fit_content = true
 horizontal_alignment = 1
 
 [node name="gameover" parent="CanvasLayer" unique_id=1556702656 instance=ExtResource("16_npuxs")]
+visible = true
 script = ExtResource("17_sl3ip")
 
 [node name="boss" type="Node2D" parent="." unique_id=1442021845]

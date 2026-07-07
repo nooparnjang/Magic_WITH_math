@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://b0xyr6tavbeu0" path="res://assets/bg/city 1/6.png" id="6_k0kop"]
 [ext_resource type="Texture2D" uid="uid://b7tmtglnfhsca" path="res://assets/bg/city 1/7.png" id="7_bvbqx"]
 [ext_resource type="Texture2D" uid="uid://cklruqwydumpk" path="res://assets/bg/city 1/8.png" id="8_d2ovc"]
-[ext_resource type="Script" uid="uid://b0gn57jrl5ihl" path="res://scenes/gameplay/level4/script/scrolldai_2.gd" id="9_qa0fj"]
 [ext_resource type="Texture2D" uid="uid://cjbdo2dpm1rn3" path="res://assets/bg/EndlessNew/middlemerge.png" id="10_qwv0k"]
 [ext_resource type="Texture2D" uid="uid://hg5eiyc6xh3h" path="res://assets/bg/EndlessNew/Game play(1).png" id="11_00o53"]
 [ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="12_77aam"]
@@ -68,221 +67,98 @@ _data = {
 
 [node name="bg" type="Node2D" parent="." unique_id=1246388817]
 
-[node name="scroll dai" type="Node2D" parent="bg" unique_id=1691774699]
-visible = false
-z_index = -99
-position = Vector2(1925, 0)
-
-[node name="Parallax2D" type="Parallax2D" parent="bg/scroll dai" unique_id=1187712185]
-z_index = -3
-scale = Vector2(1.7, 1.7)
-scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(576, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 2
-ignore_camera_scroll = true
-
-[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D" unique_id=335801535]
-position = Vector2(480.5, 270.5)
-scale = Vector2(1.671875, 1.675926)
-texture = ExtResource("1_wkdal")
-
-[node name="Parallax2D2" type="Parallax2D" parent="bg/scroll dai" unique_id=1387255953]
-z_index = -3
-scale = Vector2(1.5, 1.5)
-scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(-973, -367)
-repeat_size = Vector2(960, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 2
-ignore_camera_scroll = true
-
-[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D2" unique_id=550334018]
-position = Vector2(480.5, 270.5)
-scale = Vector2(1.671875, 1.675926)
-texture = ExtResource("2_v6ae7")
-
-[node name="Parallax2D3" type="Parallax2D" parent="bg/scroll dai" unique_id=1806077310]
-z_index = -3
-scale = Vector2(1.7, 1.7)
-scroll_scale = Vector2(0.6, 0.6)
-scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(960, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 2
-ignore_camera_scroll = true
-
-[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D3" unique_id=2112880687]
-position = Vector2(480.5, 270.5)
-scale = Vector2(1.671875, 1.675926)
-texture = ExtResource("3_meb5a")
-
-[node name="Parallax2D4" type="Parallax2D" parent="bg/scroll dai" unique_id=1219345789]
-z_index = -3
-scale = Vector2(1.7, 1.7)
-scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(960, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 2
-ignore_camera_scroll = true
-
-[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D4" unique_id=688015926]
-position = Vector2(480.5, 270.5)
-scale = Vector2(1.671875, 1.675926)
-texture = ExtResource("4_7d1o3")
-
-[node name="Parallax2D5" type="Parallax2D" parent="bg/scroll dai" unique_id=1919957966]
-z_index = -3
-scale = Vector2(1.5, 1.5)
-scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(960, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 2
-ignore_camera_scroll = true
-
-[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D5" unique_id=858928675]
-position = Vector2(480.5, 270.5)
-scale = Vector2(1.671875, 1.675926)
-texture = ExtResource("5_4s1tk")
-
-[node name="Parallax2D6" type="Parallax2D" parent="bg/scroll dai" unique_id=803650541]
-z_index = -3
-scale = Vector2(1.5, 1.5)
-scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(960, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 2
-ignore_camera_scroll = true
-
-[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D6" unique_id=1254084081]
-position = Vector2(480.5, 270.5)
-scale = Vector2(1.671875, 1.675926)
-texture = ExtResource("6_k0kop")
-
-[node name="Parallax2D7" type="Parallax2D" parent="bg/scroll dai" unique_id=1459005566]
-z_index = -3
-scale = Vector2(1.5, 1.5)
-scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(960, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 2
-ignore_camera_scroll = true
-
-[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D7" unique_id=706366091]
-position = Vector2(480.5, 270.5)
-scale = Vector2(1.671875, 1.675926)
-texture = ExtResource("7_bvbqx")
-
-[node name="Parallax2D8" type="Parallax2D" parent="bg/scroll dai" unique_id=1882681169]
-z_index = -3
-scale = Vector2(1.7, 1.7)
-scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(-970, -360)
-repeat_size = Vector2(960, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 2
-ignore_camera_scroll = true
-
-[node name="Sprite2D" type="Sprite2D" parent="bg/scroll dai/Parallax2D8" unique_id=1828957437]
-position = Vector2(480.5, 270.5)
-scale = Vector2(1.671875, 1.675926)
-texture = ExtResource("8_d2ovc")
-
-[node name="scrolldai2" type="Node2D" parent="bg" unique_id=2078514389]
-visible = false
-z_index = -99
-position = Vector2(0, -429)
+[node name="Parallax2D" type="Parallax2D" parent="bg" unique_id=1500273319]
 scale = Vector2(2, 2)
-script = ExtResource("9_qa0fj")
-
-[node name="Parallax2D" type="Parallax2D" parent="bg/scrolldai2" unique_id=684874985]
-scroll_scale = Vector2(0.8, 0.8)
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(0, -523)
 repeat_size = Vector2(962, 0)
-follow_viewport = false
-ignore_camera_scroll = true
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D" unique_id=388945370]
+[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D" unique_id=1770647527]
+modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("1_wkdal")
 
-[node name="Parallax2D2" type="Parallax2D" parent="bg/scrolldai2" unique_id=1504189346]
-scroll_scale = Vector2(0.9, 0.9)
+[node name="Parallax2D2" type="Parallax2D" parent="bg" unique_id=37614001]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(0, -523)
 repeat_size = Vector2(962, 0)
-follow_viewport = false
-ignore_camera_scroll = true
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D2" unique_id=1751472542]
+[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D2" unique_id=1771063241]
+modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("2_v6ae7")
 
-[node name="Parallax2D3" type="Parallax2D" parent="bg/scrolldai2" unique_id=1993880339]
+[node name="Parallax2D3" type="Parallax2D" parent="bg" unique_id=669677021]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(0, -523)
 repeat_size = Vector2(962, 0)
-follow_viewport = false
-ignore_camera_scroll = true
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D3" unique_id=1542624192]
+[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D3" unique_id=1503055123]
+modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("3_meb5a")
 
-[node name="Parallax2D4" type="Parallax2D" parent="bg/scrolldai2" unique_id=788070425]
-scroll_scale = Vector2(1.1, 1.1)
+[node name="Parallax2D4" type="Parallax2D" parent="bg" unique_id=228508430]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(0, -523)
 repeat_size = Vector2(962, 0)
-follow_viewport = false
-ignore_camera_scroll = true
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D4" unique_id=1332319950]
+[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D4" unique_id=567029841]
+modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("4_7d1o3")
 
-[node name="Parallax2D5" type="Parallax2D" parent="bg/scrolldai2" unique_id=1958982563]
-scroll_scale = Vector2(1.2, 1.2)
+[node name="Parallax2D5" type="Parallax2D" parent="bg" unique_id=769102579]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.7, 0.7)
+scroll_offset = Vector2(0, -523)
 repeat_size = Vector2(962, 0)
-follow_viewport = false
-ignore_camera_scroll = true
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D5" unique_id=404169450]
+[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D5" unique_id=1995689381]
+modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("5_4s1tk")
 
-[node name="Parallax2D6" type="Parallax2D" parent="bg/scrolldai2" unique_id=334991431]
-scroll_scale = Vector2(1.3, 1.3)
+[node name="Parallax2D6" type="Parallax2D" parent="bg" unique_id=2091491998]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(0, -523)
 repeat_size = Vector2(962, 0)
-follow_viewport = false
-ignore_camera_scroll = true
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D6" unique_id=1108398404]
+[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D6" unique_id=1817518568]
+modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("6_k0kop")
 
-[node name="Parallax2D7" type="Parallax2D" parent="bg/scrolldai2" unique_id=972313090]
-scroll_scale = Vector2(1.4, 1.4)
+[node name="Parallax2D7" type="Parallax2D" parent="bg" unique_id=2134183037]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.9, 0.9)
+scroll_offset = Vector2(0, -523)
 repeat_size = Vector2(962, 0)
-follow_viewport = false
-ignore_camera_scroll = true
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D7" unique_id=1613921466]
+[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D7" unique_id=1111697632]
+modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("7_bvbqx")
 
-[node name="Parallax2D8" type="Parallax2D" parent="bg/scrolldai2" unique_id=2133959805]
-scroll_scale = Vector2(1.5, 1.5)
+[node name="Parallax2D8" type="Parallax2D" parent="bg" unique_id=211410274]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.9, 0.9)
+scroll_offset = Vector2(0, -544)
 repeat_size = Vector2(962, 0)
-follow_viewport = false
-ignore_camera_scroll = true
 
-[node name="Sprite2D" type="Sprite2D" parent="bg/scrolldai2/Parallax2D8" unique_id=1354066629]
+[node name="Sprite2D" type="Sprite2D" parent="bg/Parallax2D8" unique_id=1180586601]
+modulate = Color(0.34407577, 0.34407574, 0.34407574, 1)
 position = Vector2(480.5, 270.5)
 scale = Vector2(1.671875, 1.675926)
 texture = ExtResource("8_d2ovc")
