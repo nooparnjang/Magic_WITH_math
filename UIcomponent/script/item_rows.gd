@@ -14,7 +14,9 @@ var item_texture_map: Dictionary = {}
 func _ready() -> void:
 	item_texture_map = {
 		"bomb": bomb_texture,
+		"Gem": Gem2_texture,
 		"Gem2": Gem2_texture,
+		"Gem3": Gem2_texture,
 		"A2 key": A2_texture,
 		"potion": potion_texture,
 		"coin": coin_texture,

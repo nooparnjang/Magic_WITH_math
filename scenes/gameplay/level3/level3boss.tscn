@@ -318,6 +318,7 @@ script = ExtResource("17_n8oj4")
 
 [node name="Wonlevel3" parent="CanvasLayer" unique_id=1751032164 node_paths=PackedStringArray("node_to_hide") instance=ExtResource("18_d3bvf")]
 node_to_hide = NodePath("../title")
+enter_scene_path = "uid://d0k4j7fxwj4jm"
 
 [node name="tilelv3boss" type="Node2D" parent="." unique_id=1540161766]
 

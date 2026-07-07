@@ -223,9 +223,10 @@ visible = false
 script = ExtResource("13_41trf")
 
 [node name="Wonlevel2" parent="CanvasLayer" unique_id=1392316894 node_paths=PackedStringArray("node_to_hide") instance=ExtResource("14_21j8q")]
-visible = false
 script = ExtResource("15_41trf")
+required_item = "Gem"
 node_to_hide = NodePath("../title")
+enter_scene_path = "uid://c3plwejnfd5fa"
 
 [node name="enemies" type="Node2D" parent="." unique_id=1622167859]
 
@@ -233,7 +234,8 @@ node_to_hide = NodePath("../title")
 z_index = 1
 position = Vector2(742.99994, 458)
 scale = Vector2(2.5, 2.5)
-item_drop_id = "Gem2"
+max_hp = 14
+item_drop_id = "Gem"
 item_drop_texture = ExtResource("15_6o4a1")
 question_pattern = 0
 allowed_operators = Array[String](["-"])

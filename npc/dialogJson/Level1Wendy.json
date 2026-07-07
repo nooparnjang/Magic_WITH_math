@@ -20,7 +20,11 @@
 		},
 		{
 		  "speaker": "Wendy",
-		  "text": "A giant robot broke into my father's workshop"
+		  "text": "A giant robot-"
+		},
+		{
+		  "speaker": "Wendy",
+		  "text": "broke into my father's workshop"
 		},
 		{
 		  "speaker": "Wendy",

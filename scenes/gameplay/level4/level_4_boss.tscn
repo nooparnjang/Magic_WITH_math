@@ -485,6 +485,7 @@ layout_mode = 1
 size_flags_horizontal = 0
 size_flags_vertical = 4
 Gem2_texture = ExtResource("6_vfqut")
+Gem3_texture = ExtResource("6_vfqut")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/topright/ItemRows" unique_id=1855826947]
 layout_mode = 2
@@ -581,6 +582,7 @@ script = ExtResource("14_sqxds")
 
 [node name="Win4" parent="CanvasLayer" unique_id=1346840330 node_paths=PackedStringArray("node_to_hide") instance=ExtResource("14_bjb42")]
 script = ExtResource("16_tol5x")
+required_item = "Gem3"
 node_to_hide = NodePath("../title")
 enter_scene_path = "uid://dt4dtimks7vx4"
 
@@ -597,7 +599,7 @@ drop_type = "item"
 hit_effect_scene = ExtResource("18_ssdwu")
 floating_text_scene = ExtResource("19_5fyw4")
 item_drop_scene = ExtResource("20_3flyj")
-item_drop_id = "Gem2"
+item_drop_id = "Gem3"
 item_drop_texture = ExtResource("6_vfqut")
 
 [node name="object" type="Node2D" parent="." unique_id=161147895]

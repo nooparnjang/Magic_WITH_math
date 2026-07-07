@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://bsj34t8c6jvea" path="res://UIcomponent/gameover.tscn" id="13_kuowa"]
 [ext_resource type="Script" uid="uid://fg0rocq663t1" path="res://UIcomponent/script/gameover.gd" id="14_46gy8"]
 [ext_resource type="PackedScene" uid="uid://gl2jag4jd0p8" path="res://scenes/gameplay/level1/WonLevel1.tscn" id="15_144w2"]
-[ext_resource type="Script" uid="uid://dxl82somv1d0x" path="res://UIcomponent/script/demoover.gd" id="16_nwjkc"]
 [ext_resource type="Texture2D" uid="uid://bd47gi71umvur" path="res://assets/object/free-truck-constructor-pixel-art/1 Bodies/1_8.png" id="17_ksfra"]
 [ext_resource type="Texture2D" uid="uid://cmwjwf5bfvf53" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/7Dangerarea.png" id="18_1p4nl"]
 [ext_resource type="Texture2D" uid="uid://qw80s4eae8er" path="res://assets/object/trash assets/trash assets/box 3.png" id="19_efggf"]
@@ -338,8 +337,6 @@ script = ExtResource("14_46gy8")
 
 [node name="wonlevel1" parent="CanvasLayer" unique_id=554814659 instance=ExtResource("15_144w2")]
 visible = false
-script = ExtResource("16_nwjkc")
-main_menu_scene_path = "res://scenes/mainmenu/MainMenu.tscn"
 
 [node name="deco" type="Node2D" parent="." unique_id=1817783042]
 
