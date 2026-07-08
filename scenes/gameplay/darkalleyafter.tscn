@@ -11,9 +11,9 @@
 [ext_resource type="Script" uid="uid://c74covbqesyeh" path="res://scenes/gameplay/script/transitionDarkAlley.gd" id="11_qsbo3"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="12_k2kwk"]
 [ext_resource type="PackedScene" uid="uid://bsj34t8c6jvea" path="res://UIcomponent/gameover.tscn" id="13_rmyms"]
+[ext_resource type="Script" uid="uid://flv0rjs8qg5p" path="res://scenes/gameplay/level1/script/won_level_1.gd" id="14_bkare"]
 [ext_resource type="Script" uid="uid://fg0rocq663t1" path="res://UIcomponent/script/gameover.gd" id="14_i4yp7"]
 [ext_resource type="PackedScene" uid="uid://br3128obts5ld" path="res://UIcomponent/demoover.tscn" id="15_xltq2"]
-[ext_resource type="Script" uid="uid://dxl82somv1d0x" path="res://UIcomponent/script/demoover.gd" id="16_1efi0"]
 [ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="17_r186r"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="21_sdrjv"]
 [ext_resource type="Texture2D" uid="uid://b6bbwlrq5y775" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_2/Idle.png" id="22_ybbiv"]
@@ -296,8 +296,9 @@ horizontal_alignment = 1
 script = ExtResource("14_i4yp7")
 
 [node name="demoover" parent="CanvasLayer" unique_id=1187714313 instance=ExtResource("15_xltq2")]
-visible = false
-script = ExtResource("16_1efi0")
+script = ExtResource("14_bkare")
+enter_scene_path = "uid://cwi04628aujpn"
+backspace_scene_path = "uid://ds8i0pdswdh0r"
 
 [node name="object" type="Node2D" parent="." unique_id=466216608]
 

@@ -495,3 +495,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_8qn5i")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dww4p")
 text = "GO TO MAINMENU"
 script = ExtResource("11_dww4p")
+
+[node name="monster" type="Label" parent="." unique_id=1650072832]
+layout_mode = 0
+offset_left = 747.0
+offset_top = 508.0
+offset_right = 948.0
+offset_bottom = 534.0
+theme_override_fonts/font = ExtResource("5_ptf86")
+theme_override_font_sizes/font_size = 20
+text = "esc to resume your game"
+horizontal_alignment = 1
