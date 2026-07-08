@@ -15,8 +15,6 @@
 [ext_resource type="Script" uid="uid://c0pado6npqp4c" path="res://scenes/gameplay/script/five.gd" id="12_0amc4"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="12_5rxrm"]
 [ext_resource type="PackedScene" uid="uid://csrgo54joi1q4" path="res://scenes/gameplay/darkalley.tscn" id="13_0amc4"]
-[ext_resource type="PackedScene" uid="uid://b2fbafc67q3u2" path="res://effect/PoofEffect.tscn" id="13_an7bs"]
-[ext_resource type="PackedScene" uid="uid://b8ls1t3fdt8d6" path="res://UIcomponent/FloatingBlessingText.tscn" id="14_xnbkg"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="15_u54mw"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="17_5omta"]
 [ext_resource type="Texture2D" uid="uid://bxi8yctds1f8k" path="res://assets/UI/Instruction_small.png" id="21_s3kdt"]
@@ -347,6 +345,7 @@ script = ExtResource("4_7ue2n")
 default_target = NodePath("../player/maincharacter")
 
 [node name="Camera2D" type="Camera2D" parent="camera" unique_id=669100268]
+limit_top = -315
 limit_bottom = 540
 limit_smoothed = true
 
@@ -542,14 +541,11 @@ libraries/ = SubResource("AnimationLibrary_s3kdt")
 [node name="cone" parent="obstacle" unique_id=65342437 groups=["targetable"] instance=ExtResource("11_e7oia")]
 position = Vector2(3177.0002, 365)
 scale = Vector2(0.3, 0.3)
-hit_effect_scene = ExtResource("13_an7bs")
-floating_text_scene = ExtResource("14_xnbkg")
 
 [node name="Barrier" parent="obstacle" unique_id=433003444 groups=["targetable"] instance=ExtResource("12_5rxrm")]
 position = Vector2(3292, 355)
 scale = Vector2(0.4, 0.4)
 blessing_reward = 15
-floating_text_scene = ExtResource("14_xnbkg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1510987479]
 stream = ExtResource("6_sybox")

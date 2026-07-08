@@ -198,6 +198,7 @@ script = ExtResource("5_xbcrj")
 default_target = NodePath("../player/maincharacter")
 
 [node name="Camera2D" type="Camera2D" parent="camera" unique_id=474952895]
+limit_top = -315
 limit_bottom = 540
 limit_smoothed = true
 

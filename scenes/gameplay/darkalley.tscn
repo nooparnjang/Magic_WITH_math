@@ -161,6 +161,7 @@ script = ExtResource("4_kilis")
 default_target = NodePath("../player/maincharacter")
 
 [node name="Camera2D" type="Camera2D" parent="camera" unique_id=291323652]
+limit_top = -315
 limit_bottom = 540
 limit_smoothed = true
 
