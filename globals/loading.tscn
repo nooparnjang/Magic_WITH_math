@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://b04r744xok4fj"]
+
+[ext_resource type="Texture2D" uid="uid://la63kef6k1kr" path="res://assets/overlay/Pixel Loading/diamond 1.png" id="1_csgn0"]
+[ext_resource type="Script" uid="uid://barql8jng2127" path="res://UIcomponent/script/loading.gd" id="1_qlsme"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="2_qlsme"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkko6"]
+atlas = ExtResource("1_csgn0")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev0lv"]
+atlas = ExtResource("1_csgn0")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mychq"]
+atlas = ExtResource("1_csgn0")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x6ga"]
+atlas = ExtResource("1_csgn0")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teqnl"]
+atlas = ExtResource("1_csgn0")
+region = Rect2(192, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixw0x"]
+atlas = ExtResource("1_csgn0")
+region = Rect2(240, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rnry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkko6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev0lv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mychq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6x6ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teqnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixw0x")
+}],
+"loop": true,
+"name": &"loading",
+"speed": 7.0
+}]
+
+[node name="loading" type="Control" unique_id=1346142318]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qlsme")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=991394503]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=991226231]
+z_index = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -22.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control" unique_id=972799538]
+position = Vector2(-7.692314, -16.15385)
+scale = Vector2(3.2361393, 3.435389)
+sprite_frames = SubResource("SpriteFrames_2rnry")
+animation = &"loading"
+frame_progress = 0.25322893
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1970483629]
+layout_mode = 0
+offset_left = -83.0
+offset_top = 59.0
+offset_right = 94.0
+offset_bottom = 124.0
+theme_override_fonts/font = ExtResource("2_qlsme")
+theme_override_font_sizes/font_size = 50
+text = "Loading..."
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1971916961]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4862745)

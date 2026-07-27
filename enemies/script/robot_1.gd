@@ -197,6 +197,8 @@ func die() -> void:
 	is_attacking = false
 	can_attack = false
 	velocity = Vector2.ZERO
+	
+	LeaderboardManager.add_kill()
 
 	remove_from_group("targetable")
 

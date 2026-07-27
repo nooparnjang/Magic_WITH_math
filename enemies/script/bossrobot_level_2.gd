@@ -629,6 +629,8 @@ func die() -> void:
 	can_overload = false
 
 	velocity = Vector2.ZERO
+	
+	LeaderboardManager.add_kill()
 
 	cleanup_overload_visuals()
 

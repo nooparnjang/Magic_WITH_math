@@ -29,6 +29,9 @@ MusicManager="*uid://bjjgg11q785bo"
 QuizDatabase="*uid://djn73o0xgsvmk"
 QuizManager="*uid://dcf0st04mvxd1"
 QuizUI="*uid://bmlxchry2ghbh"
+Leadr="*uid://baoovgitc2weh"
+PlayerProfile="*uid://delivegugfc02"
+LeaderboardManager="*uid://rwhtn3323b3u"
 
 [display]
 
@@ -40,6 +43,10 @@ window/size/borderless=true
 [dotnet]
 
 project/assembly_name="เวท WTIH คณิต"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/leadr/plugin.cfg")
 
 [global_group]
 

@@ -465,6 +465,8 @@ func die() -> void:
 	can_shoot = false
 	can_cast_laser = false
 	velocity = Vector2.ZERO
+	
+	LeaderboardManager.add_kill()
 
 	remove_from_group("targetable")
 
