@@ -17,9 +17,17 @@ const MAIN_MENU_PATH := "res://scenes/mainmenu/MainMenu.tscn"
 
 
 func _ready() -> void:
+	
 	error_warning.hide()
+	
+	if PlayerProfile.has_profile():
+		call_deferred("_go_to_main_menu")
+		return
 
 
+func _go_to_main_menu() -> void:
+	get_tree().change_scene_to_file(MAIN_MENU_PATH)
+	
 func _on_button_pressed() -> void:
 	error_warning.hide()
 
@@ -43,7 +51,7 @@ func _on_button_pressed() -> void:
 		show_error("Please choose your country.")
 		return
 
-	var success := PlayerProfile.create_profile(
+	var success = PlayerProfile.create_profile(
 		username,
 		country_code
 	)

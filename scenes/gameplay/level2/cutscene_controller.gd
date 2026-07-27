@@ -57,6 +57,8 @@ var saved_actor_states: Dictionary = {}
 
 
 func _ready() -> void:
+	add_to_group("cutscene_manager")
+
 	if fade_rect != null:
 		fade_rect.visible = true
 		fade_rect.color.a = 1.0
@@ -431,7 +433,15 @@ func run_dialog(step: Dictionary) -> void:
 	waiting_for_dialog_input = true
 
 	while waiting_for_dialog_input:
-		await get_tree().process_frame
+		if not is_inside_tree():
+			return
+
+		var tree := get_tree()
+
+		if tree == null:
+			return
+
+		await tree.process_frame
 
 	hide_dialog_bubble(bubble)
 	play_actor_animation(speaker_body, idle_animation)
@@ -713,3 +723,11 @@ func get_marker(id: String) -> Node2D:
 			return camera_two_shot
 		_:
 			return null
+			
+func _exit_tree() -> void:
+	# ป้องกัน coroutine ค้างตอนเปลี่ยน scene
+	is_playing = false
+	waiting_for_dialog_input = false
+
+	active_dialog_bubble = null
+	active_speaker_body = null
