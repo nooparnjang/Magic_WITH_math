@@ -37,8 +37,10 @@ LeaderboardManager="*uid://rwhtn3323b3u"
 
 window/size/viewport_width=960
 window/size/viewport_height=540
-window/size/resizable=false
+window/size/mode=3
 window/size/borderless=true
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 
