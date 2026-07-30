@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://banuauxgr2hnf" path="res://assets/npc/wendy/Dialogue.png" id="2_2ebar"]
 [ext_resource type="Script" uid="uid://kchdcg8jck8l" path="res://npc/script/dialog_bubble.gd" id="4_bpofj"]
 [ext_resource type="Texture2D" uid="uid://buofdlvjfr6k6" path="res://assets/npc/ui/darkbubble.png" id="5_7hmhq"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_bpofj"]
 [ext_resource type="AudioStream" uid="uid://dr83rlyvrpae5" path="res://assets/sound/bleep023.mp3" id="7_8ko6q"]
-[ext_resource type="FontFile" uid="uid://bkbespsxdoatm" path="res://assets/font/PaybAck.ttf" id="7_bpofj"]
 [ext_resource type="Script" uid="uid://bmfaali7wk8g6" path="res://npc/script/hintE.gd" id="7_v81ec"]
 [ext_resource type="Texture2D" uid="uid://du1nolgtdntuy" path="res://assets/npc/ui/interact.png" id="8_l2qb5"]
 
@@ -170,11 +170,10 @@ size = Vector2(55, 77)
 texture = ExtResource("5_7hmhq")
 
 [sub_resource type="Theme" id="Theme_wqgoh"]
-default_font = ExtResource("7_bpofj")
-default_font_size = 6
+default_font = ExtResource("6_bpofj")
 
 [sub_resource type="Theme" id="Theme_k8oj4"]
-default_font = ExtResource("7_bpofj")
+default_font = ExtResource("6_bpofj")
 default_font_size = 9
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_14yld"]
@@ -227,18 +226,19 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_1gjjg")
 [node name="MarginContainer" type="MarginContainer" parent="BubbleAnchor/DialogBubble/BubbleVisual" unique_id=66376640]
 layout_mode = 0
 offset_left = -23.0
-offset_top = -72.17
+offset_top = -74.0
 offset_right = 18.0
-offset_bottom = -50.17
+offset_bottom = -50.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer" unique_id=1885754406]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="name" type="Label" parent="BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" unique_id=1929824182]
 layout_mode = 2
 theme = SubResource("Theme_wqgoh")
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 10
 text = "WENDY"
 
 [node name="Label" type="Label" parent="BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" unique_id=1497666121]
