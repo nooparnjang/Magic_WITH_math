@@ -301,14 +301,18 @@ func update_facing() -> void:
 # Melee Attack
 # -------------------------
 func try_attack_player() -> void:
-	if is_dead or is_attacking or is_overloading or not can_attack:
+	if is_dead or is_attacking or not can_attack:
 		return
 
 	if player_ref == null or not is_instance_valid(player_ref):
 		return
 
-	var horizontal_distance: float = abs(player_ref.global_position.x - global_position.x)
-	var vertical_distance: float = abs(player_ref.global_position.y - global_position.y)
+	var horizontal_distance: float = abs(
+		player_ref.global_position.x - global_position.x
+	)
+	var vertical_distance: float = abs(
+		player_ref.global_position.y - global_position.y
+	)
 
 	if horizontal_distance > attack_range:
 		return
@@ -320,35 +324,45 @@ func try_attack_player() -> void:
 	can_attack = false
 	velocity.x = 0.0
 
-	var did_play_fight := false
+	var has_fight_animation := (
+		sprite != null
+		and sprite.sprite_frames != null
+		and sprite.sprite_frames.has_animation("fight")
+	)
 
-	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("fight"):
+	if has_fight_animation:
 		sprite.sprite_frames.set_animation_loop("fight", false)
 		sprite.play("fight")
-		did_play_fight = true
 
-	await get_tree().create_timer(attack_damage_delay).timeout
+		# รอจน Animation fight เล่นจบจริง
+		await sprite.animation_finished
+	else:
+		push_warning(name + ": ไม่มี Animation ชื่อ fight")
+		await get_tree().create_timer(0.15).timeout
 
 	if is_dead:
 		return
 
+	# ตรวจระยะอีกครั้งหลัง Animation จบ
 	if player_ref != null and is_instance_valid(player_ref):
-		horizontal_distance = abs(player_ref.global_position.x - global_position.x)
-		vertical_distance = abs(player_ref.global_position.y - global_position.y)
+		horizontal_distance = abs(
+			player_ref.global_position.x - global_position.x
+		)
+		vertical_distance = abs(
+			player_ref.global_position.y - global_position.y
+		)
 
-		if horizontal_distance <= attack_range and vertical_distance <= max_vertical_attack_gap:
+		if (
+			horizontal_distance <= attack_range
+			and vertical_distance <= max_vertical_attack_gap
+		):
 			if player_ref.has_method("take_damage"):
 				player_ref.take_damage(contact_damage)
 
-	if did_play_fight and sprite != null and sprite.animation == "fight":
-		await sprite.animation_finished
-	else:
-		await get_tree().create_timer(0.12).timeout
-
-	if is_dead:
-		return
-
 	is_attacking = false
+
+	if not is_dead:
+		_play_idle()
 
 	await get_tree().create_timer(attack_cooldown).timeout
 

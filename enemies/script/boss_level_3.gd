@@ -191,48 +191,79 @@ func trigger_melee_attack() -> void:
 	if is_dead or is_attacking or not can_attack:
 		return
 
+	if player_ref == null or not is_instance_valid(player_ref):
+		return
+
 	is_attacking = true
 	can_attack = false
 	velocity.x = 0.0
 
 	print("🤜 บอสใช้ท่าตบประชิด! เพราะผู้เล่นเข้ามาใกล้เกินไป")
 
-	# หันหน้าไปหาผู้เล่นก่อนตบ
-	if sprite != null and player_ref != null:
-		var to_player = player_ref.global_position - global_position
+	# หันหน้าไปหาผู้เล่นก่อนโจมตี
+	if sprite != null:
+		var to_player: Vector2 = (
+			player_ref.global_position - global_position
+		)
+
 		if to_player.x != 0.0:
 			sprite.flip_h = to_player.x < 0.0
 
-	var did_play_fight := false
-	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("fight"):
+	var has_fight_animation := (
+		sprite != null
+		and sprite.sprite_frames != null
+		and sprite.sprite_frames.has_animation("fight")
+	)
+
+	if has_fight_animation:
+		# ต้องปิด Loop ไม่อย่างนั้น animation_finished จะไม่ทำงาน
 		sprite.sprite_frames.set_animation_loop("fight", false)
 		sprite.play("fight")
-		did_play_fight = true
 
-	# หน่วงเวลาสับมือตบ (0.18 วินาที)
-	await get_tree().create_timer(0.18).timeout
-	if is_dead: return
-
-	# ตรวจสอบอีกครั้งว่าจังหวะที่มือสับลงไป ผู้เล่นยังอยู่ให้ตบไหม
-	if player_ref != null and is_instance_valid(player_ref):
-		var horizontal_distance = abs(player_ref.global_position.x - global_position.x)
-		var vertical_distance = abs(player_ref.global_position.y - global_position.y)
-
-		if horizontal_distance <= melee_range and vertical_distance <= melee_vertical_gap:
-			if player_ref.has_method("take_damage"):
-				print("💥 บอสอัดโดนผู้เล่นตัว ๆ! ทำดาเมจประชิดอย่างแรง: ", contact_damage)
-				player_ref.take_damage(contact_damage)
-
-	if did_play_fight and sprite.animation == "fight":
+		# รอให้ Animation fight เล่นจนจบทั้งหมดก่อน
 		await sprite.animation_finished
 	else:
+		push_warning(name + ": ไม่มี Animation ชื่อ fight")
 		await get_tree().create_timer(0.15).timeout
 
-	if is_dead: return
+	if is_dead:
+		return
+
+	# ตรวจตำแหน่งผู้เล่นอีกครั้งหลัง Animation จบ
+	if player_ref != null and is_instance_valid(player_ref):
+		var horizontal_distance: float = abs(
+			player_ref.global_position.x - global_position.x
+		)
+
+		var vertical_distance: float = abs(
+			player_ref.global_position.y - global_position.y
+		)
+
+		if (
+			horizontal_distance <= melee_range
+			and vertical_distance <= melee_vertical_gap
+		):
+			if player_ref.has_method("take_damage"):
+				print(
+					"💥 บอสอัดโดนผู้เล่น! ดาเมจประชิด: ",
+					contact_damage
+				)
+
+				player_ref.take_damage(contact_damage)
+
 	is_attacking = false
 
-	# เข้าสู่ช่วงรอคูลดาวน์ก่อนจะโจมตีรอบถัดไปได้
+	# กลับไป idle หลังตีเสร็จ
+	if not is_dead and sprite != null:
+		if (
+			sprite.sprite_frames != null
+			and sprite.sprite_frames.has_animation("idle")
+		):
+			sprite.play("idle")
+
+	# รอคูลดาวน์ก่อนโจมตีรอบถัดไป
 	await get_tree().create_timer(attack_cooldown).timeout
+
 	if not is_dead:
 		can_attack = true
 

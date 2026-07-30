@@ -17,6 +17,8 @@ extends CharacterBody2D
 @export var min_stamina_to_focus := 5.0
 
 @export var damage_invincibility_time := 0.5
+@export var damage_sound: AudioStream
+@export var damage_sound_volume_db := 0.0
 
 @export var health_regen_per_second := 10.0
 @export var health_regen_delay := 4.0
@@ -32,6 +34,7 @@ extends CharacterBody2D
 @onready var status_bars: Node2D = $Statusbar
 
 var ladder_tilemap: TileMapLayer = null
+var damage_audio_player: AudioStreamPlayer2D = null
 
 var is_on_ladder := false
 var is_climbing := false
@@ -78,6 +81,12 @@ func _ready() -> void:
 	if sprite != null:
 		if not sprite.animation_finished.is_connected(_on_animated_sprite_2d_animation_finished):
 			sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+	
+	damage_audio_player = AudioStreamPlayer2D.new()
+	damage_audio_player.name = "DamageAudioPlayer"
+	damage_audio_player.stream = damage_sound
+	damage_audio_player.volume_db = damage_sound_volume_db
+	add_child(damage_audio_player)
 
 
 func _input(event: InputEvent) -> void:
@@ -591,9 +600,9 @@ func take_damage(amount: float) -> void:
 	hp = max(hp, 0.0)
 
 	time_since_last_damage = 0.0
-	
-	flash_damage()
 
+	flash_damage()
+	play_damage_sound()
 
 	print("player took damage:", amount, "hp left:", hp)
 
@@ -719,7 +728,20 @@ func flash_damage() -> void:
 
 	await get_tree().create_timer(0.08).timeout
 
-	if is_dead:
+	if sprite != null and is_instance_valid(sprite):
+		sprite.modulate = Color.WHITE
+	
+func play_damage_sound() -> void:
+	if damage_audio_player == null:
 		return
 
-	sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	if damage_sound == null:
+		return
+
+	damage_audio_player.stream = damage_sound
+	damage_audio_player.volume_db = damage_sound_volume_db
+
+	if damage_audio_player.playing:
+		damage_audio_player.stop()
+
+	damage_audio_player.play()

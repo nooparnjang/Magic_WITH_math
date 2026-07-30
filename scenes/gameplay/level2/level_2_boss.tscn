@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bkvnuyruos2j6" path="res://scenes/gameplay/bgfactory.tscn" id="1_dhou0"]
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_opyxy"]
 [ext_resource type="Script" uid="uid://nu0mm7n41ijr" path="res://scenes/gameplay/script/camera_2d.gd" id="3_0smtr"]
+[ext_resource type="AudioStream" uid="uid://hextyk2hc4vd" path="res://assets/sound/freesound_community-hurt_c_08-102842.mp3" id="3_41trf"]
 [ext_resource type="PackedScene" uid="uid://bs2vnxg4keh2i" path="res://UIcomponent/u_imath.tscn" id="4_i6dq6"]
 [ext_resource type="PackedScene" uid="uid://bucjdlqnlx10y" path="res://UIcomponent/item_rows.tscn" id="5_8ktid"]
 [ext_resource type="Texture2D" uid="uid://hfixyib85kwh" path="res://assets/object/boomn4.png" id="6_ut2mr"]
@@ -71,7 +72,7 @@ background_mode = 3
 glow_enabled = true
 glow_normalized = true
 glow_intensity = 1.37
-glow_strength = 0.75
+glow_strength = 0.73
 glow_bloom = 0.27
 glow_blend_mode = 0
 glow_hdr_luminance_cap = 19.92
@@ -95,6 +96,8 @@ scale = Vector2(2.5, 2.5)
 math_ui = NodePath("../../CanvasLayer/UImath")
 camera_rig = NodePath("../../camera")
 game_over_ui = NodePath("../../CanvasLayer/gameover")
+damage_sound = ExtResource("3_41trf")
+damage_sound_volume_db = 10.0
 
 [node name="name" parent="player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="0" unique_id=339424069]
 theme_override_colors/font_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
@@ -216,10 +219,10 @@ fit_content = true
 horizontal_alignment = 1
 
 [node name="gameover" parent="CanvasLayer" unique_id=1556702656 instance=ExtResource("10_6o4a1")]
+visible = true
 script = ExtResource("11_a4yle")
 
 [node name="demoover" parent="CanvasLayer" unique_id=1187714313 instance=ExtResource("12_21j8q")]
-visible = false
 script = ExtResource("13_41trf")
 
 [node name="Wonlevel2" parent="CanvasLayer" unique_id=1392316894 node_paths=PackedStringArray("node_to_hide") instance=ExtResource("14_21j8q")]
@@ -239,6 +242,7 @@ item_drop_id = "Gem"
 item_drop_texture = ExtResource("15_6o4a1")
 question_pattern = 0
 allowed_operators = Array[String](["-"])
+overload_damage = 50
 
 [node name="tilemap" type="Node2D" parent="." unique_id=1989986989]
 
@@ -309,3 +313,4 @@ color = Color(1, 0.72682816, 0.7433981, 1)
 [editable path="player/maincharacter/Statusbar"]
 [editable path="CanvasLayer/UImath"]
 [editable path="CanvasLayer/topright/blessingUI"]
+[editable path="object/hammerTrap"]
