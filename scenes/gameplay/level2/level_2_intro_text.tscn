@@ -1,0 +1,255 @@
+[gd_scene format=3 uid="uid://cff2m7lku50q1"]
+
+[ext_resource type="Script" uid="uid://55hiycas6fpi" path="res://scenes/gameplay/level1/script/intro_for_level_1.gd" id="1_kef2h"]
+[ext_resource type="PackedScene" uid="uid://clllit81bxbp6" path="res://scenes/gameplay/level2/level_2_intro.tscn" id="2_4exdn"]
+[ext_resource type="Texture2D" uid="uid://cqxyde5txo85b" path="res://assets/bg/free-factory-pixel-art-32x32-tileset-for-cyberpunk/2 Background/Background.png" id="3_emfp1"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="4_sk3pf"]
+
+[sub_resource type="Theme" id="Theme_d421i"]
+default_font = ExtResource("4_sk3pf")
+default_font_size = 30
+
+[sub_resource type="Animation" id="Animation_1jx4t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label3:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_su74q"]
+resource_name = "typing"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.66, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.22, 4.16),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7.6, 7.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label3:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8.182345, 9.012346),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dfb41"]
+_data = {
+&"RESET": SubResource("Animation_1jx4t"),
+&"typing": SubResource("Animation_su74q")
+}
+
+[sub_resource type="Theme" id="Theme_xsfa7"]
+default_font = ExtResource("4_sk3pf")
+default_font_size = 50
+
+[node name="level2introText" type="Control" unique_id=1932173135 node_paths=PackedStringArray("next_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kef2h")
+next_button = NodePath("Button")
+next_scene = ExtResource("2_4exdn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1174133877]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=877202956]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1470325725]
+position = Vector2(462.5, 178.50002)
+scale = Vector2(0.6788195, 0.7685186)
+texture = ExtResource("3_emfp1")
+
+[node name="Label" type="Label" parent="." unique_id=1899787369]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 99.0
+offset_right = 351.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_d421i")
+text = "With the first fragment recovered,
+ the satellite fragment begins emitting a faint signal."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label2" type="Label" parent="." unique_id=1594116]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 101.0
+offset_right = 351.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_d421i")
+text = "Using its ancient navigation system,
+Tria traces the signal to an abandoned industrial district 
+known as the Forgotten Factory."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label3" type="Label" parent="." unique_id=1726095544]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = 100.0
+offset_right = 354.0
+offset_bottom = 307.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_d421i")
+text = "Long ago, this place supplied power 
+and machinery to all of Mathtria.
+Now it has become a fortress occupied 
+by hostile machines...
+
+"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=500396011]
+libraries/ = SubResource("AnimationLibrary_dfb41")
+
+[node name="Button" type="Button" parent="." unique_id=1721175012]
+layout_mode = 0
+offset_left = 766.0
+offset_top = 7.0
+offset_right = 934.0
+offset_bottom = 80.0
+theme = SubResource("Theme_xsfa7")
+text = "NEXT ->"
+flat = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

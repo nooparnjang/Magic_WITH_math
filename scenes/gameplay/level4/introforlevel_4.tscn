@@ -1,0 +1,252 @@
+[gd_scene format=3 uid="uid://ctexmvmgoi6w7"]
+
+[ext_resource type="Script" uid="uid://55hiycas6fpi" path="res://scenes/gameplay/level1/script/intro_for_level_1.gd" id="1_qj3v5"]
+[ext_resource type="PackedScene" uid="uid://d0k4j7fxwj4jm" path="res://scenes/gameplay/level4/level_4_main.tscn" id="2_hhro3"]
+[ext_resource type="Texture2D" uid="uid://137tkjam2gxe" path="res://assets/bg/city 1/11.png" id="3_uecff"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="4_f4b85"]
+
+[sub_resource type="Theme" id="Theme_v5ci0"]
+default_font = ExtResource("4_f4b85")
+default_font_size = 30
+
+[sub_resource type="Animation" id="Animation_1jx4t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label3:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_su74q"]
+resource_name = "typing"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.66, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.22, 4.16),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7.6, 7.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label3:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8.182345, 9.012346),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8q4hd"]
+_data = {
+&"RESET": SubResource("Animation_1jx4t"),
+&"typing": SubResource("Animation_su74q")
+}
+
+[sub_resource type="Theme" id="Theme_cksj1"]
+default_font = ExtResource("4_f4b85")
+default_font_size = 50
+
+[node name="Introforlevel4" type="Control" unique_id=743541298 node_paths=PackedStringArray("next_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qj3v5")
+next_button = NodePath("Button")
+next_scene = ExtResource("2_hhro3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=909485856]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=130313094]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=2035522705]
+position = Vector2(462.5, 178.5)
+scale = Vector2(0.17057294, 0.19212963)
+texture = ExtResource("3_uecff")
+
+[node name="Label" type="Label" parent="." unique_id=1290883603]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 99.0
+offset_right = 351.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_v5ci0")
+text = "With three fragments united, the final location is revealed."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label2" type="Label" parent="." unique_id=950831229]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 101.0
+offset_right = 351.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_v5ci0")
+text = "The signal leads directly to the Central Core Tower, 
+the birthplace of VOXTRON."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label3" type="Label" parent="." unique_id=707424897]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = 100.0
+offset_right = 354.0
+offset_bottom = 307.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_v5ci0")
+text = "Dark clouds gather above the city.
+Machines from every district march toward the tower.
+As if preparing for a final battle.
+
+"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1227467862]
+libraries/ = SubResource("AnimationLibrary_8q4hd")
+
+[node name="Button" type="Button" parent="." unique_id=1190533003]
+layout_mode = 0
+offset_left = 766.0
+offset_top = 7.0
+offset_right = 934.0
+offset_bottom = 80.0
+theme = SubResource("Theme_cksj1")
+text = "NEXT ->"
+flat = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

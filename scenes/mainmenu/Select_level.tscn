@@ -310,6 +310,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
 text = "CHAPTER 1"
 script = ExtResource("14_rm1fu")
+target_scene_path = "uid://cwi04628aujpn"
 
 [node name="Chapter_2" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=653952616]
 custom_minimum_size = Vector2(270, 270)
@@ -363,7 +364,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
 text = "CHAPTER 2"
 script = ExtResource("14_rm1fu")
-target_scene_path = "uid://clllit81bxbp6"
+target_scene_path = "uid://cff2m7lku50q1"
 
 [node name="Chapter_3" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1653098263]
 custom_minimum_size = Vector2(270, 270)
@@ -417,7 +418,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
 text = "CHAPTER 3"
 script = ExtResource("14_rm1fu")
-target_scene_path = "uid://c3plwejnfd5fa"
+target_scene_path = "uid://isrrqb5eb5la"
 
 [node name="Chapter_4" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1357458279]
 custom_minimum_size = Vector2(270, 270)
@@ -471,4 +472,4 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6vqln")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rm1fu")
 text = "CHAPTER 4"
 script = ExtResource("14_rm1fu")
-target_scene_path = "uid://d0k4j7fxwj4jm"
+target_scene_path = "uid://ctexmvmgoi6w7"

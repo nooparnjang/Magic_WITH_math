@@ -21,7 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eenss")
-enter_scene_path = "uid://clllit81bxbp6"
+enter_scene_path = "uid://cff2m7lku50q1"
 backspace_scene_path = "uid://ds8i0pdswdh0r"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=84012732]

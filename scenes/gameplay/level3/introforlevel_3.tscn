@@ -1,0 +1,251 @@
+[gd_scene format=3 uid="uid://isrrqb5eb5la"]
+
+[ext_resource type="Script" uid="uid://55hiycas6fpi" path="res://scenes/gameplay/level1/script/intro_for_level_1.gd" id="1_sfd3v"]
+[ext_resource type="PackedScene" uid="uid://c3plwejnfd5fa" path="res://scenes/gameplay/level3/level3main.tscn" id="2_boaj2"]
+[ext_resource type="Texture2D" uid="uid://dbyak676ctwp" path="res://assets/bg/industrial-zone-tileset-pixel-art/2 Background/Background.png" id="3_u5m8m"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="4_hnjk7"]
+
+[sub_resource type="Theme" id="Theme_0rv0s"]
+default_font = ExtResource("4_hnjk7")
+default_font_size = 30
+
+[sub_resource type="Animation" id="Animation_1jx4t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label3:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_su74q"]
+resource_name = "typing"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.66, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.22, 4.16),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7.6, 7.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label3:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8.182345, 9.012346),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lobfq"]
+_data = {
+&"RESET": SubResource("Animation_1jx4t"),
+&"typing": SubResource("Animation_su74q")
+}
+
+[sub_resource type="Theme" id="Theme_fo2un"]
+default_font = ExtResource("4_hnjk7")
+default_font_size = 50
+
+[node name="introforlevel3" type="Control" unique_id=1084199572 node_paths=PackedStringArray("next_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sfd3v")
+next_button = NodePath("Button")
+next_scene = ExtResource("2_boaj2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1705760340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1206718647]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=2037028601]
+position = Vector2(462.5, 178.50002)
+scale = Vector2(0.6788195, 0.7685186)
+texture = ExtResource("3_u5m8m")
+
+[node name="Label" type="Label" parent="." unique_id=2075760494]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 99.0
+offset_right = 351.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0rv0s")
+text = "After combining two fragments, a hidden map is revealed."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label2" type="Label" parent="." unique_id=907744752]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 101.0
+offset_right = 351.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0rv0s")
+text = "The next signal originates beneath Mathtria, 
+inside an abandoned underground data network."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label3" type="Label" parent="." unique_id=443792688]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = 100.0
+offset_right = 354.0
+offset_bottom = 307.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0rv0s")
+text = "The tunnels once carried information 
+throughout the entire kingdom.
+Now they are corrupted by rogue machines.
+"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2106096342]
+libraries/ = SubResource("AnimationLibrary_lobfq")
+
+[node name="Button" type="Button" parent="." unique_id=1878463231]
+layout_mode = 0
+offset_left = 766.0
+offset_top = 7.0
+offset_right = 934.0
+offset_bottom = 80.0
+theme = SubResource("Theme_fo2un")
+text = "NEXT ->"
+flat = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
