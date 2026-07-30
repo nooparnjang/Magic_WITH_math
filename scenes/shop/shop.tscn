@@ -153,12 +153,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="box_stamina" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=540497048]
+[node name="box_damage" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=540497048]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="P_stamina" type="Panel" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1815556153]
+[node name="P_damage" type="Panel" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1815556153]
 custom_minimum_size = Vector2(138, 73)
 layout_mode = 0
 offset_left = 53.0
@@ -167,7 +167,7 @@ offset_right = 208.0137
 offset_bottom = 89.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vk20h")
 
-[node name="stamina" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1242572193]
+[node name="damage" type="Label" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1242572193]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 94.0
@@ -175,11 +175,12 @@ offset_right = 247.0
 offset_bottom = 175.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
-text = "INCREASE STAMINA
-RECOVERY SPEED"
+text = "INCREASE DAMAGE
+BY 5 %"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="P_BlessStamina" type="Panel" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1755995898]
+[node name="P_BlessDamage" type="Panel" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1755995898]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 176.0
@@ -187,7 +188,7 @@ offset_right = 234.0
 offset_bottom = 280.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_stamina" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1663254311]
+[node name="b_damage" type="Label" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1663254311]
 layout_mode = 0
 offset_left = 45.0
 offset_top = 210.0
@@ -199,12 +200,12 @@ theme_override_font_sizes/font_size = 30
 text = "30 BLESSINGS"
 horizontal_alignment = 1
 
-[node name="box_monster" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=729960447]
+[node name="box_speed" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=729960447]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="slimeblue" type="Panel" parent="ScrollContainer/HBoxContainer/box_monster" unique_id=1247381972]
+[node name="P_speed" type="Panel" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1247381972]
 layout_mode = 0
 offset_left = 79.0
 offset_top = 13.0
@@ -212,7 +213,7 @@ offset_right = 185.0
 offset_bottom = 71.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_dww4p")
 
-[node name="monster" type="Label" parent="ScrollContainer/HBoxContainer/box_monster" unique_id=418250560]
+[node name="speed" type="Label" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=418250560]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 73.0
@@ -220,12 +221,13 @@ offset_right = 272.0
 offset_bottom = 196.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
-text = "-7% MONSTER
-ATTACK SPEED
-+ FOCUS TIME"
+text = "INCREASE
+MOVE SPEED
+BY 3 %"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="P_BlessMonster" type="Panel" parent="ScrollContainer/HBoxContainer/box_monster" unique_id=1403355757]
+[node name="P_BlessSpeed" type="Panel" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1403355757]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 177.0
@@ -233,7 +235,7 @@ offset_right = 233.0
 offset_bottom = 281.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_monster" type="Label" parent="ScrollContainer/HBoxContainer/box_monster" unique_id=1919827227]
+[node name="b_speed" type="Label" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1919827227]
 layout_mode = 0
 offset_left = 47.0
 offset_top = 210.0
@@ -242,7 +244,7 @@ offset_bottom = 249.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
-text = "70 BLESSINGS"
+text = "30 BLESSINGS"
 horizontal_alignment = 1
 
 [node name="box_hp" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=233470356]
@@ -265,11 +267,11 @@ offset_right = 270.0
 offset_bottom = 175.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
-text = "INCREASE MAX HP
-BY 9%"
+text = "INCREASE MAX HP"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=294845304]
+[node name="P_BlessHP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=294845304]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 178.0
@@ -286,15 +288,15 @@ offset_bottom = 249.0
 theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
-text = "70 BLESSINGS"
+text = "50 BLESSINGS"
 horizontal_alignment = 1
 
-[node name="box_hp2" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=651481762]
+[node name="box_stamina" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=651481762]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=1054047044]
+[node name="P_stanima" type="Panel" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1054047044]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 3.0
@@ -302,18 +304,18 @@ offset_right = 207.0
 offset_bottom = 90.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
 
-[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=127008678]
+[node name="stamina" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=127008678]
 layout_mode = 0
 offset_top = 94.0
 offset_right = 270.0
 offset_bottom = 175.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
-text = "INCREASE MAX HP
-BY 9%"
+text = "INCREASE MAX
+STAMINA"
 horizontal_alignment = 1
 
-[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=1471177758]
+[node name="P_BlessStamina" type="Panel" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1471177758]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 178.0
@@ -321,7 +323,7 @@ offset_right = 236.0
 offset_bottom = 282.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp2" unique_id=1786087520]
+[node name="b_stamina" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1786087520]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 210.0
@@ -333,12 +335,12 @@ theme_override_font_sizes/font_size = 30
 text = "70 BLESSINGS"
 horizontal_alignment = 1
 
-[node name="box_hp3" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1773840665]
+[node name="box_healrate" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1773840665]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=1251277642]
+[node name="P_healrate" type="Panel" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=1251277642]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 3.0
@@ -346,18 +348,20 @@ offset_right = 207.0
 offset_bottom = 90.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
 
-[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=1198010210]
+[node name="healrate" type="Label" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=1198010210]
 layout_mode = 0
-offset_top = 94.0
+offset_top = 75.0
 offset_right = 270.0
-offset_bottom = 175.0
+offset_bottom = 198.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 30
-text = "INCREASE MAX HP
-BY 9%"
+text = "INCREASE
+HEAL RATE
+BY 20%"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=2141956394]
+[node name="P_BlessHealrate" type="Panel" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=2141956394]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 178.0
@@ -365,7 +369,7 @@ offset_right = 236.0
 offset_bottom = 282.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp3" unique_id=2008336128]
+[node name="b_healrate" type="Label" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=2008336128]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 210.0
