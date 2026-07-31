@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://doemd88n8dcag"]
+
+[ext_resource type="Script" uid="uid://njhpgraohynn" path="res://scenes/shop/script/ShopPopup.gd" id="1_bx7c0"]
+
+[node name="Popup" type="CanvasLayer" unique_id=220710117]
+script = ExtResource("1_bx7c0")
+
+[node name="Panel" type="Panel" parent="." unique_id=692799940]
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="Message" type="Label" parent="Panel" unique_id=2136627977]
+layout_mode = 0
+offset_top = 354.0
+offset_right = 960.0
+offset_bottom = 404.0
