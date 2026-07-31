@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b3yitaqxp4c4q" path="res://assets/bg/GameplayEndless/front.png" id="3_ctpgp"]
 [ext_resource type="Shader" uid="uid://bc73kuymiixrx" path="res://assets/shader/screen_texture(blur).gdshader" id="4_ctpgp"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_ptf86"]
+[ext_resource type="Script" uid="uid://6qiyv88qu37u" path="res://scenes/shop/script/ShopCard.gd" id="6_dww4p"]
 [ext_resource type="Texture2D" uid="uid://c7obrueihtqfn" path="res://assets/UI/uiforshop/Stamina max.png" id="6_xcdpw"]
 [ext_resource type="Texture2D" uid="uid://d0lby7eix2vck" path="res://assets/UI/uiforshop/สไลม์ (ฟ้า+selected).png" id="7_tp26b"]
 [ext_resource type="Texture2D" uid="uid://dm0f62shr1av4" path="res://assets/UI/uiforshop/Hp max.png" id="8_vk20h"]
@@ -157,8 +158,10 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+script = ExtResource("6_dww4p")
+item_id = "damage"
 
-[node name="P_damage" type="Panel" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1815556153]
+[node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1815556153]
 custom_minimum_size = Vector2(138, 73)
 layout_mode = 0
 offset_left = 53.0
@@ -167,7 +170,7 @@ offset_right = 208.0137
 offset_bottom = 89.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vk20h")
 
-[node name="damage" type="Label" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1242572193]
+[node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1242572193]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 94.0
@@ -180,7 +183,7 @@ BY 5 %"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="P_BlessDamage" type="Panel" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1755995898]
+[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1755995898]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 176.0
@@ -188,7 +191,7 @@ offset_right = 234.0
 offset_bottom = 280.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_damage" type="Label" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1663254311]
+[node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1663254311]
 layout_mode = 0
 offset_left = 45.0
 offset_top = 210.0
@@ -204,8 +207,10 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+script = ExtResource("6_dww4p")
+item_id = "speed"
 
-[node name="P_speed" type="Panel" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1247381972]
+[node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1247381972]
 layout_mode = 0
 offset_left = 79.0
 offset_top = 13.0
@@ -213,7 +218,7 @@ offset_right = 185.0
 offset_bottom = 71.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_dww4p")
 
-[node name="speed" type="Label" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=418250560]
+[node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=418250560]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 73.0
@@ -227,7 +232,7 @@ BY 3 %"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="P_BlessSpeed" type="Panel" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1403355757]
+[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1403355757]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 177.0
@@ -235,7 +240,7 @@ offset_right = 233.0
 offset_bottom = 281.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_speed" type="Label" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1919827227]
+[node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1919827227]
 layout_mode = 0
 offset_left = 47.0
 offset_top = 210.0
@@ -251,8 +256,10 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+script = ExtResource("6_dww4p")
+item_id = "max_hp"
 
-[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1584041526]
+[node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1584041526]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 3.0
@@ -260,7 +267,7 @@ offset_right = 207.0
 offset_bottom = 90.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
 
-[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1597445837]
+[node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1597445837]
 layout_mode = 0
 offset_top = 94.0
 offset_right = 270.0
@@ -271,7 +278,7 @@ text = "INCREASE MAX HP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="P_BlessHP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=294845304]
+[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=294845304]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 178.0
@@ -279,7 +286,7 @@ offset_right = 236.0
 offset_bottom = 282.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1250027110]
+[node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1250027110]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 210.0
@@ -295,8 +302,10 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+script = ExtResource("6_dww4p")
+item_id = "max_stamina"
 
-[node name="P_stanima" type="Panel" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1054047044]
+[node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1054047044]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 3.0
@@ -304,7 +313,7 @@ offset_right = 207.0
 offset_bottom = 90.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
 
-[node name="stamina" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=127008678]
+[node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=127008678]
 layout_mode = 0
 offset_top = 94.0
 offset_right = 270.0
@@ -315,7 +324,7 @@ text = "INCREASE MAX
 STAMINA"
 horizontal_alignment = 1
 
-[node name="P_BlessStamina" type="Panel" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1471177758]
+[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1471177758]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 178.0
@@ -323,7 +332,7 @@ offset_right = 236.0
 offset_bottom = 282.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_stamina" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1786087520]
+[node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1786087520]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 210.0
@@ -339,8 +348,10 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
+script = ExtResource("6_dww4p")
+item_id = "heal_rate"
 
-[node name="P_healrate" type="Panel" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=1251277642]
+[node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=1251277642]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 3.0
@@ -348,7 +359,7 @@ offset_right = 207.0
 offset_bottom = 90.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
 
-[node name="healrate" type="Label" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=1198010210]
+[node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=1198010210]
 layout_mode = 0
 offset_top = 75.0
 offset_right = 270.0
@@ -361,7 +372,7 @@ BY 20%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="P_BlessHealrate" type="Panel" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=2141956394]
+[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=2141956394]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 178.0
@@ -369,7 +380,7 @@ offset_right = 236.0
 offset_bottom = 282.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_healrate" type="Label" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=2008336128]
+[node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=2008336128]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 210.0
@@ -386,7 +397,7 @@ custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1211051958]
+[node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1211051958]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 3.0
@@ -394,7 +405,7 @@ offset_right = 207.0
 offset_bottom = 90.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
 
-[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1546318335]
+[node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1546318335]
 layout_mode = 0
 offset_top = 94.0
 offset_right = 270.0
@@ -405,7 +416,7 @@ text = "INCREASE MAX HP
 BY 9%"
 horizontal_alignment = 1
 
-[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1276939944]
+[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1276939944]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 178.0
@@ -413,7 +424,7 @@ offset_right = 236.0
 offset_bottom = 282.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1990240481]
+[node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1990240481]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 210.0
@@ -430,7 +441,7 @@ custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
 
-[node name="P_HP" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=976845271]
+[node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=976845271]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 3.0
@@ -438,7 +449,7 @@ offset_right = 207.0
 offset_bottom = 90.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
 
-[node name="hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1781893294]
+[node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1781893294]
 layout_mode = 0
 offset_top = 94.0
 offset_right = 270.0
@@ -449,7 +460,7 @@ text = "INCREASE MAX HP
 BY 9%"
 horizontal_alignment = 1
 
-[node name="P_BlessMonster2" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1754895448]
+[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1754895448]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 178.0
@@ -457,7 +468,7 @@ offset_right = 236.0
 offset_bottom = 282.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
 
-[node name="b_hp" type="Label" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1311232692]
+[node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1311232692]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 210.0
