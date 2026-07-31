@@ -208,26 +208,31 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pw314"]
-size = Vector2(36.5, 38)
+size = Vector2(57.25, 38)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bju8c"]
-size = Vector2(71, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3glfs"]
+size = Vector2(85, 11)
 
 [node name="Robot1" type="CharacterBody2D" unique_id=1544183853]
 script = ExtResource("1_0fyhe")
+attack_range = 175.0
+max_vertical_attack_gap = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=179704813]
 position = Vector2(-2, 1)
 scale = Vector2(0.5966667, 0.5966667)
 sprite_frames = SubResource("SpriteFrames_k11vb")
-animation = &"dead"
+animation = &"fight"
+frame = 28
+frame_progress = 0.75000167
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1377225186]
+position = Vector2(10.375, 0)
 shape = SubResource("RectangleShape2D_pw314")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1050438496]
 position = Vector2(0, -20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=708963498]
-position = Vector2(23.5, 14)
-shape = SubResource("RectangleShape2D_bju8c")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1763970987]
+position = Vector2(38.5, 15.5)
+shape = SubResource("RectangleShape2D_3glfs")
