@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://6qiyv88qu37u" path="res://scenes/shop/script/ShopCard.gd" id="6_dww4p"]
 [ext_resource type="Texture2D" uid="uid://c7obrueihtqfn" path="res://assets/UI/uiforshop/Stamina max.png" id="6_xcdpw"]
 [ext_resource type="Texture2D" uid="uid://d0lby7eix2vck" path="res://assets/UI/uiforshop/สไลม์ (ฟ้า+selected).png" id="7_tp26b"]
+[ext_resource type="Texture2D" uid="uid://bapemr4vitn8r" path="res://assets/UI/Bg blessings .png" id="8_g6lcs"]
 [ext_resource type="Texture2D" uid="uid://dm0f62shr1av4" path="res://assets/UI/uiforshop/Hp max.png" id="8_vk20h"]
 [ext_resource type="Texture2D" uid="uid://cgf6hkyrv7pr2" path="res://assets/UI/uiforshop/Bg blessings .png" id="9_tp26b"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="10_vk20h"]
@@ -56,14 +57,14 @@ corner_radius_bottom_left = 16
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vk20h"]
 texture = ExtResource("6_xcdpw")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8qn5i"]
-texture = ExtResource("9_tp26b")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dww4p"]
 texture = ExtResource("7_tp26b")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g6lcs"]
 texture = ExtResource("8_vk20h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8qn5i"]
+texture = ExtResource("9_tp26b")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qn5i"]
 bg_color = Color(0.32941177, 0.16078432, 0.32941177, 0.87058824)
@@ -171,25 +172,30 @@ offset_bottom = 89.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vk20h")
 
 [node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1242572193]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 94.0
-offset_right = 247.0
-offset_bottom = 175.0
+layout_mode = 1
+offset_left = 56.0
+offset_top = 99.0
+offset_right = 208.0
+offset_bottom = 167.625
 theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
-text = "INCREASE DAMAGE
-BY 5 %"
+theme_override_font_sizes/font_size = 25
+text = "INCREASE
+DAMAGE BY 5 %"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1755995898]
+[node name="BuyButton" type="TextureButton" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=285797709]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 176.0
-offset_right = 234.0
-offset_bottom = 280.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
+offset_left = 34.0
+offset_top = 174.0
+offset_right = 1954.0
+offset_bottom = 1254.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("8_g6lcs")
+texture_pressed = ExtResource("8_g6lcs")
+texture_hover = ExtResource("8_g6lcs")
+texture_disabled = ExtResource("8_g6lcs")
 
 [node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1663254311]
 layout_mode = 0
@@ -219,26 +225,31 @@ offset_bottom = 71.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_dww4p")
 
 [node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=418250560]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 73.0
-offset_right = 272.0
-offset_bottom = 196.0
+layout_mode = 1
+offset_left = 68.0
+offset_top = 76.0
+offset_right = 195.0
+offset_bottom = 199.0
 theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "INCREASE
 MOVE SPEED
 BY 3 %"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1403355757]
+[node name="BuyButton" type="TextureButton" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1244741598]
 layout_mode = 0
-offset_left = 31.0
-offset_top = 177.0
-offset_right = 233.0
-offset_bottom = 281.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
+offset_left = 35.0
+offset_top = 175.0
+offset_right = 1955.0
+offset_bottom = 1255.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("8_g6lcs")
+texture_pressed = ExtResource("8_g6lcs")
+texture_hover = ExtResource("8_g6lcs")
+texture_disabled = ExtResource("8_g6lcs")
 
 [node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1919827227]
 layout_mode = 0
@@ -269,22 +280,28 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
 
 [node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1597445837]
 layout_mode = 0
+offset_left = 43.0
 offset_top = 94.0
-offset_right = 270.0
+offset_right = 229.0
 offset_bottom = 175.0
 theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "INCREASE MAX HP"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=294845304]
+[node name="BuyButton" type="TextureButton" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1138180559]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 178.0
-offset_right = 236.0
-offset_bottom = 282.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
+offset_left = 36.0
+offset_top = 174.0
+offset_right = 1956.0
+offset_bottom = 1254.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("8_g6lcs")
+texture_pressed = ExtResource("8_g6lcs")
+texture_hover = ExtResource("8_g6lcs")
+texture_disabled = ExtResource("8_g6lcs")
 
 [node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_hp" unique_id=1250027110]
 layout_mode = 0
@@ -315,22 +332,29 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
 
 [node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=127008678]
 layout_mode = 0
+offset_left = 58.0
 offset_top = 94.0
-offset_right = 270.0
+offset_right = 211.0
 offset_bottom = 175.0
 theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
-text = "INCREASE MAX
-STAMINA"
+theme_override_font_sizes/font_size = 25
+text = "INCREASE
+MAX STAMINA"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1471177758]
+[node name="BuyButton" type="TextureButton" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=859813064]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 178.0
 offset_right = 236.0
 offset_bottom = 282.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("8_g6lcs")
+texture_pressed = ExtResource("8_g6lcs")
+texture_hover = ExtResource("8_g6lcs")
+texture_disabled = ExtResource("8_g6lcs")
 
 [node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=1786087520]
 layout_mode = 0
@@ -361,24 +385,28 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
 
 [node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=1198010210]
 layout_mode = 0
-offset_top = 75.0
-offset_right = 270.0
-offset_bottom = 198.0
+offset_left = 72.0
+offset_top = 72.0
+offset_right = 191.0
+offset_bottom = 195.0
 theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
-text = "INCREASE
-HEAL RATE
-BY 20%"
+theme_override_font_sizes/font_size = 25
+text = "INCREASE HEAL RATE BY 20%"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=2141956394]
+[node name="BuyButton" type="TextureButton" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=1809690434]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 178.0
 offset_right = 236.0
 offset_bottom = 282.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("8_g6lcs")
+texture_pressed = ExtResource("8_g6lcs")
+texture_hover = ExtResource("8_g6lcs")
+texture_disabled = ExtResource("8_g6lcs")
 
 [node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_healrate" unique_id=2008336128]
 layout_mode = 0

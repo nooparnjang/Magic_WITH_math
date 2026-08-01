@@ -1,25 +1,21 @@
 extends Node
 
 # =====================================================
-# Signals
+# Shop Memory
+#
+# หน้าที่
+# - จำว่า Player ซื้อ Upgrade อะไรไปแล้ว
+# - เก็บ Level ของ Upgrade
+# - ส่ง Signal เมื่อมีการเปลี่ยนแปลง
 # =====================================================
 
-signal upgrade_changed(upgrade_type: String, new_level: int)
-signal data_loaded
-signal data_saved
-signal data_reset
+signal stats_updated
 
 # =====================================================
-# Save Path
+# Upgrade Levels
 # =====================================================
 
-const SAVE_PATH := "user://shop_upgrade.json"
-
-# =====================================================
-# Upgrade Level Memory
-# =====================================================
-
-var _upgrade_levels: Dictionary = {
+var levels: Dictionary = {
 	"damage": 0,
 	"speed": 0,
 	"max_hp": 0,
@@ -27,185 +23,111 @@ var _upgrade_levels: Dictionary = {
 	"heal_rate": 0
 }
 
-# =====================================================
-# Ready
-# =====================================================
-
-func _ready() -> void:
-	load_data()
 
 # =====================================================
-# Public API
+# Get
 # =====================================================
 
-## คืนค่า Level ของ Upgrade
-func get_level(upgrade_type: String) -> int:
-	return int(_upgrade_levels.get(upgrade_type, 0))
+func get_level(item_id: String) -> int:
+
+	if !levels.has(item_id):
+		return 0
+
+	return levels[item_id]
 
 
-## คืน Dictionary ทั้งหมด (Copy)
 func get_all_levels() -> Dictionary:
-	return _upgrade_levels.duplicate(true)
+	return levels.duplicate(true)
 
 
-## ตั้งค่า Level โดยตรง
-func set_level(upgrade_type: String, level: int) -> void:
+# =====================================================
+# Set
+# =====================================================
 
-	if !_upgrade_levels.has(upgrade_type):
-		push_warning("Unknown Upgrade : %s" % upgrade_type)
+func set_level(item_id: String, level: int) -> void:
+
+	if !levels.has(item_id):
+		push_error("ShopMemory : Invalid Item ID -> " + item_id)
 		return
 
-	level = clamp(level, 0, ShopData.get_max_level(upgrade_type))
+	var max_level: int = ShopData.get_max_level(item_id)
 
-	_upgrade_levels[upgrade_type] = level
+	level = clamp(level, 0, max_level)
 
-	save_data()
+	levels[item_id] = level
 
-	upgrade_changed.emit(
-		upgrade_type,
-		level
-	)
+	stats_updated.emit()
 
 
-## เพิ่ม Level 1 ขั้น
-func add_level(upgrade_type: String) -> bool:
+# =====================================================
+# Add
+# =====================================================
 
-	if !_upgrade_levels.has(upgrade_type):
-		push_warning("Unknown Upgrade : %s" % upgrade_type)
-		return false
+func add_level(item_id: String) -> void:
 
-	if is_max_level(upgrade_type):
-		return false
+	if !levels.has(item_id):
+		push_error("ShopMemory : Invalid Item ID -> " + item_id)
+		return
 
-	_upgrade_levels[upgrade_type] += 1
+	var current: int = levels[item_id]
+	var max_level: int = ShopData.get_max_level(item_id)
 
-	save_data()
+	if current >= max_level:
+		return
 
-	upgrade_changed.emit(
-		upgrade_type,
-		_upgrade_levels[upgrade_type]
-	)
+	levels[item_id] += 1
 
-	return true
-
-
-## ลด Level 1 ขั้น
-func remove_level(upgrade_type: String) -> bool:
-
-	if !_upgrade_levels.has(upgrade_type):
-		return false
-
-	if _upgrade_levels[upgrade_type] <= 0:
-		return false
-
-	_upgrade_levels[upgrade_type] -= 1
-
-	save_data()
-
-	upgrade_changed.emit(
-		upgrade_type,
-		_upgrade_levels[upgrade_type]
-	)
-
-	return true
+	stats_updated.emit()
 
 
-## เช็คว่าเต็มหรือยัง
-func is_max_level(upgrade_type: String) -> bool:
+# =====================================================
+# Check
+# =====================================================
 
-	if !_upgrade_levels.has(upgrade_type):
+func is_max_level(item_id: String) -> bool:
+
+	if !levels.has(item_id):
 		return true
 
-	return _upgrade_levels[upgrade_type] >= ShopData.get_max_level(upgrade_type)
+	return levels[item_id] >= ShopData.get_max_level(item_id)
 
 
-## รีเซ็ต Upgrade ทั้งหมด
-func reset_data() -> void:
+func has_upgrade(item_id: String) -> bool:
 
-	for key in _upgrade_levels.keys():
-		_upgrade_levels[key] = 0
+	if !levels.has(item_id):
+		return false
 
-	save_data()
+	return levels[item_id] > 0
 
-	data_reset.emit()
 
 # =====================================================
-# Save
+# Reset
 # =====================================================
 
-func save_data() -> void:
+func reset() -> void:
 
-	var file := FileAccess.open(
-		SAVE_PATH,
-		FileAccess.WRITE
-	)
+	for id in levels.keys():
+		levels[id] = 0
 
-	if file == null:
-		push_error("Cannot save ShopMemory")
-		return
+	stats_updated.emit()
 
-	file.store_string(
-		JSON.stringify(_upgrade_levels, "\t")
-	)
-
-	data_saved.emit()
-
-# =====================================================
-# Load
-# =====================================================
-
-func load_data() -> void:
-
-	if !FileAccess.file_exists(SAVE_PATH):
-
-		save_data()
-		return
-
-	var file := FileAccess.open(
-		SAVE_PATH,
-		FileAccess.READ
-	)
-
-	if file == null:
-		push_error("Cannot load ShopMemory")
-		return
-
-	var json = JSON.parse_string(
-		file.get_as_text()
-	)
-
-	if !(json is Dictionary):
-		push_error("Invalid ShopMemory Save")
-		return
-
-	for key in _upgrade_levels.keys():
-		_upgrade_levels[key] = int(
-			json.get(key, 0)
-		)
-
-	data_loaded.emit()
-
-	for key in _upgrade_levels.keys():
-
-		upgrade_changed.emit(
-			key,
-			_upgrade_levels[key]
-		)
 
 # =====================================================
 # Debug
 # =====================================================
 
-func print_memory() -> void:
+func print_levels() -> void:
 
-	print("==============================")
-	print(" SHOP MEMORY ")
-	print("==============================")
+	print("==========================")
+	print("SHOP MEMORY")
+	print("==========================")
 
-	for key in _upgrade_levels.keys():
+	for id in levels.keys():
 
 		print(
-			key,
-			" Lv.",
-			_upgrade_levels[key]
+			id,
+			" : Lv.",
+			levels[id],
+			"/",
+			ShopData.get_max_level(id)
 		)

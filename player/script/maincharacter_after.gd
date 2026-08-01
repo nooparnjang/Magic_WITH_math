@@ -103,11 +103,6 @@ func _ready() -> void:
 	if status_bars != null and status_bars.has_method("setup"):
 		status_bars.setup(max_hp, hp, max_stamina, stamina)
 
-	if sprite != null:
-		if not sprite.animation_finished.is_connected(_on_animated_sprite_2d_animation_finished):
-			sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
-
-
 func _input(event: InputEvent) -> void:
 	if is_dead:
 		return

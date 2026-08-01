@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://5urlh82lpj56"]
 
-[ext_resource type="Script" uid="uid://ddmei86q2g01w" path="res://player/script/maincharacter.gd" id="1_qwy5e"]
-[ext_resource type="AudioStream" uid="uid://hextyk2hc4vd" path="res://assets/sound/freesound_community-hurt_c_08-102842.mp3" id="2_pde1g"]
+[ext_resource type="Script" uid="uid://buvcs8odmmc8q" path="res://player/script/maincharacter_after.gd" id="1_8sr8i"]
 [ext_resource type="Texture2D" uid="uid://drfhe380nmdfd" path="res://assets/player/Main/Attack _main_12fps/main_Attack_F-1.png" id="3_56mqj"]
 [ext_resource type="Texture2D" uid="uid://bqugxdp4xd0mk" path="res://assets/player/Main/idle_main_3fps/main_Idle_F-1.png" id="3_pde1g"]
 [ext_resource type="Texture2D" uid="uid://buyp4unhppgpq" path="res://assets/player/Main/Attack _main_12fps/main_Attack_F-2.png" id="4_cp01s"]
@@ -243,8 +242,7 @@ default_font = ExtResource("16_txfxw")
 default_font_size = 9
 
 [node name="maincharacter" type="CharacterBody2D" unique_id=1926872742 groups=["player"]]
-script = ExtResource("1_qwy5e")
-damage_sound = ExtResource("2_pde1g")
+script = ExtResource("1_8sr8i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=187358986]
 position = Vector2(-1, 1)
