@@ -4,47 +4,98 @@
 [ext_resource type="Script" uid="uid://6l17bl55r5yb" path="res://scenes/leaderboard/script/player_row.gd" id="1_spo07"]
 
 [node name="HBoxContainer" type="HBoxContainer" unique_id=353832477]
-offset_right = 714.0
-offset_bottom = 52.0
+anchors_preset = -1
+anchor_right = 0.98125
+anchor_bottom = 0.096296296
+offset_right = 16.0
 theme_override_constants/separation = 40
 script = ExtResource("1_spo07")
+metadata/_edit_use_anchors_ = true
 
-[node name="RANK" type="Label" parent="." unique_id=77347911]
+[node name="Rank" type="Control" parent="." unique_id=487561065]
 custom_minimum_size = Vector2(81, 52)
 layout_mode = 2
+
+[node name="RANK" type="Label" parent="Rank" unique_id=77347911]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_cdrom")
 theme_override_font_sizes/font_size = 40
 text = "RANK"
 horizontal_alignment = 1
 
-[node name="RANK2" type="Label" parent="." unique_id=396788577]
-custom_minimum_size = Vector2(83, 52)
+[node name="Rank2" type="Control" parent="." unique_id=665755773]
+custom_minimum_size = Vector2(183, 52.5)
 layout_mode = 2
+
+[node name="RANK2" type="Label" parent="Rank2" unique_id=396788577]
+custom_minimum_size = Vector2(183, 52.5)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_cdrom")
 theme_override_font_sizes/font_size = 40
 text = "name"
 horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 5
 
-[node name="country" type="Label" parent="." unique_id=1339502084]
+[node name="country2" type="Control" parent="." unique_id=675138762]
 custom_minimum_size = Vector2(126, 52)
 layout_mode = 2
+
+[node name="country" type="Label" parent="country2" unique_id=1339502084]
+custom_minimum_size = Vector2(126, 52)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_cdrom")
 theme_override_font_sizes/font_size = 40
 text = "Country"
 horizontal_alignment = 1
 
-[node name="KillLabel" type="Label" parent="." unique_id=548160266]
+[node name="kill" type="Control" parent="." unique_id=1864721755]
 custom_minimum_size = Vector2(152, 52)
 layout_mode = 2
+
+[node name="KillLabel" type="Label" parent="kill" unique_id=548160266]
+custom_minimum_size = Vector2(152, 52)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_cdrom")
 theme_override_font_sizes/font_size = 40
 text = "Kill Count"
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="." unique_id=267427498]
-custom_minimum_size = Vector2(256, 52)
+[node name="Score" type="Control" parent="." unique_id=933424098]
+custom_minimum_size = Vector2(135, 52.5)
 layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="Score" unique_id=267427498]
+custom_minimum_size = Vector2(135, 52.5)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.25
+offset_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_cdrom")
 theme_override_font_sizes/font_size = 40
-text = "Blessing Collect"
+text = "Blessing"
 horizontal_alignment = 1

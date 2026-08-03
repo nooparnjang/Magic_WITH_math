@@ -127,7 +127,7 @@ text = "RANK"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_b31yw")
 theme_override_font_sizes/font_size = 40
-text = "name"
+text = "     name     "
 
 [node name="country" type="Label" parent="LeaderboardBox/MarginContainer/PanelContainer/VBoxContainer/HeaderRow" unique_id=864748842]
 layout_mode = 2
@@ -145,7 +145,7 @@ text = "Kill Count"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_b31yw")
 theme_override_font_sizes/font_size = 40
-text = "Blessing Collect"
+text = "Blessing"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="LeaderboardBox/MarginContainer/PanelContainer/VBoxContainer" unique_id=1195843798]
 layout_mode = 2

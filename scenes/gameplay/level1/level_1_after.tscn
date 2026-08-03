@@ -338,7 +338,6 @@ script = ExtResource("14_46gy8")
 
 [node name="wonlevel1" parent="CanvasLayer" unique_id=554814659 instance=ExtResource("15_144w2")]
 visible = false
-enter_scene_path = "uid://cff2m7lku50q1"
 
 [node name="deco" type="Node2D" parent="." unique_id=1817783042]
 

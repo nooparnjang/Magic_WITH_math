@@ -540,11 +540,11 @@ libraries/ = SubResource("AnimationLibrary_s3kdt")
 
 [node name="obstacle" type="Node2D" parent="." unique_id=765069025 groups=["targetable"]]
 
-[node name="cone" parent="obstacle" unique_id=65342437 groups=["targetable"] instance=ExtResource("11_e7oia")]
+[node name="cone" parent="obstacle" unique_id=65342437 groups=["breakable_object", "targetable"] instance=ExtResource("11_e7oia")]
 position = Vector2(3177.0002, 365)
 scale = Vector2(0.3, 0.3)
 
-[node name="Barrier" parent="obstacle" unique_id=433003444 groups=["targetable"] instance=ExtResource("12_5rxrm")]
+[node name="Barrier" parent="obstacle" unique_id=433003444 groups=["breakable_object", "targetable"] instance=ExtResource("12_5rxrm")]
 position = Vector2(3292, 355)
 scale = Vector2(0.4, 0.4)
 blessing_reward = 15

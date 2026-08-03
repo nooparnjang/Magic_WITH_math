@@ -345,7 +345,10 @@ func _should_play_charge_animation() -> bool:
 	return false
 
 
-func start_cast_release(target: Node2D = null, damage_amount: int = 1) -> void:
+func start_cast_release(
+	target: Node2D = null,
+	damage_amount: int = 1
+) -> void:
 	print("start_cast_release called")
 
 	pending_damage_target = target
@@ -355,35 +358,69 @@ func start_cast_release(target: Node2D = null, damage_amount: int = 1) -> void:
 		)
 	)
 
+	# ถ้าไม่มีอนิเมชัน release ให้ทำดาเมจทันที
+	if sprite == null:
+		_apply_pending_damage()
+		finish_answering()
+		return
+
+	if sprite.sprite_frames == null:
+		_apply_pending_damage()
+		finish_answering()
+		return
+
 	if not sprite.sprite_frames.has_animation("release"):
 		print("NO RELEASE ANIMATION")
 
-		if pending_damage_target != null and is_instance_valid(pending_damage_target):
-			if pending_damage_target.has_method("take_damage"):
-				pending_damage_target.take_damage(pending_damage_amount)
-
-		pending_damage_target = null
-		pending_damage_amount = 0
+		_apply_pending_damage()
 		finish_answering()
 		return
 
 	is_answering = false
 	is_cast_releasing = true
+
 	sprite.play("release")
 	print("playing release")
 
+	# รอหลังเริ่มอนิเมชัน 0.8 วินาที แล้วค่อยทำดาเมจ
+	await get_tree().create_timer(0.3).timeout
 
-func _on_animated_sprite_2d_animation_finished() -> void:
-	if is_cast_releasing and sprite.animation == "release":
-		if pending_damage_target != null and is_instance_valid(pending_damage_target):
-			if pending_damage_target.has_method("take_damage"):
-				pending_damage_target.take_damage(pending_damage_amount)
+	# ระหว่างรอผู้เล่นอาจตาย ยกเลิก หรือเปลี่ยนซีนไปแล้ว
+	if is_dead:
+		return
 
+	if not is_cast_releasing:
+		return
+
+	_apply_pending_damage()
+	
+func _apply_pending_damage() -> void:
+	if pending_damage_target == null:
+		return
+
+	if not is_instance_valid(pending_damage_target):
 		pending_damage_target = null
 		pending_damage_amount = 0
+		return
 
-		is_cast_releasing = false
-		finish_answering()
+	if pending_damage_target.has_method("take_damage"):
+		pending_damage_target.take_damage(pending_damage_amount)
+
+	pending_damage_target = null
+	pending_damage_amount = 0
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if not is_cast_releasing:
+		return
+
+	if sprite.animation != "release":
+		return
+
+	# ดาเมจถูกทำไปแล้วหลัง 0.8 วินาที
+	# ตรงนี้มีหน้าที่แค่จบสถานะการโจมตี
+	is_cast_releasing = false
+	finish_answering()
 
 
 func update_stamina(delta: float) -> void:

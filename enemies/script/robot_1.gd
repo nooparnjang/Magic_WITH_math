@@ -139,10 +139,10 @@ func try_attack_player() -> void:
 	if player_ref == null or not is_instance_valid(player_ref):
 		return
 
-	var horizontal_distance = abs(
+	var horizontal_distance: float = abs(
 		player_ref.global_position.x - global_position.x
 	)
-	var vertical_distance = abs(
+	var vertical_distance: float = abs(
 		player_ref.global_position.y - global_position.y
 	)
 
@@ -163,21 +163,19 @@ func try_attack_player() -> void:
 	)
 
 	if has_fight_animation:
-		# ต้องปิด Loop ไม่อย่างนั้น animation_finished จะไม่ถูกเรียก
+		# ปิด Loop เพื่อให้ออกจากสถานะโจมตีเมื่ออนิเมชันจบได้
 		sprite.sprite_frames.set_animation_loop("fight", false)
 		sprite.play("fight")
-
-		# รอให้อนิเมชันฟาดเล่นจนจบก่อน
-		await sprite.animation_finished
 	else:
 		push_warning(name + ": ไม่มี Animation ชื่อ fight")
-		await get_tree().create_timer(0.15).timeout
+
+	# รอให้อนิเมชันเล่นไปถึงจังหวะโจมตี
+	await get_tree().create_timer(1.8).timeout
 
 	if is_dead:
 		return
 
-	# ตรวจระยะอีกรอบหลัง Animation จบ
-	# ถ้า Player เดินหนีออกไปแล้ว จะไม่โดนดาเมจ
+	# ตรวจระยะอีกครั้ง ณ จังหวะที่หมัด/อาวุธโดน
 	if player_ref != null and is_instance_valid(player_ref):
 		horizontal_distance = abs(
 			player_ref.global_position.x - global_position.x
@@ -194,9 +192,17 @@ func try_attack_player() -> void:
 				print("enemy dealt damage:", contact_damage)
 				player_ref.take_damage(contact_damage)
 
+	# ดาเมจออกแล้ว แต่รอให้อนิเมชันเล่นจนจบก่อนปลดสถานะโจมตี
+	if has_fight_animation:
+		if sprite.animation == "fight" and sprite.is_playing():
+			await sprite.animation_finished
+
+	if is_dead:
+		return
+
 	is_attacking = false
 
-	if not is_dead:
+	if sprite != null and sprite.sprite_frames != null:
 		if sprite.sprite_frames.has_animation("idle"):
 			sprite.play("idle")
 

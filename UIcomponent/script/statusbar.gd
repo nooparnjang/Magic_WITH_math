@@ -4,11 +4,11 @@ extends Node2D
 @onready var stamina_bar: TextureProgressBar = $VBoxContainer/staminabar
 
 @export var base_position := Vector2(-12, -63)
-@export var max_x_offset := 10.0
+@export var max_x_offset := 2.0
 @export var follow_lerp_speed := 10.0
 @export var return_lerp_speed := 6.0
 
-@export var left_facing_x_offset := 20.0
+@export var left_facing_x_offset := 0
 
 var player_ref: CharacterBody2D = null
 var player_sprite: AnimatedSprite2D = null

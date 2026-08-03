@@ -1,10 +1,10 @@
 extends HBoxContainer
 
-@onready var rank_label: Label = $RANK
-@onready var name_label: Label = $RANK2
-@onready var country_label: Label = $country
-@onready var kill_label: Label = $KillLabel
-@onready var blessing_label: Label = $ScoreLabel
+@onready var rank_label: Label = $Rank/RANK
+@onready var name_label: Label = $Rank2/RANK2
+@onready var country_label: Label = $country2/country
+@onready var kill_label: Label = $kill/KillLabel
+@onready var blessing_label: Label = $Score/ScoreLabel
 
 
 func setup(score: LeadrScore) -> void:
