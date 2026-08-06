@@ -11,6 +11,7 @@ size = Vector2(42, 22)
 
 [node name="Robot2" type="CharacterBody2D" unique_id=759279220]
 script = ExtResource("1_iep1s")
+attack_range = 120.0
 blessing_reward = 15
 question_pattern = 1
 allowed_operators = Array[String](["+", "-", "/"])

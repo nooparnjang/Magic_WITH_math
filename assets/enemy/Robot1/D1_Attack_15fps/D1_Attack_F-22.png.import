@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b70dlevjgegxc"
-path="res://.godot/imported/D1_Attack_F-22.png-0a6c3ae2fbda4d06088c7ac3c01eb10e.ctex"
+path="res://.godot/imported/D1_Attack_F-22.png-9c821b60dc6c25fd27719b2d471ec3ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy/robot1/D1_Attack_15fps/D1_Attack_F-22.png"
-dest_files=["res://.godot/imported/D1_Attack_F-22.png-0a6c3ae2fbda4d06088c7ac3c01eb10e.ctex"]
+source_file="res://assets/enemy/Robot1/D1_Attack_15fps/D1_Attack_F-22.png"
+dest_files=["res://.godot/imported/D1_Attack_F-22.png-9c821b60dc6c25fd27719b2d471ec3ba.ctex"]
 
 [params]
 

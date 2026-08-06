@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://ckkp1japuqvvj" path="res://assets/object/power-station-free-tileset-pixel-art/3 Objects/2 Decoration/17.png" id="2_8ue3n"]
 [ext_resource type="PackedScene" uid="uid://yquftrdlly5q" path="res://object/textcomwendy.tscn" id="2_joa1o"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_joa1o"]
-size = Vector2(131, 73)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4n10"]
 size = Vector2(149, 75)
 
@@ -24,12 +21,11 @@ position = Vector2(2, 36)
 scale = Vector2(2, 2)
 texture = ExtResource("2_8ue3n")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1828457237]
-position = Vector2(1.5, 16.5)
-shape = SubResource("RectangleShape2D_joa1o")
-
 [node name="Area2D" type="Area2D" parent="." unique_id=808581529]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=125838617]
 position = Vector2(0.5, 15.5)
 shape = SubResource("RectangleShape2D_k4n10")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1234942232]
+polygon = PackedVector2Array(-59, 52, -59, 28, -63, 28, -63, 20, -26, 20, -26, -20, 26, -20, 26, 20, 67, 20, 67, 28, 63, 28, 63, 52)

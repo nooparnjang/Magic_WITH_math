@@ -3,15 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://b6a3ue1exsr6p" path="res://assets/object/Cone.png" id="1_7ancn"]
 [ext_resource type="Script" uid="uid://dwbnin22yyune" path="res://object/script/cone.gd" id="1_d7w5j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7w5j"]
-size = Vector2(222, 225)
-
 [node name="cone" type="StaticBody2D" unique_id=1943078407]
 script = ExtResource("1_d7w5j")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=963754667]
 texture = ExtResource("1_7ancn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=229311858]
-position = Vector2(-2, 0.5)
-shape = SubResource("RectangleShape2D_d7w5j")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1192704389]
+polygon = PackedVector2Array(-106, 60, -1, 110, 107, 59, 59, 31, 20, -101, 0, -108, -19, -100, -58, 31)

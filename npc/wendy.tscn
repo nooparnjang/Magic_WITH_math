@@ -53,10 +53,6 @@ default_font_size = 9
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_14yld"]
 texture = ExtResource("8_l2qb5")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tyjss"]
-radius = 14.0
-height = 78.0
-
 [node name="Wendy" type="CharacterBody2D" unique_id=1920401949]
 script = ExtResource("1_14yld")
 
@@ -143,6 +139,5 @@ offset_right = 19.0
 offset_bottom = 19.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_14yld")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=117728906]
-shape = SubResource("CapsuleShape2D_tyjss")
-metadata/_edit_lock_ = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=108388236]
+polygon = PackedVector2Array(-6, 35, 15, 35, 10, -10, 12, -13, 12, -24, 9, -28, 11, -35, 11, -39, 8, -42, -6, -42, -6, -25, -11, -20, -9, -18, -5, -19, -5, -14, -1, -10, -4, -2)

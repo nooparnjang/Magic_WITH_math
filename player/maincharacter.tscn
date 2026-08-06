@@ -16,10 +16,6 @@
 [ext_resource type="AudioStream" uid="uid://btvruj266anir" path="res://assets/sound/bleep001.mp3" id="17_cib6f"]
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="17_txfxw"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m7d80"]
-radius = 9.0
-height = 70.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_4oker"]
 radius = 135.93013
 
@@ -40,17 +36,18 @@ script = ExtResource("1_8sr8i")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=187358986]
 scale = Vector2(0.59375, 0.59375)
 sprite_frames = ExtResource("2_m7d80")
-animation = &"walk"
+animation = &"idle"
 speed_scale = 2.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1737486176]
-shape = SubResource("CapsuleShape2D_m7d80")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=171301095]
+polygon = PackedVector2Array(8, -16, 10, -14, 20, 30, 11, 33, 0, 34, -13, 34, -23, 28, -13, 0, -9, -15, -6, -18, -7, -19, -7, -21, -6, -22, -7, -23, -7, -26, 0, -34, 4, -34, 8, -28)
 
 [node name="TimerSpawner" type="Node2D" parent="." unique_id=697549610]
 script = ExtResource("4_cyioi")
 ghost_scene = ExtResource("5_4oker")
 
 [node name="TargetRadius" type="Area2D" parent="." unique_id=55784557]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetRadius" unique_id=363532348]
 shape = SubResource("CircleShape2D_4oker")

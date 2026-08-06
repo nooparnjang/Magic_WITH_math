@@ -600,6 +600,7 @@ size_flags_vertical = 8
 theme = SubResource("Theme_hvl6t")
 bbcode_enabled = true
 text = "[pulse freq=1.0]click anywhere to continue[/pulse]"
+scroll_active = false
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=96468091]

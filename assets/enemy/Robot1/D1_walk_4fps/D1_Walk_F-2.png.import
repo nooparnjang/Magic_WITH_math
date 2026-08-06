@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct2mshoyqjw6u"
-path="res://.godot/imported/D1_Walk_F-2.png-c96a6188e39995840521b546a500bd22.ctex"
+path="res://.godot/imported/D1_Walk_F-2.png-9d5294d995d6c771f35a5e0c4691087b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy/robot1/D1_walk_4fps/D1_Walk_F-2.png"
-dest_files=["res://.godot/imported/D1_Walk_F-2.png-c96a6188e39995840521b546a500bd22.ctex"]
+source_file="res://assets/enemy/Robot1/D1_walk_4fps/D1_Walk_F-2.png"
+dest_files=["res://.godot/imported/D1_Walk_F-2.png-9d5294d995d6c771f35a5e0c4691087b.ctex"]
 
 [params]
 

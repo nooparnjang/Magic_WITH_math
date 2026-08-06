@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqrwcs5ehxq78"
-path="res://.godot/imported/D1_Attack_F-6.png-954a1b52d78c2b64f2269d322b900c4e.ctex"
+path="res://.godot/imported/D1_Attack_F-6.png-c54b893b879f60de7cad1e26cb7007a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy/robot1/D1_Attack_15fps/D1_Attack_F-6.png"
-dest_files=["res://.godot/imported/D1_Attack_F-6.png-954a1b52d78c2b64f2269d322b900c4e.ctex"]
+source_file="res://assets/enemy/Robot1/D1_Attack_15fps/D1_Attack_F-6.png"
+dest_files=["res://.godot/imported/D1_Attack_F-6.png-c54b893b879f60de7cad1e26cb7007a5.ctex"]
 
 [params]
 
