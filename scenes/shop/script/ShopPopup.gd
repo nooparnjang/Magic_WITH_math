@@ -1,98 +1,94 @@
 extends CanvasLayer
 
-# =====================================================
-# Shop Popup
-#
-# แสดงข้อความแจ้งเตือนเมื่อซื้อของ
-# =====================================================
-
 @export var display_time: float = 1.5
 
-@onready var panel: Control = $Panel
-@onready var message: Label = $Panel/Message
+@onready var center_container: Node = $Control
+@onready var panel: PanelContainer = $Control/Panel
+@onready var message_label: Label = $Control/Panel/Message
 
-var popup_timer: SceneTreeTimer
+var _popup_version: int = 0
 
 
 func _ready() -> void:
+	layer = 100
 
-	hide_popup()
+	if !is_in_group("shop_popup"):
+		add_to_group("shop_popup")
 
-	if !ShopManager.purchase_success.is_connected(_on_purchase_success):
-		ShopManager.purchase_success.connect(_on_purchase_success)
-
-	if !ShopManager.purchase_failed.is_connected(_on_purchase_failed):
-		ShopManager.purchase_failed.connect(_on_purchase_failed)
-
-
-# =====================================================
-# Show Popup
-# =====================================================
-
-func show_popup(text: String) -> void:
-
-	message.text = text
-
+	# CanvasLayer ต้องเปิดไว้ตลอด
 	visible = true
-	panel.visible = true
 
-	if has_node("AnimationPlayer"):
-		var animation_player: AnimationPlayer = $AnimationPlayer
-		animation_player.play("show")
+	# ซ่อนเฉพาะ Container
+	center_container.visible = false
 
-	popup_timer = get_tree().create_timer(display_time)
+	# ป้องกัน Alpha ถูกตั้งเป็น 0
+	center_container.modulate = Color.WHITE
+	panel.modulate = Color.WHITE
+	message_label.modulate = Color.WHITE
 
-	await popup_timer.timeout
-
-	hide_popup()
-
-
-# =====================================================
-# Hide Popup
-# =====================================================
-
-func hide_popup() -> void:
-
-	panel.visible = false
-	visible = false
+	print("ShopPopup ready")
+	print("ShopPopup groups: ", get_groups())
 
 
-# =====================================================
-# Purchase Success
-# =====================================================
-
-func _on_purchase_success(item_id: String, new_level: int) -> void:
-
-	var item: Dictionary = ShopData.get_item(item_id)
-
-	var item_name: String
-
-	if item.has("name"):
-		item_name = String(item["name"])
-	else:
-		item_name = item_id
+func show_success(item_name: String, new_level: int) -> void:
+	print(
+		"Popup show_success called: ",
+		item_name,
+		" Lv.",
+		new_level
+	)
 
 	show_popup(
-		item_name + " upgraded to Lv." + str(new_level) + "!"
+		"%s upgraded to Lv.%d!" % [
+			item_name,
+			new_level
+		]
 	)
 
 
-# =====================================================
-# Purchase Failed
-# =====================================================
+func show_failed(reason: String) -> void:
+	print("Popup show_failed called: ", reason)
 
-func _on_purchase_failed(item_id: String, reason: String) -> void:
+	if reason.is_empty():
+		reason = "Purchase Failed"
 
-	match reason:
+	show_popup(reason)
 
-		ShopManager.NOT_ENOUGH_BLESSING:
-			show_popup("Not Enough Blessings")
 
-		ShopManager.MAX_LEVEL:
-			show_popup("Already Max Level")
+func show_popup(text: String) -> void:
+	print("Popup show_popup called: ", text)
 
-		ShopManager.INVALID_ITEM:
-			show_popup("Invalid Item")
+	if text.is_empty():
+		return
 
-		_:
-			show_popup(reason)
+	_popup_version += 1
+	var current_version: int = _popup_version
+
+	message_label.text = text
+
+	visible = true
+	center_container.visible = true
+	panel.visible = true
+	message_label.visible = true
+
+	center_container.modulate = Color.WHITE
+	panel.modulate = Color.WHITE
+	message_label.modulate = Color.WHITE
+
+	print("Center visible: ", center_container.visible)
+	print("Panel visible: ", panel.visible)
+	print("Panel size: ", panel.size)
+	print("Panel position: ", panel.global_position)
+
+	await get_tree().create_timer(display_time).timeout
+
+	# Timer เก่าห้ามซ่อน Popup ใหม่
+	if current_version != _popup_version:
+		return
+
+	center_container.visible = false
+
+
+func hide_popup() -> void:
+	_popup_version += 1
+	center_container.visible = false

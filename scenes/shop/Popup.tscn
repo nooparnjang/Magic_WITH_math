@@ -9,12 +9,26 @@ bg_color = Color(1, 1, 1, 1)
 [node name="Popup" type="CanvasLayer" unique_id=220710117]
 script = ExtResource("1_bx7c0")
 
-[node name="Panel" type="PanelContainer" parent="." unique_id=415033783]
+[node name="Timer" type="Timer" parent="." unique_id=1750105827]
+
+[node name="Control" type="Control" parent="." unique_id=1348715338]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Control" unique_id=415033783]
+layout_mode = 0
+offset_top = 433.0
 offset_right = 960.0
-offset_bottom = 77.0
+offset_bottom = 475.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rwebk")
 
-[node name="Message" type="Label" parent="Panel" unique_id=2136627977]
+[node name="Message" type="Label" parent="Control/Panel" unique_id=2136627977]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0011003652, 0, 0.90149426, 1)
 theme_override_fonts/font = ExtResource("2_xmrfy")

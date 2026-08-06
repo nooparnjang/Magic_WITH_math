@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://ckeabxs4g4q3k" path="res://scenes/shop/backto_currentscene.gd" id="13_131kw"]
 [ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="13_g6lcs"]
 [ext_resource type="Texture2D" uid="uid://1nd05v2bwgeg" path="res://globals/house.png" id="15_k5co3"]
+[ext_resource type="PackedScene" uid="uid://doemd88n8dcag" path="res://scenes/shop/Popup.tscn" id="16_k5co3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptf86"]
 texture = ExtResource("1_7lxhl")
@@ -72,6 +73,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Popup" parent="." unique_id=220710117 groups=["shop_popup"] instance=ExtResource("16_k5co3")]
+layer = 100
 
 [node name="back" type="Panel" parent="." unique_id=1693581994]
 layout_mode = 0
@@ -457,3 +461,5 @@ region_rect = Rect2(0, 0, 480, 540)
 
 [connection signal="pressed" from="backto_currentscene" to="backto_currentscene" method="_on_pressed"]
 [connection signal="pressed" from="backtomainmenu" to="backtomainmenu" method="_on_pressed"]
+
+[editable path="Popup"]
