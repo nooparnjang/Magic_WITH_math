@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @export var display_time: float = 1.5
 
-@onready var center_container: Node = $Control
+@onready var center_container: Control = $Control
 @onready var panel: PanelContainer = $Control/Panel
 @onready var message_label: Label = $Control/Panel/Message
 
@@ -10,34 +10,30 @@ var _popup_version: int = 0
 
 
 func _ready() -> void:
-	layer = 100
+	# ร้านใช้ layer 100 ดังนั้นข้อความต้องสูงกว่า
+	layer = 200
 
-	if !is_in_group("shop_popup"):
+	# ต้องทำงานตอนเกม pause
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+	if not is_in_group("shop_popup"):
 		add_to_group("shop_popup")
 
-	# CanvasLayer ต้องเปิดไว้ตลอด
 	visible = true
-
-	# ซ่อนเฉพาะ Container
 	center_container.visible = false
 
-	# ป้องกัน Alpha ถูกตั้งเป็น 0
-	center_container.modulate = Color.WHITE
-	panel.modulate = Color.WHITE
-	message_label.modulate = Color.WHITE
+	reset_visual_state()
 
-	print("ShopPopup ready")
-	print("ShopPopup groups: ", get_groups())
-
-
-func show_success(item_name: String, new_level: int) -> void:
 	print(
-		"Popup show_success called: ",
-		item_name,
-		" Lv.",
-		new_level
+		"Shop notification ready: ",
+		get_path()
 	)
 
+
+func show_success(
+	item_name: String,
+	new_level: int
+) -> void:
 	show_popup(
 		"%s upgraded to Lv.%d!" % [
 			item_name,
@@ -47,8 +43,6 @@ func show_success(item_name: String, new_level: int) -> void:
 
 
 func show_failed(reason: String) -> void:
-	print("Popup show_failed called: ", reason)
-
 	if reason.is_empty():
 		reason = "Purchase Failed"
 
@@ -56,8 +50,6 @@ func show_failed(reason: String) -> void:
 
 
 func show_popup(text: String) -> void:
-	print("Popup show_popup called: ", text)
-
 	if text.is_empty():
 		return
 
@@ -71,18 +63,22 @@ func show_popup(text: String) -> void:
 	panel.visible = true
 	message_label.visible = true
 
-	center_container.modulate = Color.WHITE
-	panel.modulate = Color.WHITE
-	message_label.modulate = Color.WHITE
+	reset_visual_state()
 
-	print("Center visible: ", center_container.visible)
-	print("Panel visible: ", panel.visible)
-	print("Panel size: ", panel.size)
-	print("Panel position: ", panel.global_position)
+	print(
+		"Showing shop popup: ",
+		text,
+		" | paused: ",
+		get_tree().paused,
+		" | path: ",
+		get_path()
+	)
 
-	await get_tree().create_timer(display_time).timeout
+	await get_tree().create_timer(
+		display_time,
+		true
+	).timeout
 
-	# Timer เก่าห้ามซ่อน Popup ใหม่
 	if current_version != _popup_version:
 		return
 
@@ -92,3 +88,9 @@ func show_popup(text: String) -> void:
 func hide_popup() -> void:
 	_popup_version += 1
 	center_container.visible = false
+
+
+func reset_visual_state() -> void:
+	center_container.modulate = Color.WHITE
+	panel.modulate = Color.WHITE
+	message_label.modulate = Color.WHITE

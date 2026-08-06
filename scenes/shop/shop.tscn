@@ -448,12 +448,12 @@ visibility_layer = 15
 layout_mode = 0
 offset_left = 93.0
 offset_top = 25.0
-offset_right = 145.0
-offset_bottom = 77.0
+offset_right = 148.0
+offset_bottom = 79.0
 script = ExtResource("11_dww4p")
 
 [node name="gomainmenu" type="Sprite2D" parent="backtomainmenu" unique_id=1684476327]
-position = Vector2(24, 29)
+position = Vector2(27, 30)
 scale = Vector2(0.11851851, 0.11851852)
 texture = ExtResource("15_k5co3")
 region_enabled = true
