@@ -10,11 +10,11 @@
 [ext_resource type="Script" uid="uid://bbofs5utuj7c4" path="res://player/script/item_use_controller.gd" id="11_cuai1"]
 [ext_resource type="PackedScene" uid="uid://dj377lrob4a4m" path="res://object/bombthrowable.tscn" id="12_we8ug"]
 [ext_resource type="PackedScene" uid="uid://c0bp0shidp8ss" path="res://UIcomponent/bomb_target_icon.tscn" id="13_7cl1g"]
+[ext_resource type="FontFile" uid="uid://dwyn8dbu4wtwa" path="res://assets/font/EDSamernarFORDIA.ttf" id="13_m7d80"]
 [ext_resource type="Script" uid="uid://kchdcg8jck8l" path="res://npc/script/dialog_bubble.gd" id="14_cib6f"]
 [ext_resource type="Texture2D" uid="uid://buofdlvjfr6k6" path="res://assets/npc/ui/darkbubble.png" id="15_pde1g"]
 [ext_resource type="FontFile" uid="uid://bkbespsxdoatm" path="res://assets/font/PaybAck.ttf" id="16_txfxw"]
 [ext_resource type="AudioStream" uid="uid://btvruj266anir" path="res://assets/sound/bleep001.mp3" id="17_cib6f"]
-[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="17_txfxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4oker"]
 radius = 135.93013
@@ -23,7 +23,7 @@ radius = 135.93013
 texture = ExtResource("15_pde1g")
 
 [sub_resource type="Theme" id="Theme_gsf5c"]
-default_font = ExtResource("17_txfxw")
+default_font = ExtResource("13_m7d80")
 default_font_size = 6
 
 [sub_resource type="Theme" id="Theme_4a5g1"]
@@ -127,7 +127,7 @@ theme = SubResource("Theme_4a5g1")
 theme_override_colors/font_color = Color(0, 0.90431696, 0.82581776, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("17_txfxw")
+theme_override_fonts/font = ExtResource("13_m7d80")
 text = " Matsuri"
 
 [node name="BeepPlayer" type="AudioStreamPlayer" parent="BubbleAnchor/DialogBubble" unique_id=1285900798]

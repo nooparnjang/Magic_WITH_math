@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://btuw8bdqa0led" path="res://assets/npc/wendy/Sub/idle_sub_2fps/idle_sub01/sub_Idle01_F-1.png" id="4_l2lt5"]
 [ext_resource type="Texture2D" uid="uid://buofdlvjfr6k6" path="res://assets/npc/ui/darkbubble.png" id="5_7hmhq"]
 [ext_resource type="Texture2D" uid="uid://dcw3mr0plf7bm" path="res://assets/npc/wendy/Sub/idle_sub_2fps/idle_sub01/sub_Idle01_F-2.png" id="5_v81ec"]
-[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="6_bpofj"]
 [ext_resource type="AudioStream" uid="uid://dr83rlyvrpae5" path="res://assets/sound/bleep023.mp3" id="7_8ko6q"]
 [ext_resource type="Script" uid="uid://bmfaali7wk8g6" path="res://npc/script/hintE.gd" id="7_v81ec"]
+[ext_resource type="FontFile" uid="uid://dwyn8dbu4wtwa" path="res://assets/font/EDSamernarFORDIA.ttf" id="8_l2lt5"]
 [ext_resource type="Texture2D" uid="uid://du1nolgtdntuy" path="res://assets/npc/ui/interact.png" id="8_l2qb5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l2lt5"]
@@ -44,10 +44,10 @@ size = Vector2(55, 77)
 texture = ExtResource("5_7hmhq")
 
 [sub_resource type="Theme" id="Theme_wqgoh"]
-default_font = ExtResource("6_bpofj")
+default_font = ExtResource("8_l2lt5")
 
 [sub_resource type="Theme" id="Theme_k8oj4"]
-default_font = ExtResource("6_bpofj")
+default_font = ExtResource("8_l2lt5")
 default_font_size = 9
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_14yld"]
