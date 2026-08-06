@@ -28,7 +28,7 @@ const ITEMS := {
 
 	"max_hp": {
 		"name": "Increase Max HP",
-		"description": "Increase Max HP by 20",
+		"description": "Increase Max HP",
 		"price": 50,
 		"upgrade_value": 20.0,
 		"upgrade_type": "flat",
@@ -37,7 +37,7 @@ const ITEMS := {
 
 	"max_stamina": {
 		"name": "Increase Max Stamina",
-		"description": "Increase Max Stamina by 15",
+		"description": "Increase Max Stamina",
 		"price": 40,
 		"upgrade_value": 15.0,
 		"upgrade_type": "flat",
@@ -46,10 +46,10 @@ const ITEMS := {
 
 	"heal_rate": {
 		"name": "Increase Heal Rate",
-		"description": "Increase Heal Rate by 2",
+		"description": "Increase Heal Rate by 20%",
 		"price": 45,
-		"upgrade_value": 2.0,
-		"upgrade_type": "flat",
+		"upgrade_value": 20.0,
+		"upgrade_type": "percent",
 		"max_level": 10
 	}
 

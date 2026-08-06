@@ -1,16 +1,24 @@
 [gd_scene format=3 uid="uid://doemd88n8dcag"]
 
 [ext_resource type="Script" uid="uid://njhpgraohynn" path="res://scenes/shop/script/ShopPopup.gd" id="1_bx7c0"]
+[ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="2_xmrfy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwebk"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Popup" type="CanvasLayer" unique_id=220710117]
 script = ExtResource("1_bx7c0")
 
-[node name="Panel" type="Panel" parent="." unique_id=692799940]
+[node name="Panel" type="PanelContainer" parent="." unique_id=415033783]
 offset_right = 960.0
-offset_bottom = 540.0
+offset_bottom = 77.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rwebk")
 
 [node name="Message" type="Label" parent="Panel" unique_id=2136627977]
-layout_mode = 0
-offset_top = 354.0
-offset_right = 960.0
-offset_bottom = 404.0
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0011003652, 0, 0.90149426, 1)
+theme_override_fonts/font = ExtResource("2_xmrfy")
+theme_override_font_sizes/font_size = 30
+text = "SUCCESS"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -10,9 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://d0lby7eix2vck" path="res://assets/UI/uiforshop/สไลม์ (ฟ้า+selected).png" id="7_tp26b"]
 [ext_resource type="Texture2D" uid="uid://bapemr4vitn8r" path="res://assets/UI/Bg blessings .png" id="8_g6lcs"]
 [ext_resource type="Texture2D" uid="uid://dm0f62shr1av4" path="res://assets/UI/uiforshop/Hp max.png" id="8_vk20h"]
-[ext_resource type="Texture2D" uid="uid://cgf6hkyrv7pr2" path="res://assets/UI/uiforshop/Bg blessings .png" id="9_tp26b"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="10_vk20h"]
 [ext_resource type="Script" uid="uid://5pyya7y8e28e" path="res://scenes/shop/script/gotomainmenu.gd" id="11_dww4p"]
+[ext_resource type="Script" uid="uid://ckeabxs4g4q3k" path="res://scenes/shop/backto_currentscene.gd" id="13_131kw"]
+[ext_resource type="Texture2D" uid="uid://bxcbtfub3lt7f" path="res://assets/UI/button.png" id="13_g6lcs"]
+[ext_resource type="Texture2D" uid="uid://1nd05v2bwgeg" path="res://globals/house.png" id="15_k5co3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptf86"]
 texture = ExtResource("1_7lxhl")
@@ -62,23 +64,6 @@ texture = ExtResource("7_tp26b")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g6lcs"]
 texture = ExtResource("8_vk20h")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8qn5i"]
-texture = ExtResource("9_tp26b")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qn5i"]
-bg_color = Color(0.32941177, 0.16078432, 0.32941177, 0.87058824)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dww4p"]
-bg_color = Color(0.2803291, 0.13203362, 0.28133154, 0.87058824)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="Control" type="Control" unique_id=70788292]
 layout_mode = 3
@@ -420,94 +405,6 @@ theme_override_font_sizes/font_size = 30
 text = "70 BLESSINGS"
 horizontal_alignment = 1
 
-[node name="box_hp4" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1705586734]
-custom_minimum_size = Vector2(270, 270)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
-
-[node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1211051958]
-layout_mode = 0
-offset_left = 56.0
-offset_top = 3.0
-offset_right = 207.0
-offset_bottom = 90.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
-
-[node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1546318335]
-layout_mode = 0
-offset_top = 94.0
-offset_right = 270.0
-offset_bottom = 175.0
-theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
-text = "INCREASE MAX HP
-BY 9%"
-horizontal_alignment = 1
-
-[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1276939944]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 178.0
-offset_right = 236.0
-offset_bottom = 282.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
-
-[node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_hp4" unique_id=1990240481]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 210.0
-offset_right = 216.0
-offset_bottom = 249.0
-theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
-theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
-text = "70 BLESSINGS"
-horizontal_alignment = 1
-
-[node name="box_hp5" type="Panel" parent="ScrollContainer/HBoxContainer" unique_id=1486841944]
-custom_minimum_size = Vector2(270, 270)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xcdpw")
-
-[node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=976845271]
-layout_mode = 0
-offset_left = 56.0
-offset_top = 3.0
-offset_right = 207.0
-offset_bottom = 90.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
-
-[node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1781893294]
-layout_mode = 0
-offset_top = 94.0
-offset_right = 270.0
-offset_bottom = 175.0
-theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
-text = "INCREASE MAX HP
-BY 9%"
-horizontal_alignment = 1
-
-[node name="BuyButton" type="Panel" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1754895448]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 178.0
-offset_right = 236.0
-offset_bottom = 282.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_8qn5i")
-
-[node name="Price" type="Label" parent="ScrollContainer/HBoxContainer/box_hp5" unique_id=1311232692]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 210.0
-offset_right = 216.0
-offset_bottom = 249.0
-theme_override_colors/font_color = Color(0, 0.1764706, 0.44313726, 1)
-theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 30
-text = "70 BLESSINGS"
-horizontal_alignment = 1
-
 [node name="yourblessings" type="Label" parent="." unique_id=330585805]
 layout_mode = 0
 offset_left = 232.0
@@ -526,26 +423,37 @@ offset_top = 445.0
 offset_right = 452.44
 offset_bottom = 444.76
 
-[node name="gotomainmenu" type="Button" parent="." unique_id=747291196]
+[node name="backto_currentscene" type="Button" parent="." unique_id=961910053]
+visibility_layer = 15
 layout_mode = 0
-offset_left = 36.0
-offset_top = 30.0
-offset_right = 217.0
-offset_bottom = 75.0
-theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_8qn5i")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dww4p")
-text = "GO TO MAINMENU"
+offset_left = 28.0
+offset_top = 25.0
+offset_right = 80.0
+offset_bottom = 77.0
+script = ExtResource("13_131kw")
+
+[node name="goback" type="Sprite2D" parent="backto_currentscene" unique_id=810446407]
+position = Vector2(26.000004, 23)
+scale = Vector2(0.11851851, 0.11851852)
+texture = ExtResource("13_g6lcs")
+region_enabled = true
+region_rect = Rect2(0, 0, 480, 540)
+
+[node name="backtomainmenu" type="Button" parent="." unique_id=644022874]
+visibility_layer = 15
+layout_mode = 0
+offset_left = 93.0
+offset_top = 25.0
+offset_right = 145.0
+offset_bottom = 77.0
 script = ExtResource("11_dww4p")
 
-[node name="monster" type="Label" parent="." unique_id=1650072832]
-layout_mode = 0
-offset_left = 747.0
-offset_top = 508.0
-offset_right = 948.0
-offset_bottom = 534.0
-theme_override_fonts/font = ExtResource("5_ptf86")
-theme_override_font_sizes/font_size = 20
-text = "esc to resume your game"
-horizontal_alignment = 1
+[node name="gomainmenu" type="Sprite2D" parent="backtomainmenu" unique_id=1684476327]
+position = Vector2(24, 29)
+scale = Vector2(0.11851851, 0.11851852)
+texture = ExtResource("15_k5co3")
+region_enabled = true
+region_rect = Rect2(0, 0, 480, 540)
+
+[connection signal="pressed" from="backto_currentscene" to="backto_currentscene" method="_on_pressed"]
+[connection signal="pressed" from="backtomainmenu" to="backtomainmenu" method="_on_pressed"]

@@ -106,3 +106,7 @@ func _on_purchase_failed(p_item_id: String, reason: String) -> void:
 
 func refresh() -> void:
 	update_ui()
+
+
+func _on_backto_currentscene_pressed() -> void:
+	pass # Replace with function body.
