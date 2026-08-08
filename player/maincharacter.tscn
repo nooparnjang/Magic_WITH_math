@@ -30,6 +30,9 @@ default_font_size = 6
 default_font = ExtResource("16_txfxw")
 default_font_size = 9
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7d80"]
+size = Vector2(18, 69)
+
 [node name="maincharacter" type="CharacterBody2D" unique_id=1926872742 groups=["player"]]
 script = ExtResource("1_8sr8i")
 
@@ -132,5 +135,11 @@ text = " Matsuri"
 
 [node name="BeepPlayer" type="AudioStreamPlayer" parent="BubbleAnchor/DialogBubble" unique_id=1285900798]
 stream = ExtResource("17_cib6f")
+
+[node name="ladder" type="Area2D" parent="." unique_id=1254376508]
+
+[node name="detector" type="CollisionShape2D" parent="ladder" unique_id=588046026]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_m7d80")
 
 [editable path="Statusbar"]

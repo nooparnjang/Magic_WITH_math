@@ -45,7 +45,7 @@ var base_damage: float = 1.0
 @onready var target_radius: Area2D = $TargetRadius
 @onready var status_bars: Node2D = $Statusbar
 
-var ladder_tilemap: TileMapLayer = null
+@onready var ladder_detector: Area2D = $ladder
 
 var is_on_ladder := false
 var is_climbing := false
@@ -66,10 +66,10 @@ var time_since_last_damage := 0.0
 
 var pending_damage_target: Node2D = null
 var pending_damage_amount: int = 0
-
+var ladder_exit_timer := 0.0
 
 func _ready() -> void:
-	ladder_tilemap = get_tree().get_first_node_in_group("ladder_tilemap") as TileMapLayer
+
 
 	add_to_group("player")
 
@@ -189,12 +189,24 @@ func process_player_movement(delta: float) -> void:
 	var x_input := Input.get_axis("ui_left", "ui_right")
 	var y_input := Input.get_axis("ui_up", "ui_down")
 
-	if is_on_ladder and abs(y_input) > 0.0:
-		is_climbing = true
+	if ladder_exit_timer > 0.0:
+		ladder_exit_timer -= delta
 
-	if not is_on_ladder:
-		is_climbing = false
+	# เริ่มปีน
+	if not is_climbing and ladder_exit_timer <= 0.0:
+		if is_on_ladder and abs(y_input) > 0.0:
+			is_climbing = true
 
+	# ออกจากโหมดปีน
+	if is_climbing:
+		if not is_on_ladder:
+			is_climbing = false
+
+		elif abs(x_input) > 0.0 and abs(y_input) < 0.1:
+			is_climbing = false
+			ladder_exit_timer = 0.15
+
+	# Movement
 	if is_climbing:
 		handle_climb(x_input, y_input)
 	else:
@@ -256,21 +268,11 @@ func update_player_animation(direction: float) -> void:
 		sprite.flip_h = direction < 0
 
 func check_ladder() -> void:
-	is_on_ladder = false
-
-	if ladder_tilemap == null:
+	if ladder_detector == null:
+		is_on_ladder = false
 		return
 
-	var check_pos := global_position + Vector2(0, -16)
-	var local_pos := ladder_tilemap.to_local(check_pos)
-	var cell := ladder_tilemap.local_to_map(local_pos)
-	var tile_data := ladder_tilemap.get_cell_tile_data(cell)
-
-	if tile_data == null:
-		return
-
-	if tile_data.get_custom_data("is_ladder") == true:
-		is_on_ladder = true
+	is_on_ladder = ladder_detector.has_overlapping_bodies()
 
 
 func set_status_bars_visible(value: bool) -> void:
