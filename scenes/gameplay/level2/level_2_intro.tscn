@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://clllit81bxbp6"]
 
 [ext_resource type="Texture2D" uid="uid://dur7fbja6jc5d" path="res://assets/bg/level2/Garage.png" id="1_nehex"]
+[ext_resource type="Texture2D" uid="uid://dtsrop2mag8o3" path="res://assets/bg/level2/Inner Shop/Center_Inner_Shop.png" id="2_4iyhn"]
 [ext_resource type="PackedScene" uid="uid://5urlh82lpj56" path="res://player/maincharacter.tscn" id="2_80o1s"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="3_jw85u"]
 [ext_resource type="Texture2D" uid="uid://doprtl43rfdun" path="res://assets/UI/4.png" id="4_jw85u"]
@@ -80,9 +81,14 @@ _data = {
 [node name="bg" type="Node2D" parent="." unique_id=1421829845]
 
 [node name="Sprite2D" type="Sprite2D" parent="bg" unique_id=418309939]
+visible = false
 position = Vector2(482.99997, 270.00003)
 scale = Vector2(0.5417136, 0.6054115)
 texture = ExtResource("1_nehex")
+
+[node name="Sprite2D2" type="Sprite2D" parent="bg" unique_id=407787705]
+position = Vector2(492, 271)
+texture = ExtResource("2_4iyhn")
 
 [node name="player" type="Node2D" parent="." unique_id=284298865]
 z_index = 1
