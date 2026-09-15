@@ -380,6 +380,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1n21"]
 size = Vector2(55.11111, 12.611107)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45wnt"]
+radius = 20.0
+height = 112.0
+
 [node name="Robot2" type="CharacterBody2D" unique_id=759279220]
 script = ExtResource("1_iep1s")
 attack_range = 120.0
@@ -395,9 +399,6 @@ animation = &"fight"
 frame = 13
 frame_progress = 0.811645
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1675531181]
-polygon = PackedVector2Array(-16, 19, 16, 19, 5, -2, 14, -9, 7, -38, 7, -64, -27, -64, -23, -50, -19, -29, -13, -29, -15, -17, -15, -17, -8, -9, -16, -2)
-
 [node name="Hitbox" type="Area2D" parent="." unique_id=451659565]
 scale = Vector2(0.75, 0.75)
 
@@ -405,3 +406,8 @@ scale = Vector2(0.75, 0.75)
 position = Vector2(0.6666667, -55.270836)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_n1n21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=359387792]
+position = Vector2(-4, -22)
+scale = Vector2(0.75, 0.75)
+shape = SubResource("CapsuleShape2D_45wnt")

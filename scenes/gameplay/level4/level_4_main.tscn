@@ -512,7 +512,7 @@ scale = Vector2(2, 2)
 dialog_json_path = "res://npc/dialogJson/level4Wendy_first.json"
 
 [node name="enemies" type="Node2D" parent="." unique_id=1982011690]
-position = Vector2(-2051, 0)
+position = Vector2(-2051, 49)
 
 [node name="Robot1" parent="enemies" unique_id=759279220 groups=["robot_hai"] instance=ExtResource("31_vvfxi")]
 position = Vector2(3323, 297)
@@ -522,9 +522,10 @@ activation_distance = 500.0
 player_path = NodePath("../../player/maincharacter")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="enemies/Robot1" unique_id=716522770]
+position = Vector2(-9.599998, -24.800001)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/Robot1/StaticBody2D" unique_id=1543945992]
-position = Vector2(0, -142.99997)
+position = Vector2(5.2, -142.4)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_arhpx")
 

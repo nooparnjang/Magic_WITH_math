@@ -272,7 +272,12 @@ func check_ladder() -> void:
 		is_on_ladder = false
 		return
 
-	is_on_ladder = ladder_detector.has_overlapping_bodies()
+	is_on_ladder = false
+
+	for body in ladder_detector.get_overlapping_areas():
+		if body.is_in_group("ladder_tilemap"):
+			is_on_ladder = true
+			break
 
 
 func set_status_bars_visible(value: bool) -> void:

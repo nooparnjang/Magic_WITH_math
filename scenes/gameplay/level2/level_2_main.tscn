@@ -41,6 +41,9 @@
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="38_lla7m"]
 [ext_resource type="Texture2D" uid="uid://s4nm7soi12r2" path="res://assets/object/keyA2.png" id="39_8chwu"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8chwu"]
+size = Vector2(50, 644)
+
 [sub_resource type="Theme" id="Theme_hu7b8"]
 default_font = ExtResource("17_qgsik")
 default_font_size = 100
@@ -131,10 +134,17 @@ scale = Vector2(2.5, 2.5)
 tile_map_data = PackedByteArray("AAD///n/AQAAAAAAAAD///r/AQAAAAEAAAD///v/AQAAAAAAAAD///z/AQAAAAEAAAD///3/AQAAAAAAAAD///7/AQAAAAEAAAD/////AQAAAAAAAAD//wAAAQAAAAEAAAD//wEAAQAAAAAAAAD//wIAAQAAAAEAAAD//wMAAQAAAAAAAAD//wQAAQAAAAEAAAD//wUAAQAAAAAAAAD//wYAAQAAAAEAAAD//wcAAQAAAAAAAAD//wgAAQAAAAEAAAD//wkAAQAAAAAAAAD//woAAQAAAAEAAAD//wsAAQAAAAAAAAD//wwAAQAAAAEAAAAAAPn/AQABAAAAAAAAAPr/AQABAAEAAAAAAPv/AQABAAAAAAAAAPz/AQABAAEAAAAAAP3/AQABAAAAAAAAAP7/AQABAAEAAAAAAP//AQABAAAAAAAAAAAAAQABAAEAAAAAAAEAAQABAAAAAAAAAAIAAQABAAEAAAAAAAMAAQABAAAAAAAAAAQAAQABAAEAAAAAAAUAAQABAAAAAAAAAAYAAQABAAEAAAAAAAcAAQABAAAAAAAAAAgAAQABAAEAAAAAAAkAAQABAAAAAAAAAAoAAQABAAEAAAAAAAsAAQABAAAAAAAAAAwAAQABAAEAAAA=")
 tile_set = ExtResource("4_htmri")
 
-[node name="RealLadder" type="TileMapLayer" parent="tilesmap" unique_id=875898256 groups=["ladder_tilemap"]]
+[node name="RealLadder" type="TileMapLayer" parent="tilesmap" unique_id=875898256]
 scale = Vector2(2.5, 2.5)
 tile_map_data = PackedByteArray("AADJAAIAAQAAAAEAAADJAAMAAQAAAAAAAADJAAQAAQAAAAEAAADJAAUAAQAAAAAAAADJAAYAAQAAAAEAAADJAAcAAQAAAAAAAADJAAgAAQAAAAEAAADJAAkAAQAAAAAAAADJAAoAAQAAAAEAAADJAAsAAQAAAAAAAADJAAwAAQAAAAEAAADJAAEAAAAAAAEAAADKAAEAAAABAAEAAADJAAAAAAAAAAEAAADKAAAAAAABAAEAAADJAP//AAAAAAAAAADKAP//AAABAAAAAADJAP3/AAAAAAAAAADJAP7/AAAAAAEAAADKAP3/AAABAAAAAADKAP7/AAABAAEAAAA=")
 tile_set = ExtResource("5_7wb6f")
+
+[node name="Area2D" type="Area2D" parent="tilesmap" unique_id=1951398183 groups=["ladder_tilemap"]]
+position = Vector2(8064, -130.755)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tilesmap/Area2D" unique_id=695664868]
+position = Vector2(6, 332)
+shape = SubResource("RectangleShape2D_8chwu")
 
 [node name="deco" type="Node2D" parent="." unique_id=1877790408]
 
