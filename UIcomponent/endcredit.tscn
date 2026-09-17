@@ -110,13 +110,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="nischin" type="Label" parent="." unique_id=1677166278]
-offset_left = 509.0
+offset_left = 515.0
 offset_top = 160.0
-offset_right = 856.0
+offset_right = 862.0
 offset_bottom = 204.0
 theme_override_fonts/font = ExtResource("1_3btb6")
 theme_override_font_sizes/font_size = 40
-text = "Sahatchai Phoombamyen"
+text = "Sahatchai Phoombanyen"
 horizontal_alignment = 1
 vertical_alignment = 1
 
