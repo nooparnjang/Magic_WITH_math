@@ -183,19 +183,23 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h61wf"]
+radius = 28.0
 height = 76.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iw4k"]
-size = Vector2(60, 34)
+size = Vector2(95, 34)
 
 [node name="BossRobot" type="CharacterBody2D" unique_id=184376337]
 script = ExtResource("1_5iw4k")
 max_hp = 5
+time_out_hit = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1979198086]
-position = Vector2(0, -27)
+position = Vector2(8.299999, 5.4999986)
+scale = Vector2(0.5407143, 0.52666664)
 sprite_frames = SubResource("SpriteFrames_7ifn8")
-animation = &"fight"
+animation = &"idle"
+speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=801294347]
 shape = SubResource("CapsuleShape2D_h61wf")
@@ -203,12 +207,13 @@ shape = SubResource("CapsuleShape2D_h61wf")
 [node name="Hitbox" type="Area2D" parent="." unique_id=589606610]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=942705079]
-position = Vector2(18, -12)
+position = Vector2(35.5, -12)
 shape = SubResource("RectangleShape2D_5iw4k")
 
 [node name="Bossstatus" type="Node2D" parent="." unique_id=474560263]
-position = Vector2(-48, -46)
+position = Vector2(-30, -50)
 script = ExtResource("3_d86nd")
+base_position = Vector2(-20, -50)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Bossstatus" unique_id=1896373869]
 offset_right = 40.0
@@ -221,7 +226,7 @@ texture_under = ExtResource("2_w8fcl")
 texture_progress = ExtResource("3_ckat2")
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1196710627]
-position = Vector2(-3, -13)
+position = Vector2(5, -1)
 
 [node name="Attacktimer" type="Timer" parent="." unique_id=1649754455]
 

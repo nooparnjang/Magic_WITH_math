@@ -449,7 +449,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ww0tw"]
-size = Vector2(44, 34)
+size = Vector2(40, 45)
 
 [node name="level4Boss" type="CharacterBody2D" unique_id=1888929708]
 script = ExtResource("1_1e3jw")
@@ -459,7 +459,9 @@ activation_range = 750.0
 position = Vector2(-6, 3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_skupx")
-animation = &"idle"
+animation = &"fight"
+frame = 13
+frame_progress = 0.7956631
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1458979475]
 polygon = PackedVector2Array(6, 46, -32, 46, -32, 29, -22, -14, -22, -34, 18, -34, 18, 17, 4, 17)
@@ -467,12 +469,13 @@ polygon = PackedVector2Array(6, 46, -32, 46, -32, 29, -22, -14, -22, -34, 18, -3
 [node name="Hitbox" type="Area2D" parent="." unique_id=1758424694]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1130734657]
-position = Vector2(10, 8)
+position = Vector2(8, 13.5)
 shape = SubResource("RectangleShape2D_ww0tw")
 
 [node name="Bossstatus" type="Node2D" parent="." unique_id=581433054]
-position = Vector2(-48, -46)
+position = Vector2(-26, -46)
 script = ExtResource("2_1e3jw")
+base_position = Vector2(-40, -46)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Bossstatus" unique_id=298968204]
 offset_right = 40.0

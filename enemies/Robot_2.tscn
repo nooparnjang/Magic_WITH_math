@@ -378,7 +378,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1n21"]
-size = Vector2(55.11111, 12.611107)
+size = Vector2(90.66667, 12.611107)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45wnt"]
 radius = 20.0
@@ -386,7 +386,6 @@ height = 112.0
 
 [node name="Robot2" type="CharacterBody2D" unique_id=759279220]
 script = ExtResource("1_iep1s")
-attack_range = 120.0
 time_out_hit = 0.6
 blessing_reward = 15
 question_pattern = 1
@@ -404,7 +403,7 @@ frame_progress = 0.31489956
 scale = Vector2(0.75, 0.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=715510282]
-position = Vector2(0.6666667, -55.270836)
+position = Vector2(14, -55.270836)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_n1n21")
 

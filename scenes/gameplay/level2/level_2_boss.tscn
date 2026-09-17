@@ -95,7 +95,6 @@ scale = Vector2(2.5, 2.5)
 math_ui = NodePath("../../CanvasLayer/UImath")
 camera_rig = NodePath("../../camera")
 game_over_ui = NodePath("../../CanvasLayer/gameover")
-damage_sound_volume_db = 10.0
 
 [node name="name" parent="player/maincharacter/BubbleAnchor/DialogBubble/BubbleVisual/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1926872742, 765931761) index="0" unique_id=339424069]
 theme_override_colors/font_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
@@ -233,9 +232,10 @@ enter_scene_path = "uid://isrrqb5eb5la"
 
 [node name="bossrobot_level2" parent="enemies" unique_id=437712444 instance=ExtResource("14_opyxy")]
 z_index = 1
-position = Vector2(742.99994, 458)
+position = Vector2(743, 456.99997)
 scale = Vector2(2.5, 2.5)
 max_hp = 14
+time_out_hit = 0.9
 item_drop_id = "Gem"
 item_drop_texture = ExtResource("15_6o4a1")
 question_pattern = 0

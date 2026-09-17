@@ -327,6 +327,7 @@ allowed_operators = Array[String](["+", "-"])
 [node name="Robot_3" parent="enemies" unique_id=1125943764 instance=ExtResource("14_pe584")]
 position = Vector2(3365, 321)
 scale = Vector2(2, 2)
+time_out_hit = 1.3
 blessing_reward = 5
 drop_type = 3
 item_drop_scene = ExtResource("15_k4vop")

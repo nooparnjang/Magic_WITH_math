@@ -25,7 +25,7 @@ height = 78.0
 size = Vector2(60, 34)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wufyv"]
-radius = 103.81715
+radius = 76.00658
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sqbbm"]
 animations = [{
@@ -58,6 +58,9 @@ animations = [{
 "name": &"burst",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ewa1"]
+size = Vector2(23, 5)
 
 [node name="bossrobot_level2" type="CharacterBody2D" unique_id=437712444]
 script = ExtResource("1_umbnv")
@@ -116,9 +119,11 @@ text = "Warning"
 
 [node name="OverloadBurst" type="AnimatedSprite2D" parent="." unique_id=1021423511]
 modulate = Color(1, 1, 1, 0.4745098)
-scale = Vector2(7.3745084, 6.9848633)
+scale = Vector2(5, 4.736)
 sprite_frames = SubResource("SpriteFrames_sqbbm")
 animation = &"burst"
+frame = 3
+frame_progress = 0.36463737
 
 [node name="OverloadCooldownLabel" type="Label" parent="." unique_id=203340682]
 offset_left = -5.0
@@ -127,3 +132,9 @@ offset_right = 55.0
 offset_bottom = -68.0
 theme_override_fonts/font = ExtResource("5_ottdp")
 text = "10"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=591538145]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1501031206]
+position = Vector2(1, -45)
+shape = SubResource("RectangleShape2D_2ewa1")

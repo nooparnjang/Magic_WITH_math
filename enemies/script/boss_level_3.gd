@@ -15,10 +15,9 @@ extends CharacterBody2D
 @export var max_vertical_attack_gap := 9999.0
 
 @export_category("Melee Attack Settings")
-## ⚔️ ระยะแนวนอนที่บอสจะเปลี่ยนมาใช้ท่าตบประชิด (อิงจากโค้ดแรกคือ 60.0)
-@export var melee_range := 60.0
-## ⚔️ ระยะแนวตั้งที่บอสจะเปลี่ยนมาใช้ท่าตบประชิด (อิงจากโค้ดแรกคือ 80.0)
-@export var melee_vertical_gap := 80.0
+## ⚔️ ท่าตบใช้พื้นที่ของโหนด Hitbox เป็นระยะโจมตี (Hitbox จะหันตามทิศที่บอสหัน)
+## ⏱️ เวลาหลังเริ่มอนิเมชัน fight ที่ดาเมจจะออก (จังหวะมือฟาดลง) 0 = ออกทันที
+@export var melee_hit_delay := 0.3
 
 @export_category("Ranged Skill Settings")
 @export var marker_root: NodePath 
@@ -59,6 +58,10 @@ var is_activated := false
 var markers: Array[Marker2D] = []
 var last_attack_index := -1
 
+# ↔️ ระยะห่างจากกลางตัวของ Hitbox (เก็บไว้ตอนเริ่มเกม เพื่อใช้สลับซ้าย/ขวา)
+var hitbox_offset_x := 0.0
+var hitbox_shape_offset_x := 0.0
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var body_collision: CollisionShape2D = $CollisionShape2D
@@ -74,6 +77,11 @@ func _ready() -> void:
 	hp = max_hp
 	add_to_group("targetable")
 	randomize()
+
+	# ↔️ จำระยะของ Hitbox ไว้ (ให้วาง Hitbox ไว้ "ด้านขวา" ของบอสใน Editor)
+	hitbox_offset_x = abs(hitbox.position.x)
+	if hitbox_collision != null:
+		hitbox_shape_offset_x = abs(hitbox_collision.position.x)
 
 	if not hitbox.body_entered.is_connected(_on_hitbox_body_entered):
 		hitbox.body_entered.connect(_on_hitbox_body_entered)
@@ -128,10 +136,12 @@ func _physics_process(delta: float) -> void:
 			
 			# 🧠 [ระบบเลือกท่าโจมตีอัจฉริยะ]
 			if can_attack:
-				# ถ้าผู้เล่นอยู่ในระยะประชิด (Melee) -> ใช้ท่าตบที่ทำดาเมจ contact_damage แรงๆ
-				if horizontal_distance <= melee_range and vertical_distance <= melee_vertical_gap:
+				# หันหน้าก่อน เพื่อให้ Hitbox อยู่ฝั่งเดียวกับผู้เล่นแล้วค่อยเช็ก
+				_face_direction(to_player.x)
+				# ถ้าผู้เล่นอยู่ใน Hitbox -> ใช้ท่าตบ
+				if _is_player_in_hitbox():
 					trigger_melee_attack()
-				# ถ้าผู้เล่นอยู่ไกลออกไป -> ใช้ท่าเสกเลเซอร์ลงเสาหิน (สุ่มพร้อมกัน 3 จุด)
+				# ถ้าผู้เล่นอยู่นอก Hitbox -> ใช้ท่าเสกเลเซอร์ลงเสาหิน (สุ่มพร้อมกัน 3 จุด)
 				else:
 					trigger_marker_attack()
 	else:
@@ -149,11 +159,31 @@ func _apply_gravity(delta: float) -> void:
 	else:
 		velocity.y = 0.0
 
+# ↔️ หันบอสและ Hitbox ไปทางเดียวกัน (x_dir < 0 = หันซ้าย, > 0 = หันขวา)
+func _face_direction(x_dir: float) -> void:
+	if x_dir == 0.0:
+		return
+	var facing_left := x_dir < 0.0
+	var side := -1.0 if facing_left else 1.0
+
+	if sprite != null:
+		sprite.flip_h = facing_left
+	hitbox.position.x = hitbox_offset_x * side
+	if hitbox_collision != null:
+		hitbox_collision.position.x = hitbox_shape_offset_x * side
+
+# ⚔️ ผู้เล่นอยู่ในพื้นที่ Hitbox หรือไม่
+func _is_player_in_hitbox() -> bool:
+	if player_ref == null or not is_instance_valid(player_ref):
+		return false
+	if not (player_ref is PhysicsBody2D):
+		return false
+	return hitbox.overlaps_body(player_ref)
+
 func update_animation(direction: Vector2) -> void:
 	if sprite == null or is_dead: return
 
-	if direction.x != 0.0:
-		sprite.flip_h = direction.x < 0.0
+	_face_direction(direction.x)
 
 	if is_attacking:
 		if sprite.animation != "fight":
@@ -185,7 +215,7 @@ func take_damage(amount: int) -> void:
 		die()
 
 # ==============================================================================
-# ⚔️ [ท่วงท่าที่ 1] โจมตีประชิดตัวเมื่อผู้เล่นอยู่ใกล้ (ตบด้วยมือเปล่าทำดาเมจหนักมาก)
+# ⚔️ [ท่วงท่าที่ 1] โจมตีประชิดตัว (ดาเมจออกเฉพาะผู้เล่นที่อยู่ใน Hitbox)
 # ==============================================================================
 func trigger_melee_attack() -> void:
 	if is_dead or is_attacking or not can_attack:
@@ -198,16 +228,10 @@ func trigger_melee_attack() -> void:
 	can_attack = false
 	velocity.x = 0.0
 
-	print("🤜 บอสใช้ท่าตบประชิด! เพราะผู้เล่นเข้ามาใกล้เกินไป")
+	print("🤜 บอสใช้ท่าตบประชิด! เพราะผู้เล่นอยู่ใน Hitbox")
 
-	# หันหน้าไปหาผู้เล่นก่อนโจมตี
-	if sprite != null:
-		var to_player: Vector2 = (
-			player_ref.global_position - global_position
-		)
-
-		if to_player.x != 0.0:
-			sprite.flip_h = to_player.x < 0.0
+	# หันหน้า (และ Hitbox) ไปหาผู้เล่นก่อนโจมตี
+	_face_direction(player_ref.global_position.x - global_position.x)
 
 	var has_fight_animation := (
 		sprite != null
@@ -219,47 +243,34 @@ func trigger_melee_attack() -> void:
 		# ต้องปิด Loop ไม่อย่างนั้น animation_finished จะไม่ทำงาน
 		sprite.sprite_frames.set_animation_loop("fight", false)
 		sprite.play("fight")
-
-		# รอให้ Animation fight เล่นจนจบทั้งหมดก่อน
-		await sprite.animation_finished
 	else:
 		push_warning(name + ": ไม่มี Animation ชื่อ fight")
-		await get_tree().create_timer(0.15).timeout
+
+	# ⏱️ รอจนถึงจังหวะที่มือฟาดลง
+	if melee_hit_delay > 0.0:
+		await get_tree().create_timer(melee_hit_delay).timeout
 
 	if is_dead:
 		return
 
-	# ตรวจตำแหน่งผู้เล่นอีกครั้งหลัง Animation จบ
-	if player_ref != null and is_instance_valid(player_ref):
-		var horizontal_distance: float = abs(
-			player_ref.global_position.x - global_position.x
-		)
+	# 💥 ตีโดนเฉพาะตอนที่ผู้เล่นยังอยู่ใน Hitbox
+	if _is_player_in_hitbox() and player_ref.has_method("take_damage"):
+		print("💥 บอสอัดโดนผู้เล่น! ดาเมจประชิด: ", contact_damage)
+		player_ref.take_damage(contact_damage)
 
-		var vertical_distance: float = abs(
-			player_ref.global_position.y - global_position.y
-		)
+	# รอให้อนิเมชัน fight เล่นจนจบ (ถ้ายังเล่นอยู่)
+	if has_fight_animation and sprite.animation == "fight" and sprite.is_playing():
+		await sprite.animation_finished
 
-		if (
-			horizontal_distance <= melee_range
-			and vertical_distance <= melee_vertical_gap
-		):
-			if player_ref.has_method("take_damage"):
-				print(
-					"💥 บอสอัดโดนผู้เล่น! ดาเมจประชิด: ",
-					contact_damage
-				)
-
-				player_ref.take_damage(contact_damage)
+	if is_dead:
+		return
 
 	is_attacking = false
 
 	# กลับไป idle หลังตีเสร็จ
-	if not is_dead and sprite != null:
-		if (
-			sprite.sprite_frames != null
-			and sprite.sprite_frames.has_animation("idle")
-		):
-			sprite.play("idle")
+	if sprite != null and sprite.sprite_frames != null \
+			and sprite.sprite_frames.has_animation("idle"):
+		sprite.play("idle")
 
 	# รอคูลดาวน์ก่อนโจมตีรอบถัดไป
 	await get_tree().create_timer(attack_cooldown).timeout
@@ -279,10 +290,8 @@ func trigger_marker_attack() -> void:
 	velocity.x = 0.0
 
 	# หันหน้าไปหาผู้เล่นก่อนร่ายเวท
-	if sprite != null and player_ref != null:
-		var to_player = player_ref.global_position - global_position
-		if to_player.x != 0.0:
-			sprite.flip_h = to_player.x < 0.0
+	if player_ref != null and is_instance_valid(player_ref):
+		_face_direction(player_ref.global_position.x - global_position.x)
 
 	var did_play_fight := false
 	if sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation("fight"):
@@ -326,7 +335,8 @@ func trigger_marker_attack() -> void:
 		else:
 			push_warning("⚠️ [Boss Warning] อย่าลืมใส่ไฟล์ boss3attack.tscn ใน Inspector ช่อง Attack Effect นะครับ!")
 
-	if did_play_fight and sprite.animation == "fight":
+	# รออนิเมชันจบ (เช็ก is_playing ด้วย กันค้างถ้าอนิเมชันจบไปก่อนแล้ว)
+	if did_play_fight and sprite.animation == "fight" and sprite.is_playing():
 		await sprite.animation_finished
 	else:
 		await get_tree().create_timer(0.15).timeout
@@ -354,8 +364,8 @@ func die() -> void:
 
 	remove_from_group("targetable")
 
-	if body_collision != null: body_collision.disabled = true
-	if hitbox_collision != null: hitbox_collision.disabled = true
+	if body_collision != null: body_collision.set_deferred("disabled", true)
+	if hitbox_collision != null: hitbox_collision.set_deferred("disabled", true)
 
 	# 🚫 ซ่อนหลอดเลือดบอสบน UI ทันทีเมื่อบอสตาย
 	if status_bar != null:

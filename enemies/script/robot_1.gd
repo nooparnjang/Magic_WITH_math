@@ -5,8 +5,7 @@ extends CharacterBody2D
 @export var max_hp := 1
 @export var contact_damage := 10
 @export var attack_cooldown := 1.0
-@export var attack_range := 60.0
-@export var max_vertical_attack_gap := 80.0
+## ⏱️ เวลาหลังเริ่มอนิเมชัน fight ที่ดาเมจจะออก (จังหวะหมัดฟาดลง) 0 = ออกทันที
 @export var time_out_hit := 1.8
 
 @export var blessing_reward: int = 10
@@ -39,6 +38,11 @@ var is_dead := false
 var is_attacking := false
 var is_activated := false
 
+# ↔️ ทิศที่หันและตำแหน่งเดิมของ Hitbox (วางไว้ตอนหันขวาใน Editor)
+var facing_dir: int = 1
+var hitbox_base_x := 0.0
+var hitbox_shape_base_x := 0.0
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var body_collision: CollisionShape2D = $CollisionShape2D
@@ -47,6 +51,12 @@ var is_activated := false
 func _ready() -> void:
 	hp = max_hp
 	add_to_group("targetable")
+
+	# ↔️ จำตำแหน่งเดิมไว้ใช้สลับซ้าย/ขวา
+	if hitbox != null:
+		hitbox_base_x = hitbox.position.x
+	if hitbox_collision != null:
+		hitbox_shape_base_x = hitbox_collision.position.x
 
 	if not hitbox.body_entered.is_connected(_on_hitbox_body_entered):
 		hitbox.body_entered.connect(_on_hitbox_body_entered)
@@ -75,19 +85,19 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var to_player: Vector2 = player_ref.global_position - global_position
-	var horizontal_distance: float = abs(to_player.x)
-	var vertical_distance: float = abs(to_player.y)
 
 	if is_attacking:
 		velocity.x = 0.0
 	elif is_activated:
-		if vertical_distance > max_vertical_attack_gap:
-			velocity.x = 0.0
-		elif horizontal_distance > attack_range:
-			velocity.x = sign(to_player.x) * move_speed
-		else:
+		# ↔️ หันตัวและ Hitbox ไปหาผู้เล่นก่อน แล้วค่อยเช็กว่าอยู่ในระยะไหม
+		_face_direction(to_player.x)
+
+		# ⚔️ ผู้เล่นอยู่ในพื้นที่ Hitbox = ตี / ไม่อยู่ = เดินเข้าหา
+		if _is_player_in_hitbox():
 			velocity.x = 0.0
 			try_attack_player()
+		else:
+			velocity.x = sign(to_player.x) * move_speed
 	else:
 		velocity.x = 0.0
 
@@ -101,17 +111,45 @@ func _apply_gravity(delta: float) -> void:
 	else:
 		velocity.y = 0.0
 
+# ↔️ กลับด้านรูปพร้อมสลับฝั่งของ Hitbox (x_dir < 0 = หันซ้าย, > 0 = หันขวา)
+func _face_direction(x_dir: float) -> void:
+	if x_dir == 0.0:
+		return
+
+	facing_dir = -1 if x_dir < 0.0 else 1
+
+	if sprite != null:
+		sprite.flip_h = facing_dir < 0
+
+	var side: float = float(facing_dir)
+
+	if hitbox != null:
+		hitbox.position.x = hitbox_base_x * side
+	if hitbox_collision != null:
+		hitbox_collision.position.x = hitbox_shape_base_x * side
+
+# ⚔️ ผู้เล่นอยู่ในพื้นที่ Hitbox หรือไม่
+func _is_player_in_hitbox() -> bool:
+	if hitbox == null:
+		return false
+	if player_ref == null or not is_instance_valid(player_ref):
+		return false
+	if not (player_ref is PhysicsBody2D):
+		return false
+
+	return hitbox.overlaps_body(player_ref)
+
 func update_animation(direction: Vector2) -> void:
 	if sprite == null or is_dead:
 		return
 
-	if direction.x != 0.0:
-		sprite.flip_h = direction.x < 0.0
-
 	if is_attacking:
+		# กำลังตีอยู่ ห้ามหันกลางท่า ไม่งั้น Hitbox จะสลับฝั่งกลางคัน
 		if sprite.animation != "fight":
 			sprite.play("fight")
 		return
+
+	_face_direction(direction.x)
 
 	if abs(velocity.x) < 5.0:
 		if sprite.animation != "idle":
@@ -137,20 +175,8 @@ func try_attack_player() -> void:
 	if is_dead or is_attacking or not can_attack:
 		return
 
-	if player_ref == null or not is_instance_valid(player_ref):
-		return
-
-	var horizontal_distance: float = abs(
-		player_ref.global_position.x - global_position.x
-	)
-	var vertical_distance: float = abs(
-		player_ref.global_position.y - global_position.y
-	)
-
-	if horizontal_distance > attack_range:
-		return
-
-	if vertical_distance > max_vertical_attack_gap:
+	# ต้องมีผู้เล่นอยู่ในพื้นที่ Hitbox เท่านั้นถึงจะเริ่มท่าตี
+	if not _is_player_in_hitbox():
 		return
 
 	is_attacking = true
@@ -171,32 +197,20 @@ func try_attack_player() -> void:
 		push_warning(name + ": ไม่มี Animation ชื่อ fight")
 
 	# รอให้อนิเมชันเล่นไปถึงจังหวะโจมตี
-	await get_tree().create_timer(time_out_hit).timeout
+	if time_out_hit > 0.0:
+		await get_tree().create_timer(time_out_hit).timeout
 
 	if is_dead:
 		return
 
-	# ตรวจระยะอีกครั้ง ณ จังหวะที่หมัด/อาวุธโดน
-	if player_ref != null and is_instance_valid(player_ref):
-		horizontal_distance = abs(
-			player_ref.global_position.x - global_position.x
-		)
-		vertical_distance = abs(
-			player_ref.global_position.y - global_position.y
-		)
-
-		if (
-			horizontal_distance <= attack_range
-			and vertical_distance <= max_vertical_attack_gap
-		):
-			if player_ref.has_method("take_damage"):
-				print("enemy dealt damage:", contact_damage)
-				player_ref.take_damage(contact_damage)
+	# 💥 ดาเมจออกเฉพาะตอนที่ผู้เล่นยังอยู่ในพื้นที่ Hitbox
+	if _is_player_in_hitbox() and player_ref.has_method("take_damage"):
+		print("enemy dealt damage:", contact_damage)
+		player_ref.take_damage(contact_damage)
 
 	# ดาเมจออกแล้ว แต่รอให้อนิเมชันเล่นจนจบก่อนปลดสถานะโจมตี
-	if has_fight_animation:
-		if sprite.animation == "fight" and sprite.is_playing():
-			await sprite.animation_finished
+	if has_fight_animation and sprite.animation == "fight" and sprite.is_playing():
+		await sprite.animation_finished
 
 	if is_dead:
 		return
@@ -220,15 +234,15 @@ func die() -> void:
 	is_attacking = false
 	can_attack = false
 	velocity = Vector2.ZERO
-	
+
 	LeaderboardManager.add_kill()
 
 	remove_from_group("targetable")
 
 	if body_collision != null:
-		body_collision.disabled = true
+		body_collision.set_deferred("disabled", true)
 	if hitbox_collision != null:
-		hitbox_collision.disabled = true
+		hitbox_collision.set_deferred("disabled", true)
 
 	handle_drops()
 	spawn_effect()
@@ -325,7 +339,7 @@ func spawn_effect() -> void:
 
 	effect_sprite.sprite_frames.set_animation_loop(anim_name, false)
 	effect_sprite.play(anim_name)
-	
+
 func flash_hit() -> void:
 	if sprite == null:
 		return
@@ -348,4 +362,6 @@ func _on_hitbox_body_entered(body: Node) -> void:
 			player_ref = body as Node2D
 
 		is_activated = true
+
+		# เริ่มท่าตีทันทีที่ผู้เล่นเข้ามาในพื้นที่ (ดาเมจยังออกตอน time_out_hit เท่านั้น)
 		try_attack_player()

@@ -7,13 +7,18 @@ extends CharacterBody2D
 
 @export var contact_damage: int = 10
 @export var contact_damage_cooldown: float = 0.8
+## ถ้าเปิด ผู้เล่นที่เดินเข้า Hitbox จะโดนดาเมจทันที (แยกจากท่าตบ)
+@export var hitbox_contact_damage := true
 
 @export var activation_range: float = 520.0
 
-# melee
+# melee (ใช้พื้นที่ของโหนด Hitbox เป็นระยะตบ และ Hitbox จะหันตามบอส)
 @export var attack_cooldown: float = 1.0
-@export var attack_range: float = 60.0
 @export var max_vertical_attack_gap: float = 80.0
+## ⏱️ เวลาหลังเริ่มอนิเมชัน fight ที่ดาเมจจะออก (จังหวะมือฟาดลง) 0 = ออกทันที
+@export var time_out_hit: float = 0.3
+## เลื่อน CollisionShape2D ของตัว และ Hitbox ตอนเล่นท่า fight (ค่านี้คือตอนหันขวา ตอนหันซ้ายจะกลับด้านให้เอง)
+@export var fight_offset_x: float = -29.0
 
 # ranged
 @export var shoot_cooldown: float = 1.8
@@ -47,6 +52,15 @@ var can_contact_damage := true
 var can_attack := true
 var can_shoot := true
 
+# ↔️ ตำแหน่งเดิมของโหนดที่ต้องสลับฝั่งตอนหัน (วางไว้ตอนบอสหันขวาใน Editor)
+var hitbox_base_x := 0.0
+var hitbox_shape_base_x := 0.0
+var shoot_point_base_x := 0.0
+var body_shape_base_x := 0.0
+
+var facing_side := 1.0          # 1 = หันขวา, -1 = หันซ้าย
+var fight_shift_active := false # กำลังเลื่อนตำแหน่งเพราะท่า fight อยู่หรือไม่
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var body_collision: CollisionShape2D = $CollisionShape2D
 @onready var hitbox: Area2D = $Hitbox
@@ -59,6 +73,15 @@ func _ready() -> void:
 	hp = max_hp
 	add_to_group("targetable")
 	add_to_group("boss")
+
+	# จำตำแหน่งเดิมไว้ใช้สลับซ้าย/ขวา
+	hitbox_base_x = hitbox.position.x
+	if hitbox_collision != null:
+		hitbox_shape_base_x = hitbox_collision.position.x
+	if shoot_point != null:
+		shoot_point_base_x = shoot_point.position.x
+	if body_collision != null:
+		body_shape_base_x = body_collision.position.x
 
 	player_ref = get_tree().get_first_node_in_group("player") as Node2D
 
@@ -111,10 +134,7 @@ func _physics_process(delta: float) -> void:
 		_update_animation(to_player)
 		return
 
-	if to_player.x != 0.0:
-		sprite.flip_h = to_player.x < 0.0
-
-	# ถ้ากำลังตีหรือยิงอยู่ ให้หยุดก่อน
+	# ถ้ากำลังตีหรือยิงอยู่ ให้หยุดก่อน (ไม่หันกลางท่า)
 	if is_attacking or is_shooting:
 		velocity.x = 0.0
 		_apply_gravity(delta)
@@ -122,30 +142,33 @@ func _physics_process(delta: float) -> void:
 		_update_animation(to_player)
 		return
 
-	# ถ้าระดับความสูงต่างกันมากเกิน ไม่ให้ attack melee
-	if vertical_distance > max_vertical_attack_gap:
+	# หันบอส + Hitbox + ShootPoint ไปหาผู้เล่น
+	_face_direction(to_player.x)
+
+	# 1) ผู้เล่นอยู่ใน Hitbox = ตีประชิด
+	if _is_player_in_hitbox():
+		velocity.x = 0.0
+		if can_attack:
+			try_attack_player()
+
+	# 2) ความสูงต่างกันมาก = ยิงอย่างเดียว
+	elif vertical_distance > max_vertical_attack_gap:
 		if horizontal_distance > shoot_range:
 			velocity.x = sign(to_player.x) * move_speed
 		else:
 			velocity.x = 0.0
 			if can_shoot:
 				try_shoot_player()
+
+	# 3) ระยะกลาง = ยิง
+	elif horizontal_distance <= shoot_range and horizontal_distance >= shoot_min_range:
+		velocity.x = 0.0
+		if can_shoot:
+			try_shoot_player()
+
+	# 4) ใกล้เกินจะยิงแต่ยังไม่เข้า Hitbox หรือไกลเกินระยะยิง = เดินเข้าหา
 	else:
-		# 1) ใกล้มาก = ตีประชิด
-		if horizontal_distance <= attack_range:
-			velocity.x = 0.0
-			if can_attack:
-				try_attack_player()
-
-		# 2) ระยะกลาง = ยิง
-		elif horizontal_distance <= shoot_range and horizontal_distance >= shoot_min_range:
-			velocity.x = 0.0
-			if can_shoot:
-				try_shoot_player()
-
-		# 3) อยู่ระยะก้ำกึ่งใกล้เกินจะยิงแต่ยังไม่ถึงระยะตี = เดินเข้าอีกนิด
-		else:
-			velocity.x = sign(to_player.x) * move_speed
+		velocity.x = sign(to_player.x) * move_speed
 
 	_apply_gravity(delta)
 	move_and_slide()
@@ -156,6 +179,41 @@ func _apply_gravity(delta: float) -> void:
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 0.0
+
+# ↔️ หันรูป Hitbox และ ShootPoint ไปทางเดียวกัน (x_dir < 0 = ซ้าย, > 0 = ขวา)
+func _face_direction(x_dir: float) -> void:
+	if x_dir == 0.0:
+		return
+	facing_side = -1.0 if x_dir < 0.0 else 1.0
+
+	if sprite != null:
+		sprite.flip_h = facing_side < 0.0
+	_update_positions()
+
+# 🥊 เปิด/ปิดการเลื่อนตำแหน่งตอนเล่นท่า fight
+func _set_fight_shift(active: bool) -> void:
+	fight_shift_active = active
+	_update_positions()
+
+# 📍 จัดตำแหน่งโหนดทั้งหมดตามทิศที่หัน + ระยะเลื่อนของท่า fight
+func _update_positions() -> void:
+	var shift: float = fight_offset_x * facing_side if fight_shift_active else 0.0
+
+	if body_collision != null:
+		body_collision.position.x = body_shape_base_x * facing_side + shift
+	hitbox.position.x = hitbox_base_x * facing_side + shift
+	if hitbox_collision != null:
+		hitbox_collision.position.x = hitbox_shape_base_x * facing_side
+	if shoot_point != null:
+		shoot_point.position.x = shoot_point_base_x * facing_side
+
+# ⚔️ ผู้เล่นอยู่ในพื้นที่ Hitbox หรือไม่
+func _is_player_in_hitbox() -> bool:
+	if player_ref == null or not is_instance_valid(player_ref):
+		return false
+	if not (player_ref is PhysicsBody2D):
+		return false
+	return hitbox.overlaps_body(player_ref)
 
 func _update_animation(direction: Vector2) -> void:
 	if sprite == null or is_dead:
@@ -173,8 +231,7 @@ func _update_animation(direction: Vector2) -> void:
 				sprite.play("attack")
 		return
 
-	if direction.x != 0.0:
-		sprite.flip_h = direction.x < 0.0
+	_face_direction(direction.x)
 
 	if abs(velocity.x) > 5.0:
 		if sprite.animation != "walk":
@@ -191,20 +248,7 @@ func try_attack_player() -> void:
 	if is_dead or is_attacking or not can_attack:
 		return
 
-	if player_ref == null or not is_instance_valid(player_ref):
-		return
-
-	var horizontal_distance: float = abs(
-		player_ref.global_position.x - global_position.x
-	)
-	var vertical_distance: float = abs(
-		player_ref.global_position.y - global_position.y
-	)
-
-	if horizontal_distance > attack_range:
-		return
-
-	if vertical_distance > max_vertical_attack_gap:
+	if not _is_player_in_hitbox():
 		return
 
 	is_attacking = true
@@ -220,36 +264,31 @@ func try_attack_player() -> void:
 	if has_fight_animation:
 		sprite.sprite_frames.set_animation_loop("fight", false)
 		sprite.play("fight")
-
-		# รอจน Animation fight เล่นจบจริง
-		await sprite.animation_finished
+		_set_fight_shift(true)   # เลื่อนตัวและ Hitbox ตามท่า fight
 	else:
 		push_warning(name + ": ไม่มี Animation ชื่อ fight")
-		await get_tree().create_timer(0.15).timeout
+
+	# รอให้อนิเมชันเล่นไปถึงจังหวะโจมตี
+	if time_out_hit > 0.0:
+		await get_tree().create_timer(time_out_hit).timeout
 
 	if is_dead:
 		return
 
-	# ตรวจระยะอีกครั้งหลัง Animation จบ
-	if player_ref != null and is_instance_valid(player_ref):
-		horizontal_distance = abs(
-			player_ref.global_position.x - global_position.x
-		)
-		vertical_distance = abs(
-			player_ref.global_position.y - global_position.y
-		)
+	# ตีโดนเฉพาะตอนที่ผู้เล่นยังอยู่ใน Hitbox
+	if _is_player_in_hitbox() and player_ref.has_method("take_damage"):
+		player_ref.take_damage(contact_damage)
 
-		if (
-			horizontal_distance <= attack_range
-			and vertical_distance <= max_vertical_attack_gap
-		):
-			if player_ref.has_method("take_damage"):
-				player_ref.take_damage(contact_damage)
+	# รอให้อนิเมชัน fight เล่นจนจบ (ถ้ายังเล่นอยู่)
+	if has_fight_animation and sprite.animation == "fight" and sprite.is_playing():
+		await sprite.animation_finished
 
+	if is_dead:
+		return
+
+	_set_fight_shift(false)      # ท่า fight จบ คืนตำแหน่งเดิม
 	is_attacking = false
-
-	if not is_dead:
-		_play_idle()
+	_play_idle()
 
 	await get_tree().create_timer(attack_cooldown).timeout
 
@@ -279,10 +318,14 @@ func try_shoot_player() -> void:
 
 	shoot_projectile()
 
-	if sprite != null and sprite.animation == "attack":
+	# เช็ก is_playing ด้วย กันค้างถ้าอนิเมชันจบไปก่อนแล้ว
+	if sprite != null and sprite.animation == "attack" and sprite.is_playing():
 		await sprite.animation_finished
 	else:
 		await get_tree().create_timer(0.1).timeout
+
+	if is_dead:
+		return
 
 	is_shooting = false
 
@@ -344,9 +387,9 @@ func die() -> void:
 	remove_from_group("targetable")
 
 	if body_collision != null:
-		body_collision.disabled = true
+		body_collision.set_deferred("disabled", true)
 	if hitbox_collision != null:
-		hitbox_collision.disabled = true
+		hitbox_collision.set_deferred("disabled", true)
 
 	if status_bar != null:
 		status_bar.visible = false
@@ -422,14 +465,21 @@ func _on_hitbox_body_entered(body: Node) -> void:
 	if is_dead:
 		return
 
-	if body.is_in_group("player") and can_contact_damage:
-		if body.has_method("take_damage"):
-			body.take_damage(contact_damage)
+	if not body.is_in_group("player"):
+		return
 
-		can_contact_damage = false
+	is_activated = true
 
-		if collision_damage_cooldown_timer != null:
-			collision_damage_cooldown_timer.start()
+	if not hitbox_contact_damage or not can_contact_damage:
+		return
+
+	if body.has_method("take_damage"):
+		body.take_damage(contact_damage)
+
+	can_contact_damage = false
+
+	if collision_damage_cooldown_timer != null:
+		collision_damage_cooldown_timer.start()
 
 func _on_collision_damage_cooldown_timeout() -> void:
 	can_contact_damage = true

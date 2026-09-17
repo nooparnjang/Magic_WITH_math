@@ -472,9 +472,10 @@ enter_scene_path = "uid://dt4dtimks7vx4"
 [node name="level4Boss" parent="enemies" unique_id=1888929708 instance=ExtResource("15_kfyq2")]
 position = Vector2(495, 374)
 scale = Vector2(4, 4)
-max_hp = 15
-activation_range = 750.0
+max_hp = 1
+activation_range = 900.0
 move_speed = 79.92
+stop_distance = 500.0
 projectile_scene = ExtResource("16_3lb0y")
 marker_root = NodePath("../../marker")
 floor_laser_scene = ExtResource("17_0hj8c")
@@ -484,6 +485,7 @@ floating_text_scene = ExtResource("19_5fyw4")
 item_drop_scene = ExtResource("20_3flyj")
 item_drop_id = "Gem3"
 item_drop_texture = ExtResource("6_vfqut")
+allowed_operators = Array[String](["+", "-", "*", "/"])
 
 [node name="object" type="Node2D" parent="." unique_id=161147895]
 

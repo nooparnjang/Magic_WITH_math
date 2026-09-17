@@ -8,6 +8,9 @@ extends CharacterBody2D
 
 @export var contact_damage: int = 4
 @export var contact_damage_cooldown: float = 0.45
+## 🚶 ถ้าเปิด ผู้เล่นที่เดินชน Hitbox จะโดนดาเมจทันทีโดยไม่ต้องรอท่าตบ
+## ปิดไว้ = โดนเฉพาะตอนบอสตบจริง ๆ เท่านั้น
+@export var hitbox_contact_damage: bool = false
 
 @export var activation_range: float = 540.0
 
@@ -15,14 +18,12 @@ var facing_dir: int = 1
 
 
 # -------------------------
-# Melee
+# Melee (ใช้พื้นที่ของโหนด Hitbox เป็นระยะตบ และ Hitbox จะหันตามบอส)
 # -------------------------
 @export var attack_cooldown: float = 0.35
-@export var attack_range: float = 58.0
-@export var max_vertical_attack_gap: float = 80.0
 
-# จังหวะที่ดาเมจออกหลังเริ่ม animation fight
-@export var attack_damage_delay: float = 0.14
+## ⏱️ เวลาหลังเริ่มอนิเมชัน fight ที่ดาเมจจะออก (จังหวะหมัดฟาดลง) 0 = ออกทันที
+@export var time_out_hit: float = 0.14
 
 
 # -------------------------
@@ -100,6 +101,11 @@ var overload_cooldown_left: float = 0.0
 var overload_warning_time_count: float = 0.0
 var overload_warning_base_scale: Vector2 = Vector2.ONE
 
+# ↔️ ตำแหน่งเดิมของโหนดที่ต้องสลับฝั่งตอนหัน (เก็บตอนเริ่มเกม)
+var hitbox_base_x: float = 0.0
+var hitbox_shape_base_x: float = 0.0
+var overload_area_base_x: float = 0.0
+
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var body_collision: CollisionShape2D = $CollisionShape2D
@@ -130,6 +136,14 @@ func _ready() -> void:
 
 	add_to_group("targetable")
 	add_to_group("boss")
+
+	# ↔️ จำตำแหน่งเดิมไว้ใช้สลับซ้าย/ขวา (วางโหนดไว้ตอนบอสหันขวาใน Editor)
+	if hitbox != null:
+		hitbox_base_x = hitbox.position.x
+	if hitbox_collision != null:
+		hitbox_shape_base_x = hitbox_collision.position.x
+	if overload_area != null:
+		overload_area_base_x = overload_area.position.x
 
 	player_ref = get_tree().get_first_node_in_group("player") as Node2D
 
@@ -197,7 +211,6 @@ func _physics_process(delta: float) -> void:
 
 	var to_player: Vector2 = player_ref.global_position - global_position
 	var horizontal_distance: float = abs(to_player.x)
-	var vertical_distance: float = abs(to_player.y)
 
 	if to_player.length() <= activation_range:
 		is_activated = true
@@ -209,16 +222,18 @@ func _physics_process(delta: float) -> void:
 		_update_animation(to_player)
 		return
 
-	if abs(to_player.x) > 1.0:
-		facing_dir = -1 if to_player.x < 0.0 else 1
-		update_facing()
-
+	# ถ้ากำลังตีหรือช็อคอยู่ ให้หยุดและไม่หันกลางท่า
 	if is_attacking or is_overloading:
 		velocity.x = 0.0
 		_apply_gravity(delta)
 		move_and_slide()
 		_update_animation(to_player)
 		return
+
+	# ↔️ หันตัว + Hitbox + OverloadArea ไปหาผู้เล่นก่อน แล้วค่อยเช็กระยะ
+	if horizontal_distance > 1.0:
+		facing_dir = -1 if to_player.x < 0.0 else 1
+		update_facing()
 
 	# Phase 2: ถ้าผู้เล่นเข้าใกล้และ Overload พร้อมใช้ จะชาร์จช็อค
 	if is_phase_2 and can_overload and horizontal_distance <= overload_trigger_range:
@@ -229,10 +244,8 @@ func _physics_process(delta: float) -> void:
 		_update_animation(to_player)
 		return
 
-	# ไม่มีระบบยิงแล้ว:
-	# ถ้าอยู่ในระยะตีและความสูงใกล้กัน = ตี
-	# ถ้ายังไม่ถึงระยะ = วิ่งไล่
-	if vertical_distance <= max_vertical_attack_gap and horizontal_distance <= attack_range:
+	# ⚔️ ผู้เล่นอยู่ในพื้นที่ Hitbox = ตี / ไม่อยู่ = วิ่งไล่
+	if _is_player_in_hitbox():
 		velocity.x = 0.0
 
 		if can_attack:
@@ -292,32 +305,42 @@ func _play_idle() -> void:
 			sprite.play("idle")
 
 
+# ↔️ กลับด้านรูป พร้อมสลับฝั่งของ Hitbox และ OverloadArea ตามไปด้วย
 func update_facing() -> void:
 	if sprite != null:
 		sprite.flip_h = facing_dir < 0
+
+	var side: float = float(facing_dir)
+
+	if hitbox != null:
+		hitbox.position.x = hitbox_base_x * side
+	if hitbox_collision != null:
+		hitbox_collision.position.x = hitbox_shape_base_x * side
+	if overload_area != null:
+		overload_area.position.x = overload_area_base_x * side
+
+
+# ⚔️ ผู้เล่นอยู่ในพื้นที่ Hitbox หรือไม่
+func _is_player_in_hitbox() -> bool:
+	if hitbox == null:
+		return false
+	if player_ref == null or not is_instance_valid(player_ref):
+		return false
+	if not (player_ref is PhysicsBody2D):
+		return false
+
+	return hitbox.overlaps_body(player_ref)
 
 
 # -------------------------
 # Melee Attack
 # -------------------------
+
 func try_attack_player() -> void:
 	if is_dead or is_attacking or not can_attack:
 		return
 
-	if player_ref == null or not is_instance_valid(player_ref):
-		return
-
-	var horizontal_distance: float = abs(
-		player_ref.global_position.x - global_position.x
-	)
-	var vertical_distance: float = abs(
-		player_ref.global_position.y - global_position.y
-	)
-
-	if horizontal_distance > attack_range:
-		return
-
-	if vertical_distance > max_vertical_attack_gap:
+	if not _is_player_in_hitbox():
 		return
 
 	is_attacking = true
@@ -333,36 +356,29 @@ func try_attack_player() -> void:
 	if has_fight_animation:
 		sprite.sprite_frames.set_animation_loop("fight", false)
 		sprite.play("fight")
-
-		# รอจน Animation fight เล่นจบจริง
-		await sprite.animation_finished
 	else:
 		push_warning(name + ": ไม่มี Animation ชื่อ fight")
-		await get_tree().create_timer(0.15).timeout
+
+	# ⏱️ รอจนถึงจังหวะที่หมัดฟาดลง แล้วค่อยออกดาเมจ (ไม่รออนิเมชันจบ)
+	if time_out_hit > 0.0:
+		await get_tree().create_timer(time_out_hit).timeout
 
 	if is_dead:
 		return
 
-	# ตรวจระยะอีกครั้งหลัง Animation จบ
-	if player_ref != null and is_instance_valid(player_ref):
-		horizontal_distance = abs(
-			player_ref.global_position.x - global_position.x
-		)
-		vertical_distance = abs(
-			player_ref.global_position.y - global_position.y
-		)
+	# ตีโดนเฉพาะตอนที่ผู้เล่นยังอยู่ใน Hitbox
+	if _is_player_in_hitbox() and player_ref.has_method("take_damage"):
+		player_ref.take_damage(contact_damage)
 
-		if (
-			horizontal_distance <= attack_range
-			and vertical_distance <= max_vertical_attack_gap
-		):
-			if player_ref.has_method("take_damage"):
-				player_ref.take_damage(contact_damage)
+	# รอให้ animation fight เล่นจนจบ (ถ้ายังเล่นอยู่)
+	if has_fight_animation and sprite.animation == "fight" and sprite.is_playing():
+		await sprite.animation_finished
+
+	if is_dead:
+		return
 
 	is_attacking = false
-
-	if not is_dead:
-		_play_idle()
+	_play_idle()
 
 	await get_tree().create_timer(attack_cooldown).timeout
 
@@ -396,12 +412,12 @@ func try_overload_attack() -> void:
 	play_overload_burst_sprite()
 
 	if overload_collision != null:
-		overload_collision.disabled = false
+		overload_collision.set_deferred("disabled", false)
 
 	await get_tree().create_timer(overload_active_time).timeout
 
 	if overload_collision != null:
-		overload_collision.disabled = true
+		overload_collision.set_deferred("disabled", true)
 
 	await wait_for_overload_burst_end()
 
@@ -492,7 +508,7 @@ func wait_for_overload_burst_end() -> void:
 	if not overload_burst_sprite.sprite_frames.has_animation("burst"):
 		return
 
-	if overload_burst_sprite.animation == "burst":
+	if overload_burst_sprite.animation == "burst" and overload_burst_sprite.is_playing():
 		await overload_burst_sprite.animation_finished
 
 
@@ -504,7 +520,7 @@ func cleanup_overload_visuals() -> void:
 		overload_burst_sprite.visible = false
 
 	if overload_collision != null:
-		overload_collision.disabled = true
+		overload_collision.set_deferred("disabled", true)
 
 	if sprite != null:
 		if is_phase_2:
@@ -643,7 +659,7 @@ func die() -> void:
 	can_overload = false
 
 	velocity = Vector2.ZERO
-	
+
 	LeaderboardManager.add_kill()
 
 	cleanup_overload_visuals()
@@ -651,10 +667,10 @@ func die() -> void:
 	remove_from_group("targetable")
 
 	if body_collision != null:
-		body_collision.disabled = true
+		body_collision.set_deferred("disabled", true)
 
 	if hitbox_collision != null:
-		hitbox_collision.disabled = true
+		hitbox_collision.set_deferred("disabled", true)
 
 	if overload_cooldown_label != null:
 		overload_cooldown_label.visible = false
@@ -755,14 +771,22 @@ func _on_hitbox_body_entered(body: Node) -> void:
 	if is_dead:
 		return
 
-	if body.is_in_group("player") and can_contact_damage:
-		if body.has_method("take_damage"):
-			body.take_damage(contact_damage)
+	if not body.is_in_group("player"):
+		return
 
-		can_contact_damage = false
+	is_activated = true
 
-		if collision_damage_cooldown_timer != null:
-			collision_damage_cooldown_timer.start()
+	# 🚫 ปิดอยู่ = ไม่ทำดาเมจตอนเดินชน ปล่อยให้ท่าตบเป็นคนออกดาเมจเอง
+	if not hitbox_contact_damage or not can_contact_damage:
+		return
+
+	if body.has_method("take_damage"):
+		body.take_damage(contact_damage)
+
+	can_contact_damage = false
+
+	if collision_damage_cooldown_timer != null:
+		collision_damage_cooldown_timer.start()
 
 
 func _on_collision_damage_cooldown_timeout() -> void:
