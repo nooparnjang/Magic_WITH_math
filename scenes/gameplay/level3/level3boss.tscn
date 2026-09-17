@@ -382,6 +382,9 @@ item_drop_id = "Gem2"
 item_drop_amount = 1
 item_drop_texture = ExtResource("22_d3bvf")
 
+[node name="CollisionShape2D" parent="BossLevel3" index="1" unique_id=455167688]
+position = Vector2(0.3999023, -0.39999998)
+
 [node name="deathtrap" type="Area2D" parent="." unique_id=1684379556]
 position = Vector2(-10341, 662)
 script = ExtResource("23_kqitv")
