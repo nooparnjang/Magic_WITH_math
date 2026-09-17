@@ -25,23 +25,46 @@
 [ext_resource type="Texture2D" uid="uid://d2wrb183haufa" path="res://assets/object/industrial-zone-tileset-pixel-art/3 Objects/Pointer1.png" id="20_npqjk"]
 [ext_resource type="Texture2D" uid="uid://b85pjlvteamn2" path="res://assets/object/trash assets/trash assets/box 2.png" id="22_no1gd"]
 [ext_resource type="Texture2D" uid="uid://bwff7xdq0s8ka" path="res://assets/object/trash assets/trash assets/satellite dish.png" id="24_2673w"]
-[ext_resource type="Texture2D" uid="uid://jdkkggtn64e4" path="res://assets/player/craftpix-net-434566-free-robot-pixel-art-sprite-sheets/Swordsman/Dead.png" id="25_2673w"]
 [ext_resource type="Texture2D" uid="uid://dbyxmiv1johe0" path="res://assets/object/trash assets/trash assets/garbage bag 1.png" id="25_n0crq"]
 [ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="25_pd7hp"]
 [ext_resource type="Texture2D" uid="uid://mo1wheuaf20o" path="res://assets/object/trash assets/trash assets/washer.png" id="26_gw6nl"]
 [ext_resource type="Texture2D" uid="uid://bkmjk22j2l1fc" path="res://assets/object/trash assets/trash assets/screen 1.png" id="27_tvvi6"]
+[ext_resource type="Texture2D" uid="uid://dwu5kjlfdxdmq" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-1.png" id="28_0vqb3"]
 [ext_resource type="Script" uid="uid://6aogva7bb7qv" path="res://scenes/gameplay/level1/script/dead_robot_wakeup.gd" id="28_lca8y"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="28_n0crq"]
 [ext_resource type="Texture2D" uid="uid://bltqcnbh74jyp" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/2Squad13.png" id="28_qnirl"]
 [ext_resource type="Texture2D" uid="uid://ckkp1japuqvvj" path="res://assets/object/power-station-free-tileset-pixel-art/3 Objects/2 Decoration/17.png" id="29_nhcuk"]
+[ext_resource type="Texture2D" uid="uid://dnbux3k4oklkb" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-2.png" id="29_u2dev"]
 [ext_resource type="Texture2D" uid="uid://duh5voka2pvpm" path="res://assets/object/ChatGPT Image Jun 7, 2026, 10_18_06 PM (2).png" id="30_2svh6"]
+[ext_resource type="Texture2D" uid="uid://c6mkb2wrou86b" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-3.png" id="30_jccvx"]
 [ext_resource type="Texture2D" uid="uid://dx52w6a08uocx" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_1/Destroyed.png" id="31_8vujh"]
+[ext_resource type="Texture2D" uid="uid://2r74u0jbxj10" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-4.png" id="31_uumul"]
 [ext_resource type="Texture2D" uid="uid://b6bbwlrq5y775" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_2/Idle.png" id="32_00sx4"]
+[ext_resource type="Texture2D" uid="uid://bpk2ox4w4em3l" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-5.png" id="32_h3qsg"]
+[ext_resource type="Texture2D" uid="uid://cfu8xewraujje" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-6.png" id="33_18a36"]
 [ext_resource type="Texture2D" uid="uid://dcivcygyx8g0u" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/8Loot.png" id="33_ss8k8"]
 [ext_resource type="Texture2D" uid="uid://b8b77ng6rk6ew" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/6Benice.png" id="34_o6e0x"]
+[ext_resource type="Texture2D" uid="uid://18bcfo0oory2" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-7.png" id="34_qh1uv"]
+[ext_resource type="Texture2D" uid="uid://dasd6vbfcym3b" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-8.png" id="35_v34wl"]
+[ext_resource type="Texture2D" uid="uid://bx38ieyiexjfa" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-9.png" id="36_5jfhd"]
+[ext_resource type="Texture2D" uid="uid://djx28ywrvycxf" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-10.png" id="37_u5k08"]
+[ext_resource type="Texture2D" uid="uid://cfbawjtpdfyao" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-11.png" id="38_5wlcc"]
 [ext_resource type="Script" uid="uid://chp2s8lej77iv" path="res://scenes/gameplay/script/teleport.gd" id="38_ss8k8"]
+[ext_resource type="Texture2D" uid="uid://bf5efnvtyidyc" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-12.png" id="39_6lhvc"]
 [ext_resource type="Shader" uid="uid://dl0pf55ys6tcy" path="res://scenes/gameplay/script/shader/darkalley.gdshader" id="39_o6e0x"]
+[ext_resource type="Texture2D" uid="uid://r87w2kqcjln7" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-13.png" id="40_diyx6"]
 [ext_resource type="PackedScene" uid="uid://xh1pjjr76s2m" path="res://npc/wendy.tscn" id="40_rajh1"]
+[ext_resource type="Texture2D" uid="uid://dujneh0jqdghk" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-14.png" id="41_wh31l"]
+[ext_resource type="Texture2D" uid="uid://cnpj182rejej0" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-15.png" id="42_fmnb4"]
+[ext_resource type="Texture2D" uid="uid://v55ou073mw8i" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-16.png" id="43_2iwfd"]
+[ext_resource type="Texture2D" uid="uid://dc4xgpjphs1si" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-17.png" id="44_02xxe"]
+[ext_resource type="Texture2D" uid="uid://bjagvhvkx32dq" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-18.png" id="45_5c1q0"]
+[ext_resource type="Texture2D" uid="uid://d1gvdwubmv28m" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-19.png" id="46_d8qpx"]
+[ext_resource type="Texture2D" uid="uid://btsbmrk5c44xf" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-20.png" id="47_yypa6"]
+[ext_resource type="Texture2D" uid="uid://bmweil1pq58hj" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-21.png" id="48_ltvt3"]
+[ext_resource type="Texture2D" uid="uid://dtgqmvd1onsc2" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-22.png" id="49_4ld5q"]
+[ext_resource type="Texture2D" uid="uid://bywu3l5pq2etb" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-23.png" id="50_yc440"]
+[ext_resource type="Texture2D" uid="uid://dhyv7w174nifu" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-24.png" id="51_48npr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nj6qj"]
 shader = ExtResource("2_3dbmp")
@@ -110,40 +133,84 @@ _data = {
 default_font = ExtResource("10_0yte6")
 default_font_size = 20
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n0crq"]
-atlas = ExtResource("25_2673w")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gw6nl"]
-atlas = ExtResource("25_2673w")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tvvi6"]
-atlas = ExtResource("25_2673w")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qnirl"]
-atlas = ExtResource("25_2673w")
-region = Rect2(0, 0, 128, 128)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_lca8y"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n0crq")
+"texture": ExtResource("51_48npr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gw6nl")
+"texture": ExtResource("50_yc440")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tvvi6")
+"texture": ExtResource("49_4ld5q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qnirl")
+"texture": ExtResource("48_ltvt3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_yypa6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_d8qpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_5c1q0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_02xxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_2iwfd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_fmnb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_wh31l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_diyx6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_6lhvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_5wlcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_u5k08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_5jfhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_v34wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_qh1uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_18a36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_h3qsg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_uumul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_jccvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_u2dev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_0vqb3")
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1ngy"]
@@ -487,10 +554,9 @@ texture = ExtResource("28_qnirl")
 [node name="DeadRobotWakeup" type="Node2D" parent="deco" unique_id=1583139626]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="deco/DeadRobotWakeup" unique_id=291519894]
-position = Vector2(2124, 237)
-scale = Vector2(2.5, 2.5)
+position = Vector2(2124, 359)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_lca8y")
-frame_progress = 0.5257326
 
 [node name="Marker2D" type="Marker2D" parent="deco/DeadRobotWakeup" unique_id=1996020207]
 position = Vector2(2057, 381)
