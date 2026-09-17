@@ -7,9 +7,10 @@
 [ext_resource type="FontFile" uid="uid://crcbg7k8p2jdw" path="res://assets/font/EDSamernar.ttf" id="5_ptf86"]
 [ext_resource type="Script" uid="uid://6qiyv88qu37u" path="res://scenes/shop/script/ShopCard.gd" id="6_dww4p"]
 [ext_resource type="Texture2D" uid="uid://c7obrueihtqfn" path="res://assets/UI/uiforshop/Stamina max.png" id="6_xcdpw"]
-[ext_resource type="Texture2D" uid="uid://d0lby7eix2vck" path="res://assets/UI/uiforshop/สไลม์ (ฟ้า+selected).png" id="7_tp26b"]
 [ext_resource type="Texture2D" uid="uid://bapemr4vitn8r" path="res://assets/UI/Bg blessings .png" id="8_g6lcs"]
+[ext_resource type="Texture2D" uid="uid://biaavholxnvbc" path="res://assets/UI/2DPixelUIPack/Sprites/SwordMetall.png" id="8_k5co3"]
 [ext_resource type="Texture2D" uid="uid://dm0f62shr1av4" path="res://assets/UI/uiforshop/Hp max.png" id="8_vk20h"]
+[ext_resource type="Texture2D" uid="uid://bhoa2au5aoiwg" path="res://assets/effect/spark/spark4.png" id="10_6kbe7"]
 [ext_resource type="PackedScene" uid="uid://cplfm5a5cua31" path="res://UIcomponent/blessing_ui.tscn" id="10_vk20h"]
 [ext_resource type="Script" uid="uid://5pyya7y8e28e" path="res://scenes/shop/script/gotomainmenu.gd" id="11_dww4p"]
 [ext_resource type="Script" uid="uid://ckeabxs4g4q3k" path="res://scenes/shop/backto_currentscene.gd" id="13_131kw"]
@@ -58,13 +59,16 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vk20h"]
-texture = ExtResource("6_xcdpw")
+texture = ExtResource("8_k5co3")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dww4p"]
-texture = ExtResource("7_tp26b")
+texture = ExtResource("10_6kbe7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g6lcs"]
 texture = ExtResource("8_vk20h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36j3v"]
+texture = ExtResource("6_xcdpw")
 
 [node name="Control" type="Control" unique_id=70788292]
 layout_mode = 3
@@ -154,10 +158,10 @@ item_id = "damage"
 [node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1815556153]
 custom_minimum_size = Vector2(138, 73)
 layout_mode = 0
-offset_left = 53.0
-offset_top = 7.0
-offset_right = 208.0137
-offset_bottom = 89.0
+offset_left = 90.0
+offset_right = 228.0
+offset_bottom = 137.0
+scale = Vector2(0.7, 0.7)
 theme_override_styles/panel = SubResource("StyleBoxTexture_vk20h")
 
 [node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_damage" unique_id=1242572193]
@@ -207,17 +211,18 @@ item_id = "speed"
 
 [node name="Icon" type="Panel" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=1247381972]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 13.0
-offset_right = 185.0
-offset_bottom = 71.0
+offset_left = 99.0
+offset_top = 15.000001
+offset_right = 186.0
+offset_bottom = 94.999985
+scale = Vector2(0.8, 0.8)
 theme_override_styles/panel = SubResource("StyleBoxTexture_dww4p")
 
 [node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_speed" unique_id=418250560]
 layout_mode = 1
-offset_left = 68.0
+offset_left = 72.0
 offset_top = 76.0
-offset_right = 195.0
+offset_right = 199.0
 offset_bottom = 199.0
 theme_override_fonts/font = ExtResource("5_ptf86")
 theme_override_font_sizes/font_size = 25
@@ -317,7 +322,7 @@ offset_left = 56.0
 offset_top = 3.0
 offset_right = 207.0
 offset_bottom = 90.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_g6lcs")
+theme_override_styles/panel = SubResource("StyleBoxTexture_36j3v")
 
 [node name="Description" type="Label" parent="ScrollContainer/HBoxContainer/box_stamina" unique_id=127008678]
 layout_mode = 0
