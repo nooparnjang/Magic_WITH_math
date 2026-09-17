@@ -472,7 +472,7 @@ enter_scene_path = "uid://dt4dtimks7vx4"
 [node name="level4Boss" parent="enemies" unique_id=1888929708 instance=ExtResource("15_kfyq2")]
 position = Vector2(495, 374)
 scale = Vector2(4, 4)
-max_hp = 1
+max_hp = 15
 activation_range = 900.0
 move_speed = 79.92
 stop_distance = 500.0
