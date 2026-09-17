@@ -353,6 +353,9 @@ position = Vector2(1953, 221)
 [node name="mark6" type="Marker2D" parent="marker2d" unique_id=1875087333]
 position = Vector2(1797, 221)
 
+[node name="mark7" type="Marker2D" parent="marker2d" unique_id=1905061664]
+position = Vector2(1873, -25)
+
 [node name="BossLevel3" parent="." unique_id=138737344 instance=ExtResource("20_cvidc")]
 position = Vector2(2076.0002, 97)
 scale = Vector2(2.5, 2.5)

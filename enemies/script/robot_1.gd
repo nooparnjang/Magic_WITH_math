@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var attack_cooldown := 1.0
 @export var attack_range := 60.0
 @export var max_vertical_attack_gap := 80.0
+@export var time_out_hit := 1.8
 
 @export var blessing_reward: int = 10
 @export var hit_effect_scene: = preload("res://effect/PoofEffect.tscn")
@@ -170,7 +171,7 @@ func try_attack_player() -> void:
 		push_warning(name + ": ไม่มี Animation ชื่อ fight")
 
 	# รอให้อนิเมชันเล่นไปถึงจังหวะโจมตี
-	await get_tree().create_timer(1.8).timeout
+	await get_tree().create_timer(time_out_hit).timeout
 
 	if is_dead:
 		return

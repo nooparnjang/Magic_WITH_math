@@ -453,6 +453,7 @@ size = Vector2(44, 34)
 
 [node name="level4Boss" type="CharacterBody2D" unique_id=1888929708]
 script = ExtResource("1_1e3jw")
+activation_range = 750.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1897979106]
 position = Vector2(-6, 3)

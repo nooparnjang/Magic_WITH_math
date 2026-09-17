@@ -387,6 +387,7 @@ height = 112.0
 [node name="Robot2" type="CharacterBody2D" unique_id=759279220]
 script = ExtResource("1_iep1s")
 attack_range = 120.0
+time_out_hit = 0.6
 blessing_reward = 15
 question_pattern = 1
 allowed_operators = Array[String](["+", "-", "/"])
@@ -396,8 +397,8 @@ position = Vector2(-3, -24)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_hhkim")
 animation = &"fight"
-frame = 13
-frame_progress = 0.811645
+frame = 5
+frame_progress = 0.31489956
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=451659565]
 scale = Vector2(0.75, 0.75)
