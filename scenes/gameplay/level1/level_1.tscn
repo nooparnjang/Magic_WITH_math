@@ -35,7 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://bltqcnbh74jyp" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/2Squad13.png" id="28_qnirl"]
 [ext_resource type="Texture2D" uid="uid://ckkp1japuqvvj" path="res://assets/object/power-station-free-tileset-pixel-art/3 Objects/2 Decoration/17.png" id="29_nhcuk"]
 [ext_resource type="Texture2D" uid="uid://dnbux3k4oklkb" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-2.png" id="29_u2dev"]
-[ext_resource type="Texture2D" uid="uid://duh5voka2pvpm" path="res://assets/object/ChatGPT Image Jun 7, 2026, 10_18_06 PM (2).png" id="30_2svh6"]
 [ext_resource type="Texture2D" uid="uid://c6mkb2wrou86b" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-3.png" id="30_jccvx"]
 [ext_resource type="Texture2D" uid="uid://dx52w6a08uocx" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_1/Destroyed.png" id="31_8vujh"]
 [ext_resource type="Texture2D" uid="uid://2r74u0jbxj10" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-4.png" id="31_uumul"]
@@ -43,7 +42,6 @@
 [ext_resource type="Texture2D" uid="uid://bpk2ox4w4em3l" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-5.png" id="32_h3qsg"]
 [ext_resource type="Texture2D" uid="uid://cfu8xewraujje" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-6.png" id="33_18a36"]
 [ext_resource type="Texture2D" uid="uid://dcivcygyx8g0u" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/8Loot.png" id="33_ss8k8"]
-[ext_resource type="Texture2D" uid="uid://b8b77ng6rk6ew" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/6Benice.png" id="34_o6e0x"]
 [ext_resource type="Texture2D" uid="uid://18bcfo0oory2" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-7.png" id="34_qh1uv"]
 [ext_resource type="Texture2D" uid="uid://dasd6vbfcym3b" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-8.png" id="35_v34wl"]
 [ext_resource type="Texture2D" uid="uid://bx38ieyiexjfa" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-9.png" id="36_5jfhd"]
@@ -65,6 +63,7 @@
 [ext_resource type="Texture2D" uid="uid://dtgqmvd1onsc2" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-22.png" id="49_4ld5q"]
 [ext_resource type="Texture2D" uid="uid://bywu3l5pq2etb" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-23.png" id="50_yc440"]
 [ext_resource type="Texture2D" uid="uid://dhyv7w174nifu" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-24.png" id="51_48npr"]
+[ext_resource type="Texture2D" uid="uid://c3i5fryrubgx1" path="res://assets/bg/Shop/Shop_F-2.png" id="53_ay30s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nj6qj"]
 shader = ExtResource("2_3dbmp")
@@ -597,9 +596,9 @@ scale = Vector2(4, 4)
 texture = ExtResource("29_nhcuk")
 
 [node name="autoshop" type="Sprite2D" parent="deco" unique_id=1069467166]
-position = Vector2(5979, 118)
+position = Vector2(5979, 236.99998)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("30_2svh6")
+texture = ExtResource("53_ay30s")
 
 [node name="car2" type="AnimatedSprite2D" parent="deco" unique_id=502216024]
 position = Vector2(5418, 166)
@@ -617,12 +616,6 @@ frame_progress = 0.7575258
 position = Vector2(5397, 340)
 scale = Vector2(1.5, 1.366)
 texture = ExtResource("33_ss8k8")
-
-[node name="grafiti4" type="Sprite2D" parent="deco" unique_id=543088483]
-position = Vector2(5898, 190)
-rotation = 0.2392316
-scale = Vector2(2.5, 2.277)
-texture = ExtResource("34_o6e0x")
 
 [node name="enemies" type="Node2D" parent="." unique_id=1312110894]
 
