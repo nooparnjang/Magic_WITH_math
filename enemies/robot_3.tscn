@@ -1,7 +1,250 @@
 [gd_scene format=3 uid="uid://bnqmojmxftlgn"]
 
 [ext_resource type="Script" uid="uid://c2j3ydo7tep8w" path="res://enemies/script/robot_1.gd" id="1_x7l1i"]
-[ext_resource type="SpriteFrames" uid="uid://dnpakjbf6qbpu" path="res://assets/tres_enemy/robot3.tres" id="2_d5oai"]
+[ext_resource type="Texture2D" uid="uid://b7ixmal0jk7up" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-1.png" id="2_2n01l"]
+[ext_resource type="Texture2D" uid="uid://ndq011418i0f" path="res://assets/enemy/Robot3/walk_D3_8fps/D3_Walk_F-1.png" id="2_3khpp"]
+[ext_resource type="Texture2D" uid="uid://cfj1ob2361fpm" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-1.png" id="2_cnd4t"]
+[ext_resource type="Texture2D" uid="uid://c40yo2cqyyp7b" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-2.png" id="3_2dl16"]
+[ext_resource type="Texture2D" uid="uid://nqwfrcguk655" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-2.png" id="3_3e07h"]
+[ext_resource type="Texture2D" uid="uid://c5tcn6xotiwp2" path="res://assets/enemy/Robot3/walk_D3_8fps/D3_Walk_F-2.png" id="3_c7d6s"]
+[ext_resource type="Texture2D" uid="uid://4c16sd35ido1" path="res://assets/enemy/Robot3/walk_D3_8fps/D3_Walk_F-3.png" id="4_jtwrx"]
+[ext_resource type="Texture2D" uid="uid://c7d6g4orq8xrr" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-3.png" id="4_pccv8"]
+[ext_resource type="Texture2D" uid="uid://b7rvf6e6lhtfm" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-3.png" id="4_x5x4b"]
+[ext_resource type="Texture2D" uid="uid://chsd3wawvmlyw" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-4.png" id="5_16anx"]
+[ext_resource type="Texture2D" uid="uid://cm0l43huxl20h" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-4.png" id="5_embry"]
+[ext_resource type="Texture2D" uid="uid://bkha3l6gjwqn4" path="res://assets/enemy/Robot3/walk_D3_8fps/D3_Walk_F-4.png" id="5_tl81w"]
+[ext_resource type="Texture2D" uid="uid://l3xj6v2av8jm" path="res://assets/enemy/Robot3/walk_D3_8fps/D3_Walk_F-5.png" id="6_46uff"]
+[ext_resource type="Texture2D" uid="uid://wjg606pww314" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-5.png" id="6_221av"]
+[ext_resource type="Texture2D" uid="uid://de8mhi2plurvc" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-5.png" id="6_hlik1"]
+[ext_resource type="Texture2D" uid="uid://ct2r1rtbxlm32" path="res://assets/enemy/Robot3/walk_D3_8fps/D3_Walk_F-6.png" id="7_63vvd"]
+[ext_resource type="Texture2D" uid="uid://yyp5iyahussr" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-6.png" id="7_gwggk"]
+[ext_resource type="Texture2D" uid="uid://bfyeroy3ek6xu" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-6.png" id="7_laskj"]
+[ext_resource type="Texture2D" uid="uid://lmfq6gmstwcc" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-7.png" id="8_5lni5"]
+[ext_resource type="Texture2D" uid="uid://sbl60mmkkis5" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-7.png" id="8_ww7g7"]
+[ext_resource type="Texture2D" uid="uid://dtgu1mhbaqr4l" path="res://assets/enemy/Robot3/walk_D3_8fps/D3_Walk_F-7.png" id="8_yytsj"]
+[ext_resource type="Texture2D" uid="uid://0r2hrhf1vwry" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-8.png" id="9_68aqi"]
+[ext_resource type="Texture2D" uid="uid://db40k7o8s71xo" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-8.png" id="9_bddsw"]
+[ext_resource type="Texture2D" uid="uid://b8tbkrx7fc8ec" path="res://assets/enemy/Robot3/walk_D3_8fps/D3_Walk_F-8.png" id="9_qqpeg"]
+[ext_resource type="Texture2D" uid="uid://bwe0dy2vmuw88" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-9.png" id="10_e3wxc"]
+[ext_resource type="Texture2D" uid="uid://cxa6cj46hdpac" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-9.png" id="10_uqr1c"]
+[ext_resource type="Texture2D" uid="uid://8rf5aqwnflhy" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-10.png" id="11_33u8y"]
+[ext_resource type="Texture2D" uid="uid://bvraam2ouo4y1" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-10.png" id="11_pnq51"]
+[ext_resource type="Texture2D" uid="uid://budhg3asi26pd" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-11.png" id="12_4hght"]
+[ext_resource type="Texture2D" uid="uid://ckq80pep37mh" path="res://assets/enemy/Robot3/idle_D3_12fps/D3_Idle_F-11.png" id="12_245qj"]
+[ext_resource type="Texture2D" uid="uid://pknul5juerfi" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-12.png" id="13_6mny7"]
+[ext_resource type="Texture2D" uid="uid://nxntv5nichwb" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-13.png" id="14_5nowy"]
+[ext_resource type="Texture2D" uid="uid://bcqxsniquyfan" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-14.png" id="15_gc213"]
+[ext_resource type="Texture2D" uid="uid://gtjhdfn26vfk" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-15.png" id="16_hl6kx"]
+[ext_resource type="Texture2D" uid="uid://bv1demmj0falf" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-16.png" id="17_u2gg3"]
+[ext_resource type="Texture2D" uid="uid://cm3peyy1uhw7u" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-17.png" id="18_sv4va"]
+[ext_resource type="Texture2D" uid="uid://ca4x1e704p5jy" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-18.png" id="19_et47f"]
+[ext_resource type="Texture2D" uid="uid://b5udstfd543f" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-19.png" id="20_g3t7h"]
+[ext_resource type="Texture2D" uid="uid://dxg6d84xslan3" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-20.png" id="21_kcfc1"]
+[ext_resource type="Texture2D" uid="uid://cf22g322ktgfe" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-21.png" id="22_gln44"]
+[ext_resource type="Texture2D" uid="uid://bpb1tkruvge2v" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-22.png" id="23_dtvrk"]
+[ext_resource type="Texture2D" uid="uid://14yr1cnjeisq" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-23.png" id="24_vsd2t"]
+[ext_resource type="Texture2D" uid="uid://isxg2r71e1iv" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-24.png" id="25_g4cll"]
+[ext_resource type="Texture2D" uid="uid://2sd6rerdnnux" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-25.png" id="26_16pug"]
+[ext_resource type="Texture2D" uid="uid://cxbb5ovq0r4ur" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-26.png" id="27_5vllk"]
+[ext_resource type="Texture2D" uid="uid://bgqpr2de4ov5s" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-27.png" id="28_7wjnh"]
+[ext_resource type="Texture2D" uid="uid://b1vkb20k7i34u" path="res://assets/enemy/Robot3/Attack_D3_24fps/D3_Attack_F-28.png" id="29_b8eea"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5pi6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cnd4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3e07h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pccv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_16anx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hlik1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gwggk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lni5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_68aqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uqr1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_33u8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_245qj")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2n01l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2dl16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x5x4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_embry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_221av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_laskj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ww7g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bddsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_e3wxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pnq51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4hght")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6mny7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5nowy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_gc213")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_hl6kx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_u2gg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_sv4va")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_et47f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_g3t7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_kcfc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_gln44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_dtvrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_vsd2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_g4cll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_16pug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_5vllk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_7wjnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_b8eea")
+}],
+"loop": true,
+"name": &"fight",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cnd4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3e07h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pccv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_16anx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hlik1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gwggk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lni5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_68aqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uqr1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_33u8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_245qj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3khpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c7d6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jtwrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tl81w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_46uff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_63vvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yytsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qqpeg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dl16"]
 height = 86.0
@@ -16,8 +259,6 @@ gravity = null
 max_hp = null
 contact_damage = null
 attack_cooldown = null
-attack_range = null
-max_vertical_attack_gap = null
 blessing_reward = null
 hit_effect_scene = null
 floating_text_scene = null
@@ -32,10 +273,10 @@ item_drop_id = null
 item_drop_amount = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1899990991]
-position = Vector2(-3, -25)
-sprite_frames = ExtResource("2_d5oai")
-animation = &"fight"
-frame = 15
+position = Vector2(1, -1.9073486e-06)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_v5pi6")
+animation = &"dead"
 speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1478426716]
