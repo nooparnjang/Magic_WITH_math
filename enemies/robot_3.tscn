@@ -250,7 +250,7 @@ animations = [{
 height = 86.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5x4b"]
-size = Vector2(39, 30)
+size = Vector2(46, 18)
 
 [node name="Robot_3" type="CharacterBody2D" unique_id=1125943764]
 script = ExtResource("1_x7l1i")
@@ -276,7 +276,9 @@ item_drop_amount = null
 position = Vector2(1, -1.9073486e-06)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_v5pi6")
-animation = &"dead"
+animation = &"fight"
+frame = 6
+frame_progress = 0.66590357
 speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1478426716]
@@ -285,5 +287,5 @@ shape = SubResource("CapsuleShape2D_2dl16")
 [node name="Hitbox" type="Area2D" parent="." unique_id=1262430906]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1182487216]
-position = Vector2(30.5, -18)
+position = Vector2(34, -18)
 shape = SubResource("RectangleShape2D_x5x4b")
