@@ -64,6 +64,11 @@
 [ext_resource type="Texture2D" uid="uid://bywu3l5pq2etb" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-23.png" id="50_yc440"]
 [ext_resource type="Texture2D" uid="uid://dhyv7w174nifu" path="res://assets/enemy/Robot1/D1_Dead_12fps/D1_Dead_F-24.png" id="51_48npr"]
 [ext_resource type="Texture2D" uid="uid://c3i5fryrubgx1" path="res://assets/bg/Shop/Shop_F-2.png" id="53_ay30s"]
+[ext_resource type="Texture2D" uid="uid://b0smfhcppwi2i" path="res://assets/bg/Shop/Shop_F-1.png" id="53_h3qsg"]
+[ext_resource type="Texture2D" uid="uid://djpgp6jiw0ahr" path="res://assets/bg/Shop/Shop_F-3.png" id="55_18a36"]
+[ext_resource type="Texture2D" uid="uid://dyy4x23mnn6yg" path="res://assets/bg/Shop/Shop_F-4.png" id="56_qh1uv"]
+[ext_resource type="Texture2D" uid="uid://8j00mq1mkma5" path="res://assets/bg/Shop/Shop_F-5.png" id="57_v34wl"]
+[ext_resource type="Texture2D" uid="uid://cwpp2sbnc36nv" path="res://assets/bg/Shop/Shop_F-6.png" id="58_5jfhd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nj6qj"]
 shader = ExtResource("2_3dbmp")
@@ -210,6 +215,32 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5k08"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("53_h3qsg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_ay30s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_18a36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_qh1uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_v34wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_5jfhd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1ngy"]
@@ -595,10 +626,10 @@ position = Vector2(4164, 364)
 scale = Vector2(4, 4)
 texture = ExtResource("29_nhcuk")
 
-[node name="autoshop" type="Sprite2D" parent="deco" unique_id=1069467166]
+[node name="autoshop" type="AnimatedSprite2D" parent="deco" unique_id=90424083]
 position = Vector2(5979, 236.99998)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("53_ay30s")
+sprite_frames = SubResource("SpriteFrames_u5k08")
 
 [node name="car2" type="AnimatedSprite2D" parent="deco" unique_id=502216024]
 position = Vector2(5418, 166)
