@@ -459,9 +459,9 @@ activation_range = 750.0
 position = Vector2(-6, 3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_skupx")
-animation = &"fight"
-frame = 9
-frame_progress = 0.31097257
+animation = &"idle"
+frame = 27
+frame_progress = 0.9913653
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1458979475]
 polygon = PackedVector2Array(6, 46, -32, 46, -32, 29, -22, -14, -22, -34, 18, -34, 18, 17, 4, 17)
