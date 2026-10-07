@@ -40,21 +40,21 @@
 [ext_resource type="Texture2D" uid="uid://bqp4wcko0b05t" path="res://assets/enemy/Boss4/B4 Idle and Walk 24 FPS 2/B4 Idle and Walk 24 FPS_0033.png" id="35_60bow"]
 [ext_resource type="Texture2D" uid="uid://2j20pjdmkcar" path="res://assets/enemy/Boss4/B4 Idle and Walk 24 FPS 2/B4 Idle and Walk 24 FPS_0034.png" id="36_3nwch"]
 [ext_resource type="Texture2D" uid="uid://dc3rtbf1422bb" path="res://assets/enemy/Boss4/B4 Idle and Walk 24 FPS 2/B4 Idle and Walk 24 FPS_0035.png" id="37_ftgpl"]
-[ext_resource type="Texture2D" uid="uid://didq4ms4edjwp" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0000.png" id="38_5unt1"]
-[ext_resource type="Texture2D" uid="uid://bxswur6evcd5a" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0001.png" id="39_jbtid"]
-[ext_resource type="Texture2D" uid="uid://b40euokrig3c5" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0002.png" id="40_div2s"]
-[ext_resource type="Texture2D" uid="uid://cg7rtwbsf1l41" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0003.png" id="41_o7mwg"]
-[ext_resource type="Texture2D" uid="uid://brf53bhx5n5yu" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0004.png" id="42_sn5t7"]
-[ext_resource type="Texture2D" uid="uid://c2i2d51g2a5gd" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0005.png" id="43_o26q6"]
-[ext_resource type="Texture2D" uid="uid://bp6a6nbftxk15" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0006.png" id="44_5wts2"]
-[ext_resource type="Texture2D" uid="uid://dqpews0a5mhba" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0007.png" id="45_b8ll0"]
-[ext_resource type="Texture2D" uid="uid://b76l84gbup1xx" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0008.png" id="46_py1gr"]
-[ext_resource type="Texture2D" uid="uid://3or4i1bsxnas" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0009.png" id="47_m5yxs"]
-[ext_resource type="Texture2D" uid="uid://ducklcu422ue2" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0010.png" id="48_8cjmv"]
-[ext_resource type="Texture2D" uid="uid://b25bwgxmrdeqs" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0011.png" id="49_kdr3t"]
-[ext_resource type="Texture2D" uid="uid://dgxpd7wpbv8gq" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0012.png" id="50_ibw5j"]
-[ext_resource type="Texture2D" uid="uid://kn7oefht1ydb" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0013.png" id="51_7iskk"]
-[ext_resource type="Texture2D" uid="uid://befl47ca3riie" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0014.png" id="52_0djt8"]
+[ext_resource type="Texture2D" uid="uid://dqaw6eox8v2yw" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0000.png" id="38_5unt1"]
+[ext_resource type="Texture2D" uid="uid://b1yy3k87a08x4" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0001.png" id="39_jbtid"]
+[ext_resource type="Texture2D" uid="uid://c0mj01gnllgvn" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0002.png" id="40_div2s"]
+[ext_resource type="Texture2D" uid="uid://pxx8rr4a0hd0" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0003.png" id="41_o7mwg"]
+[ext_resource type="Texture2D" uid="uid://dd25c6qpddts6" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0004.png" id="42_sn5t7"]
+[ext_resource type="Texture2D" uid="uid://bwv53w5rudx5n" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0005.png" id="43_o26q6"]
+[ext_resource type="Texture2D" uid="uid://wtbl01bcm52i" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0006.png" id="44_5wts2"]
+[ext_resource type="Texture2D" uid="uid://d1w58iwyjcq1c" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0007.png" id="45_b8ll0"]
+[ext_resource type="Texture2D" uid="uid://dmqqj3pwxacib" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0008.png" id="46_py1gr"]
+[ext_resource type="Texture2D" uid="uid://cutwanpds0imm" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0009.png" id="47_m5yxs"]
+[ext_resource type="Texture2D" uid="uid://csbbjo3qdpswf" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0010.png" id="48_8cjmv"]
+[ext_resource type="Texture2D" uid="uid://cslhx8842myho" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0011.png" id="49_kdr3t"]
+[ext_resource type="Texture2D" uid="uid://cxjkv4m2fxywn" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0012.png" id="50_ibw5j"]
+[ext_resource type="Texture2D" uid="uid://dqb6nmrhhyg8e" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0013.png" id="51_7iskk"]
+[ext_resource type="Texture2D" uid="uid://cpop2ooofsvqo" path="res://assets/enemy/Boss4/B4 Attack 24 FPS/B4 Attack 24 FPS_0014.png" id="52_0djt8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_skupx"]
 animations = [{
@@ -460,8 +460,8 @@ position = Vector2(-6, 3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_skupx")
 animation = &"fight"
-frame = 13
-frame_progress = 0.7956631
+frame = 9
+frame_progress = 0.31097257
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1458979475]
 polygon = PackedVector2Array(6, 46, -32, 46, -32, 29, -22, -14, -22, -34, 18, -34, 18, 17, 4, 17)
