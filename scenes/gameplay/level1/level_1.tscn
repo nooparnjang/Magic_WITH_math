@@ -630,6 +630,9 @@ texture = ExtResource("29_nhcuk")
 position = Vector2(5979, 236.99998)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_u5k08")
+autoplay = "default"
+frame = 5
+frame_progress = 0.8506522
 
 [node name="car2" type="AnimatedSprite2D" parent="deco" unique_id=502216024]
 position = Vector2(5418, 166)
