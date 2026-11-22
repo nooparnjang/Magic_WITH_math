@@ -27,11 +27,15 @@
 [ext_resource type="Texture2D" uid="uid://bkmjk22j2l1fc" path="res://assets/object/trash assets/trash assets/screen 1.png" id="26_qnpgy"]
 [ext_resource type="Texture2D" uid="uid://bltqcnbh74jyp" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/2Squad13.png" id="27_isq02"]
 [ext_resource type="Texture2D" uid="uid://ckkp1japuqvvj" path="res://assets/object/power-station-free-tileset-pixel-art/3 Objects/2 Decoration/17.png" id="28_u325s"]
-[ext_resource type="Texture2D" uid="uid://duh5voka2pvpm" path="res://assets/object/ChatGPT Image Jun 7, 2026, 10_18_06 PM (2).png" id="29_dqhwk"]
+[ext_resource type="Texture2D" uid="uid://b0smfhcppwi2i" path="res://assets/bg/Shop/Shop_F-1.png" id="28_xbcrj"]
+[ext_resource type="Texture2D" uid="uid://c3i5fryrubgx1" path="res://assets/bg/Shop/Shop_F-2.png" id="29_5gtyg"]
+[ext_resource type="Texture2D" uid="uid://djpgp6jiw0ahr" path="res://assets/bg/Shop/Shop_F-3.png" id="30_7ru35"]
 [ext_resource type="Texture2D" uid="uid://dx52w6a08uocx" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_1/Destroyed.png" id="30_r1vye"]
 [ext_resource type="Texture2D" uid="uid://b6bbwlrq5y775" path="res://assets/object/craftpix-net-876810-free-old-cars-pixel-art-asset-pack/Jeep_2/Idle.png" id="31_h31of"]
+[ext_resource type="Texture2D" uid="uid://dyy4x23mnn6yg" path="res://assets/bg/Shop/Shop_F-4.png" id="31_yyhn2"]
+[ext_resource type="Texture2D" uid="uid://8j00mq1mkma5" path="res://assets/bg/Shop/Shop_F-5.png" id="32_0axyu"]
 [ext_resource type="Texture2D" uid="uid://dcivcygyx8g0u" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/8Loot.png" id="32_f7d62"]
-[ext_resource type="Texture2D" uid="uid://b8b77ng6rk6ew" path="res://assets/object/graffiti-constructor-pixel-art/4 Examples/6Benice.png" id="33_8usaq"]
+[ext_resource type="Texture2D" uid="uid://cwpp2sbnc36nv" path="res://assets/bg/Shop/Shop_F-6.png" id="33_pns1l"]
 [ext_resource type="PackedScene" uid="uid://pbk26hqvqvku" path="res://object/cone.tscn" id="34_tumhp"]
 [ext_resource type="PackedScene" uid="uid://bqgwh4pht0pda" path="res://object/car.tscn" id="35_ehfhy"]
 [ext_resource type="PackedScene" uid="uid://b16nakbi8je3x" path="res://object/barrier.tscn" id="36_1xqn6"]
@@ -103,6 +107,32 @@ _data = {
 [sub_resource type="Theme" id="Theme_dyfdk"]
 default_font = ExtResource("12_c2w24")
 default_font_size = 20
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xv1ln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_xbcrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_5gtyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_7ru35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_yyhn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_0axyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_pns1l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1ngy"]
 atlas = ExtResource("30_r1vye")
@@ -472,10 +502,10 @@ position = Vector2(4164, 364)
 scale = Vector2(4, 4)
 texture = ExtResource("28_u325s")
 
-[node name="autoshop" type="Sprite2D" parent="deco" unique_id=1520552193]
-position = Vector2(5979, 118)
+[node name="autoshop" type="AnimatedSprite2D" parent="deco" unique_id=1667858335]
+position = Vector2(5972.9985, 241)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("29_dqhwk")
+sprite_frames = SubResource("SpriteFrames_xv1ln")
 
 [node name="car2" type="AnimatedSprite2D" parent="deco" unique_id=1692351257]
 position = Vector2(5418, 166)
@@ -488,15 +518,9 @@ scale = Vector2(2.484375, 2.484375)
 sprite_frames = SubResource("SpriteFrames_a8rp5")
 
 [node name="grafiti3" type="Sprite2D" parent="deco" unique_id=841127178]
-position = Vector2(5397, 340)
+position = Vector2(5398, 340)
 scale = Vector2(1.5, 1.366)
 texture = ExtResource("32_f7d62")
-
-[node name="grafiti4" type="Sprite2D" parent="deco" unique_id=201437662]
-position = Vector2(5898, 190)
-rotation = 0.2392316
-scale = Vector2(2.5, 2.277)
-texture = ExtResource("33_8usaq")
 
 [node name="object" type="Node2D" parent="." unique_id=408150380]
 
